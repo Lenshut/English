@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagasa English Course - Level 1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@1,500&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1c1917; 
+        }
+        
+        .bg-elegant-gradient {
+            background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 50%, #eef2ff 100%);
+        }
+
+        .dashboard-bg {
+            background-color: #fafaf9;
+        }
+        
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        
+        .sidebar-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-track {
+            background: #f5f5f4; 
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+            background: #d6d3d1; 
+            border-radius: 10px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb:hover {
+            background: #a8a29e; 
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <div id="level1-view" class="flex flex-col min-h-screen relative bg-elegant-gradient w-full">
+        
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-teal-100/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+        <nav class="w-full z-50 sticky top-0 bg-fafaf9/80 backdrop-blur-md border-b border-stone-200/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <div class="flex items-center">
+                        <span class="font-black text-xl tracking-widest text-stone-800 uppercase" style="font-family: 'Montserrat', sans-serif;">LEVEL 1</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <button onclick="window.location.href='index.html'" class="px-5 py-2 rounded-full bg-white border border-stone-200 shadow-sm text-stone-600 hover:bg-stone-50 hover:text-stone-900 transition-all font-semibold text-sm tracking-wide">
+                            Homepage
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 w-full relative z-10">
+
+            <section id="overview" class="bg-white rounded-3xl shadow-sm border border-stone-200/80 p-6 md:p-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
+                    <div>
+                        <h1 class="text-3xl font-bold text-stone-800 mb-4">Program Overview</h1>
+                        <p class="text-stone-600 text-lg leading-relaxed">
+                            Welcome to the Level 1 Tagasa English Program Explorer. This comprehensive 6-month program (48 sessions) is meticulously designed for absolute beginners to build a strong foundation in core English language skills.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-stone-50 rounded-xl p-4 border border-stone-100 flex flex-col justify-center">
+                        <div class="mb-2 text-center">
+                            <h2 class="text-lg font-semibold text-teal-800">Skill Progression Path</h2>
+                            <p class="text-stone-500 text-xs mt-1">Skill expansion at Start (Ph 1), Midpoint (Ph 4), and Goal (Ph 8).</p>
+                        </div>
+                        <div class="w-full flex justify-center flex-grow">
+                            <div class="chart-container" style="height: 200px; max-height: 200px; max-width: 100%;">
+                                <canvas id="progressionChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-teal-50 border border-teal-200 rounded-xl p-6 shadow-sm">
+                    <h3 class="text-xl font-bold text-teal-800 mb-2 flex items-center gap-2"><span>🏆</span> Master Goal</h3>
+                    <p class="text-teal-900 font-medium leading-relaxed">
+                        Transition from zero English to confidently introducing oneself, using simple sentences, asking basic questions, discussing daily routines, and independently handling survival conversations like shopping and getting directions.
+                    </p>
+                </div>
+            </section>
+
+            <section id="syllabus" class="scroll-mt-20">
+                <div class="mb-6">
+                    <h2 class="text-3xl font-bold text-stone-800">Interactive Syllabus</h2>
+                    <p class="text-stone-600 mt-2">Click a phase to expand its session list, then select a session to explore its detailed pedagogical breakdown via the sub-menus.</p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-8 items-start">
+                    
+                    <div class="lg:w-1/3 w-full border border-stone-200/80 bg-white rounded-3xl shadow-sm overflow-hidden flex flex-col h-[600px]">
+                        <div class="bg-stone-50 px-4 py-3 border-b border-stone-200">
+                            <h3 class="font-bold text-stone-700">Course Structure</h3>
+                        </div>
+                        <div class="overflow-y-auto sidebar-scroll p-2 flex-grow" id="sidebar-container">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="lg:w-2/3 w-full bg-white rounded-3xl shadow-sm border border-stone-200/80 min-h-[600px] flex flex-col overflow-hidden">
+                        
+                        <div id="empty-state" class="flex-grow flex flex-col items-center justify-center text-center p-10">
+                            <span class="text-4xl mb-4">👈</span>
+                            <h3 class="text-xl font-bold text-stone-700 mb-2">Select a Session</h3>
+                            <p class="text-stone-500 max-w-sm">Choose a specific session from the menu on the left to view its detailed lesson plan, scripts, activities, and worksheets.</p>
+                        </div>
+
+                        <div id="session-display" class="hidden flex-col h-full">
+                            <div class="px-6 py-5 border-b border-stone-200 bg-stone-50 rounded-t-2xl">
+                                <span id="display-phase-badge" class="text-xs font-bold tracking-wider text-teal-700 uppercase mb-2 block"></span>
+                                <h3 id="display-session-title" class="text-2xl font-bold text-stone-800"></h3>
+                            </div>
+                            
+                            <div class="flex flex-wrap border-b border-stone-200 bg-white" id="session-tabs">
+                                <button id="btn-tab-goal" class="tab-btn" onclick="switchTab('goal')">Goal</button>
+                                <button id="btn-tab-teachermaterial" class="tab-btn" onclick="switchTab('teachermaterial')">Teacher Material</button>
+                                <button id="btn-tab-activitiesassessment" class="tab-btn" onclick="switchTab('activitiesassessment')">Activities & Assessment</button>
+                                <button id="btn-tab-worksheet" class="tab-btn" onclick="switchTab('worksheet')">Worksheet Details</button>
+                            </div>
+
+                            <div class="p-6 flex-grow overflow-y-auto">
+                                <div id="tab-goal" class="tab-content hidden">
+                                    <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>🎯</span> Primary Goal</h4>
+                                    <div id="content-goal" class="text-stone-700 bg-teal-50 p-5 rounded-lg border border-teal-100 text-lg font-medium"></div>
+                                </div>
+                                
+                                <div id="tab-teachermaterial" class="tab-content hidden space-y-8">
+                                    <div>
+                                        <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>📚</span> Material & Focus</h4>
+                                        <div id="content-material" class="text-stone-700 p-2 leading-relaxed"></div>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>🧠</span> Step-by-Step Flow</h4>
+                                        <div id="content-flow" class="text-stone-700 p-2 leading-relaxed"></div>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>🧑‍🏫</span> Exact Teacher Script</h4>
+                                        <p class="text-sm text-stone-500 mb-4">Read this word-by-word to ensure clarity for absolute beginners.</p>
+                                        <div id="content-script" class="text-stone-800 italic bg-stone-100 p-6 rounded-lg border-l-4 border-orange-400 text-lg leading-relaxed"></div>
+                                    </div>
+                                </div>
+
+                                <div id="tab-activitiesassessment" class="tab-content hidden space-y-8">
+                                    <div>
+                                        <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>🎮</span> Activities & Student Tasks</h4>
+                                        <div class="mb-4 space-y-4">
+                                            <div class="p-4 bg-white border border-stone-200 rounded-lg shadow-sm">
+                                                <h5 class="font-bold text-stone-800 mb-1">Student Tasks:</h5>
+                                                <p id="content-tasks" class="text-stone-600"></p>
+                                            </div>
+                                            <div class="p-4 bg-emerald-50 border border-emerald-100 rounded-lg shadow-sm">
+                                                <h5 class="font-bold text-emerald-900 mb-1">Interactive Activity:</h5>
+                                                <p id="content-activities" class="text-emerald-800"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>⚠️</span> Assessment & Fixes</h4>
+                                        <div class="space-y-4">
+                                            <div class="p-4 bg-white border border-stone-200 rounded-lg shadow-sm">
+                                                <h5 class="font-bold text-stone-800 mb-1">Check For:</h5>
+                                                <p id="content-assessment" class="text-stone-600"></p>
+                                            </div>
+                                            <div class="p-4 bg-rose-50 border border-rose-100 rounded-lg shadow-sm">
+                                                <h5 class="font-bold text-rose-900 mb-1">Common Mistake & Fix:</h5>
+                                                <p id="content-mistake" class="text-rose-800"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="tab-worksheet" class="tab-content hidden">
+                                    <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>📄</span> Worksheet Details</h4>
+                                    <p class="text-sm text-stone-500 mb-4">Specific questions targeted to this session's grammar and vocabulary.</p>
+                                    <ul id="content-worksheet" class="space-y-2 bg-stone-50 p-5 rounded-lg border border-stone-200 mb-6"></ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="w-full text-center py-10 bg-transparent text-stone-500 relative z-10 mt-12">
+            <p class="text-sm font-medium">&copy; 2026 Tagasa English Course. Cultivating global communicators.</p>
+        </footer>
+    </div>
+
+    <script>
+        const curriculumData = [
+            {
+                id: 1,
+                title: "PHASE 1: ALPHABET, NUMBERS & BASICS",
+                sessions: [
+                    {
+                        title: "Session 1: Greetings & Names",
+                        goal: "Students can say: 'Hello, my name is ___'.<br><br><strong class='text-teal-900'>Elaboration:</strong> This is the absolute foundation of communication. Being able to introduce oneself breaks the ice and immediately builds a beginner's confidence to speak.<br><br><strong class='text-teal-900'>Example:</strong> On the first day of class, a student turns to their neighbor, smiles, and says, 'Hello, my name is David.'",
+                        material: "Vocab: Hello, Hi, Name, My, Is. Grammar: 'I am'. Patterns: 'My name is ___'",
+                        script: "Hello! Look at me. My name is Teacher. Repeat: Hello. Repeat: My name is. My name is John. What is your name?",
+                        flow: "Warm-up: Wave, smile, say 'Hello'. Teaching: Point to self, say pattern. Practice: Choral repetition. Speaking: Go around circle. Closing: Say 'Goodbye'.",
+                        tasks: "Repeat words 3x. Answer teacher's question with a full sentence.",
+                        activities: "Name Ball: Teacher throws a ball to a student. Student catches, says 'Hello, my name is [Name]', and throws to another.",
+                        assessment: "Student says the full sentence without looking at the board.",
+                        mistake: "Student: 'I name John.' Fix: Shake head, emphasize: 'MY name IS John.' Repeat 3x.",
+                        worksheet: ["(Fill): My name ______ Sarah.", "(Match): Hello -> [Hi / Goodbye / Name]", "(MCQ): ______ name is Tom. (a. I b. My c. Me)", "(Build): (is / name / My / Anna) -> ______", "(Short): What is your name? -> ______", "(Speak): Stand up and say your name to 3 classmates."]
+                    },
+                    {
+                        title: "Session 2: Numbers 1-5 & Age",
+                        goal: "Students can say: 'I am [number] years old.'<br><br><strong class='text-teal-900'>Elaboration:</strong> Combines basic numbers with personal information, introducing the concept that 'to be' (I am) is used for age in English, unlike many other languages that use 'to have'.<br><br><strong class='text-teal-900'>Example:</strong> When asked 'How old are you?' by a new friend, the student accurately replies, 'I am eight.'",
+                        material: "Vocab: One, Two, Three, Four, Five, Years, Old. Grammar: 'I am'. Patterns: 'I am [number].'",
+                        script: "Look. One. Repeat: One. (Hold up 1 finger). Two. Repeat: Two. I am thirty years old. How old are you? Say: I am [number].",
+                        flow: "Warm-up: Review names. Teaching: Count 1-5 on fingers. Introduce 'How old are you?'. Practice: Count together. Speaking: Pair up, ask ages. Closing: Flashcard test.",
+                        tasks: "Count fingers with teacher. Ask partner's age.",
+                        activities: "Jump & Count: Teacher says 'Three!' Students jump 3 times and shout 'One, two, three!'",
+                        assessment: "Student correctly identifies numbers 1-5 out of order.",
+                        mistake: "Student: 'I have 5 years.' Fix: 'In English, I AM 5. Repeat: I AM 5.'",
+                        worksheet: ["(Fill): I ______ four.", "(Match): 3 -> [One / Three / Five]", "(MCQ): How ______ are you? (a. old b. years c. am)", "(Build): (am / I / two) -> ______", "(Short): Write the number: Four -> ______", "(Speak): Ask the teacher 'How old are you?'"]
+                    },
+                    {
+                        title: "Session 3: The Alphabet A-M",
+                        goal: "Students can pronounce letters A to M and recognize them.<br><br><strong class='text-teal-900'>Elaboration:</strong> The first step toward reading and spelling. Recognizing these symbols is essential for navigating written English in everyday life.<br><br><strong class='text-teal-900'>Example:</strong> A student sees a sign for 'Bank' and can point to the first letter, saying 'B, b, bank.'",
+                        material: "Vocab: Letters A-M. Apple, Boy, Cat.",
+                        script: "Look at the board. A. Repeat: A. A is for Apple. Repeat: Apple. B. Repeat: B. B is for Boy.",
+                        flow: "Warm-up: Count 1-5. Teaching: Write A-M on board. Point and say. Practice: Choral repetition. Speaking: Read flashcards. Closing: Alphabet song.",
+                        tasks: "Point to letters on desk. Repeat sounds loudly.",
+                        activities: "Letter Touch: Teacher tapes letters on walls. Calls 'Find C!' Students point/run to C.",
+                        assessment: "Student can read 3 random letters between A and M.",
+                        mistake: "Student mispronounces 'E' as 'I'. Fix: Show teeth, smile wide for 'E', drop jaw for 'I'.",
+                        worksheet: ["(Fill): A, B, ___, D.", "(Match): A -> [Boy / Cat / Apple]", "(MCQ): What letter is this? 'H' (a. aitch b. ee c. jay)", "(Build): (is / A / for / Apple) -> ______", "(Short): Write the letter after F: ______", "(Speak): Read these letters aloud: B, G, M, K."]
+                    },
+                    {
+                        title: "Session 4: The Alphabet N-Z & Spelling",
+                        goal: "Students can spell their own name.<br><br><strong class='text-teal-900'>Elaboration:</strong> Spelling one's name is a vital survival skill for filling out forms, answering phone inquiries, and clarifying pronunciation to native speakers.<br><br><strong class='text-teal-900'>Example:</strong> A receptionist asks for a name, and the student says, 'Ali. A-L-I.'",
+                        material: "Vocab: Letters N-Z. Spell, How. Patterns: 'How do you spell your name?'",
+                        script: "N. Repeat: N. Look. M-A-R-Y. Mary. How do you spell your name? T-O-M. Spell your name.",
+                        flow: "Warm-up: Review A-M. Teaching: Introduce N-Z. Write name, ask how to spell. Practice: Spell simple words. Speaking: Spell names. Closing: A-Z song.",
+                        tasks: "Write name in big letters, point to each letter and say it.",
+                        activities: "Spelling Train: Students in line. Word 'C-A-T'. St1: C, St2: A, St3: T.",
+                        assessment: "Student can spell their first name without writing it down.",
+                        mistake: "Confusing G and J. Fix: G=gee, J=jay. Trace in air.",
+                        worksheet: ["(Fill): N, O, ___, Q.", "(Match): Spell Cat -> [C-A-T / B-O-Y / Z-O-O]", "(MCQ): How do you ______ your name? (a. spell b. name c. old)", "(Build): (spell / you / How / do / it) -> ______ ?", "(Short): Spell your name here: ______", "(Speak): Ask your partner: 'How do you spell your name?'"]
+                    },
+                    {
+                        title: "Session 5: Numbers 6-10 & Review",
+                        goal: "Students can count 1-10 and use them in sentences.<br><br><strong class='text-teal-900'>Elaboration:</strong> Moving from rote counting to practical application. This introduces the concept of plurals (adding 's') when quantifying items.<br><br><strong class='text-teal-900'>Example:</strong> A student looks in their bag and tells the teacher, 'I have three pencils.'",
+                        material: "Vocab: Six to Ten. Grammar: Plurals. Patterns: 'I have [number].'",
+                        script: "Six. Repeat: Six. Look. One apple. Two apples. Repeat: Two apples. I have two apples.",
+                        flow: "Warm-up: Count 1-5. Teaching: Teach 6-10. Show 's' sound for plurals. Practice: Count room objects. Speaking: Ask 'How many?'. Closing: Count 1-10 rapidly.",
+                        tasks: "Count 1-10 backwards. Add 's' to words when counting.",
+                        activities: "How Many?: Teacher claps hands. Students listen closed eyes and shout number.",
+                        assessment: "Student distinctly pronounces 's' in plural words.",
+                        mistake: "Forgets plural 's'. Fix: Emphasize 'S' sound like a snake.",
+                        worksheet: ["(Fill): Six, Seven, ______, Nine.", "(Match): 8 -> [Ten / Eight / Six]", "(MCQ): I have two ______. (a. apple b. apples c. a apple)", "(Build): (have / I / cats / ten) -> ______", "(Short): Write the number: Nine -> ______", "(Speak): Count your fingers loudly 1 to 10."]
+                    },
+                    {
+                        title: "Session 6: Phase 1 Mega Review",
+                        goal: "Students can perform a full basic introduction.<br><br><strong class='text-teal-900'>Elaboration:</strong> Synthesizes the entire first phase. This proves the student can chain multiple distinct concepts (greetings, age, spelling) into a coherent monologue.<br><br><strong class='text-teal-900'>Example:</strong> Standing in front of the class, the student fluidly says, 'Hello, my name is Anna. A-N-N-A. I am ten years old.'",
+                        material: "Review: Hello, Name, Age, Numbers 1-10, Alphabet.",
+                        script: "Today is review. We practice everything. Hello, my name is John. I am ten years old. J-O-H-N. Now, you try.",
+                        flow: "Warm-up: Alphabet song. Teaching: Combine 3 sentences. Practice: Write script. Speaking: Present to class. Closing: Praise.",
+                        tasks: "Write intro script. Memorize. Present.",
+                        activities: "Speed Intro: Walk around, when teacher yells 'Stop!', face nearest person and introduce.",
+                        assessment: "Student speaks all 3 sentences clearly with eye contact.",
+                        mistake: "Mumbling. Fix: Lift chin, project voice.",
+                        worksheet: ["(Fill): Hello, ______ name is Sam.", "(Match): Age -> [I am ten / J-O-H-N / Hello]", "(MCQ): J-O-H-N is my ______. (a. age b. spelling c. number)", "(Build): (old / am / I / eight / years) -> ______", "(Short): Write your full intro: ______", "(Speak): Introduce yourself to the teacher."]
+                    }
+                ]
+            },
+            {
+                id: 2,
+                title: "PHASE 2: OBJECTS, COLORS & VERBS",
+                sessions: [
+                    {
+                        title: "Session 7: Classroom Objects 1",
+                        goal: "Ask and answer: 'What is this?' / 'It is a ___.'<br><br><strong class='text-teal-900'>Elaboration:</strong> Equips students with the primary tool for expanding their own vocabulary. If they know how to ask 'What is this?', they can learn any noun independently.<br><br><strong class='text-teal-900'>Example:</strong> A student points to an unfamiliar object on the teacher's desk and asks, 'What is this?' to learn the word 'stapler'.",
+                        material: "Vocab: Book, Pen, Pencil, Desk, Chair. Grammar: 'What', 'It is', 'a'. Patterns: 'What is this?' / 'It is a ___.'",
+                        script: "Look. Book. Repeat: Book. This is a book. Repeat: This is a book. What is this? It is a book. Repeat: It is a book. (Point to pen). Pen. What is this? It is a pen.",
+                        flow: "Warm-up: Number review. Teaching: Hold up objects, say names. Introduce question and answer. Practice: Choral repetition holding objects. Speaking: Pair work—students point to items and ask each other. Closing: Hold object, ask random student.",
+                        tasks: "Touch the object on their desk and say its name. Ask partner the WH-question.",
+                        activities: "Blind Touch: Student closes eyes, teacher hands them an object. Student feels it and says, 'It is a pen.'",
+                        assessment: "Student includes the article 'a' ('It is a book', not 'It is book').",
+                        mistake: "Student: 'It is book.' Fix: Hold up 1 finger. 'It is A book.' Repeat 3x.",
+                        worksheet: ["(Fill): It is ______ pen.", "(Match): [Draw Book] -> Book", "(MCQ): What is ______? (a. this b. am)", "(Build): (is / a / It / chair) -> ______", "(Short): What is this? -> ______", "(Speak): Ask partner what pencil is."]
+                    },
+                    {
+                        title: "Session 8: Classroom Objects 2",
+                        goal: "Answer Yes/No questions about objects.<br><br><strong class='text-teal-900'>Elaboration:</strong> Teaches basic affirmation and negation, forcing students to listen carefully to the question rather than just identifying an object.<br><br><strong class='text-teal-900'>Example:</strong> A classmate holds up an eraser and asks 'Is this a pen?' The student correctly replies, 'No, it is not.'",
+                        material: "Vocab: Bag, Eraser, Door, Window. Grammar: 'an' eraser. Patterns: 'Is this a ___?' / 'Yes, it is.' / 'No, it is not.'",
+                        script: "Eraser. Repeat: Eraser. Look. Is this a pen? No, it is not. Is this an eraser? Yes, it is.",
+                        flow: "Warm-up: 'What is this?' review. Teaching: Introduce new objects, 'Is this...?' and 'Yes/No'. Teach 'an' for eraser. Practice: Teacher holds wrong objects, students yell 'No, it is not!'. Speaking: Pairs ask Yes/No questions. Closing: Rapid fire Yes/No holding items.",
+                        tasks: "Differentiate between 'a' and 'an' verbally depending on the object's starting letter.",
+                        activities: "Lying Teacher: Teacher points to a door and says 'It is a window.' Students must enthusiastically correct the teacher: 'No! It is a door!'",
+                        assessment: "Uses 'an' with eraser correctly and answers with a full 'Yes, it is.'",
+                        mistake: "Student: 'Yes, is.' Fix: Hold up 3 fingers for 3 words: 'Yes (1), it (2), is (3).'",
+                        worksheet: ["(Fill): Is this ______ eraser?", "(Match): Yes -> [it is / it is not]", "(MCQ): Is this a door? (a. Yes, it is b. No, it is not)", "(Build): (is / this / bag / a / Is) -> ______?", "(Short): Is this a pen? -> ______", "(Speak): Hold book, ask 'Is this a pen?'"]
+                    },
+                    {
+                        title: "Session 9: Colors 1",
+                        goal: "Identify basic colors.<br><br><strong class='text-teal-900'>Elaboration:</strong> Adds a layer of descriptive detail to the student's vocabulary, allowing them to differentiate between similar items.<br><br><strong class='text-teal-900'>Example:</strong> A student is asked to grab a folder and asks, 'What color?' When told 'blue', they grab the correct one.",
+                        material: "Vocab: Red, Blue, Green, Yellow, Color. Patterns: 'What color is it?' / 'It is red.'",
+                        script: "Look here. Red. Repeat: Red. (Show red card). Blue. Repeat: Blue. What color is it? It is red. Repeat.",
+                        flow: "Warm-up: Object review. Teaching: Show color cards. Introduce 'What color is it?'. Practice: Hold up cards, students shout colors. Speaking: Point to clothes/objects, ask colors. Closing: Touch something red!",
+                        tasks: "Identify colors around the room. Answer the color question with a full sentence.",
+                        activities: "Color Hunt: Teacher says 'Find blue!' Students must run and touch something blue in the classroom as fast as possible.",
+                        assessment: "Student pronounces 'Green' (gr-een) and 'Yellow' (yel-low) correctly.",
+                        mistake: "Student: 'It is a red.' Fix: 'No 'a' for colors. It is red.' (Cross arms for 'X' when they say 'a').",
+                        worksheet: ["(Fill): What ______ is it?", "(Match): Sky -> Blue", "(MCQ): Apple is ______. (a. red b. book)", "(Build): (color / What / it / is) -> ______?", "(Short): Color of banana? -> ______", "(Speak): Point to shirt, say color."]
+                    },
+                    {
+                        title: "Session 10: Adjectives (Colors + Objects)",
+                        goal: "Combine colors and objects.<br><br><strong class='text-teal-900'>Elaboration:</strong> Introduces English adjective-noun order (adjective comes first). This is a major structural hurdle for speakers of many other languages.<br><br><strong class='text-teal-900'>Example:</strong> Describing their belongings, a student says, 'This is a red bag,' without reversing the words.",
+                        material: "Vocab: Black, White, Brown, Pink. Grammar: Adjective + Noun order. Patterns: 'It is a [color] [object].'",
+                        script: "Black. White. Repeat. Look. A book. It is red. It is a red book. Repeat: It is a red book.",
+                        flow: "Warm-up: Color flashcards. Teaching: Introduce new colors. Show how color comes BEFORE the object. Practice: Teacher shows a blue pen. Students say 'a blue pen'. Speaking: Describe items on their desks. Closing: Describe the teacher's items.",
+                        tasks: "Combine two words correctly (color + noun) without reversing them.",
+                        activities: "Coloring Dictation: Teacher says 'A green bag.' Students must draw a bag and color it green quickly.",
+                        assessment: "Student places the color before the noun automatically, not after.",
+                        mistake: "Student: 'It is a book red'. Fix: Hold two fists. Left fist = Red, Right = Book. 'Red Book.' Make them physically swap hands if they say it backward.",
+                        worksheet: ["(Fill): It is a ______ pen.", "(Match): White -> Paper", "(MCQ): It is a ______ chair. (a. brown b. door)", "(Build): (a / is / It / bag / pink) -> ______", "(Short): What is this? It is a ______ ______.", "(Speak): Describe your pencil."]
+                    },
+                    {
+                        title: "Session 11: Simple Classroom Verbs",
+                        goal: "Execute simple verb commands.<br><br><strong class='text-teal-900'>Elaboration:</strong> Builds listening comprehension and connects physical actions to English words (Total Physical Response), which aids memory retention.<br><br><strong class='text-teal-900'>Example:</strong> When the teacher says 'Open the book, please,' the student immediately opens their textbook without needing a translation.",
+                        material: "Vocab: Stand up, Sit down, Look, Listen, Open, Close. Patterns: '[Verb], please.'",
+                        script: "Stand up. (Teacher stands). Repeat: Stand up. Sit down. (Teacher sits). Repeat. Open the book. Close the book.",
+                        flow: "Warm-up: Colors. Teaching: Perform actions while saying the words. Add 'please' for politeness. Practice: Total Physical Response (TPR). Teacher says command, students do it. Speaking: Students command the teacher. Closing: Fast-paced Simon Says.",
+                        tasks: "Perform physical actions based directly on English audio cues.",
+                        activities: "Simon Says: 'Simon says stand up.' 'Simon says close the book.' (If no 'Simon says', students must not move).",
+                        assessment: "Student instantly reacts to 'Listen' and 'Look' without hesitation.",
+                        mistake: "Confusing Open and Close. Fix: Use exaggerated hand gestures. Hands wide = Open, Clap hands together = Close.",
+                        worksheet: ["(Fill): ______ down, please.", "(Match): Open -> the door", "(MCQ): ______ at the board. (a. Look b. Sit)", "(Build): (up / Stand / please) -> ______", "(Short): Opposite of Open? -> ______", "(Speak): Tell partner Stand up."]
+                    },
+                    {
+                        title: "Session 12: Phase 2 Mega Review",
+                        goal: "Master objects, colors, verbs.<br><br><strong class='text-teal-900'>Elaboration:</strong> A milestone session that proves the student can independently describe their immediate environment and follow basic classroom instructions.<br><br><strong class='text-teal-900'>Example:</strong> During a game, a student picks up an object and commands a peer: 'Look. This is a blue pen. Stand up!'",
+                        material: "Review Sessions 7-11: Objects, Colors, Verbs.",
+                        script: "Review time! What is this? What color is it? Stand up!",
+                        flow: "Warm-up: Simon Says. Teaching: Board game setup. Draw a grid with colors and objects. Practice: 'Is this a blue pen? No, it is a red pen.' Speaking: Students describe a picture containing colored objects. Closing: High score tally for the game.",
+                        tasks: "Combine all Phase 2 knowledge to describe their environment accurately.",
+                        activities: "Show and Tell: Student brings an item to the front. 'This is a bag. It is a blue bag. Open the bag. Close the bag.'",
+                        assessment: "Fluidly combines 'It is a [color] [object]' and understands commands.",
+                        mistake: "Forgetting 'a' when describing colored objects ('It is blue pen'). Fix: Tap the desk 3 times. 'It. Is. A.'",
+                        worksheet: ["(Fill): Is this ______ red book?", "(Match): Stand -> up", "(MCQ): What is this? (a. white door b. black door)", "(Build): (is / This / green / a / eraser) -> ______", "(Short): Write command: ______", "(Speak): Show and Tell."]
+                    }
+                ]
+            },
+            {
+                id: 3,
+                title: "PHASE 3: PRONOUNS & 'TO BE'",
+                sessions: [
+                    {
+                        title: "Session 13: Pronouns (Singular)",
+                        goal: "Use I am, You are, He is, She is.<br><br><strong class='text-teal-900'>Elaboration:</strong> Forms the core pillar of English grammar. Mastering singular pronouns and their corresponding 'to be' conjugations is essential for talking about oneself and others.<br><br><strong class='text-teal-900'>Example:</strong> Looking at a family photo, the student points and says, 'He is a man. She is a girl.'",
+                        material: "Vocab: Boy, Girl, Man, Woman, I, You, He, She. Grammar: am, are, is. Patterns: 'He is a boy.'",
+                        script: "I am a man. Repeat. (Point to a male student). You are a boy. Repeat. (Point to a female student). She is a girl. Repeat: She is a girl.",
+                        flow: "Warm-up: Greet everyone. Teaching: Use pictures of famous people. Teach He for man, She for woman. Practice: Teacher points, students say 'He is' or 'She is'. Speaking: Pairs point to classmates and say 'He is a boy' / 'She is a girl'. Closing: Pointing game.",
+                        tasks: "Distinguish between He and She. Match the correct 'to be' verb to the pronoun.",
+                        activities: "Celebrity Guess: Show a picture of Spider-Man. Students shout 'He is a man!' Show Wonder Woman: 'She is a woman!'",
+                        assessment: "Student never uses 'He' for a female or 'She' for a male.",
+                        mistake: "Mixing up He and She. Fix: Touch chest for 'I', point to a boy for 'He', point to a girl for 'She'. Drill physically.",
+                        worksheet: ["(Fill): She ______ a girl.", "(Match): He -> is a man", "(MCQ): ______ am a boy. (a. I b. He)", "(Build): (are / You / woman / a) -> ______", "(Short): Who is this? ______ is a boy.", "(Speak): Point and say He/She."]
+                    },
+                    {
+                        title: "Session 14: Pronouns (Plural)",
+                        goal: "Use We are, They are.<br><br><strong class='text-teal-900'>Elaboration:</strong> Expands pronoun usage to groups, cementing the rule that all plural subjects take 'are'.<br><br><strong class='text-teal-900'>Example:</strong> Pointing to themselves and a friend, the student says, 'We are students.' Pointing across the room, 'They are teachers.'",
+                        material: "Vocab: Teacher, Student, We, They. Grammar: are. Patterns: 'We are students.'",
+                        script: "I am a teacher. You are a student. Together, WE are. (Make a circle gesture). Look at them. THEY are students. Repeat: They are students.",
+                        flow: "Warm-up: He is / She is drill. Teaching: Introduce We (includes me) and They (excludes me). Remind them of plurals (add 's'). Practice: Group students. Have them say 'We are students'. Speaking: Point to other groups and say 'They are students.' Closing: Choral drill of all pronouns.",
+                        tasks: "Remember to add 's' to nouns when using We and They.",
+                        activities: "Grouping: Teacher says '3!' Students form groups of 3 and shout 'We are students!' Then they point to another group and shout 'They are students!'",
+                        assessment: "Uses 'are' with plural pronouns correctly without reverting to 'is'.",
+                        mistake: "Student: 'We is students.' Fix: Write WE = ARE big on the board. Chant 'We are, They are, You are' with clapping.",
+                        worksheet: ["(Fill): We ______ students.", "(Match): They -> are", "(MCQ): You and I. ______ are students. (a. They b. We)", "(Build): (They / teachers / are) -> ______", "(Short): Plural of He is a boy: ______", "(Speak): Say We are..."]
+                    },
+                    {
+                        title: "Session 15: Negative 'To Be'",
+                        goal: "Make negative sentences.<br><br><strong class='text-teal-900'>Elaboration:</strong> Teaches students how to correct misinformation by placing 'not' correctly after the 'to be' verb.<br><br><strong class='text-teal-900'>Example:</strong> If someone accidentally calls them by the wrong name or title, the student confidently says, 'No, I am not a teacher. I am a student.'",
+                        material: "Vocab: Not. Grammar: am not, is not, are not. Patterns: 'He is not a teacher.'",
+                        script: "Am I a student? No! I am NOT a student. Repeat: I am NOT a student. I am a teacher. Is he a girl? No, he is NOT a girl.",
+                        flow: "Warm-up: Plural pronouns. Teaching: Introduce 'not' directly after the 'to be' verb. Practice: Teacher says false statements ('You are a teacher'). Students correct: 'I am not a teacher.' Speaking: Make false statements about pictures, partner corrects them. Closing: True/False verbal quiz.",
+                        tasks: "Place 'not' in the correct position in the sentence.",
+                        activities: "The Correction Game: Teacher says 'She is a boy.' Students must jump up and yell, 'No! She is not a boy! She is a girl!'",
+                        assessment: "Places 'not' after 'is/are/am', not before the verb.",
+                        mistake: "Student: 'I no am student.' Fix: Write 'am NOT' in red marker. Drill: 'Am Not. Is Not. Are Not.'",
+                        worksheet: ["(Fill): I am ______ a teacher.", "(Match): He is not -> a girl", "(MCQ): They ______ not teachers. (a. are b. is)", "(Build): (not / She / is / a / student) -> ______", "(Short): Negative of We are boys: ______", "(Speak): Say one thing you are NOT."]
+                    },
+                    {
+                        title: "Session 16: Question 'To Be'",
+                        goal: "Ask Are you / Is he.<br><br><strong class='text-teal-900'>Elaboration:</strong> Introduces the concept of subject-verb inversion for questions, a uniquely challenging syntax rule in English.<br><br><strong class='text-teal-900'>Example:</strong> Meeting a new person in the hallway, the student asks, 'Are you a student?' and understands the 'Yes, I am' reply.",
+                        material: "Vocab: Yes, No. Grammar: Inverting subject and verb. Patterns: 'Are you a student?' / 'Yes, I am.'",
+                        script: "You are a student. Ask me! ARE YOU a student? Repeat: Are you a student? Is he a boy? Yes, he is.",
+                        flow: "Warm-up: Negatives. Teaching: Show how 'He is' flips to 'Is he?'. Teach the short answers (Yes, I am / No, I am not). Practice: Teacher asks students questions. Students reply with short answers. Speaking: Pair interview (Are you a boy? Are you a student?). Closing: Write the flip arrows on the board.",
+                        tasks: "Flip the verb and subject to form questions. Use short answers correctly.",
+                        activities: "Interviewer: Give students a fake ID card (e.g., 'John, Teacher'). Partner must ask questions to find out who they are: 'Are you John? Are you a student?'",
+                        assessment: "Answers with 'Yes, I am' instead of just a single 'Yes.'",
+                        mistake: "Student: 'You are student?' (Using intonation instead of grammar). Fix: Physically cross your arms: Left arm 'You', Right arm 'Are'. Cross them over to 'Are You'.",
+                        worksheet: ["(Fill): ______ you a student?", "(Match): Is she a girl? -> Yes she is.", "(MCQ): ______ they teachers? (a. Are b. Is)", "(Build): (he / a / man / Is) -> ______?", "(Short): Answer: Are you a student? ______", "(Speak): Ask teacher 3 questions."]
+                    },
+                    {
+                        title: "Session 17: Feelings & Adjectives",
+                        goal: "Describe emotions.<br><br><strong class='text-teal-900'>Elaboration:</strong> Connects the 'to be' verb to adjectives rather than nouns, allowing students to express their internal state.<br><br><strong class='text-teal-900'>Example:</strong> When the teacher asks 'How are you?' at the start of class, the student honestly replies, 'I am tired' or 'I am happy.'",
+                        material: "Vocab: Happy, Sad, Angry, Tired. Patterns: 'I am happy.' / 'Are you tired?'",
+                        script: "Look at my face. (Smile). I am happy. Repeat: Happy. (Frown). I am sad. Repeat: Sad. Are you happy? Yes, I am.",
+                        flow: "Warm-up: To be questions. Teaching: Introduce emotions with extreme facial expressions. Combine with pronouns (He is angry. We are tired). Practice: Show emojis, students shout the sentence. Speaking: Ask partners 'Are you [feeling]?' Closing: Emotion charades.",
+                        tasks: "Match facial expressions to English vocabulary and form full sentences.",
+                        activities: "Emotion Charades: Student goes to the front, acts out an emotion without speaking. Class asks: 'Are you angry?' Actor nods: 'Yes, I am.'",
+                        assessment: "Uses the adjective directly after the 'to be' verb without adding 'a' ('I am happy', not 'I am a happy').",
+                        mistake: "Student: 'I have tired' (from Romance languages). Fix: Point to the board 'I AM tired.' Have them touch their head and say 'I am'.",
+                        worksheet: ["(Fill): She is crying. She is ______.", "(Match): Smile -> Happy", "(MCQ): Are you tired? No, I am ______. (a. not b. happy)", "(Build): (am / very / I / happy) -> ______", "(Short): How is he? He ______ ______.", "(Speak): Act sad."]
+                    },
+                    {
+                        title: "Session 18: Phase 3 Mega Review",
+                        goal: "Mastery of 'to be'.<br><br><strong class='text-teal-900'>Elaboration:</strong> Ensures students can effortlessly switch between positive, negative, and question forms across all pronouns without pausing to translate.<br><br><strong class='text-teal-900'>Example:</strong> A rapid-fire exchange: 'Are they happy? No, they are not happy. They are sad.'",
+                        material: "Review Sessions 13-17: 'To be' (Affirmative, Negative, Question), Pronouns, Emotions.",
+                        script: "Let's review! Are you happy? Is he a teacher? We are not sad!",
+                        flow: "Warm-up: Emotion faces. Teaching: Put a large grid on the board (I, You, He, She, We, They vs + , - , ?). Fill it in together. Practice: Worksheet drill. Speaking: 'Find Someone Who' game. Closing: Final Q&A check.",
+                        tasks: "Construct positive, negative, and question forms flawlessly.",
+                        activities: "Find Someone Who: Students get a sheet: 'Find someone who is happy. Find someone who is not a boy.' They walk around asking 'Are you...?' and write names.",
+                        assessment: "Can swap between positive, negative, and questions quickly without getting stuck.",
+                        mistake: "Forgetting 'am/is/are' entirely ('I happy'). Fix: Remind them that every sentence needs an action word. 'Am' is the glue.",
+                        worksheet: ["(Fill): They ______ not sad.", "(Match): Are you a boy? -> Yes I am.", "(MCQ): ______ is a woman. (a. She b. He)", "(Build): (not / tired / We / are) -> ______", "(Short): Question: You are angry -> ______?", "(Speak): Describe classmate."]
+                    }
+                ]
+            },
+            {
+                id: 4,
+                title: "PHASE 4: ADJECTIVES & WH-QUESTIONS",
+                sessions: [
+                    { 
+                        title: "Session 19: Physical Adjectives", 
+                        goal: "Describe size and height.<br><br><strong class='text-teal-900'>Elaboration:</strong> Teaches students to use specific physical adjectives and introduces the definite article 'The' for specific objects.<br><br><strong class='text-teal-900'>Example:</strong> Comparing two books on a desk, the student points and says, 'The red book is big. The blue book is small.'", 
+                        material: "Vocab: Big, Small, Tall, Short. Grammar: The. Patterns: 'The book is big.' / 'He is tall.'", 
+                        script: "Look at this elephant. It is big. Repeat: Big. Look at the mouse. It is small. Repeat: Small. The elephant is big. The mouse is small.", 
+                        flow: "Warm-up: Colors. Teaching: Introduce opposites (Big/Small, Tall/Short) using pictures or classroom objects. Introduce 'The'. Practice: Compare items. 'The desk is big. The pen is small.' Speaking: Describe themselves and friends ('I am tall'). Closing: Draw a big tree and a small tree.", 
+                        tasks: "Differentiate between Tall (vertical) and Big (volume).", 
+                        activities: "Opposites Relay: Teacher yells 'Big!' Student must run, touch something big, and say 'The [object] is big.'", 
+                        assessment: "Correctly uses 'The' instead of 'A' for specific objects.", 
+                        mistake: "Using 'Tall' for objects like books. Fix: Stand up, point to head to toe for 'Tall'. Spread arms wide for 'Big'.", 
+                        worksheet: ["(Fill): The elephant is ______.", "(Match): Tall -> Short", "(MCQ): ______ book is small. (a. The b. A)", "(Build): (tall / is / The / man) -> ______", "(Short): The building is ______.", "(Speak): Describe big object."] 
+                    },
+                    { 
+                        title: "Session 20: Sensory Adjectives", 
+                        goal: "Describe temp/speed.<br><br><strong class='text-teal-900'>Elaboration:</strong> Expands sensory vocabulary and reinforces the grammatical rule that English uses 'to be' for temperatures (I am cold), not 'to have'.<br><br><strong class='text-teal-900'>Example:</strong> Touching a glass of ice water, the student accurately states, 'The water is cold.'", 
+                        material: "Vocab: Hot, Cold, Fast, Slow, Tea, Ice. Patterns: 'Is the tea hot?' / 'Yes, it is.'", 
+                        script: "Coffee is hot. Repeat: Hot. (Pretend to burn hand). Ice is cold. Repeat: Cold. (Shiver). A car is fast. A turtle is slow.", 
+                        flow: "Warm-up: Big/Small. Teaching: TPR for hot/cold/fast/slow. Practice: Flashcards of items (sun, sun, cheetah, snail). Students shout the adjective. Speaking: Pair Q&A: 'Is the sun cold?' 'No, it is hot.' Closing: Mime the adjective.", 
+                        tasks: "Associate vocabulary with physical sensations.", 
+                        activities: "Run and Freeze: Students walk 'fast', then 'slow', then pretend it is 'cold', then 'hot', based on teacher's commands.", 
+                        assessment: "Can form a full question: 'Is the [noun] [adjective]?'", 
+                        mistake: "Student: 'I have cold.' Fix: 'I AM cold.' Review the 'to be' rules for feelings/states.", 
+                        worksheet: ["(Fill): Ice is ______.", "(Match): Fast -> Car", "(MCQ): Is sun cold? (a. Yes b. No)", "(Build): (turtle / slow / The / is) -> ______", "(Short): Name something hot: ______", "(Speak): Are you cold?"] 
+                    },
+                    { 
+                        title: "Session 21: WH: WHO & Family", 
+                        goal: "Ask about people (WHO).<br><br><strong class='text-teal-900'>Elaboration:</strong> Teaches the specific question word used strictly for human identity, tying it into family vocabulary.<br><br><strong class='text-teal-900'>Example:</strong> Looking at a classmate's phone screen showing a picture, the student asks, 'Who is she?'", 
+                        material: "Vocab: Who, Mother, Father, Brother, Sister, Family. Patterns: 'Who is he?' / 'He is my father.'", 
+                        script: "(Show picture of a man). Who is he? Repeat: Who is he? He is my father. Repeat: Father.", 
+                        flow: "Warm-up: He/She review. Teaching: Draw a family tree on the board. Introduce Who. Practice: Point to members of the family tree and ask 'Who is she?'. Students answer 'She is the mother.' Speaking: Students draw their own family tree and ask partners 'Who is he?'. Closing: Quick fire WHO questions pointing at classmates.", 
+                        tasks: "Understand 'Who' is strictly for people.", 
+                        activities: "Family Album: Students bring a real or drawn picture of their family. Partner points and asks 'Who is she?', student answers 'She is my sister.'", 
+                        assessment: "Student uses 'Who' (not 'What') when asking about a person.", 
+                        mistake: "Pronouncing 'th' in Mother/Father as 'd' (Mudder). Fix: Show tongue between teeth. 'Moth-er'. Over-exaggerate the 'th' vibration.", 
+                        worksheet: ["(Fill): ______ is he?", "(Match): Mother -> She", "(MCQ): Who is she? My ______. (a. father b. sister)", "(Build): (is / mother / She / my) -> ______", "(Short): Who is the man? ______", "(Speak): Show family tree."] 
+                    },
+                    { 
+                        title: "Session 22: WH: WHERE & Prepositions", 
+                        goal: "Ask locations (WHERE).<br><br><strong class='text-teal-900'>Elaboration:</strong> Connects spatial prepositions (in, on, under) with the question word 'Where', vital for finding lost items or navigating spaces.<br><br><strong class='text-teal-900'>Example:</strong> The student loses their pencil and asks a neighbor, 'Where is my pencil?' and understands the reply, 'It is under the desk.'", 
+                        material: "Vocab: Where, In, On, Under, Box. Patterns: 'Where is the pen?' / 'It is on the desk.'", 
+                        script: "Where is the pen? (Look around confused). Ah! It is ON the desk. Repeat: On. (Put pen in a box). It is IN the box. (Put pen under desk). It is UNDER the desk.", 
+                        flow: "Warm-up: 'Who' review. Teaching: Introduce 'Where'. Physically demonstrate in/on/under with a box and a ball. Practice: Teacher places objects, asks 'Where is the [object]?'. Speaking: Pairs hide an eraser and ask 'Where is the eraser?'. Closing: Simon says with prepositions ('Put your pen ON your head').", 
+                        tasks: "Master the spatial differences between in, on, and under.", 
+                        activities: "Hide and Seek (Objects): One student leaves the room. Class hides a red pen. Student returns and asks 'Where is the red pen?'. Class replies 'It is under the chair!'", 
+                        assessment: "Never confuses 'in' (inside) with 'on' (surface).", 
+                        mistake: "Using 'in' for everything (e.g., 'in the table'). Fix: Flat palm = ON. Cupped hand = IN. Drill physically.", 
+                        worksheet: ["(Fill): Book is ______ desk.", "(Match): Under -> Below", "(MCQ): ______ is the cat? (a. Who b. Where)", "(Build): (is / pen / The / under / desk / the) -> ______", "(Short): Where are you? ______", "(Speak): Where is my pen?"] 
+                    },
+                    { 
+                        title: "Session 23: WH: WHAT", 
+                        goal: "Ask What is this/that.<br><br><strong class='text-teal-900'>Elaboration:</strong> Teaches spatial relativity. Students learn how distance dictates the use of 'This' (close) versus 'That' (far).<br><br><strong class='text-teal-900'>Example:</strong> Pointing to an airplane high in the sky, the student asks, 'What is that?' rather than 'What is this?'", 
+                        material: "Vocab: What, This, That. Patterns: 'What is this?' (close) / 'What is that?' (far).", 
+                        script: "(Hold a book). What is THIS? It is a book. (Point to a door far away). What is THAT? It is a door. Repeat: That.", 
+                        flow: "Warm-up: What is this? Teaching: Introduce distance. Touch = This. Pointing from afar = That. Practice: Teacher touches or points to objects, class shouts 'This!' or 'That!'. Speaking: Pairs sit apart. Student points to partner's desk: 'What is that?' Closing: Rapid pointing drill.", 
+                        tasks: "Conceptually grasp distance affecting pronoun choice.", 
+                        activities: "The Pointing Game: Stand in the middle of the room. Point to your own shoe: 'What is this?'. Point to the clock on the wall: 'What is that?'. Class answers.", 
+                        assessment: "Correctly uses 'that' for out-of-reach objects.", 
+                        mistake: "Pronouncing 'That' as 'Dat'. Fix: Tongue between teeth again. 'Thhhh-at.'", 
+                        worksheet: ["(Fill): What is ______?", "(Match): This -> Close", "(MCQ): What is ______? (a. this b. that)", "(Build): (is / What / that) -> ______", "(Short): Translate This/That ______", "(Speak): Ask What is that?"] 
+                    },
+                    { 
+                        title: "Session 24: Phase 4 Mega Review", 
+                        goal: "Master WH/Adj.<br><br><strong class='text-teal-900'>Elaboration:</strong> Confirms the student's ability to select the correct interrogative word based on whether they want to know about a person, place, or thing.<br><br><strong class='text-teal-900'>Example:</strong> In a mock interview, the student smoothly asks a series of distinct questions: 'Who is he? Where is he? What is that?'", 
+                        material: "Review Sessions 19-23: Adjectives, Who, Where, What.", 
+                        script: "Who is he? Where is the big book? What is that? Let's practice!", 
+                        flow: "Warm-up: In/On/Under TPR. Teaching: Write Who (Person), Where (Place), What (Thing) on the board. Practice: Worksheet identifying which WH-word to use. Speaking: Group Q&A carousel. Closing: Pictionary with adjectives.", 
+                        tasks: "Instantly select the correct WH-question word based on the answer provided.", 
+                        activities: "The Question Master: Give a student an answer card (e.g., 'It is under the desk'). They must form the correct question ('Where is the pen?').", 
+                        assessment: "100% accuracy matching Who/Where/What to Person/Place/Thing.", 
+                        mistake: "Using 'What' for people ('What is he?'). Fix: Draw a person = WHO. Draw a box = WHAT. Drill visually.", 
+                        worksheet: ["(Fill): ______ is she?", "(Match): Where -> In box", "(MCQ): ______ is that? (a. Who b. What)", "(Build): (big / The / is / dog / very) -> ______", "(Short): Question for: He is father -> ______", "(Speak): Ask 3 questions."] 
+                    }
+                ]
+            },
+            {
+                id: 5,
+                title: "PHASE 5: DAILY VERBS & ROUTINE",
+                sessions: [
+                    { 
+                        title: "Session 25: Morning", 
+                        goal: "Morning actions.<br><br><strong class='text-teal-900'>Elaboration:</strong> Introduces active verbs. Students begin building narrative capability by describing sequential actions they perform daily.<br><br><strong class='text-teal-900'>Example:</strong> A student mimes their morning routine while speaking aloud: 'I wake up. I drink water. I eat.'", 
+                        material: "Vocab: Wake up, Eat, Drink, Sleep. Grammar: Present Simple (I). Patterns: 'I wake up'.", 
+                        script: "(Stretch arms). 'I wake up!' Repeat: Wake up. (Mime eating). 'I eat.' Repeat: Eat. 'What do you do?'", 
+                        flow: "Warm-up: Adjectives review. Teaching: Mime the 4 morning verbs. Write them on the board. Practice: Teacher says verb, students mime. Speaking: Students pair up and say 'I wake up. I eat.' Closing: Mime charades.", 
+                        tasks: "Connect spoken verbs to physical daily actions. Speak clearly without adding 'to be' verbs.", 
+                        activities: "Morning Mime: Students stand up and act out their morning in sequence while speaking the actions out loud ('I wake up, I drink, I eat').", 
+                        assessment: "Student clearly pronounces 'eat' and 'drink' and uses the pronoun 'I' correctly.", 
+                        mistake: "Student: 'I am eat.' Fix: 'No am. Just I eat. One action.' Have them repeat it 3 times.", 
+                        worksheet: ["(Fill): I ______ water.", "(Match): Eat -> Apple", "(MCQ): I ______ in the bed. (a. eat b. sleep)", "(Build): (up / I / wake) -> ______", "(Short): What do you do with water? I ______ it.", "(Speak): Mime and say your daily verbs."] 
+                    },
+                    { 
+                        title: "Session 26: Day Routine", 
+                        goal: "Places/activities.<br><br><strong class='text-teal-900'>Elaboration:</strong> Connects action verbs to destinations, introducing the critical preposition 'to' to indicate movement.<br><br><strong class='text-teal-900'>Example:</strong> When asked about their plans, the student replies, 'I go to work, and I go to the park.'", 
+                        material: "Vocab: Go, Play, Work, Study, School. Grammar: Preposition 'to'. Patterns: 'I go to school.'", 
+                        script: "Look at the board. School. 'I GO TO school.' Repeat: Go to. 'I play games.' Repeat: Play.", 
+                        flow: "Warm-up: Wake up / Eat. Teaching: Introduce new verbs. Emphasize the bridge word 'to' after 'go'. Practice: Fill in the blanks verbally (I play ___, I go to ___). Speaking: Ask 'Where do you go?' Closing: Verb pictionary.", 
+                        tasks: "Use the preposition 'to' strictly after the verb 'go' when indicating a destination.", 
+                        activities: "The Commute: Set up 'School' and 'Work' signs in corners of the room. Say 'I go to work!' Students must walk to that corner while repeating the sentence.", 
+                        assessment: "Consistently remembers to say 'go to' instead of just 'go'.", 
+                        mistake: "Student: 'I go school.' Fix: 'Go TO school. TO is the bridge.' Draw a bridge on the board.", 
+                        worksheet: ["(Fill): I go ______ work.", "(Match): Play -> Football", "(MCQ): I ______ English. (a. sleep b. study)", "(Build): (school / to / I / go) -> ______", "(Short): Where do you study? I study at ______.", "(Speak): Tell your partner: 'I play...'"] 
+                    },
+                    { 
+                        title: "Session 27: Present Simple (I/You)", 
+                        goal: "Base form verbs (Present Simple).<br><br><strong class='text-teal-900'>Elaboration:</strong> Establishes that for most pronouns (I, You, We, They), English verbs remain in their simple, unaltered base form.<br><br><strong class='text-teal-900'>Example:</strong> Describing a group activity, the student says, 'We read a book. They write a letter.'", 
+                        material: "Vocab: Read, Write. Grammar: Present simple base form. Patterns: 'You read a book.'", 
+                        script: "'I read a book. You read a book. We read a book. They read a book. The verb is the SAME!'", 
+                        flow: "Warm-up: Daily verbs. Teaching: Show that for I/You/We/They, the verb doesn't change. Write examples on board. Practice: Verb drills with pronouns. Speaking: 'I write. You write.' Closing: Rapid pronoun + verb matching.", 
+                        tasks: "Memorize that the verb base stays perfectly unchanged for plural pronouns and 'I/You'.", 
+                        activities: "Pronoun Dice: Roll a dice (1=I, 2=You, 3=We, 4=They). Roll a second dice for a verb card. Form the sentence instantly out loud.", 
+                        assessment: "Confidently strings pronoun + verb + object without pausing to conjugate.", 
+                        mistake: "Student arbitrarily adds an 's' (e.g., 'We reads'). Fix: Point to a chart on the board showing I/You/We/They = NO 'S'.", 
+                        worksheet: ["(Fill): We ______ a book. (read)", "(Match): Write -> A letter", "(MCQ): They ______ to work. (a. goes b. go)", "(Build): (play / They / football) -> ______", "(Short): Make a sentence with 'We' and 'Study': ______", "(Speak): Read your sentence out loud."] 
+                    },
+                    { 
+                        title: "Session 28: Present Simple (He/She)", 
+                        goal: "The 'S' Rule (He/She).<br><br><strong class='text-teal-900'>Elaboration:</strong> Addresses one of the most common beginner errors: adding 's' or 'es' to third-person singular verbs in the present tense.<br><br><strong class='text-teal-900'>Example:</strong> The student accurately gossips about a friend's routine: 'He eats an apple. She goes to school.'", 
+                        material: "Grammar: Adding -s or -es for He/She/It. Patterns: 'He drinks water.' / 'She goes to school.'", 
+                        script: "'I drink. But look: HE drink-S.' Repeat: He drinks. 'I go. SHE go-ES.' Repeat: She goes.", 
+                        flow: "Warm-up: I/You/We/They verbs. Teaching: Introduce The Super 'S'. When using He/She/It, the verb gets an S. Practice: Verb transformation (play -> plays). Speaking: 'I eat, but he eats.' Closing: Teacher says pronoun, class says verb with/without S.", 
+                        tasks: "Master the critical 3rd-person 'S' rule in spoken repetition.", 
+                        activities: "The 'S' Snake: If the teacher holds up a 'He', 'She', or 'It' card, the class must loudly hiss like a snake before saying the verb. 'She... *hiss* plays!'", 
+                        assessment: "Consistently adds 's' when speaking about a third person without being reminded.", 
+                        mistake: "Student: 'He play football.' Fix: 'Stop. He...?' Put your hand to your ear and wait for them to self-correct and add the 's'.", 
+                        worksheet: ["(Fill): She ______ to school. (go)", "(Match): He -> drinks", "(MCQ): My brother ______ English. (a. study b. studies)", "(Build): (eats / She / apple / an) -> ______", "(Short): Change to He: 'I sleep.' -> He ______", "(Speak): Tell the class one thing your mother does."] 
+                    },
+                    { 
+                        title: "Session 29: Time", 
+                        goal: "Tell time.<br><br><strong class='text-teal-900'>Elaboration:</strong> Integrates numerical knowledge with daily routines, utilizing the preposition 'at' for specific times.<br><br><strong class='text-teal-900'>Example:</strong> Setting up a meeting with a friend, the student says, 'I play football at 5 o'clock.'", 
+                        material: "Vocab: O'clock, Time, At. Patterns: 'What time is it?' / 'It is 7 o'clock.' / 'I wake up at 7 o'clock.'", 
+                        script: "Look at the clock. 'It is one o'clock.' Repeat. 'I wake up AT 7 o'clock.' Repeat: At.", 
+                        flow: "Warm-up: Numbers 1-12. Teaching: Draw a large clock. Teach 'o'clock' and the preposition 'at' for time. Practice: Draw hands on blank clocks on the worksheet. Speaking: 'What time do you wake up?' Closing: Time bingo.", 
+                        tasks: "Read the hour on a clock face and use 'at' before stating the time in a sentence.", 
+                        activities: "Human Clock: Use arms as clock hands. Teacher calls 'Show me 3 o'clock!' Students must put one arm up and one straight right.", 
+                        assessment: "Uses 'at' correctly before the time, rather than 'in' or 'on'.", 
+                        mistake: "Student: 'I wake up in 7 o'clock.' Fix: 'Time uses AT. Point to your watch and say AT.'", 
+                        worksheet: ["(Fill): I sleep ______ 10 o'clock.", "(Match): 5:00 -> Five o'clock", "(MCQ): What ______ is it? (a. time b. clock)", "(Build): (eat / I / at / o'clock / six) -> ______", "(Short): What time do you sleep? ______", "(Speak): Ask your partner what time they go to school."] 
+                    },
+                    { 
+                        title: "Session 30: Review", 
+                        goal: "Daily routine.<br><br><strong class='text-teal-900'>Elaboration:</strong> Synthesizes verbs, the 's' rule, and time into a cohesive paragraph, marking a leap from single sentences to narrative storytelling.<br><br><strong class='text-teal-900'>Example:</strong> A student confidently tells the class, 'I wake up at 6 o'clock. My father wakes up at 7 o'clock. I go to school.'", 
+                        material: "Review Sessions 25-29: Daily verbs, Time, 'S' Rule.", 
+                        script: "'Tell me your day! I wake up at 6. I go to work at 8. What about you?'", 
+                        flow: "Warm-up: Clock reading. Teaching: Structure a 3-sentence paragraph on the board. Practice: Students write their own daily routine sequence. Speaking: Present routines to the class. Closing: Change sentences to 'He/She' based on a classmate's routine.", 
+                        tasks: "Write and speak a coherent daily sequence with correct times and verb conjugations.", 
+                        activities: "My Partner's Day: Student A tells B their routine. Student B then reports to the class: 'He wakes up at 7. He goes to school...' (practicing the 's' rule under pressure).", 
+                        assessment: "Flawless transition between 'I wake up' and 'He wakes up' during the presentation.", 
+                        mistake: "Forgetting the 's' during the live presentation due to cognitive load. Fix: Make a gentle hissing sound to remind them.", 
+                        worksheet: ["(Fill): My father ______ at 8 o'clock.", "(Match): Daily -> Routine", "(MCQ): She ______ to school at 7. (a. goes b. go)", "(Build): (at / play / I / 4 o'clock) -> ______", "(Short): Write your morning routine: ______", "(Speak): Present your partner's day."] 
+                    }
+                ]
+            },
+            {
+                id: 6,
+                title: "PHASE 6: LIKES, WANTS & REQUESTS",
+                sessions: [
+                    { 
+                        title: "Session 31: Likes & Food", 
+                        goal: "State food likes.<br><br><strong class='text-teal-900'>Elaboration:</strong> Allows students to express personal identity through preferences, introducing the concept of using plural nouns for general likes.<br><br><strong class='text-teal-900'>Example:</strong> At a host family's dinner table, the student politely shares, 'I like rice and I like apples.'", 
+                        material: "Vocab: Like, Food, Apple, Banana, Rice, Meat. Patterns: 'I like apples.'", 
+                        script: "(Smile, rub tummy). 'I LIKE apples.' Repeat: Like. 'I like meat. What do you like?'", 
+                        flow: "Warm-up: Verbs review. Teaching: Show food flashcards. Introduce 'I like'. Note that we usually use plurals for general likes (apples, not an apple). Practice: Sorting food into 'Yummy/Yucky' categories. Speaking: 'I like rice. I like bananas.' Closing: Food memory game.", 
+                        tasks: "Express personal preference and categorize food vocabulary.", 
+                        activities: "Food Toss: Throw a ball, name a food. The catcher must say 'I like [food]' and name a new food before throwing it to the next person.", 
+                        assessment: "Remembers to pluralize countable foods (apples) when stating general likes.", 
+                        mistake: "Student: 'I like banana.' Fix: 'I like banana-S. All of them.' Exaggerate the plural 'S'.", 
+                        worksheet: ["(Fill): I ______ meat.", "(Match): Banana -> Yellow fruit", "(MCQ): I like ______. (a. apple b. apples)", "(Build): (rice / like / I / very / much) -> ______", "(Short): Name two foods you like: ______", "(Speak): Tell your partner 3 foods you like."] 
+                    },
+                    { 
+                        title: "Session 32: Dislikes", 
+                        goal: "Use 'do not'.<br><br><strong class='text-teal-900'>Elaboration:</strong> Introduces the auxiliary verb 'do' for forming negative action verbs, a massive grammatical milestone.<br><br><strong class='text-teal-900'>Example:</strong> When offered a food they are allergic to or hate, the student clearly states, 'I do not like fish.'", 
+                        material: "Vocab: Do not (Don't). Fish, Bread, Cheese. Patterns: 'I do not like fish.'", 
+                        script: "(Frown, push away). 'I do NOT like fish.' Repeat: Do not like.", 
+                        flow: "Warm-up: 'I like...' Teaching: Introduce the helper verb 'do' + 'not'. Show the contraction 'don't' but stick to 'do not' for clarity first. Practice: Make T/F faces with food cards. Speaking: 'I like apples. I do not like cheese.' Closing: Thumbs up / Thumbs down drill.", 
+                        tasks: "Properly formulate the negative present simple using the auxiliary 'do'.", 
+                        activities: "Two Truths and a Lie (Food): 'I like rice. I like bread. I do not like apples.' The class must guess which statement is the lie.", 
+                        assessment: "Uses 'do not like' fluently instead of 'am not like'.", 
+                        mistake: "Student: 'I am not like fish.' Fix: 'No 'am' with verbs! I DO NOT like.'", 
+                        worksheet: ["(Fill): I ______ not like cheese.", "(Match): Dislike -> Do not like", "(MCQ): I ______ like meat. (a. am not b. do not)", "(Build): (fish / not / like / I / do) -> ______", "(Short): Make it negative: 'I like bread.' -> ______", "(Speak): Tell the teacher 1 food you DO NOT like."] 
+                    },
+                    { 
+                        title: "Session 33: Questions", 
+                        goal: "Do you like?<br><br><strong class='text-teal-900'>Elaboration:</strong> Uses the auxiliary 'do' to form questions, enabling two-way conversations about preferences and interests.<br><br><strong class='text-teal-900'>Example:</strong> During a break, a student asks a new friend, 'Do you like tea?' and responds appropriately to the answer.", 
+                        material: "Vocab: Do, Water, Milk, Juice, Tea. Patterns: 'Do you like milk?' / 'Yes, I do.' / 'No, I do not.'", 
+                        script: "'DO you like tea?' Ask me! Repeat: Do you like tea? 'Yes, I do. No, I do not.'", 
+                        flow: "Warm-up: Dislikes. Teaching: Invert subject to make questions using 'Do'. Teach drink vocab. Practice: Choral Q&A. Speaking: Survey the room. 'Do you like juice?' Write tallies. Closing: Report survey results.", 
+                        tasks: "Ask yes/no questions using 'Do' and reply with short answers ('Yes, I do').", 
+                        activities: "Class Survey: Give students a grid. They must walk around, ask 5 people 'Do you like milk/tea/juice?' and check Yes/No boxes.", 
+                        assessment: "Answers with 'Yes, I do' instead of just a lazy 'Yes.'", 
+                        mistake: "Student: 'You like tea?' (Using intonation). Fix: 'Start with DO! DO you like tea?'", 
+                        worksheet: ["(Fill): ______ you like milk?", "(Match): Juice -> Drink", "(MCQ): Do you like tea? Yes, I ______. (a. am b. do)", "(Build): (like / you / Do / water) -> ______ ?", "(Short): Answer: Do you like juice? -> ______", "(Speak): Ask 3 classmates if they like tea."] 
+                    },
+                    { 
+                        title: "Session 34: Wants", 
+                        goal: "I want.<br><br><strong class='text-teal-900'>Elaboration:</strong> Differentiates between a general preference (like) and an immediate, situational need or desire (want).<br><br><strong class='text-teal-900'>Example:</strong> Sweating after playing outside, the student walks inside and says, 'I am hot. I want water.'", 
+                        material: "Vocab: Want. Patterns: 'I want water.' / 'Do you want bread?'", 
+                        script: "'I like water (always). Right now, I am thirsty. I WANT water!' Repeat: Want.", 
+                        flow: "Warm-up: Do you like? Teaching: Differentiate 'Like' (general) and 'Want' (immediate). Practice: Show situations (Hot sun -> I want water. Hungry -> I want food). Speaking: Roleplay offering food. 'Do you want an apple?' Closing: Quick differentiation quiz.", 
+                        tasks: "Understand the situational difference between Like and Want.", 
+                        activities: "The Hungry Guest: One student visits a 'house'. Host asks: 'Do you want tea? Do you want bread?' Guest replies 'Yes, I want tea. I do not want bread.'", 
+                        assessment: "Uses 'want' for immediate needs in the roleplay instead of 'like'.", 
+                        mistake: "Student: 'I want to water.' Fix: 'No 'to' before nouns. I want water.'", 
+                        worksheet: ["(Fill): I am hungry. I ______ food.", "(Match): Thirsty -> Want water", "(MCQ): ______ you want an apple? (a. Do b. Are)", "(Build): (want / I / juice / not / do) -> ______", "(Short): What do you want right now? -> I want ______.", "(Speak): Ask your partner 'Do you want water?'"] 
+                    },
+                    { 
+                        title: "Session 35: Requests", 
+                        goal: "Polite phrases.<br><br><strong class='text-teal-900'>Elaboration:</strong> Equips students with vital social lubricants (please, thank you, excuse me) to ensure their requests are received positively by native speakers.<br><br><strong class='text-teal-900'>Example:</strong> Trying to get past someone in a crowded store, the student says, 'Excuse me.' When handed an item, they say, 'Thank you.'", 
+                        material: "Vocab: Please, Thank you, You're welcome, Excuse me. Patterns: 'Water, please.'", 
+                        script: "(Hold hand out). 'Water, PLEASE.' Repeat. (Give water). 'Thank you.' Repeat. 'You're welcome.'", 
+                        flow: "Warm-up: Wants. Teaching: Introduce politeness. Show how 'I want water' becomes 'Water, please'. Teach 'Excuse me' for attention. Practice: Passing objects around while saying please/thank you. Speaking: Mini roleplays. Closing: Thank the teacher to leave class.", 
+                        tasks: "Habituate adding 'please' and 'thank you' to all transactional interactions.", 
+                        activities: "The Polite Circle: Pass a pen around the circle rapidly. 'Pen, please.' 'Here you go.' 'Thank you.' 'You're welcome.' Speed it up.", 
+                        assessment: "Spontaneously uses 'Thank you' when handed something without being prompted.", 
+                        mistake: "Student mumbles 'welcome' instead of 'You're welcome'. Fix: Clap out the 3 syllables: You're - Wel - Come.", 
+                        worksheet: ["(Fill): I want an apple, ______.", "(Match): Thank you -> You're welcome", "(MCQ): To get attention, say: (a. Excuse me b. Thank you)", "(Build): (welcome / You / are) -> ______", "(Short): What do you say when given a gift? ______", "(Speak): Practice the Please/Thank you exchange."] 
+                    },
+                    { 
+                        title: "Session 36: Review", 
+                        goal: "Restaurant roleplay.<br><br><strong class='text-teal-900'>Elaboration:</strong> Combines likes, wants, questions, and politeness into a practical, real-world survival scenario.<br><br><strong class='text-teal-900'>Example:</strong> In a mock cafe, the student acts as a customer: 'Hello. Do you have tea? I want tea, please. Thank you.'", 
+                        material: "Review Sessions 31-35: Food, Do you like, Wants, Politeness.", 
+                        script: "'Let's open a restaurant! Hello, excuse me, do you want tea?'", 
+                        flow: "Warm-up: Polite circle. Teaching: Combine everything into a full restaurant dialogue. Practice: Write out the script (A: Hello. Do you want food? B: Yes, I want meat, please). Speaking: Perform the restaurant roleplay with props. Closing: Vote on the best acting.", 
+                        tasks: "Execute a full 6-line interactive dialogue without breaking character.", 
+                        activities: "Restaurant Roleplay: Desks become tables. Teacher provides real menus (pictures of food). Students take turns being waiter and customer.", 
+                        assessment: "Smooth flow of conversation using all target grammar naturally.", 
+                        mistake: "Forgetting the helping verb 'Do' in questions during live speaking. Fix: Prompt them gently with 'Do...'", 
+                        worksheet: ["(Fill): Do you ______ apples? Yes, I do.", "(Match): Waiter -> Menu", "(MCQ): 'I ______ want fish.' (a. do not b. am not)", "(Build): (juice / please / want / I) -> ______", "(Short): Write a polite request for water: ______", "(Speak): Perform your restaurant script."] 
+                    }
+                ]
+            },
+            {
+                id: 7,
+                title: "PHASE 7: BUYING & DIRECTIONS",
+                sessions: [
+                    { 
+                        title: "Session 37: Money", 
+                        goal: "Ask price.<br><br><strong class='text-teal-900'>Elaboration:</strong> Teaches essential transactional English. Students learn the phrase 'How much' to inquire about monetary value.<br><br><strong class='text-teal-900'>Example:</strong> At a market, the student picks up a piece of fruit and asks the vendor, 'How much is this?'", 
+                        material: "Vocab: How much, Dollar, Cost, Money. Patterns: 'How much is this?' / 'It is 5 dollars.'", 
+                        script: "(Show a price tag). 'How much is this?' Repeat. 'It is ten dollars.' Repeat: Dollars.", 
+                        flow: "Warm-up: Numbers 1-20. Teaching: Introduce money concept. Teach the question 'How much'. Practice: Put price tags on classroom objects. Speaking: Walk around asking 'How much is the book?' Closing: Price guessing game.", 
+                        tasks: "Ask and answer price questions using numbers and the correct currency word.", 
+                        activities: "The Classroom Store: Give students fake money. Put price tags on pencils, erasers. They must 'buy' them. 'How much is the eraser?' '2 dollars.' 'Here you go.'", 
+                        assessment: "Remembers to add the currency word (dollars) to the number.", 
+                        mistake: "Student: 'How many is this?' Fix: 'Much! How MUCH for money.'", 
+                        worksheet: ["(Fill): How ______ is this pen?", "(Match): $5 -> Five dollars", "(MCQ): ______ much is the book? (a. How b. Who)", "(Build): (dollars / is / It / ten) -> ______", "(Short): Ask for the price of an apple: ______", "(Speak): Ask your partner how much their bag is."] 
+                    },
+                    { 
+                        title: "Session 38: Clothes", 
+                        goal: "Specific clothes (Plurals).<br><br><strong class='text-teal-900'>Elaboration:</strong> Navigates the tricky English logic where items like pants and shoes are grammatically plural, requiring 'are' instead of 'is'.<br><br><strong class='text-teal-900'>Example:</strong> Shopping in a clothing store, the student holds up jeans and correctly asks, 'How much are the pants?'", 
+                        material: "Vocab: Shirt, Pants, Shoes, Hat. Patterns: 'How much is the shirt?' / 'How much are the pants?'", 
+                        script: "Look. 'Shirt.' Repeat. 'Pants.' Repeat. 'How much is the shirt? How much ARE the pants?' (Plural!).", 
+                        flow: "Warm-up: How much. Teaching: Introduce clothes. Crucial: teach that Pants and Shoes are plural (take 'are', not 'is'). Practice: Flashcards of clothes with prices. Speaking: 'Buy' clothes from a partner. Closing: Dress-up relay.", 
+                        tasks: "Differentiate between singular clothes (shirt, hat) and plural (pants, shoes) grammatically.", 
+                        activities: "Fashion Show: Show pictures of people in outfits. Class must shout the clothes and guess the total price. 'The hat is 5 dollars, the pants ARE 20 dollars.'", 
+                        assessment: "Correctly uses 'is' for shirt and 'are' for shoes.", 
+                        mistake: "Student: 'The pants is 10 dollars.' Fix: Point to two legs. 'One, Two. Plural! The pants ARE.'", 
+                        worksheet: ["(Fill): How much ______ the shoes?", "(Match): Hat -> Head", "(MCQ): The shirt ______ 15 dollars. (a. is b. are)", "(Build): (are / much / How / pants / the) -> ______ ?", "(Short): Name two things you wear on your feet: ______", "(Speak): Describe what you are wearing."] 
+                    },
+                    { 
+                        title: "Session 39: Places", 
+                        goal: "Identify places.<br><br><strong class='text-teal-900'>Elaboration:</strong> Connects community locations with the specific actions performed there, expanding their spatial and functional vocabulary.<br><br><strong class='text-teal-900'>Example:</strong> A student tells a taxi driver, 'I want to go to the hospital' or tells a friend 'I go to the store to buy food.'", 
+                        material: "Vocab: Store, Park, School, Hospital, Go to. Patterns: 'Where are you going?' / 'I go to the park.'", 
+                        script: "'Store.' Repeat. 'I buy apples at the store.' 'Hospital.' Repeat. 'Where do you go? I go to the store.'", 
+                        flow: "Warm-up: Buying roleplay. Teaching: Show pictures of the 4 places. Teach the action of going there. Practice: Matching actions to places (Buy food -> Store. Learn -> School). Speaking: 'Where do you go?' Closing: Pictionary on the board.", 
+                        tasks: "Associate specific actions with corresponding community locations.", 
+                        activities: "Four Corners: Label corners of the room. Teacher says 'I am sick!' Students run to Hospital corner. 'I want to study!' Run to School.", 
+                        assessment: "Uses 'to the' when talking about going places.", 
+                        mistake: "Student: 'I go store.' Fix: 'I go TO THE store. Build the bridge.'", 
+                        worksheet: ["(Fill): I go to ______ school.", "(Match): Hospital -> Sick", "(MCQ): Where do you buy food? (a. Store b. Park)", "(Build): (the / go / to / park / I) -> ______", "(Short): Where do you learn English? ______", "(Speak): Tell your partner where you go on Saturday."] 
+                    },
+                    { 
+                        title: "Session 40: Directions 1", 
+                        goal: "Left/Right/Straight.<br><br><strong class='text-teal-900'>Elaboration:</strong> Basic imperative commands for navigation, crucial for understanding directions given by locals or GPS.<br><br><strong class='text-teal-900'>Example:</strong> A lost student asks for the bathroom and successfully follows the spoken instruction to 'Go straight and turn left.'", 
+                        material: "Vocab: Turn, Left, Right, Go straight. Patterns: 'Turn left.' / 'Go straight.'", 
+                        script: "(Walk forward). 'Go straight.' Repeat. (Turn 90 degrees left). 'Turn left.' Repeat. (Turn right). 'Turn right.'", 
+                        flow: "Warm-up: Stand up, Sit down. Teaching: Establish L and R hands (make an 'L' with the left hand). Teach turning. Practice: TPR. Teacher commands the class to navigate the room. Speaking: Student commands teacher. Closing: Blindfold maze.", 
+                        tasks: "Instantly distinguish left from right and execute movement commands.", 
+                        activities: "The Human Robot: One student is blindfolded (the robot). The partner gives commands: 'Go straight. Stop. Turn left. Go straight.' Guide them to a desk.", 
+                        assessment: "Accurately follows a sequence of 3 directional commands without hesitation.", 
+                        mistake: "Confusing Left and Right. Fix: Have them write 'L' and 'R' on the back of their hands for the duration of the lesson.", 
+                        worksheet: ["(Fill): Go ______, do not turn.", "(Match): Turn left -> Arrow pointing left", "(MCQ): To go forward, you say: (a. Go straight b. Turn right)", "(Build): (left / please / Turn) -> ______", "(Short): Draw an arrow for 'Turn Right': ______", "(Speak): Give directions to the door."] 
+                    },
+                    { 
+                        title: "Session 41: Directions 2", 
+                        goal: "Location (Next to/Across).<br><br><strong class='text-teal-900'>Elaboration:</strong> Provides students with the language to describe spatial relationships between landmarks, aiding in both giving and receiving complex directions.<br><br><strong class='text-teal-900'>Example:</strong> Explaining where they live, a student says, 'My house is next to the school and across from the park.'", 
+                        material: "Vocab: Next to, Across from, Stop. Patterns: 'The store is next to the bank.'", 
+                        script: "(Put a pen next to a book). 'Next to. The pen is next to the book.' Repeat.", 
+                        flow: "Warm-up: Left/Right TPR. Teaching: Draw a simple street map on the board. Introduce 'Next to' and 'Across from' (show crossing a street). Practice: Look at the map, answer 'Where is the park?'. Speaking: Create a map with a partner and ask questions. Closing: Map dictation.", 
+                        tasks: "Understand spatial relationships between buildings on a map.", 
+                        activities: "Map Builders: Give students blank maps with empty boxes. Dictate: 'The school is next to the park. The store is across from the school.' They write it in.", 
+                        assessment: "Understands that 'across from' involves a space or street between two items.", 
+                        mistake: "Student: 'The store is next the park.' Fix: 'Next TO. Two words.'", 
+                        worksheet: ["(Fill): The park is next ______ the school.", "(Match): Across from -> Opposite side", "(MCQ): The hospital is ______ the store. (a. next to b. straight)", "(Build): (is / park / The / to / next / school / the) -> ______", "(Short): Where do you sit? I sit next to ______.", "(Speak): Tell me where the store is."] 
+                    },
+                    { 
+                        title: "Session 42: Review", 
+                        goal: "Survival scenario.<br><br><strong class='text-teal-900'>Elaboration:</strong> The ultimate practical test, chaining navigation and commerce together as they would naturally occur in the real world.<br><br><strong class='text-teal-900'>Example:</strong> The student independently asks for directions to a store, follows them, and successfully purchases a shirt while verifying the price.", 
+                        material: "Review Sessions 37-41: Money, Clothes, Places, Directions.", 
+                        script: "'Excuse me, where is the clothing store? Go straight. Thank you! How much is this shirt?'", 
+                        flow: "Warm-up: Left/Right drill. Teaching: Map out a 'Town' in the classroom using chairs and signs. Combine going, directions, and buying. Practice: Write a 3-part script (Where is it -> Directions -> Buying). Speaking: Live action roleplay through the 'Town'. Closing: Review the hardest parts.", 
+                        tasks: "Navigate a multi-step survival English scenario flawlessly.", 
+                        activities: "The Tourist: Student A is a tourist looking for a hat. Student B is a local. A asks B for directions to the store. A walks to the store. Student C is the cashier. A buys the hat from C.", 
+                        assessment: "Successfully completes the 3-person roleplay without resorting to native language.", 
+                        mistake: "Freezing up during roleplay. Fix: Write key anchor phrases (How much, Where is, Turn left) on the board as a safety net.", 
+                        worksheet: ["(Fill): Excuse me, ______ is the store?", "(Match): $20 -> How much", "(MCQ): ______ straight and turn left. (a. Go b. Turn)", "(Build): (much / shirt / the / is / How) -> ______ ?", "(Short): Give directions to the school: ______", "(Speak): Do the Tourist roleplay."] 
+                    }
+                ]
+            },
+            {
+                id: 8,
+                title: "PHASE 8: REVIEW & ASSESSMENT",
+                sessions: [
+                    { 
+                        title: "Session 43: Mega Review 1", 
+                        goal: "Phase 1-4 basics.<br><br><strong class='text-teal-900'>Elaboration:</strong> Ensures foundational knowledge hasn't decayed while learning new concepts. Reinforces instant recall.<br><br><strong class='text-teal-900'>Example:</strong> The student flawlessly introduces themselves and describes their physical traits and feelings without hesitation.", 
+                        material: "All previous vocab: Greetings, Alphabet, Pronouns, Adjectives, 'To Be'.", 
+                        script: "'Today, we remember everything! Who am I? I am tall. I am happy.'", 
+                        flow: "Warm-up: Alphabet spelling race. Teaching: Rapid-fire board review of Pronouns + To Be. Practice: Fill-in-the-blank mega worksheet. Speaking: 60-second speed introductions (Name, Age, Feelings, Adjectives). Closing: Spelling Bee.", 
+                        tasks: "Recall early concepts with speed and complete accuracy.", 
+                        activities: "The Hot Seat: One student sits in front. Class fires questions at them rapidly: 'How old are you?' 'Are you happy?' 'Spell your name!'", 
+                        assessment: "Answers personal questions instantly without translating in their head.", 
+                        mistake: "Slipping back to old habits (e.g., 'I have 10 years'). Fix: Immediate correction, make them write the correct form on the board.", 
+                        worksheet: ["(Fill): My ______ is Sarah.", "(Match): Tall -> Short", "(MCQ): They ______ tired. (a. is b. are)", "(Build): (not / I / a / am / teacher) -> ______", "(Short): Describe yourself using 2 adjectives: ______", "(Speak): Sit in the Hot Seat!"] 
+                    },
+                    { 
+                        title: "Session 44: Mega Review 2", 
+                        goal: "Questions/Location.<br><br><strong class='text-teal-900'>Elaboration:</strong> Solidifies the ability to extract information from others using correct interrogative grammar and prepositions.<br><br><strong class='text-teal-900'>Example:</strong> The student comfortably interviews a peer, asking 'Who is your mother? Where is she?'", 
+                        material: "Review: Who, Where, What, Family, In/On/Under.", 
+                        script: "'Who? Where? What? Let's ask questions!'", 
+                        flow: "Warm-up: Preposition TPR. Teaching: Review question inversion (Is he...?). Practice: Give answers on the board, students must formulate the question (Jeopardy style). Speaking: Partner interview about family. Closing: Preposition drawing game.", 
+                        tasks: "Create accurate WH-questions from scratch based on provided answers.", 
+                        activities: "Jeopardy Questions: Write an answer on the board: 'He is my brother.' A student must hit a buzzer and correctly say: 'Who is he?'", 
+                        assessment: "Maintains perfect grammatical inversion when asking questions.", 
+                        mistake: "Forgetting the 'to be' verb in questions ('Where the book?'). Fix: Emphasize the 'is'. 'Where IS the book?'", 
+                        worksheet: ["(Fill): ______ is that? It is a cat.", "(Match): Where -> On the desk", "(MCQ): ______ is your mother? (a. Who b. What)", "(Build): (is / your / Where / bag) -> ______ ?", "(Short): Answer: Who is your teacher? -> ______", "(Speak): Ask the teacher 3 WH-questions."] 
+                    },
+                    { 
+                        title: "Session 45: Mega Review 3", 
+                        goal: "Routine/Verbs.<br><br><strong class='text-teal-900'>Elaboration:</strong> A final check on the crucial third-person 's' rule and the ability to narrate daily actions temporally.<br><br><strong class='text-teal-900'>Example:</strong> The student writes and reads aloud a perfect 5-sentence paragraph contrasting their routine with their father's routine.", 
+                        material: "Review: Daily verbs, I/You vs He/She ('S' rule), O'clock.", 
+                        script: "'Tell me about your day. Tell me about your father's day!'", 
+                        flow: "Warm-up: Clock arms game. Teaching: Review the 'S' rule heavily on the board. Practice: Sentence correction worksheet (find the error). Speaking: Compare routines. 'I wake up at 7, but he wakes up at 8.' Closing: Verb charades.", 
+                        tasks: "Apply the 3rd person 'S' automatically in both speech and writing.", 
+                        activities: "Find the Error: Write sentences with mistakes on the board ('She go to school'). Teams race to run up, erase the mistake, and fix it.", 
+                        assessment: "Achieves 100% accuracy on the 'S' rule during the writing task.", 
+                        mistake: "Dropping the 'S' under pressure. Fix: Keep hissing like a snake to remind them visually/audibly.", 
+                        worksheet: ["(Fill): He ______ (eat) breakfast at 7.", "(Match): Sleep -> Bed", "(MCQ): I ______ to the park. (a. go b. goes)", "(Build): (at / plays / He / football / 5 o'clock) -> ______", "(Short): Fix the sentence: She drink water. -> ______", "(Speak): Tell me one thing your friend does."] 
+                    },
+                    { 
+                        title: "Session 46: Mega Review 4", 
+                        goal: "Survival English.<br><br><strong class='text-teal-900'>Elaboration:</strong> Final polish of real-world transactional skills, focusing on fluency and confidence in simulated high-pressure situations.<br><br><strong class='text-teal-900'>Example:</strong> Without looking at notes, the student executes a full transaction buying shoes, asking for the price, and saying thank you.", 
+                        material: "Review: Likes/Wants, Prices, Clothes, Directions, Politeness.", 
+                        script: "'Last practice before the test! Let's go shopping!'", 
+                        flow: "Warm-up: Do you like...? Teaching: Build a giant mind map of survival phrases on the board. Practice: Dialogue unscramble (put the conversation in order). Speaking: Improv roleplays based on situation cards. Closing: Review format of final test.", 
+                        tasks: "Execute multi-turn dialogues with confidence and contextual accuracy.", 
+                        activities: "Situation Cards: Pull a card. 'You are hungry at a restaurant.' 'You are lost in town.' 'You want to buy shoes.' Act it out with the teacher.", 
+                        assessment: "Can handle unexpected prompts in the roleplay smoothly.", 
+                        mistake: "Hesitation or silence. Fix: Remind them it is perfectly okay to say 'Excuse me, repeat please?' to buy time.", 
+                        worksheet: ["(Fill): How ______ is the shirt?", "(Match): Turn Right -> Direction", "(MCQ): I ______ a sandwich, please. (a. want b. go)", "(Build): (next / The / park / to / is / school / the) -> ______", "(Short): Put in order: 1. Thanks 2. How much? 3. 5 dollars. -> __, __, __", "(Speak): Do a situation card roleplay."] 
+                    },
+                    { 
+                        title: "Session 47: Speaking Test", 
+                        goal: "Communicate fluently.<br><br><strong class='text-teal-900'>Elaboration:</strong> The formal speaking test. Proves the student has internalized the language enough to communicate spontaneously without translation.<br><br><strong class='text-teal-900'>Example:</strong> The student maintains a 5-minute English-only conversation with the teacher, successfully answering unexpected questions.", 
+                        material: "All Level 1 Topics.", 
+                        script: "'Today is your speaking test. Be loud, be proud! You can do it!'", 
+                        flow: "Warm-up: Shake out the nerves. Breathing exercise. Teaching: No new teaching. Explain the test stations. Practice: Students practice with each other while waiting. Speaking: 1-on-1 testing with the teacher (5 minutes per student). Closing: Group cheer.", 
+                        tasks: "Speak clearly, use full sentences, and self-correct if a mistake is made.", 
+                        activities: "Station Rotation: While one student tests, others play quiet English board games or review their past worksheets in groups.", 
+                        assessment: "Formal Grading Rubric based on: 1. Introduction. 2. Describing a picture. 3. Simple Q&A. 4. Brief roleplay.", 
+                        mistake: "Nervousness leading to mother-tongue use. Fix: Remind them gently: 'English only, take your time.'", 
+                        worksheet: ["(1) Self Intro", "(2) Pronouns", "(3) WH-Questions", "(4) Daily Routine", "(5) Shopping/Directions", "(6) Overall Fluency"] 
+                    },
+                    { 
+                        title: "Session 48: Final Test", 
+                        goal: "Written evaluation.<br><br><strong class='text-teal-900'>Elaboration:</strong> Validates reading and writing comprehension, proving the student possesses the holistic literacy required to advance to Level 2.<br><br><strong class='text-teal-900'>Example:</strong> The student independently reads a paragraph about someone's daily routine and accurately answers multiple-choice questions about it.", 
+                        material: "Comprehensive Level 1 Final Exam.", 
+                        script: "'This is it! Take your time. Show me what you know. Then, we celebrate!'", 
+                        flow: "Warm-up: Distribute tests. Teaching: Read the instructions for each section out loud. Practice: Silent testing (40 mins). Speaking: Group reflection ('What was easy? What was hard?'). Closing: Hand out Level 1 Certificates. Play English music.", 
+                        tasks: "Complete the exam silently, relying only on their own knowledge.", 
+                        activities: "Graduation Ceremony: Call each student up by name. 'Congratulations, [Name]!' Hand them a certificate. Take a class photo.", 
+                        assessment: "Pass mark: 70%.", 
+                        mistake: "Rushing the test. Fix: Write time remaining on the board. Remind them to check their work (especially the 'S' rule).", 
+                        worksheet: ["(Fill): Hello, my ______ is David.", "(Match): Match 10 words to pictures.", "(MCQ): 15 questions covering Grammar.", "(Build): Unscramble 5 complex sentences.", "(Short): Read a paragraph and answer questions.", "(Speak): Thank the teacher, say goodbye!"] 
+                    }
+                ]
+            }
+        ];
+
+        let progressionChartInstance = null;
+        let expandedPhaseId = 1; 
+        let selectedSession = { phase: 1, index: 0 }; 
+
+        document.addEventListener("DOMContentLoaded", initApp);
+
+        function initApp() {
+            renderProgressionChart();
+            renderSidebar();
+            loadSession(1, 0); 
+        }
+
+        function renderProgressionChart() {
+            const ctx = document.getElementById('progressionChart').getContext('2d');
+            
+            progressionChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Start (Ph 1)', 'Mid (Ph 4)', 'Goal (Ph 8)'],
+                    datasets: [
+                        { label: 'Vocab', data: [20, 55, 95], backgroundColor: '#14b8a6', borderRadius: 4 }, 
+                        { label: 'Grammar', data: [10, 50, 90], backgroundColor: '#3b82f6', borderRadius: 4 }, 
+                        { label: 'Speaking', data: [30, 55, 95], backgroundColor: '#f59e0b', borderRadius: 4 }, 
+                        { label: 'Comprehension', data: [20, 60, 95], backgroundColor: '#8b5cf6', borderRadius: 4 } 
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: { stepSize: 50, font: { size: 10 } },
+                            grid: { color: 'rgba(0,0,0,0.05)' },
+                            border: { display: false }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { weight: '600', size: 11 }, color: '#57534e' },
+                            border: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { boxWidth: 10, font: { size: 10, family: "'Inter', sans-serif" } }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) { return ` ${context.dataset.label}: ${context.raw}%`; }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function togglePhase(phaseId) {
+            expandedPhaseId = expandedPhaseId === phaseId ? null : phaseId;
+            renderSidebar();
+        }
+
+        function renderSidebar() {
+            const container = document.getElementById('sidebar-container');
+            container.innerHTML = '';
+
+            curriculumData.forEach(phase => {
+                const phaseBtn = document.createElement('button');
+                const isExpanded = phase.id === expandedPhaseId;
+                phaseBtn.className = `w-full text-left px-4 py-3 font-bold flex justify-between items-center transition-colors border-b border-stone-200 ${isExpanded ? 'bg-teal-50 text-teal-800' : 'bg-white text-stone-700 hover:bg-stone-50'}`;
+                phaseBtn.innerHTML = `
+                    <span class="text-sm uppercase tracking-wide truncate pr-2">${phase.title}</span>
+                    <span class="transform transition-transform text-xs ${isExpanded ? 'rotate-180 text-teal-600' : 'text-stone-400'}">▼</span>
+                `;
+                phaseBtn.onclick = () => togglePhase(phase.id);
+                container.appendChild(phaseBtn);
+
+                const sessionsDiv = document.createElement('div');
+                sessionsDiv.className = isExpanded ? 'block' : 'hidden';
+                sessionsDiv.classList.add('bg-stone-50', 'border-b', 'border-stone-200');
+
+                phase.sessions.forEach((session, idx) => {
+                    const sessionBtn = document.createElement('button');
+                    const isSelected = selectedSession && selectedSession.phase === phase.id && selectedSession.index === idx;
+                    sessionBtn.className = `w-full text-left px-6 py-2.5 text-sm transition-colors block border-l-4 ${isSelected ? 'bg-white text-teal-700 font-semibold border-teal-500 shadow-sm' : 'text-stone-600 border-transparent hover:bg-stone-100'}`;
+                    sessionBtn.textContent = session.title;
+                    sessionBtn.onclick = () => loadSession(phase.id, idx);
+                    sessionsDiv.appendChild(sessionBtn);
+                });
+                container.appendChild(sessionsDiv);
+            });
+        }
+
+        function loadSession(phaseId, sessionIndex) {
+            selectedSession = { phase: phaseId, index: sessionIndex };
+            renderSidebar(); 
+
+            const phase = curriculumData.find(p => p.id === phaseId);
+            const session = phase.sessions[sessionIndex];
+
+            document.getElementById('empty-state').classList.add('hidden');
+            document.getElementById('session-display').classList.remove('hidden');
+            document.getElementById('session-display').classList.add('flex');
+
+            document.getElementById('display-phase-badge').textContent = phase.title;
+            document.getElementById('display-session-title').textContent = session.title;
+
+            document.getElementById('content-goal').innerHTML = session.goal || "";
+            document.getElementById('content-material').innerHTML = session.material || "";
+            document.getElementById('content-script').innerHTML = session.script ? `"${session.script}"` : "";
+            document.getElementById('content-flow').innerHTML = session.flow || "";
+            
+            document.getElementById('content-tasks').innerHTML = session.tasks || "";
+            document.getElementById('content-activities').innerHTML = session.activities || "";
+            
+            document.getElementById('content-assessment').innerHTML = session.assessment || "";
+            document.getElementById('content-mistake').innerHTML = session.mistake || "";
+            
+            document.getElementById('content-worksheet').innerHTML = (session.worksheet || []).map(w => `<li class="ml-5 list-disc text-stone-700">${w}</li>`).join('');
+
+            switchTab('goal');
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = 'tab-btn px-5 py-3 font-semibold text-sm transition-colors border-b-2 border-transparent text-stone-500 hover:text-stone-800 hover:border-stone-300 focus:outline-none';
+            });
+
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            document.getElementById(`btn-tab-${tabName}`).className = 'tab-btn px-5 py-3 font-bold text-sm transition-colors border-b-2 border-teal-600 text-teal-700 focus:outline-none';
+        }
+    </script>
+</body>
+</html>
