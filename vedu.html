@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tagasa English - Video Education</title>
+    <title>Tagasa English Course - Video Education</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@1,500&display=swap');
@@ -75,7 +75,6 @@
             <!-- Right Side Dropdown Menus -->
             <div class="flex items-center gap-1 md:gap-4 flex-wrap justify-center">
 
-                <!-- Video Dropdown -->
                 <div class="group relative">
                     <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
                         Video
@@ -83,13 +82,12 @@
                     </button>
                     <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
                         <div class="py-2 flex flex-col">
-                            <a href="video_documentation.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Documentation</a>
+                            <a href="vdoc.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Documentation</a>
                             <a href="vedu.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Galeri Dropdown -->
                 <div class="group relative">
                     <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
                         Galeri
@@ -97,14 +95,13 @@
                     </button>
                     <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
                         <div class="py-2 flex flex-col">
-                            <a href="galeri_memories.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Memories</a>
-                            <a href="galeri_material.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Material</a>
-                            <a href="galeri_education.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
+                            <a href="gmemo.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Memories</a>
+                            <a href="gmaterial.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Material</a>
+                            <a href="gedu.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Speaking Dropdown -->
                 <div class="group relative">
                     <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
                         Speaking
@@ -124,7 +121,6 @@
                     </div>
                 </div>
 
-                <!-- Reading Dropdown -->
                 <div class="group relative">
                     <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
                         Reading
@@ -144,7 +140,6 @@
                     </div>
                 </div>
 
-                <!-- Writing Dropdown -->
                 <div class="group relative">
                     <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
                         Writing
@@ -164,7 +159,6 @@
                     </div>
                 </div>
 
-                <!-- Worksheet Dropdown -->
                 <div class="group relative">
                     <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
                         Worksheet
@@ -187,7 +181,6 @@
             </div>
         </nav>
 
-        <!-- Main Content -->
         <main class="flex-grow flex flex-col items-center pt-16 md:pt-24 px-4 w-full max-w-7xl mx-auto">
             
             <section class="text-center w-full max-w-4xl mb-16 px-4">
@@ -196,104 +189,447 @@
                     Interactive Learning
                 </h1>
                 <p class="text-lg md:text-xl text-stone-600 max-w-2xl mx-auto leading-relaxed">
-                    Master your English pronunciation, letters, and essential vocabulary with our curated video collection.
+                    Master your English pronunciation, grammar, and fluency with our comprehensive, adult-focused video collection.
                 </p>
             </section>
 
             <!-- Video Grid -->
             <section class="w-full pb-32">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- Video 1: Phonics/Alphabet -->
-                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
-                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
-                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/hq3yfQnllfQ" title="Phonics Song" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <!-- BEGINNER LEVEL (1-10) -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-bold text-stone-800 mb-6 border-b pb-2">Beginner Fundamentals</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/1kAPOuMIFy8" title="Adult Alphabet" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">1. The English Alphabet</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Clear, adult-focused pronunciation of the 26 letters without nursery rhymes.</p>
                         </div>
-                        <h3 class="text-xl font-bold text-stone-800 mb-2">The Phonics Song</h3>
-                        <p class="text-stone-500 text-sm flex-grow">Master the sounds of the alphabet with clear examples and pronunciation guides.</p>
-                    </div>
 
-                    <!-- Video 2: ABC Song -->
-                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
-                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
-                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/75p-N9YKqNo" title="The ABC Song" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/fdRmGvmeY1U" title="IPA Basics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">2. IPA Basics</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Introduction to the International Phonetic Alphabet for precise pronunciation.</p>
                         </div>
-                        <h3 class="text-xl font-bold text-stone-800 mb-2">The Alphabet A to Z</h3>
-                        <p class="text-stone-500 text-sm flex-grow">A classic, easy-to-follow guide to reciting the English alphabet perfectly.</p>
-                    </div>
 
-                    <!-- Video 3: Colors -->
-                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
-                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
-                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/tkpfg-1FJLU" title="Colors Song" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/FwEW_TeG0M4" title="Greetings" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">3. Professional Greetings</h3>
+                            <p class="text-stone-500 text-sm flex-grow">How to introduce yourself formally and casually in adult settings.</p>
                         </div>
-                        <h3 class="text-xl font-bold text-stone-800 mb-2">Learn Basic Colors</h3>
-                        <p class="text-stone-500 text-sm flex-grow">Identify and pronounce the most common colors in everyday English.</p>
-                    </div>
 
-                    <!-- Video 4: Numbers 1-10 -->
-                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
-                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
-                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/DR-cfDsHCGA" title="Numbers Song" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/KxLihMksN0g" title="Basic Verbs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">4. Essential Daily Verbs</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Mastering the most common action verbs for everyday life.</p>
                         </div>
-                        <h3 class="text-xl font-bold text-stone-800 mb-2">Counting 1 to 10</h3>
-                        <p class="text-stone-500 text-sm flex-grow">Practice counting and pronouncing numbers clearly from one to ten.</p>
-                    </div>
 
-                    <!-- Video 5: Days of the Week -->
-                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
-                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
-                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/mXMofxtDPUQ" title="Days of the Week" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/qZJPqX2j0eA" title="Daily Routine" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">5. Adult Daily Routine</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Vocabulary for work, commuting, and evening activities.</p>
                         </div>
-                        <h3 class="text-xl font-bold text-stone-800 mb-2">Days of the Week</h3>
-                        <p class="text-stone-500 text-sm flex-grow">Memorize the seven days of the week with proper English intonation.</p>
-                    </div>
 
-                    <!-- Video 6: Months of the Year -->
-                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
-                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
-                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Fe9bnYRzFvk" title="Months of the Year" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/kYvWwP_T83s" title="Asking Questions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">6. Asking Questions</h3>
+                            <p class="text-stone-500 text-sm flex-grow">How to form WH-questions and Yes/No questions correctly.</p>
                         </div>
-                        <h3 class="text-xl font-bold text-stone-800 mb-2">Months of the Year</h3>
-                        <p class="text-stone-500 text-sm flex-grow">Learn how to pronounce all 12 months for scheduling and planning.</p>
-                    </div>
 
-                    <!-- Video 7: Body Parts -->
-                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
-                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
-                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/l4WNrvVjiTw" title="Body Parts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/9Bv_3XzCuv8" title="Numbers and Prices" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">7. Numbers & Prices</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Pronouncing large numbers, fractions, and negotiating prices.</p>
                         </div>
-                        <h3 class="text-xl font-bold text-stone-800 mb-2">Basic Body Parts</h3>
-                        <p class="text-stone-500 text-sm flex-grow">Identify human anatomy and pronounce words like head, shoulders, and knees.</p>
-                    </div>
 
-                    <!-- Video 8: Animals -->
-                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
-                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
-                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/p5qwOxlvyhk" title="Animals" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/3iccgOUXhHI" title="Telling Time" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">8. Telling Time</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Reading clocks, setting schedules, and managing time in English.</p>
                         </div>
-                        <h3 class="text-xl font-bold text-stone-800 mb-2">Animal Vocabulary</h3>
-                        <p class="text-stone-500 text-sm flex-grow">Expand your nouns by learning the names of common animals.</p>
-                    </div>
 
-                    <!-- Video 9: Greetings & Manners -->
-                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
-                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
-                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/gVIFEVLzP4o" title="Greetings" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/V1N4Kz9qPqM" title="Directions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">9. Giving Directions</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Navigating cities, understanding maps, and guiding others.</p>
                         </div>
-                        <h3 class="text-xl font-bold text-stone-800 mb-2">Greetings & Phrases</h3>
-                        <p class="text-stone-500 text-sm flex-grow">Learn essential conversational starters and polite everyday phrases.</p>
-                    </div>
 
-                    <!-- Video 10: Action Verbs -->
-                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
-                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
-                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/hft6uJQIF4g" title="Action Verbs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/MhNn9G4PZ0M" title="Plurals" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">10. Plurals & Articles</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Understanding A, An, The, and irregular plural nouns.</p>
                         </div>
-                        <h3 class="text-xl font-bold text-stone-800 mb-2">Simple Action Verbs</h3>
-                        <p class="text-stone-500 text-sm flex-grow">Master basic action words like walk, run, hop, and jump.</p>
                     </div>
+                </div>
 
+                <!-- ELEMENTARY LEVEL (11-20) -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-bold text-stone-800 mb-6 border-b pb-2">Elementary Skills</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/L9AWrJuPEj8" title="Simple Present" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">11. Simple Present Tense</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Habits, routines, and factual statements in daily life.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/rV1Eic5uW90" title="Present Continuous" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">12. Present Continuous</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Describing actions happening right now around you.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Aq1W1_uP8yA" title="Simple Past" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">13. Simple Past Tense</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Telling stories and reporting on finished actions.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/MA3NHRxkuew" title="Irregular Verbs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">14. Irregular Verbs</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Mastering the most common past tense exceptions.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/q0_fM_E1nBw" title="Future Tense" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">15. Future: Will vs Going To</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Making predictions versus discussing firm plans.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/nZ_2p1Dihc8" title="Restaurant English" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">16. Food & Restaurant</h3>
+                            <p class="text-stone-500 text-sm flex-grow">How to read menus, order food, and pay the bill smoothly.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Z_m4OQ3_7F8" title="Shopping English" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">17. Shopping English</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Discussing clothing, sizes, and handling transactions.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/oQ0B2o9-VUU" title="Family & Descriptions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">18. Family & Descriptions</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Describing physical appearances and personality traits.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/CXKj7bm4Ops" title="Weather" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">19. Weather Small Talk</h3>
+                            <p class="text-stone-500 text-sm flex-grow">The ultimate conversation starter for any situation.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/xyhD6iW13nI" title="Prepositions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">20. Prepositions of Place</h3>
+                            <p class="text-stone-500 text-sm flex-grow">In, On, At, Under, Over: Understanding spatial relationships.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PRE-INTERMEDIATE LEVEL (21-30) -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-bold text-stone-800 mb-6 border-b pb-2">Pre-Intermediate Concepts</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/rV9z2mP2Z4Q" title="Present Perfect" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">21. Present Perfect</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Connecting life experiences from the past to the present.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/0G_bZ3f1R3w" title="Modals" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">22. Modals of Advice</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Using Can, Should, and Must appropriately.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/v8yA1iNqgKw" title="Comparatives" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">23. Comparatives</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Comparing objects, ideas, and people efficiently.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/jVfA2yGj7uE" title="Conditionals" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">24. Zero & First Conditional</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Stating scientific facts and likely future outcomes.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/3t_2LqX6pG8" title="Telephone English" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">25. Telephone English</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Professional phone etiquette and taking messages.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/V8gQ0g6zPew" title="Travel English" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">26. Travel & Airport</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Checking in, security protocols, and hotel management.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/lZ3n1Q1YwY4" title="Job Interview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">27. Job Interview Basics</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Answering "Tell me about yourself" and core strengths.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/H01X_A9_lYk" title="Opinions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">28. Expressing Opinions</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Agreeing, disagreeing, and defending your viewpoint.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/B6n8xS-sDq4" title="Apologies" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">29. Formal Apologies</h3>
+                            <p class="text-stone-500 text-sm flex-grow">How to say sorry in a corporate or polite environment.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/9XqM_Q1rW4k" title="Conjunctions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">30. Advanced Conjunctions</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Using Therefore, Furthermore, and However correctly.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INTERMEDIATE LEVEL (31-40) -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-bold text-stone-800 mb-6 border-b pb-2">Intermediate Fluency</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/WJGCU1e-pB4" title="Passive Voice" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">31. The Passive Voice</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Shifting focus from the subject to the action in formal writing.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Mh8yL1s4y9M" title="Reported Speech" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">32. Reported Speech</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Reporting what others said using tense backshifting.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/7rTz-W9y-vI" title="2nd Conditional" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">33. Second Conditional</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Discussing imaginary situations and giving advice.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/nC0UjG2Hk6U" title="3rd Conditional" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">34. Third Conditional</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Analyzing past regrets and alternate historical timelines.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/H5H8b8b0eXo" title="Phrasal Verbs 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">35. Phrasal Verbs (Part 1)</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Mastering separable vs inseparable verb particles.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/5k5e9qO8A3I" title="Phrasal Verbs 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">36. Phrasal Verbs (Part 2)</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Common phrasal verbs for the office and workplace.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/D3c2L9Hh2XU" title="Business Meetings" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">37. Business Meetings</h3>
+                            <p class="text-stone-500 text-sm flex-grow">How to interrupt, agree, and state objectives politely.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Y1yE4Z5P0YI" title="Small Talk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">38. Networking Small Talk</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Keeping a conversation alive and finding common ground.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/xP5e5H0V1H4" title="Negotiations" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">39. Basic Negotiations</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Anchoring prices, making concessions, and closing deals.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/4yB0Q_5H1kU" title="Email English" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">40. Email English</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Formal vs informal email structure and sign-offs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADVANCED LEVEL (41-50) -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-bold text-stone-800 mb-6 border-b pb-2">Advanced & Expert Mastery</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/rV1Eic5uW90" title="Connected Speech" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">41. Connected Speech</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Linking words to sound like a natural native speaker.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/FwEW_TeG0M4" title="Intonation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">42. Intonation & Rhythm</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Mastering the musicality and pitch changes of English.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/tkpfg-1FJLU" title="Inversion" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">43. Negative Inversion</h3>
+                            <p class="text-stone-500 text-sm flex-grow">"Not only is it good..." High-level emphasis structures.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/hq3yfQnllfQ" title="Cleft Sentences" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">44. Cleft Sentences</h3>
+                            <p class="text-stone-500 text-sm flex-grow">"What I need is..." Shifting focus in complex sentences.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/75p-N9YKqNo" title="Advanced Idioms" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">45. Executive Idioms</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Using advanced metaphorical language in boardrooms.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/DR-cfDsHCGA" title="Hedging" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">46. Hedging & Nuance</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Softening statements for academic and diplomatic safety.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/mXMofxtDPUQ" title="Debate Tactics" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">47. Debate Tactics</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Steelmanning, identifying fallacies, and rebuttals.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Fe9bnYRzFvk" title="Public Speaking" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">48. Public Speaking</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Hooks, signposting, and delivering TED-style keynotes.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/l4WNrvVjiTw" title="Sarcasm" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">49. Sarcasm & Irony</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Understanding deadpan tone and hidden meanings.</p>
+                        </div>
+
+                        <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                            <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/p5qwOxlvyhk" title="C2 Vocabulary" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <h3 class="text-xl font-bold text-stone-800 mb-2">50. C2 Academic Vocabulary</h3>
+                            <p class="text-stone-500 text-sm flex-grow">Mastering the highest level of academic written English.</p>
+                        </div>
+
+                    </div>
                 </div>
             </section>
 
