@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagasa English Course - Level 6 Worksheets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@1,500&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; color: #1c1917; overflow-x: hidden; }
+        .bg-elegant-gradient { background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 50%, #fdf4ff 100%); }
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: -0.06em;
+            background: linear-gradient(to right, #0f766e, #4338ca);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .question-input {
+            border: none;
+            border-bottom: 2px solid #cbd5e1;
+            background: transparent;
+            outline: none;
+            padding: 0 0.5rem;
+            color: #c026d3; /* Fuchsia 600 */
+            font-weight: 600;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+        .question-input:focus { border-bottom-color: #c026d3; }
+    </style>
+</head>
+<body class="antialiased bg-elegant-gradient min-h-screen flex flex-col">
+
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-fuchsia-100/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+    <nav class="w-full px-6 py-5 md:px-12 flex flex-col xl:flex-row items-center justify-between z-50 sticky top-0 bg-fafaf9/90 backdrop-blur-md border-b border-stone-200/50 shadow-sm">
+        <div class="flex items-center gap-2 mb-4 xl:mb-0 cursor-pointer group" onclick="window.location.href='index.html'">
+            <div class="relative flex items-center justify-center w-12 h-12">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full transform group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
+                    <defs>
+                        <linearGradient id="logo-grad" x1="0" y1="0" x2="100" y2="100">
+                            <stop offset="0%" stop-color="#0d9488"/>
+                            <stop offset="100%" stop-color="#4f46e5"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M15 15C8.37258 15 3 20.3726 3 28.5C3 36.6274 8.37258 42 15 42L5 55L25 42H70C76.6274 42 82 36.6274 82 28.5C82 20.3726 76.6274 15 70 15H15Z" fill="#312e81" fill-opacity="0.1"/>
+                    <path d="M25 25C13.9543 25 5 33.9543 5 45C5 56.0457 13.9543 65 25 65L10 85L35 65H80C91.0457 65 100 56.0457 100 45C100 33.9543 91.0457 25 80 25H25Z" fill="url(#logo-grad)"/>
+                    <rect x="26" y="32" width="48" height="8" rx="4" fill="#fafaf9"/>
+                    <rect x="38" y="44" width="18" height="8" rx="4" fill="#fafaf9"/>
+                    <rect x="38" y="56" width="10" height="8" rx="4" fill="#fafaf9"/>
+                    <rect x="52" y="56" width="4" height="8" rx="4" fill="#fafaf9"/>
+                </svg>
+            </div>
+            <span class="text-3xl font-black logo-text">TAGASA</span>
+        </div>
+        
+        <div class="flex items-center gap-1 md:gap-4 flex-wrap justify-center">
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Video <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                    <div class="py-2 flex flex-col">
+                        <a href="vdoc.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Documentation</a>
+                        <a href="vedu.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Galeri <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                    <div class="py-2 flex flex-col">
+                        <a href="gmemo.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Memories</a>
+                        <a href="gmaterial.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Material</a>
+                        <a href="gedu.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Speaking <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="speaking1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                        <a href="speaking2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                        <a href="speaking3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                        <a href="speaking4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                        <a href="speaking5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                        <a href="speaking6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                        <a href="speaking7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                        <a href="speaking8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Reading <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="reading1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                        <a href="reading2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                        <a href="reading3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                        <a href="reading4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                        <a href="reading5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                        <a href="reading6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                        <a href="reading7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                        <a href="reading8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Writing <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="writing1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                        <a href="writing2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                        <a href="writing3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                        <a href="writing4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                        <a href="writing5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                        <a href="writing6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                        <a href="writing7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                        <a href="writing8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Worksheet <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="worksheet1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                        <a href="worksheet2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                        <a href="worksheet3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                        <a href="worksheet4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                        <a href="worksheet5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                        <a href="worksheet6.html" class="px-5 py-2.5 text-sm font-medium text-fuchsia-600 bg-fuchsia-50">Level 6</a>
+                        <a href="worksheet7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                        <a href="worksheet8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-12">
+        <section class="text-center w-full max-w-4xl mx-auto mb-12">
+            <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-fuchsia-50 text-fuchsia-700 text-sm font-bold tracking-widest uppercase mb-6 border border-fuchsia-100">Worksheet • Level 6</div>
+            <h1 style="font-family: 'Montserrat', sans-serif;" class="text-4xl md:text-5xl font-black text-stone-900 tracking-tighter mb-4 uppercase">
+                Advanced Exercises
+            </h1>
+            <p class="text-lg text-stone-600 leading-relaxed">
+                Test your knowledge of Advanced concepts: Negative Inversion, Hedging, Executive Register, Code-switching, and Philosophical Abstract discussions.
+            </p>
+        </section>
+
+        <!-- Category Tabs -->
+        <div class="flex flex-wrap justify-center gap-2 mb-10 border-b border-stone-200">
+            <button onclick="showTab('fill')" id="btn-fill" class="px-6 py-3 font-bold text-fuchsia-700 border-b-2 border-fuchsia-600">Fill in the Blanks</button>
+            <button onclick="showTab('match')" id="btn-match" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Matching</button>
+            <button onclick="showTab('mcq')" id="btn-mcq" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Multiple Choice</button>
+            <button onclick="showTab('build')" id="btn-build" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Sentence Building</button>
+            <button onclick="showTab('short')" id="btn-short" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Short Answer</button>
+            <button onclick="showTab('speak')" id="btn-speak" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Speaking Tasks</button>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 p-8 md:p-12 min-h-[500px]">
+            
+            <!-- FILL IN THE BLANKS -->
+            <div id="tab-fill" class="tab-content block">
+                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 flex items-center gap-3"><span class="text-3xl">✍️</span> Fill in the Blanks</h3>
+                <div class="space-y-6">
+                    <div class="text-lg">1. Not only ______ (did/do/was) we exceed expectations, but we also lowered costs.</div>
+                    <div class="text-lg">2. ______ we anticipated the crisis, we would have restructured. (Had/If/Were)</div>
+                    <div class="text-lg">3. It was the logistics team ______ made the error.</div>
+                    <div class="text-lg">4. What concerns me ______ is the lack of transparency.</div>
+                    <div class="text-lg">5. Evidence ______ that the demographic is shifting. (suggests/looks)</div>
+                    <div class="text-lg">6. This policy could ______ lead to logistical issues. (potential/potentially)</div>
+                    <div class="text-lg">7. While one ______ argue it is fast, it remains true that it is dangerous.</div>
+                    <div class="text-lg">8. It is ______ upon the board to rectify this discrepancy. (incumbent/important)</div>
+                    <div class="text-lg">9. We must ______ the jargon to help the public understand. (demystify/destroy)</div>
+                    <div class="text-lg">10. The AI revolution poses an existential ______ to manual labor.</div>
+                </div>
+            </div>
+
+            <!-- MATCHING -->
+            <div id="tab-match" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 flex items-center gap-3"><span class="text-3xl">🔗</span> Matching Pairs</h3>
+                <p class="text-stone-500 mb-6 italic">Draw a line mentally between the left and right columns.</p>
+                <div class="grid grid-cols-2 gap-4 text-lg">
+                    <div class="space-y-4">
+                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">1. Under no circumstances</div>
+                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">2. Ascertain</div>
+                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">3. Paradigm shift</div>
+                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">4. Conceivably</div>
+                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">5. Rectify</div>
+                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">6. Dilute</div>
+                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">7. Let me play devil's advocate</div>
+                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">8. Layperson</div>
+                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">9. Extrinsic motivation</div>
+                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">10. Proliferation</div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">A. Correct an issue</div>
+                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">B. A non-expert</div>
+                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">C. A massive cultural change</div>
+                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">D. Should we do this</div>
+                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">E. Rapid increase in numbers</div>
+                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">F. Safely challenging a consensus</div>
+                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">G. Within the realm of possibility</div>
+                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">H. Find out for certain</div>
+                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">I. Driven by external rewards</div>
+                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">J. Weaken cultural heritage</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MULTIPLE CHOICE -->
+            <div id="tab-mcq" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 flex items-center gap-3"><span class="text-3xl">☑️</span> Multiple Choice</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                        <p class="font-bold text-lg mb-3">1. ___ you require assistance, contact HR.</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" class="accent-fuchsia-600 w-4 h-4"> a. Should</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" class="accent-fuchsia-600 w-4 h-4"> b. If should</label>
+                        </div>
+                    </div>
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                        <p class="font-bold text-lg mb-3">2. Never before ___ such a disruption.</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" class="accent-fuchsia-600 w-4 h-4"> a. we have seen</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" class="accent-fuchsia-600 w-4 h-4"> b. have we seen</label>
+                        </div>
+                    </div>
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                        <p class="font-bold text-lg mb-3">3. I have some ___ about this timeline.</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" class="accent-fuchsia-600 w-4 h-4"> a. reservations</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" class="accent-fuchsia-600 w-4 h-4"> b. reserves</label>
+                        </div>
+                    </div>
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                        <p class="font-bold text-lg mb-3">4. It is fundamentally a ___ area in ethics.</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q4" class="accent-fuchsia-600 w-4 h-4"> a. grey</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q4" class="accent-fuchsia-600 w-4 h-4"> b. black</label>
+                        </div>
+                    </div>
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                        <p class="font-bold text-lg mb-3">5. Success is not ___ wealth.</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q5" class="accent-fuchsia-600 w-4 h-4"> a. merely</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q5" class="accent-fuchsia-600 w-4 h-4"> b. absolutely</label>
+                        </div>
+                    </div>
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                        <p class="font-bold text-lg mb-3">6. The formal word for "find out" is:</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q6" class="accent-fuchsia-600 w-4 h-4"> a. Ascertain</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q6" class="accent-fuchsia-600 w-4 h-4"> b. Implement</label>
+                        </div>
+                    </div>
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                        <p class="font-bold text-lg mb-3">7. This technology ___ an existential threat.</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q7" class="accent-fuchsia-600 w-4 h-4"> a. makes</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q7" class="accent-fuchsia-600 w-4 h-4"> b. poses</label>
+                        </div>
+                    </div>
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                        <p class="font-bold text-lg mb-3">8. We remain cautiously ___ about the deal.</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q8" class="accent-fuchsia-600 w-4 h-4"> a. optimistic</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q8" class="accent-fuchsia-600 w-4 h-4"> b. optimal</label>
+                        </div>
+                    </div>
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                        <p class="font-bold text-lg mb-3">9. Down ___ the stock market yesterday.</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q9" class="accent-fuchsia-600 w-4 h-4"> a. the stock market plunged</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q9" class="accent-fuchsia-600 w-4 h-4"> b. plunged the stock market</label>
+                        </div>
+                    </div>
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                        <p class="font-bold text-lg mb-3">10. Globalization is a double-___ sword.</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q10" class="accent-fuchsia-600 w-4 h-4"> a. edged</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q10" class="accent-fuchsia-600 w-4 h-4"> b. sided</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SENTENCE BUILDING -->
+            <div id="tab-build" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 flex items-center gap-3"><span class="text-3xl">🧩</span> Sentence Building</h3>
+                <p class="text-stone-500 mb-6 italic">Unscramble the words to make correct sentences.</p>
+                <div class="space-y-6">
+                    <div>
+                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( only / is / Not / fast / also / it / cheap / but / is / it )</div>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
+                    </div>
+                    <div>
+                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( we / known / Had / adjusted / have / would / we )</div>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
+                    </div>
+                    <div>
+                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( is / transparency / What / is / lack / frustrates / of / me )</div>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
+                    </div>
+                    <div>
+                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( suggests / that / Evidence / changing / market / is / the )</div>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
+                    </div>
+                    <div>
+                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( potentially / could / This / lead / issues / to )</div>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
+                    </div>
+                    <div>
+                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( true / remains / It / that / expensive / is / it )</div>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
+                    </div>
+                    <div>
+                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( appreciate / would / I / it / could / if / you / help )</div>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
+                    </div>
+                    <div>
+                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( rather / wealth / pursuit / The / of / merely / not / but / money / is )</div>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
+                    </div>
+                    <div>
+                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( shift / profound / paradigm / A / occurring / is )</div>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
+                    </div>
+                    <div>
+                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( demystify / To / jargon / the / failing / are / we )</div>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SHORT ANSWER -->
+            <div id="tab-short" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 flex items-center gap-3"><span class="text-3xl">📝</span> Short Answer</h3>
+                <div class="space-y-6">
+                    <div>
+                        <p class="font-bold text-lg mb-2">1. Change to negative inversion: "We have never seen this."</p>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
+                    </div>
+                    <div>
+                        <p class="font-bold text-lg mb-2">2. Soften this claim: "AI will replace jobs."</p>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
+                    </div>
+                    <div>
+                        <p class="font-bold text-lg mb-2">3. Replace "help" with a C-suite verb.</p>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
+                    </div>
+                    <div>
+                        <p class="font-bold text-lg mb-2">4. Disagree diplomatically: "I take your point, but..."</p>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
+                    </div>
+                    <div>
+                        <p class="font-bold text-lg mb-2">5. What is a "paradigm shift"?</p>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
+                    </div>
+                    <div>
+                        <p class="font-bold text-lg mb-2">6. Emphasize "time" using a cleft sentence.</p>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
+                    </div>
+                    <div>
+                        <p class="font-bold text-lg mb-2">7. Write a sentence using "conceivably".</p>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
+                    </div>
+                    <div>
+                        <p class="font-bold text-lg mb-2">8. Give an example of "intrinsic motivation".</p>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
+                    </div>
+                    <div>
+                        <p class="font-bold text-lg mb-2">9. Translate to formal: "We need to fix this."</p>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
+                    </div>
+                    <div>
+                        <p class="font-bold text-lg mb-2">10. What does "existential threat" mean?</p>
+                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SPEAKING TASKS -->
+            <div id="tab-speak" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 flex items-center gap-3"><span class="text-3xl">🗣️</span> Speaking Tasks</h3>
+                <p class="text-stone-500 mb-6 italic">Practice these aloud with a partner or teacher.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
+                        <span class="text-2xl font-bold text-fuchsia-500">01</span>
+                        <p class="text-fuchsia-900 font-medium pt-1">Deliver a 30-second pitch opening with "Not only... but also".</p>
+                    </div>
+                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
+                        <span class="text-2xl font-bold text-fuchsia-500">02</span>
+                        <p class="text-fuchsia-900 font-medium pt-1">Defend a controversial theory using triple-hedging ("It would seem that...").</p>
+                    </div>
+                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
+                        <span class="text-2xl font-bold text-fuchsia-500">03</span>
+                        <p class="text-fuchsia-900 font-medium pt-1">Roleplay: Veto a CEO's idea diplomatically ("I have some reservations").</p>
+                    </div>
+                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
+                        <span class="text-2xl font-bold text-fuchsia-500">04</span>
+                        <p class="text-fuchsia-900 font-medium pt-1">Define "Freedom" using the "Not merely... but rather" framework.</p>
+                    </div>
+                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
+                        <span class="text-2xl font-bold text-fuchsia-500">05</span>
+                        <p class="text-fuchsia-900 font-medium pt-1">Demystify a piece of complex corporate jargon for a layperson.</p>
+                    </div>
+                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
+                        <span class="text-2xl font-bold text-fuchsia-500">06</span>
+                        <p class="text-fuchsia-900 font-medium pt-1">Make a polite, conditional demand ("I would appreciate it if...").</p>
+                    </div>
+                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
+                        <span class="text-2xl font-bold text-fuchsia-500">07</span>
+                        <p class="text-fuchsia-900 font-medium pt-1">Respond to a hostile question using strategic ambiguity ("At this juncture...").</p>
+                    </div>
+                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
+                        <span class="text-2xl font-bold text-fuchsia-500">08</span>
+                        <p class="text-fuchsia-900 font-medium pt-1">Debate a topic by "Steelmanning" your opponent's view first.</p>
+                    </div>
+                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
+                        <span class="text-2xl font-bold text-fuchsia-500">09</span>
+                        <p class="text-fuchsia-900 font-medium pt-1">Deliver a heavily sarcastic comment using a deadpan tone.</p>
+                    </div>
+                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
+                        <span class="text-2xl font-bold text-fuchsia-500">10</span>
+                        <p class="text-fuchsia-900 font-medium pt-1">Perform the "Chameleon" drill: Explain AI to a child, then to a professor.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="w-full text-center py-8 bg-transparent text-stone-500 relative z-10 mt-auto border-t border-stone-200/50">
+        <p class="text-sm font-medium">&copy; 2026 Tagasa English Course. Cultivating global communicators.</p>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('block');
+                el.classList.add('hidden');
+            });
+            document.querySelectorAll('button[id^="btn-"]').forEach(btn => {
+                btn.className = 'px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors';
+            });
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            document.getElementById('tab-' + tabName).classList.add('block');
+            document.getElementById('btn-' + tabName).className = 'px-6 py-3 font-bold text-fuchsia-700 border-b-2 border-fuchsia-600';
+        }
+    </script>
+</body>
+</html>
