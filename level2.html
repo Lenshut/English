@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagasa English Course - Level 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@1,500&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; color: #1c1917; }
+        .bg-elegant-gradient { background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 50%, #ecfdf5 100%); }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin: 0 auto; height: 300px; max-height: 400px; }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
+        .sidebar-scroll::-webkit-scrollbar { width: 6px; }
+        .sidebar-scroll::-webkit-scrollbar-track { background: #f5f5f4; }
+        .sidebar-scroll::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 10px; }
+        .sidebar-scroll::-webkit-scrollbar-thumb:hover { background: #a8a29e; }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <div id="level2-view" class="flex flex-col min-h-screen relative bg-elegant-gradient w-full">
+        <!-- Decorative Emerald Glow -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-emerald-100/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+        <nav class="w-full z-50 sticky top-0 bg-fafaf9/80 backdrop-blur-md border-b border-stone-200/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <div class="flex items-center">
+                        <span class="font-black text-xl tracking-widest text-stone-800 uppercase" style="font-family: 'Montserrat', sans-serif;">LEVEL 2 : ELEMENTARY</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <button onclick="window.location.href='index.html'" class="px-5 py-2 rounded-full bg-white border border-stone-200 shadow-sm text-stone-600 hover:bg-stone-50 hover:text-stone-900 transition-all font-semibold text-sm tracking-wide">
+                            Homepage
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 w-full relative z-10">
+            <section id="overview" class="bg-white rounded-3xl shadow-sm border border-stone-200/80 p-6 md:p-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
+                    <div>
+                        <h1 class="text-3xl font-bold text-stone-800 mb-4">Program Overview</h1>
+                        <p class="text-stone-600 text-lg leading-relaxed">
+                            Welcome to the Level 2 Tagasa English Program. This 6-month program bridges the gap between basic survival phrases and true conversational ability. Students will master past/future tenses, express detailed opinions, and engage in multi-turn dialogues.
+                        </p>
+                    </div>
+                    <div class="bg-stone-50 rounded-xl p-4 border border-stone-100 flex flex-col justify-center">
+                        <div class="mb-2 text-center">
+                            <h2 class="text-lg font-semibold text-emerald-800">Skill Progression Path</h2>
+                            <p class="text-stone-500 text-xs mt-1">Skill expansion at Start (Ph 1), Midpoint (Ph 4), and Goal (Ph 8).</p>
+                        </div>
+                        <div class="w-full flex justify-center flex-grow">
+                            <div class="chart-container" style="height: 200px; max-height: 200px; max-width: 100%;">
+                                <canvas id="progressionChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-6 shadow-sm">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-2 flex items-center gap-2"><span>🏆</span> Master Goal</h3>
+                    <p class="text-emerald-900 font-medium leading-relaxed">
+                        Transition from isolated single sentences to fluid paragraphs. Speak confidently about past memories and future plans, articulate clear opinions with reasons, and independently sustain a natural, back-and-forth conversation.
+                    </p>
+                </div>
+            </section>
+
+            <section id="syllabus" class="scroll-mt-20">
+                <div class="mb-6">
+                    <h2 class="text-3xl font-bold text-stone-800">Interactive Syllabus</h2>
+                    <p class="text-stone-600 mt-2">Click a phase to expand its session list, then select a session to explore its detailed pedagogical breakdown.</p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-8 items-start">
+                    <div class="lg:w-1/3 w-full border border-stone-200/80 bg-white rounded-3xl shadow-sm overflow-hidden flex flex-col h-[600px]">
+                        <div class="bg-stone-50 px-4 py-3 border-b border-stone-200">
+                            <h3 class="font-bold text-stone-700">Course Structure</h3>
+                        </div>
+                        <div class="overflow-y-auto sidebar-scroll p-2 flex-grow" id="sidebar-container"></div>
+                    </div>
+
+                    <div class="lg:w-2/3 w-full bg-white rounded-3xl shadow-sm border border-stone-200/80 min-h-[600px] flex flex-col overflow-hidden">
+                        <div id="empty-state" class="flex-grow flex flex-col items-center justify-center text-center p-10">
+                            <span class="text-4xl mb-4">👈</span>
+                            <h3 class="text-xl font-bold text-stone-700 mb-2">Select a Session</h3>
+                            <p class="text-stone-500 max-w-sm">Choose a specific session from the menu on the left.</p>
+                        </div>
+
+                        <div id="session-display" class="hidden flex-col h-full">
+                            <div class="px-6 py-5 border-b border-stone-200 bg-stone-50 rounded-t-2xl">
+                                <span id="display-phase-badge" class="text-xs font-bold tracking-wider text-emerald-700 uppercase mb-2 block"></span>
+                                <h3 id="display-session-title" class="text-2xl font-bold text-stone-800"></h3>
+                            </div>
+                            
+                            <div class="flex flex-wrap border-b border-stone-200 bg-white" id="session-tabs">
+                                <button id="btn-tab-goal" class="tab-btn" onclick="switchTab('goal')">Goal</button>
+                                <button id="btn-tab-teachermaterial" class="tab-btn" onclick="switchTab('teachermaterial')">Teacher Material</button>
+                                <button id="btn-tab-activitiesassessment" class="tab-btn" onclick="switchTab('activitiesassessment')">Activities & Assessment</button>
+                                <button id="btn-tab-worksheet" class="tab-btn" onclick="switchTab('worksheet')">Worksheet Details</button>
+                            </div>
+
+                            <div class="p-6 flex-grow overflow-y-auto">
+                                <div id="tab-goal" class="tab-content hidden">
+                                    <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>🎯</span> Primary Goal</h4>
+                                    <div id="content-goal" class="text-stone-700 bg-emerald-50 p-5 rounded-lg border border-emerald-100 text-lg font-medium"></div>
+                                </div>
+                                
+                                <div id="tab-teachermaterial" class="tab-content hidden space-y-8">
+                                    <div>
+                                        <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>📚</span> Material & Focus</h4>
+                                        <div id="content-material" class="text-stone-700 p-2 leading-relaxed"></div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>🧠</span> Step-by-Step Flow</h4>
+                                        <div id="content-flow" class="text-stone-700 p-2 leading-relaxed"></div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>🧑‍🏫</span> Exact Teacher Script</h4>
+                                        <p class="text-sm text-stone-500 mb-4">Read this word-by-word to ensure clarity.</p>
+                                        <div id="content-script" class="text-stone-800 italic bg-stone-100 p-6 rounded-lg border-l-4 border-emerald-400 text-lg leading-relaxed"></div>
+                                    </div>
+                                </div>
+
+                                <div id="tab-activitiesassessment" class="tab-content hidden space-y-8">
+                                    <div>
+                                        <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>🎮</span> Activities & Student Tasks</h4>
+                                        <div class="mb-4 space-y-4">
+                                            <div class="p-4 bg-white border border-stone-200 rounded-lg shadow-sm">
+                                                <h5 class="font-bold text-stone-800 mb-1">Student Tasks:</h5>
+                                                <p id="content-tasks" class="text-stone-600"></p>
+                                            </div>
+                                            <div class="p-4 bg-emerald-50 border border-emerald-100 rounded-lg shadow-sm">
+                                                <h5 class="font-bold text-emerald-900 mb-1">Interactive Activity:</h5>
+                                                <p id="content-activities" class="text-emerald-800"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>⚠️</span> Assessment & Fixes</h4>
+                                        <div class="space-y-4">
+                                            <div class="p-4 bg-white border border-stone-200 rounded-lg shadow-sm">
+                                                <h5 class="font-bold text-stone-800 mb-1">Check For:</h5>
+                                                <p id="content-assessment" class="text-stone-600"></p>
+                                            </div>
+                                            <div class="p-4 bg-rose-50 border border-rose-100 rounded-lg shadow-sm">
+                                                <h5 class="font-bold text-rose-900 mb-1">Common Mistake & Fix:</h5>
+                                                <p id="content-mistake" class="text-rose-800"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="tab-worksheet" class="tab-content hidden">
+                                    <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>📄</span> Worksheet Details</h4>
+                                    <p class="text-sm text-stone-500 mb-4">Specific questions targeted to this session's grammar and vocabulary.</p>
+                                    <ul id="content-worksheet" class="space-y-2 bg-stone-50 p-5 rounded-lg border border-stone-200 mb-6"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="w-full text-center py-10 bg-transparent text-stone-500 relative z-10 mt-12">
+            <p class="text-sm font-medium">&copy; 2026 Tagasa English Course. Cultivating global communicators.</p>
+        </footer>
+    </div>
+
+    <script>
+        const curriculumData = [
+            {
+                id: 1, title: "PHASE 1: EXPANDING SENTENCES",
+                sessions: [
+                    {
+                        title: "Session 1: Joining Ideas (And)",
+                        goal: "Students can say: 'I like apples and I like bananas.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Moves students beyond robotic, single-clause sentences. Using 'and' allows for the natural linking of parallel ideas, making speech sound much more fluent and connected.<br><br><strong class='text-emerald-900'>Example:</strong> When asked about their hobbies, the student fluidly replies, 'I play tennis and I watch TV,' instead of stopping awkwardly between the two thoughts.",
+                        material: "Vocab: And, Also. Grammar: Compound sentences. Pattern: 'I [verb] A and I [verb] B.'",
+                        script: "'I like apples. I like bananas. Let's make it ONE sentence. I like apples AND I like bananas.'",
+                        flow: "Warm-up: Level 1 review (I like/I go). Teaching: Write two separate sentences on the board. Erase the period, add 'and'. Practice: Students combine 2 picture cards using 'and'. Speaking: Tell a partner two things you like doing.",
+                        tasks: "Combine two independent clauses smoothly without pausing.",
+                        activities: "The 'And' Chain: Student A: 'I play tennis.' Student B: 'I play tennis AND I watch TV.' Student C adds a third.",
+                        assessment: "Student speaks a fluid sentence with 'and' without restarting the second clause.",
+                        mistake: "Student: 'I like apple and banana.' Fix: Enforce full clauses initially to build rhythm: 'I like apples AND I like bananas.'",
+                        worksheet: ["(Fill): I play soccer ______ I play tennis.", "(Match): I eat meat -> and I eat rice", "(MCQ): I like dogs ___ I like cats. (a. but b. and)", "(Build): (read / I / books / and / sleep / I) -> ______", "(Short): Write 2 things you like using 'and': ______", "(Speak): Tell your partner 2 things you do on Sunday."]
+                    },
+                    {
+                        title: "Session 2: Contrasting Ideas (But)",
+                        goal: "Students can say: 'I like apples but I do not like fish.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Introduces contrast. This allows students to express complex preferences where they both accept and reject things in the same breath, adding nuance to their opinions.<br><br><strong class='text-emerald-900'>Example:</strong> Reviewing a restaurant, a student says, 'The food is good, but the coffee is bad.'",
+                        material: "Vocab: But, However. Grammar: Contrastive clauses. Pattern: 'I [verb] A but I do not [verb] B.'",
+                        script: "'Look. I like apples. (Smile). I do not like fish. (Frown). I like apples, BUT I do not like fish.'",
+                        flow: "Warm-up: 'And' sentences. Teaching: Show contrasting emotion cards. Introduce 'but'. Emphasize the change in intonation. Practice: Teacher gives a positive, student finishes with a negative 'but...'. Speaking: Compare favorite/least favorite foods.",
+                        tasks: "Use 'but' to link a positive and negative statement accurately.",
+                        activities: "The 'But' Game: Teacher throws a ball: 'I like summer.' Catcher: 'BUT I do not like winter.'",
+                        assessment: "Student clearly articulates the negative auxiliary (do not / am not) after 'but'.",
+                        mistake: "Student: 'I like apples but not like fish.' Fix: 'Who does not like it? I! But I do not like...'",
+                        worksheet: ["(Fill): I like tea ______ I do not like coffee.", "(Match): I am tall -> but my brother is short", "(MCQ): I go to school ___ I do not work. (a. and b. but)", "(Build): (like / I / dogs / but / cats / not / do / I / like) -> ______", "(Short): Finish: I play tennis but ______.", "(Speak): State one thing you like and one you hate."]
+                    },
+                    {
+                        title: "Session 3: Giving Reasons (Because)",
+                        goal: "Students can say: 'I drink water because I am thirsty.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Moves from 'what' to 'why'. Providing reasons is essential for deeper conversation and justifying actions or feelings to others.<br><br><strong class='text-emerald-900'>Example:</strong> When a teacher asks why they are wearing a jacket inside, the student replies, 'I am wearing a jacket because I am cold.'",
+                        material: "Vocab: Because, Why, Thirsty, Hungry, Tired. Pattern: 'I [action] because [reason].'",
+                        script: "'Why do I drink water? Because I am thirsty. I drink water BECAUSE I am thirsty.'",
+                        flow: "Warm-up: Feelings review. Teaching: Ask 'Why?'. Introduce 'Because' as the bridge between action and feeling. Practice: Match action cards to feeling cards. Speaking: 'Why do you sleep?' 'I sleep because I am tired.'",
+                        tasks: "Answer 'Why' questions using 'because' followed by a full clause.",
+                        activities: "Why Chain: 'Why do you eat?' 'Because I am hungry.' 'Why are you hungry?' 'Because I do not eat.'",
+                        assessment: "Student naturally inserts 'because' instead of just stating the reason abruptly.",
+                        mistake: "Student: 'Because thirsty.' Fix: 'Because I AM thirsty. Full sentence.'",
+                        worksheet: ["(Fill): I eat ______ I am hungry.", "(Match): Why do you sleep? -> Because I am tired.", "(MCQ): I wear a jacket ___ I am cold. (a. but b. because)", "(Build): (sleep / because / I / tired / am / I) -> ______", "(Short): Why do you study English? ______", "(Speak): Ask your partner why they are happy."]
+                    },
+                    {
+                        title: "Session 4: Results (So)",
+                        goal: "Students can say: 'I am tired, so I will sleep.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Teaches cause and effect from the opposite direction of 'because'. This helps students explain logical consequences and decisions.<br><br><strong class='text-emerald-900'>Example:</strong> Realizing it's raining outside, the student says, 'It is raining, so I need an umbrella.'",
+                        material: "Vocab: So, Result. Pattern: '[Reason], so I [Action].'",
+                        script: "'I am tired. What is the result? SO I sleep. I am tired, so I sleep.'",
+                        flow: "Warm-up: Because vs So logic check. Teaching: Show that 'So' is the reverse of 'Because'. Reason comes first, then action. Practice: Flip 'because' sentences into 'so' sentences. Speaking: 'I am hot, so I...'",
+                        tasks: "Understand the logical flow difference between 'because' and 'so'.",
+                        activities: "The Fix-It Game: Teacher says a problem: 'I am hungry.' Student must offer a solution: 'So you eat an apple!'",
+                        assessment: "Correctly sequences cause and effect.",
+                        mistake: "Using 'so' instead of 'because' ('I sleep so I am tired'). Fix: Draw a left/right arrow timeline on the board.",
+                        worksheet: ["(Fill): I am cold, ______ I wear a hat.", "(Match): I have a test -> so I study.", "(MCQ): It is raining ___ I take an umbrella. (a. so b. because)", "(Build): (hungry / I / am / so / eat / I) -> ______", "(Short): Finish: I have no money so ______.", "(Speak): Give your partner a solution to a problem."]
+                    },
+                    {
+                        title: "Session 5: Multi-Clause Mastery",
+                        goal: "Students can say: 'I am hungry and I want food, but I have no money.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> The ultimate test of Phase 1. Students combine multiple conjunctions to tell a mini-story or present a complex situation in a single, fluid breath.<br><br><strong class='text-emerald-900'>Example:</strong> Explaining their weekend, a student says: 'I went to the park and I played football, but it started to rain, so I went home.'",
+                        material: "Vocab: All conjunctions. Grammar: 3-clause sentences.",
+                        script: "'Listen: I like coffee. I like tea. I do not like milk. Let's make a big sentence! I like coffee AND tea, BUT I do not like milk.'",
+                        flow: "Warm-up: Conjunction flashcards. Teaching: Show how native speakers string 3 ideas together. Practice: Give 3 random picture cards, students must string them together. Speaking: Build long descriptive paragraphs.",
+                        tasks: "Produce a sentence with at least two conjunctions continuously.",
+                        activities: "Sentence Builder: Deal 3 word cards. Student must make a logical sentence using 'and', 'but', or 'because'.",
+                        assessment: "Fluid delivery of 3 clauses without losing track of grammar.",
+                        mistake: "Getting lost halfway through the sentence. Fix: Let them write it down first, then read it, then say it blindly.",
+                        worksheet: ["(Fill): I play soccer ___ tennis, ___ I do not play golf.", "(Match): I am tired -> and hungry, so I will sleep.", "(MCQ): I want to go ___ I have no car. (a. but b. so)", "(Build): (tea / like / I / but / not / coffee / do / I / like) -> ______", "(Short): Combine: I am sad. I am crying. -> ______", "(Speak): Tell a long story about your morning."]
+                    },
+                    {
+                        title: "Session 6: Phase 1 Review",
+                        goal: "Students independently use conjunctions in natural conversation.<br><br><strong class='text-emerald-900'>Elaboration:</strong> Cements the transition away from beginner English. Students must prove they no longer rely on short, choppy sentences during spontaneous speech.<br><br><strong class='text-emerald-900'>Example:</strong> In a casual chat with the teacher, the student naturally links every response with 'and', 'but', or 'because' without being prompted.",
+                        material: "Review: And, But, Because, So.",
+                        script: "'Today, no short sentences! Every sentence must have a bridge word.'",
+                        flow: "Warm-up: Quick-fire conjunctions. Teaching: Review the differences on the board. Practice: Error correction worksheet. Speaking: 'Find Someone Who' using complex sentences. Closing: 3-clause speaking challenge.",
+                        tasks: "Pass the review test with complex sentence structures.",
+                        activities: "The Interview: Ask a partner 5 questions. Partner MUST answer using a conjunction. 'Do you like sports?' 'Yes, I like soccer AND tennis.'",
+                        assessment: "No single-clause answers permitted during the activity.",
+                        mistake: "Reverting to Level 1 short sentences. Fix: Teacher holds up a 'Bridge' sign if they stop at one clause.",
+                        worksheet: ["(Fill): I study ___ I want to learn.", "(Match): And -> Also", "(MCQ): I am hot ___ I drink water. (a. so b. but)", "(Build): (play / I / so / am / happy / I) -> ______", "(Short): Write a 3-part sentence: ______", "(Speak): Describe your family using 'and' and 'but'."]
+                    }
+                ]
+            },
+            {
+                id: 2, title: "PHASE 2: FREQUENCY & HABITS",
+                sessions: [
+                    {
+                        title: "Session 7: Always & Never",
+                        goal: "Students can say: 'I always wake up early. I never smoke.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Introduces absolute frequency. Students learn to describe unbreakable routines and strict habits, adding a temporal layer to their present simple verbs.<br><br><strong class='text-emerald-900'>Example:</strong> Discussing health, a student says, 'I always drink water. I never drink soda.'",
+                        material: "Vocab: Always (100%), Never (0%), Early, Late. Pattern: 'I [always/never] [verb].'",
+                        script: "'Every single day, Monday to Sunday, I drink coffee. I ALWAYS drink coffee. I do not smoke. 0 days. I NEVER smoke.'",
+                        flow: "Warm-up: Days of the week. Teaching: Draw a percentage bar on the board. 100% = Always. 0% = Never. Practice: Categorize daily habits into Always/Never boxes. Speaking: 'Tell me 3 things you always do.'",
+                        tasks: "Place the frequency adverb directly BEFORE the main verb.",
+                        activities: "True/False Habits: Student: 'I never sleep.' Class shouts: 'False! You always sleep!'",
+                        assessment: "Adverb placement is correct (I always eat, NOT I eat always).",
+                        mistake: "Student: 'I always am happy.' Fix: Explain the 'To Be' exception in Session 10. For now, stick to action verbs.",
+                        worksheet: ["(Fill): Monday to Sunday. I ______ drink water.", "(Match): 0% -> Never", "(MCQ): I ___ eat glass. (a. always b. never)", "(Build): (always / I / brush / teeth / my) -> ______", "(Short): Name one thing you never do: ______", "(Speak): Tell your partner what you always do in the morning."]
+                    },
+                    {
+                        title: "Session 8: Usually & Sometimes",
+                        goal: "Students can say: 'I usually study, but sometimes I play games.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Adds realistic flexibility to routines. 'Usually' and 'sometimes' let students describe realistic human behavior rather than just robotic extremes.<br><br><strong class='text-emerald-900'>Example:</strong> Describing their weekend, a student says, 'I usually stay home on Sunday, but sometimes I go to the mall.'",
+                        material: "Vocab: Usually (80%), Sometimes (50%).",
+                        script: "'Monday, Tuesday, Wednesday, Thursday... I drink tea. Friday I drink water. I USUALLY drink tea. Half the time, I play tennis. I SOMETIMES play tennis.'",
+                        flow: "Warm-up: Always/Never. Teaching: Fill in the middle of the percentage bar. Practice: Students look at a calendar with checkmarks and create sentences. Speaking: Compare what they 'usually' do on weekends vs 'sometimes'.",
+                        tasks: "Differentiate between majority habits and occasional habits.",
+                        activities: "The Calendar Game: Show a schedule. 'He goes to the gym 4 days a week.' Students deduce: 'He usually goes to the gym.'",
+                        assessment: "Properly selects Usually vs Sometimes based on given context.",
+                        mistake: "Pronouncing 'Usually' as 'You-sally'. Fix: Break it down: 'You-zhoo-al-lee'.",
+                        worksheet: ["(Fill): 4 days a week. I ______ work.", "(Match): 50% -> Sometimes", "(MCQ): I ___ go to the cinema, maybe once a month. (a. usually b. sometimes)", "(Build): (sometimes / play / I / soccer) -> ______", "(Short): What do you usually eat for breakfast? ______", "(Speak): Use 'usually' and 'sometimes' in one sentence."]
+                    },
+                    {
+                        title: "Session 9: Asking Frequency",
+                        goal: "Students can ask: 'How often do you go to the gym?'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Equips students with the question phrase needed to extract habit information from others, turning statements into two-way dialogues.<br><br><strong class='text-emerald-900'>Example:</strong> Getting to know a coworker, the student asks, 'How often do you visit your family?'",
+                        material: "Vocab: How often, Gym, Cinema, Restaurant. Pattern: 'How often do you [verb]?'",
+                        script: "'I want to know your habit. I ask: HOW OFTEN do you drink tea? Repeat: How often.'",
+                        flow: "Warm-up: The 4 adverbs. Teaching: Introduce the WH-phrase 'How often'. Show the Q&A structure. Practice: Choral repetition of 'How often do you...'. Speaking: Class survey. Ask 5 people how often they cook.",
+                        tasks: "Formulate the question correctly using 'How often do you'.",
+                        activities: "Speed Interview: Lines facing each other. Ask 'How often do you [action card]?' Answer. Step right. Repeat.",
+                        assessment: "Maintains 'do you' after 'How often'.",
+                        mistake: "Student: 'How often you go?' Fix: 'Don't forget the helper! How often DO you go.'",
+                        worksheet: ["(Fill): How ______ do you cook?", "(Match): How often? -> I usually do.", "(MCQ): ___ often do you sleep? (a. What b. How)", "(Build): (often / do / How / read / you) -> ______ ?", "(Short): Answer: How often do you study? ______", "(Speak): Ask the teacher 3 'How often' questions."]
+                    },
+                    {
+                        title: "Session 10: Frequency with 'To Be'",
+                        goal: "Students can say: 'I am always happy.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Tackles a major grammar exception in English. Adverbs go BEFORE action verbs, but AFTER 'to be' verbs. Mastering this shows high grammatical awareness.<br><br><strong class='text-emerald-900'>Example:</strong> Describing their boss, a student correctly states, 'He is always busy,' instead of 'He always is busy.'",
+                        material: "Grammar focus: Position of frequency adverbs with 'to be'.",
+                        script: "'Look. I ALWAYS play. (Action). But with feelings: I AM ALWAYS happy. The adverb moves!'",
+                        flow: "Warm-up: Action verb frequency. Teaching: Write the formula on the board: [Subject + Be + Adverb + Adjective]. Practice: Re-ordering mixed sentences on the board. Speaking: Describe a friend ('He is usually late').",
+                        tasks: "Shift the adverb position correctly depending on whether the verb is an action or 'to be'.",
+                        activities: "The Switcheroo: Teacher says 'I am late.' Class adds 'Always' -> 'I am always late.' Teacher says 'I wake up late.' Class -> 'I always wake up late.'",
+                        assessment: "Does not say 'I always am happy'.",
+                        mistake: "Student: 'I always am tired.' Fix: Draw boxes. Box 1: I. Box 2: AM. Box 3: ALWAYS. Physically move the word cards.",
+                        worksheet: ["(Fill): He ___ always happy.", "(Match): I am -> usually tired", "(MCQ): She ___ late. (a. is never b. never is)", "(Build): (always / am / I / hungry) -> ______", "(Short): Fix this: 'I sometimes am sad.' -> ______", "(Speak): Tell me how you usually feel on Monday."]
+                    },
+                    {
+                        title: "Session 11: Complex Daily Routines",
+                        goal: "Students narrate a full day using time, frequency, and conjunctions.<br><br><strong class='text-emerald-900'>Elaboration:</strong> Merges Phase 1 (conjunctions) and Phase 2 (frequency) into long, native-sounding narrative paragraphs.<br><br><strong class='text-emerald-900'>Example:</strong> Presenting to the class, a student says: 'I usually wake up at 7, and I always drink coffee, but I never eat breakfast because I am not hungry.'",
+                        material: "Review: Phase 1 & 2 combined.",
+                        script: "'Tell me a big story! I usually wake up at 7:00, and I always drink coffee, but I never eat breakfast.'",
+                        flow: "Warm-up: Adverb placement. Teaching: Model a complex paragraph on the board. Practice: Students write a 4-sentence paragraph about their perfect day. Speaking: Present their day to the class.",
+                        tasks: "Synthesize Time, Adverbs of Frequency, and Conjunctions into a fluid narrative.",
+                        activities: "The Celebrity Day: Imagine you are a famous person. Describe your crazy daily routine using all frequency adverbs.",
+                        assessment: "Paragraph contains at least 3 different adverbs and 2 conjunctions.",
+                        mistake: "Overusing 'always'. Fix: Mandate that they must use all 4 adverbs in their presentation.",
+                        worksheet: ["(Fill): I usually wake up ___ 8 o'clock ___ I am tired.", "(Match): Always -> 100%", "(MCQ): I ___ eat pizza because it is bad. (a. never b. always)", "(Build): (coffee / usually / I / drink / but / tea / sometimes / I / drink) -> ______", "(Short): Write 2 sentences about your weekend: ______", "(Speak): Present your daily routine."]
+                    },
+                    {
+                        title: "Session 12: Phase 2 Review",
+                        goal: "Mastery of habits and frequency.<br><br><strong class='text-emerald-900'>Elaboration:</strong> Ensures total comfort with placing adverbs correctly around both action verbs and 'to be' verbs before introducing the complexities of the past tense.<br><br><strong class='text-emerald-900'>Example:</strong> The student flawlessly corrects a peer: 'No, I don't always play tennis. I sometimes play tennis.'",
+                        material: "Review: Always, Usually, Sometimes, Never, How often.",
+                        script: "'Let's review everything about habits before we travel to the PAST!'",
+                        flow: "Warm-up: How often Q&A. Teaching: Review the percentage bar and 'To Be' rule. Practice: Comprehensive Phase 2 test worksheet. Speaking: 'Two Truths and a Lie' using frequency.",
+                        tasks: "Achieve 80%+ on the review assessment.",
+                        activities: "Find the Match: Students walk around with a card 'I never eat meat.' They must find the person with the matching card 'I am a vegetarian' by asking 'How often...'.",
+                        assessment: "Perfect adverb placement in both written and spoken forms.",
+                        mistake: "Forgetting 'do' in questions. Fix: Final intensive drill of 'How often do you...'",
+                        worksheet: ["(Fill): ___ often do you play?", "(Match): 50% -> Sometimes", "(MCQ): He ___ angry. (a. always is b. is always)", "(Build): (never / am / late / I) -> ______", "(Short): Make a question: You / play / tennis -> ______", "(Speak): Interview a partner about their habits."]
+                    }
+                ]
+            },
+            {
+                id: 3, title: "PHASE 3: THE PAST SIMPLE",
+                sessions: [
+                    {
+                        title: "Session 13: Was / Were",
+                        goal: "Students can say: 'I was happy yesterday. They were late.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> The gateway to the past. Teaches students to shift states of being from the present (am/is/are) to the past (was/were), enabling them to describe previous conditions and feelings.<br><br><strong class='text-emerald-900'>Example:</strong> Explaining an absence, the student says, 'I am sorry I wasn't here yesterday. I was sick.'",
+                        material: "Vocab: Was, Were, Yesterday. Grammar: Past of 'To Be'.",
+                        script: "'Today, I AM happy. But yesterday... I WAS happy. Repeat: I was. They ARE here today. Yesterday, they WERE here.'",
+                        flow: "Warm-up: Pronouns + To Be. Teaching: Draw a timeline. Today = Am/Is/Are. Yesterday = Was/Were. Practice: Convert present sentences to past on the worksheet. Speaking: 'Where were you yesterday?' 'I was at home.'",
+                        tasks: "Memorize the I/He/She=Was, You/We/They=Were rule.",
+                        activities: "Time Travel: Teacher shouts 'Today!' Class: 'I am happy!' Teacher shouts 'Yesterday!' Class: 'I was happy!'",
+                        assessment: "Never uses 'was' with 'They' or 'We'.",
+                        mistake: "Student: 'You was late.' Fix: Chant: 'You were, We were, They were.'",
+                        worksheet: ["(Fill): Yesterday, I ___ at home.", "(Match): They -> were", "(MCQ): He ___ sick yesterday. (a. was b. were)", "(Build): (happy / was / She / yesterday) -> ______", "(Short): Change to past: 'I am tired.' -> ______", "(Speak): Tell your partner where you were last night."]
+                    },
+                    {
+                        title: "Session 14: Regular Verbs (-ed)",
+                        goal: "Students can say: 'I played football yesterday.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Introduces the standard rule for making actions past tense. This instantly multiplies their usable vocabulary by allowing them to apply known verbs to past events.<br><br><strong class='text-emerald-900'>Example:</strong> Sharing weekend news, the student says, 'I watched a movie and I cleaned my room.'",
+                        material: "Vocab: Played, Cooked, Watched, Last night. Grammar: Adding -ed.",
+                        script: "'I play football today. Yesterday, I play-ED football. Just add E-D.'",
+                        flow: "Warm-up: Was/Were. Teaching: Introduce the regular past tense rule. Teach pronunciation differences (t vs d vs id). Practice: Add -ed to base verbs. Speaking: Describe what they did last night using regular verbs.",
+                        tasks: "Apply the -ed suffix to regular verbs for past actions.",
+                        activities: "The -ED Relay: Board is split in two. Teams run up and add -ed to a list of base verbs as fast as possible.",
+                        assessment: "Pronounces the -ed ending clearly.",
+                        mistake: "Saying 'cook-ed' with two syllables. Fix: Teach the hard 'T' sound for 'cooked' vs the 'ID' sound for 'wanted'.",
+                        worksheet: ["(Fill): Last night, I watch___ TV.", "(Match): Play -> Played", "(MCQ): I ___ my room yesterday. (a. clean b. cleaned)", "(Build): (cooked / mother / dinner / My) -> ______", "(Short): Change to past: 'I walk to school.' -> ______", "(Speak): Tell me 2 things you did yesterday."]
+                    },
+                    {
+                        title: "Session 15: Irregular Verbs 1",
+                        goal: "Students can say: 'I went to the store and ate an apple.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Tackles the most common, yet rule-breaking, verbs in English. Without knowing these irregulars, communicating daily past events (going, eating, seeing) is impossible.<br><br><strong class='text-emerald-900'>Example:</strong> A student accurately recounts, 'I went to the restaurant, I had a burger, and I saw my friend.'",
+                        material: "Vocab: Went, Ate, Had, Saw. Grammar: Irregular past forms.",
+                        script: "'Some verbs are crazy. Go is NOT go-ed. Go becomes WENT. Eat becomes ATE. We must memorize them.'",
+                        flow: "Warm-up: Regular verbs. Teaching: Introduce the top 4 irregulars (go, eat, have, see). Practice: Flashcard matching (Go -> Went). Speaking: 'Where did you go?' 'I went to...'",
+                        tasks: "Memorize the 4 critical irregular verbs.",
+                        activities: "Memory Match: Cards face down. Match the present verb to its irregular past form.",
+                        assessment: "Instantly recalls 'went' instead of 'goed'.",
+                        mistake: "Student: 'I goed to the park.' Fix: Dramatic buzzer noise. 'No goed! WENT!'",
+                        worksheet: ["(Fill): Yesterday, I ___ (go) to the park.", "(Match): Eat -> Ate", "(MCQ): I ___ a dog last night. (a. seed b. saw)", "(Build): (had / I / breakfast / big / a) -> ______", "(Short): Past of Go is: ______", "(Speak): Make a sentence with 'Ate'."]
+                    },
+                    {
+                        title: "Session 16: Past Negative (Did not)",
+                        goal: "Students can say: 'I did not go to school yesterday.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Teaches students how to deny or correct past information. It introduces the complex rule that the auxiliary 'did' absorbs the past tense, returning the main verb to its base form.<br><br><strong class='text-emerald-900'>Example:</strong> Correcting a misunderstanding, the student says, 'No, I did not eat your sandwich.'",
+                        material: "Vocab: Did not (Didn't). Grammar: Past negative restores base verb.",
+                        script: "'I went. But negative? I DID NOT... go! The verb goes back to normal! I did not GO.'",
+                        flow: "Warm-up: Irregular verbs. Teaching: Introduce the 'Did not' + Base Verb rule. Explain that 'Did' steals the past tense. Practice: Convert positive past sentences to negative. Speaking: 'Two Truths and a Lie' (Past tense).",
+                        tasks: "Remember to revert the main verb to its base form when using 'did not'.",
+                        activities: "The Denial Game: Teacher: 'You stole my car!' Student: 'No! I did not steal your car!'",
+                        assessment: "Uses base verb after 'did not' (I did not go, NOT I did not went).",
+                        mistake: "Student: 'I did not went.' Fix: Visual graphic. 'Did' acts like a vacuum cleaner, sucking the past tense out of the main verb.",
+                        worksheet: ["(Fill): I did not ___ (go) yesterday.", "(Match): Negative past -> Did not", "(MCQ): She did not ___ pizza. (a. ate b. eat)", "(Build): (not / I / watch / did / TV) -> ______", "(Short): Make negative: 'I played soccer.' -> ______", "(Speak): Tell me something you DID NOT do yesterday."]
+                    },
+                    {
+                        title: "Session 17: Past Questions (Did you...?)",
+                        goal: "Students can ask: 'Did you go to the market?'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Enables students to inquire about others' past experiences, fundamentally expanding their ability to hold engaging, two-way conversations about history and events.<br><br><strong class='text-emerald-900'>Example:</strong> Returning to class after a weekend, the student asks a friend, 'Did you see the football game last night?'",
+                        material: "Vocab: Did, Weekend. Grammar: Past question formation.",
+                        script: "'Ask me about yesterday. DID you go to the market? Repeat: Did you go?'",
+                        flow: "Warm-up: Past negatives. Teaching: Show Q formation (Did + Subject + Base Verb). Teach short answers (Yes, I did / No, I didn't). Practice: Class survey about the weekend. Speaking: Interrogate a partner about their weekend activities.",
+                        tasks: "Start past questions with 'Did' and use the base verb.",
+                        activities: "Police Interrogation: One student is the suspect. Detectives ask: 'Did you go to the bank? Did you see the money?' Suspect answers.",
+                        assessment: "Maintains base verb in the question format.",
+                        mistake: "Student: 'You went yesterday?' Fix: 'Start with the helper! DID you go?'",
+                        worksheet: ["(Fill): ___ you sleep well?", "(Match): Did you eat? -> Yes, I did.", "(MCQ): Did he ___ the movie? (a. saw b. see)", "(Build): (you / Did / study / English) -> ______ ?", "(Short): Answer: Did you go to school yesterday? ______", "(Speak): Ask your partner 3 'Did you' questions."]
+                    },
+                    {
+                        title: "Session 18: Phase 3 Review",
+                        goal: "Tell a cohesive story about a past weekend.<br><br><strong class='text-emerald-900'>Elaboration:</strong> The climax of past tense mastery. Students must synthesize regular verbs, irregular verbs, negatives, and 'to be' into a fluid, multi-sentence past narrative.<br><br><strong class='text-emerald-900'>Example:</strong> A student recounts: 'Yesterday, I went to the park. It was sunny. I played soccer, but I did not score a goal.'",
+                        material: "Review: Was/Were, Regular/Irregular, Negatives, Questions.",
+                        script: "'Tell me everything about your weekend. Where were you? What did you do?'",
+                        flow: "Warm-up: Did you...? Teaching: Map out a story structure on the board (Setup, Actions, Negative). Practice: Write a 5-sentence diary entry. Speaking: Present diary to the class. Class asks 1 follow-up question.",
+                        tasks: "Fluidly mix positive, negative, and irregular past verbs in a narrative.",
+                        activities: "The Weekend Recount: Students present their weekend. The audience must listen and write down one thing the speaker DID and one thing they DID NOT do.",
+                        assessment: "No present tense verbs used accidentally during the past recount.",
+                        mistake: "Slipping into present tense halfway through. Fix: Teacher snaps fingers or taps desk to remind them of the timeline.",
+                        worksheet: ["(Fill): Yesterday I ___ (be) tired, so I ___ (sleep).", "(Match): Did -> Past helper", "(MCQ): We ___ not play. (a. do b. did)", "(Build): (went / store / to / I / the / yesterday) -> ______", "(Short): What did you do last weekend? ______", "(Speak): Tell your weekend story."]
+                    }
+                ]
+            },
+            {
+                id: 4, title: "PHASE 4: FUTURE PLANS",
+                sessions: [
+                    {
+                        title: "Session 19: Decisions & Promises (Will)",
+                        goal: "Students can say: 'I will help you. I will open the door.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Introduces the modal 'will' for spontaneous decisions and offers. This is crucial for reacting to situations in real-time, unlike pre-planned actions.<br><br><strong class='text-emerald-900'>Example:</strong> Seeing someone drop their books, the student reacts immediately: 'I will help you pick them up!'",
+                        material: "Vocab: Will, Tomorrow, Help. Grammar: Will + Base verb.",
+                        script: "'The phone is ringing! Ah, I WILL answer it. I make a decision NOW. I will.'",
+                        flow: "Warm-up: Past vs Present timeline. Teaching: Extend timeline to the future. Introduce 'Will' for instant decisions and promises. Practice: Scenario reactions (e.g., 'It is cold.' -> 'I will close the window.'). Speaking: Make promises to each other.",
+                        tasks: "Use 'will' for immediate future reactions.",
+                        activities: "The Hero Game: Teacher gives a problem: 'I am hungry.' Student: 'I will cook for you!' Teacher: 'This bag is heavy.' Student: 'I will carry it!'",
+                        assessment: "Uses base verb after 'will' (I will go, NOT I will going).",
+                        mistake: "Student: 'I will to go.' Fix: 'No TO after will. I WILL GO.'",
+                        worksheet: ["(Fill): I ___ help you.", "(Match): Promise -> Will", "(MCQ): I will ___ the door. (a. opening b. open)", "(Build): (will / I / water / drink) -> ______", "(Short): Promise the teacher something: I will ______.", "(Speak): React to 'I am cold' using 'will'."]
+                    },
+                    {
+                        title: "Session 20: Won't & Will Questions",
+                        goal: "Students can say: 'I won't go. Will you help me?'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Teaches students how to refuse future requests and ask for future favors. Understanding 'won't' is particularly tricky due to pronunciation.<br><br><strong class='text-emerald-900'>Example:</strong> Answering a friend's request, the student says, 'No, I won't go to the party. I am tired.'",
+                        material: "Vocab: Won't (Will not). Grammar: Will negatives and questions.",
+                        script: "'Will you go? No, I WILL NOT go. I WON'T go.'",
+                        flow: "Warm-up: Will promises. Teaching: Teach the contraction 'Won't'. Teach question inversion (Will you...?). Practice: Ask favors. 'Will you open the door?' 'Yes, I will / No, I won't.' Speaking: Mingling activity asking for future favors.",
+                        tasks: "Form questions with 'Will' and respond using 'won't' for negatives.",
+                        activities: "The Favor Matrix: Ask 5 classmates 'Will you give me 5 dollars tomorrow?' Record who says 'Yes, I will' and who says 'No, I won't'.",
+                        assessment: "Pronounces 'won't' distinct from 'want'.",
+                        mistake: "Student: 'I want go.' (Meaning won't). Fix: Exaggerate the 'O' sound. W-OH-N-T.",
+                        worksheet: ["(Fill): I ___ (will not) sleep early.", "(Match): Will you? -> Yes, I will.", "(MCQ): ___ you come tomorrow? (a. Do b. Will)", "(Build): (not / I / will / late / be) -> ______", "(Short): Make question: You / help / me -> ______?", "(Speak): Ask your partner to help you tomorrow."]
+                    },
+                    {
+                        title: "Session 21: Solid Plans (Going to)",
+                        goal: "Students can say: 'I am going to visit Paris next year.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Introduces the definitive future tense. 'Going to' is used for concrete plans that have already been decided, allowing students to talk about their schedules and intentions.<br><br><strong class='text-emerald-900'>Example:</strong> Discussing the upcoming holiday, a student says, 'I bought tickets. I am going to visit my grandmother.'",
+                        material: "Vocab: Going to, Visit, Next year, Travel. Grammar: Be + going to + verb.",
+                        script: "'I have a ticket. It is a 100% plan. I AM GOING TO visit Paris.'",
+                        flow: "Warm-up: Will vs Won't. Teaching: Differentiate 'Will' (maybe/instant) from 'Going to' (solid plan/intention). Show formula. Practice: Write diary plans using 'going to'. Speaking: Discuss weekend plans.",
+                        tasks: "Use the 'to be' verb correctly before 'going to' (I am, He is).",
+                        activities: "My Next Vacation: Give students fake plane tickets. They must walk around saying 'I am going to visit [Country]. I am going to eat [Food].'",
+                        assessment: "Does not forget the 'am/is/are' before 'going to'.",
+                        mistake: "Student: 'I going to sleep.' Fix: 'Where is the glue? I AM going to.'",
+                        worksheet: ["(Fill): I ___ going to travel.", "(Match): Plan -> Going to", "(MCQ): He ___ going to play. (a. is b. am)", "(Build): (to / am / I / going / study) -> ______", "(Short): What is your plan for Sunday? ______", "(Speak): Tell me your vacation plan."]
+                    },
+                    {
+                        title: "Session 22: 'Going to' Negatives & Questions",
+                        goal: "Students can ask: 'Are you going to study tonight?'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Enables students to inquire about the plans of others and cancel their own plans. This requires complex grammatical inversion holding multiple verbs together.<br><br><strong class='text-emerald-900'>Example:</strong> A student asks a peer, 'Are you going to eat lunch now?' and understands the reply, 'No, I am not going to eat yet.'",
+                        material: "Vocab: Tonight, Tomorrow morning. Grammar: Questions with 'going to'.",
+                        script: "'Ask me about my plan! ARE YOU going to study? No, I am NOT going to study.'",
+                        flow: "Warm-up: Going to positive. Teaching: Question inversion (Are you going to...?). Practice: Interrogating partners about their evening plans. Speaking: 'Find Someone Who is going to watch TV tonight.'",
+                        tasks: "Maintain the full structure (Be + Subject + going to + verb) in questions.",
+                        activities: "The Fortune Teller: One student is a psychic. 'Are you going to have 10 children?' 'No, I am not going to...'",
+                        assessment: "Flawless question structure without dropping 'to'.",
+                        mistake: "Student: 'Are you going study?' Fix: 'Going TO study! The 'to' is the bridge!'",
+                        worksheet: ["(Fill): ___ you going to eat?", "(Match): Are they? -> Yes, they are.", "(MCQ): Is he going ___ sleep? (a. to b. in)", "(Build): (not / am / going / I / to / work) -> ______", "(Short): Question: You / going to / read -> ______?", "(Speak): Ask 3 friends about tonight."]
+                    },
+                    {
+                        title: "Session 23: Time Expressions",
+                        goal: "Students use: Tomorrow, Next week, In two days.<br><br><strong class='text-emerald-900'>Elaboration:</strong> Provides the vocabulary needed to place future plans at specific temporal points. It prevents all future actions from sounding like they are happening 'tomorrow'.<br><br><strong class='text-emerald-900'>Example:</strong> When asked about a project deadline, the student says, 'I will finish it in two days.'",
+                        material: "Vocab: Tomorrow, Next week, Next month, In [time].",
+                        script: "'Not yesterday. NEXT week. IN two days. I will travel NEXT year.'",
+                        flow: "Warm-up: Going to questions. Teaching: Map future time expressions on a calendar. Practice: Matching events to time phrases. Speaking: 'When will you graduate?' 'I will graduate next year.'",
+                        tasks: "Place the future time expression accurately at the end of the sentence.",
+                        activities: "The Time Machine: Teacher shouts 'Next Month!' Student must make a 'going to' sentence. Teacher shouts 'Tomorrow!' Student makes a 'will' promise.",
+                        assessment: "Never uses 'last' or 'yesterday' with future verbs.",
+                        mistake: "Student: 'I will go yesterday.' Fix: 'Time mismatch! Will = Future. Yesterday = Past.'",
+                        worksheet: ["(Fill): I am going to Paris ___ week.", "(Match): Future -> Tomorrow", "(MCQ): I will see you ___ two days. (a. in b. on)", "(Build): (will / tomorrow / I / study) -> ______", "(Short): Write a future time word: ______", "(Speak): Tell me a plan for next month."]
+                    },
+                    {
+                        title: "Session 24: Phase 4 Review",
+                        goal: "Students discuss life plans using Will and Going to.<br><br><strong class='text-emerald-900'>Elaboration:</strong> The critical distinction between 'intent' and 'reaction'. Students must demonstrate they understand the semantic difference between 'will' and 'going to' in active conversation.<br><br><strong class='text-emerald-900'>Example:</strong> Presenting their future, a student says: 'I am going to move to London next year (Plan). One day, I will be rich (Dream).' ",
+                        material: "Review: Will vs Going to, Future Time expressions.",
+                        script: "'Let's talk about the future! What are your dreams? What are your plans?'",
+                        flow: "Warm-up: Time expression relay. Teaching: Draw a split board: Will (Dreams/Promises) vs Going to (Plans). Practice: Worksheet identifying which to use. Speaking: Present a '5-Year Life Plan' to the class.",
+                        tasks: "Make a clear semantic choice between 'will' and 'going to' based on certainty.",
+                        activities: "The 5-Year Plan: Students draw 3 things they plan to do (Going to) and 2 things they dream of doing (Will). Present to class.",
+                        assessment: "Uses 'going to' for concrete plans and 'will' for uncertain dreams.",
+                        mistake: "Mixing the two up randomly. Fix: Ask 'Is it 100% or 50%?' to force them to choose deliberately.",
+                        worksheet: ["(Fill): I have a ticket. I ___ going to fly.", "(Match): Promise -> I will", "(MCQ): It is a dream. I ___ be rich. (a. will b. am going to)", "(Build): (year / will / next / I / English / speak) -> ______", "(Short): Write one solid plan for tomorrow: ______", "(Speak): Present your 5-Year Plan."]
+                    }
+                ]
+            },
+            {
+                id: 5, title: "PHASE 5: OPINIONS & REASONS",
+                sessions: [
+                    {
+                        title: "Session 25: Expressing Opinions (I think)",
+                        goal: "Students can say: 'I think English is easy. I don't think it is hard.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Moves students from stating objective facts to subjective thoughts. It softens statements and allows them to safely share their worldview.<br><br><strong class='text-emerald-900'>Example:</strong> During a movie discussion, a student says, 'I think the movie is good, but I think the ending is sad.'",
+                        material: "Vocab: Think, Believe, Easy, Hard, Good, Bad. Pattern: 'I think [clause].'",
+                        script: "'Is English easy? Yes! I THINK English is easy. Repeat: I think...'",
+                        flow: "Warm-up: Adjectives review. Teaching: Introduce 'I think' as a sentence starter. Practice: Show pictures (a scary movie, a fast car). Students state what they think about it. Speaking: Debate simple topics (Cats vs Dogs).",
+                        tasks: "Form complex sentences by placing a full clause after 'I think'.",
+                        activities: "The Opinion Line: Draw a line. Left = I think it is bad. Right = I think it is good. Say a word ('Pizza'). Students jump to a side and say 'I think pizza is...'",
+                        assessment: "Smooth transition between 'I think' and the subject of the clause.",
+                        mistake: "Student: 'I think is easy.' Fix: 'I think WHAT is easy? I think ENGLISH is easy.'",
+                        worksheet: ["(Fill): I ______ this movie is good.", "(Match): Hard -> Not easy", "(MCQ): I don't ___ it is bad. (a. think b. thought)", "(Build): (think / I / cats / are / good) -> ______", "(Short): What do you think about English? I think ______.", "(Speak): Give your opinion on winter."]
+                    },
+                    {
+                        title: "Session 26: Agree & Disagree",
+                        goal: "Students can say: 'I agree with you.' or 'I don't agree.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Teaches the critical social skills of aligning with or opposing another speaker politely, forming the basis of any debate or discussion.<br><br><strong class='text-emerald-900'>Example:</strong> When a peer says 'I think fast food is delicious', the student replies, 'I disagree with you. I think it is bad.'",
+                        material: "Vocab: Agree, Disagree, With, Me too.",
+                        script: "'I think pizza is good. Do you agree? Yes, I AGREE WITH YOU.'",
+                        flow: "Warm-up: 'I think' statements. Teaching: Teach 'I agree / I don't agree'. Emphasize the preposition 'with'. Practice: Teacher gives an opinion, students must agree or disagree. Speaking: Partner opinion survey.",
+                        tasks: "Respond to opinions using the correct agreement phrases.",
+                        activities: "Stand Up, Sit Down: Teacher: 'I think math is fun.' If you agree, stand up and say 'I agree!'. If not, stay seated and say 'I disagree!'",
+                        assessment: "Uses 'I agree' rather than 'I am agree'.",
+                        mistake: "Student: 'I am agree.' (Direct translation from Romance languages). Fix: 'No AM! Just I agree.'",
+                        worksheet: ["(Fill): I agree ______ you.", "(Match): Me too -> I agree", "(MCQ): I don't ___ with him. (a. agree b. am agree)", "(Build): (agree / I / do / not) -> ______", "(Short): Respond to: 'I think rain is bad.' -> ______", "(Speak): Agree and disagree with 2 statements."]
+                    },
+                    {
+                        title: "Session 27: Preferences (Prefer)",
+                        goal: "Students can say: 'I prefer coffee to tea.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Elevates vocabulary beyond just 'like'. 'Prefer' allows students to definitively rank two items in comparison to one another.<br><br><strong class='text-emerald-900'>Example:</strong> Offered a choice of drinks at a party, the student says, 'I prefer water to juice, please.'",
+                        material: "Vocab: Prefer, To. Grammar: Prefer A to B.",
+                        script: "'I like tea. But I love coffee more! I PREFER coffee TO tea.'",
+                        flow: "Warm-up: Agree/Disagree. Teaching: Introduce 'Prefer... to...'. Note the use of 'to' instead of 'than'. Practice: This or That flashcards (Summer/Winter, Dogs/Cats). Speaking: 'What do you prefer?'",
+                        tasks: "Use 'to' when comparing two nouns with 'prefer'.",
+                        activities: "This or That: Students stand in the middle. Teacher points left: 'Coffee', right: 'Tea'. Students run to their preference and shout 'I prefer [A] to [B]!'",
+                        assessment: "Uses 'to' as the linking word, not 'than'.",
+                        mistake: "Student: 'I prefer coffee than tea.' Fix: 'Prefer uses TO! Point to your toes. Prefer TO.'",
+                        worksheet: ["(Fill): I prefer summer ___ winter.", "(Match): Prefer -> Like more", "(MCQ): I prefer dogs ___ cats. (a. to b. than)", "(Build): (prefer / I / water / juice / to) -> ______", "(Short): Which do you prefer: Apple or Banana? ______", "(Speak): Ask your partner what they prefer."]
+                    },
+                    {
+                        title: "Session 28: Deep Reasons (Because + Clause)",
+                        goal: "Students can say: 'I prefer coffee because it gives me energy.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Forces students to justify their opinions using advanced vocabulary, moving them away from simple 'because it is good' reasoning.<br><br><strong class='text-emerald-900'>Example:</strong> Defending their favorite sport, a student argues, 'I prefer basketball because it is very fast and fun.'",
+                        material: "Vocab: Energy, Healthy, Fun, Boring. Grammar: Connecting Opinion + Reason.",
+                        script: "'I prefer coffee. WHY? Because it is hot. Because it gives me energy.'",
+                        flow: "Warm-up: Prefer. Teaching: Review 'because' from Phase 1, but link it directly to 'I think' or 'I prefer'. Practice: Provide the opinion, students must write 3 different reasons. Speaking: Defend your preferences in a group.",
+                        tasks: "Provide logical, full-sentence reasons for stated opinions.",
+                        activities: "The 'Why' Interrogation: Student: 'I prefer cats.' Group asks: 'Why?' Student must give two valid reasons using 'because'.",
+                        assessment: "Clauses following 'because' are grammatically complete (Subject + Verb).",
+                        mistake: "Student: 'Because good.' Fix: 'Because IT IS good.'",
+                        worksheet: ["(Fill): I prefer soccer ______ it is fun.", "(Match): Boring -> Not fun", "(MCQ): I like him ___ he is nice. (a. so b. because)", "(Build): (because / healthy / it / is) -> ______", "(Short): Why do you prefer summer? ______", "(Speak): Defend your favorite movie."]
+                    },
+                    {
+                        title: "Session 29: Asking for Opinions",
+                        goal: "Students can ask: 'What do you think about the movie?'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Teaches the fundamental question for sparking open-ended conversation. This question format prevents the conversation from stalling out with 'yes/no' answers.<br><br><strong class='text-emerald-900'>Example:</strong> Looking for a restaurant recommendation, a student asks a local, 'What do you think about the Italian place?'",
+                        material: "Vocab: About, Idea. Pattern: 'What do you think about [Noun]?'",
+                        script: "'I gave my opinion. Now, your turn! WHAT DO YOU THINK ABOUT this class?'",
+                        flow: "Warm-up: Because reasons. Teaching: Teach the question phrase. Practice: Mingling survey. Ask opinions on various global topics (fast food, smartphones). Speaking: Group discussion on a controversial but simple topic (e.g., School uniforms).",
+                        tasks: "Initiate opinion-based conversations.",
+                        activities: "Talk Show Host: Give students a microphone. They must walk the room interviewing people: 'What do you think about Justin Bieber?' 'What do you think about pizza?'",
+                        assessment: "Uses 'about' correctly in the question.",
+                        mistake: "Student: 'How do you think?' Fix: 'In English, we say WHAT do you think.'",
+                        worksheet: ["(Fill): What do you think ______ cats?", "(Match): What do you think? -> I think it is good.", "(MCQ): ___ do you think about this? (a. How b. What)", "(Build): (think / What / you / do) -> ______ ?", "(Short): Ask for an opinion on winter: ______", "(Speak): Interview the teacher."]
+                    },
+                    {
+                        title: "Session 30: Phase 5 Review",
+                        goal: "Hold a mini-debate using opinions, agreements, and reasons.<br><br><strong class='text-emerald-900'>Elaboration:</strong> Proves the student can maintain an argumentative stance, listen to an opposing view, and respond logically in English.<br><br><strong class='text-emerald-900'>Example:</strong> In a class debate, the student successfully argues: 'I disagree with you. I think books are better because they make you imagine.'",
+                        material: "Review: Think, Agree, Prefer, Because, What do you think.",
+                        script: "'Today, we debate! You must agree, disagree, and give reasons!'",
+                        flow: "Warm-up: What do you think? Teaching: Set up a debate structure. A: Opinion. B: Disagree + Reason. A: Defend. Practice: Write debate scripts. Speaking: Live mini-debates in front of the class.",
+                        tasks: "Maintain an opinionated conversation for 4 full turns.",
+                        activities: "The Great Debate: Topic: 'Books are better than TV.' Divide class in half. They must ping-pong arguments using all target vocabulary.",
+                        assessment: "Successfully counters an argument using 'I disagree because...'",
+                        mistake: "Losing structure in the heat of argument. Fix: Keep the phrases visible on the whiteboard.",
+                        worksheet: ["(Fill): I do not agree ______ you.", "(Match): Prefer -> To", "(MCQ): I think it is bad ___ it is boring. (a. because b. but)", "(Build): (about / think / you / do / What / it) -> ______ ?", "(Short): Write a strong opinion: ______", "(Speak): Debate a partner!"]
+                    }
+                ]
+            },
+            {
+                id: 6, title: "PHASE 6: COMPARISONS",
+                sessions: [
+                    {
+                        title: "Session 31: Comparatives (-er)",
+                        goal: "Students can say: 'An elephant is bigger than a mouse.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Unlocks the ability to directly measure and compare two objects, essential for shopping, describing people, and evaluating choices.<br><br><strong class='text-emerald-900'>Example:</strong> Shopping for a laptop, the student points and says, 'This computer is faster, but that one is smaller.'",
+                        material: "Vocab: Bigger, Smaller, Taller, Shorter, Than. Grammar: Adjective + er + than.",
+                        script: "'Look. The mouse is small. The elephant is BIGGER. Bigger THAN the mouse.'",
+                        flow: "Warm-up: Adjectives review. Teaching: Introduce -er suffix for short adjectives. Crucial: Teach 'than'. Practice: Compare objects in the classroom. Speaking: Compare yourself to your partner (I am taller than you).",
+                        tasks: "Apply the -er suffix and use 'than' to connect the two subjects.",
+                        activities: "The Comparison Line: Give students animal cards. They must arrange themselves in order of size by comparing: 'I am bigger than a dog but smaller than a bear.'",
+                        assessment: "Consistently uses 'than' instead of 'that' or 'then'.",
+                        mistake: "Student: 'He is taller that me.' Fix: Write 'THAN' in huge letters. Emphasize the 'N'.",
+                        worksheet: ["(Fill): He is taller ______ me.", "(Match): Big -> Bigger", "(MCQ): A car is ___ than a bike. (a. fast b. faster)", "(Build): (than / older / I / am / you) -> ______", "(Short): Compare a cat and a mouse: ______", "(Speak): Compare two people in the room."]
+                    },
+                    {
+                        title: "Session 32: Comparatives (More)",
+                        goal: "Students can say: 'Gold is more expensive than silver.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Teaches the critical syllable rule. Students learn that longer, advanced adjectives cannot take an '-er' and must use 'more', refining their grammatical precision.<br><br><strong class='text-emerald-900'>Example:</strong> Comparing two cities, a student correctly states, 'New York is more expensive than my city.'",
+                        material: "Vocab: Expensive, Beautiful, Interesting, More. Grammar: More + long adj + than.",
+                        script: "'Beautiful-er? No! Too long. MORE beautiful. Gold is MORE expensive.'",
+                        flow: "Warm-up: -er comparatives. Teaching: Explain syllable rule. Short = -er. Long = More. Practice: Sort adjectives into '-er' and 'More' columns. Speaking: Compare movies and actors.",
+                        tasks: "Identify long adjectives and use 'more' instead of adding '-er'.",
+                        activities: "Product Pitch: Give students two fake products (a cheap phone, a luxury phone). They must pitch them: 'This is more beautiful, but this is cheaper!'",
+                        assessment: "Does not double up (e.g., 'more bigger').",
+                        mistake: "Student: 'More bigger.' Fix: 'Only ONE change! Either -er OR More. Not both.'",
+                        worksheet: ["(Fill): This book is ______ interesting than that one.", "(Match): Expensive -> More expensive", "(MCQ): She is ___ beautiful than me. (a. beautifuler b. more)", "(Build): (more / Gold / is / expensive) -> ______", "(Short): Compare Math and Art: ______", "(Speak): Compare 2 cars."]
+                    },
+                    {
+                        title: "Session 33: Irregular Comparatives",
+                        goal: "Students can say: 'Pizza is better than vegetables.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Covers the essential irregular adjectives (good/bad). Since these are the most commonly used descriptors, mastering their comparative forms is vital.<br><br><strong class='text-emerald-900'>Example:</strong> Choosing a movie, the student says, 'Let's watch the action movie. It is better than the horror movie.'",
+                        material: "Vocab: Good/Better, Bad/Worse.",
+                        script: "'Good-er? Bad-er? No! Good becomes BETTER. Bad becomes WORSE.'",
+                        flow: "Warm-up: More vs -er. Teaching: Memorize Better and Worse. Practice: Rewrite sentences to use irregulars. Speaking: Debate what is 'better' and what is 'worse' for your health.",
+                        tasks: "Memorize and apply 'better' and 'worse' accurately.",
+                        activities: "Better or Worse?: Teacher names a life event ('Winning the lottery' / 'Getting sick'). Students shout 'That is better/worse than...' and finish the sentence.",
+                        assessment: "Instantly recalls 'better' instead of 'more good'.",
+                        mistake: "Student: 'It is more good.' Fix: Cross it out. 'Better' is the only word allowed.",
+                        worksheet: ["(Fill): This is ______ (good) than that.", "(Match): Bad -> Worse", "(MCQ): Health is ___ than money. (a. better b. gooder)", "(Build): (worse / is / This / that / than) -> ______", "(Short): Past of Good for comparisons: ______", "(Speak): What is better: Money or Love?"]
+                    },
+                    {
+                        title: "Session 34: Superlatives (-est)",
+                        goal: "Students can say: 'He is the tallest in the class.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Moves from comparing two things to ranking an item as the absolute extreme within a group. It introduces the mandatory use of the definite article 'the'.<br><br><strong class='text-emerald-900'>Example:</strong> Bragging playfully to friends, the student says, 'I am the fastest runner on the team.'",
+                        material: "Vocab: Tallest, Biggest, Smallest, The. Grammar: The + adj + est.",
+                        script: "'He is taller than you. But John is THE TALLEST of everyone! Number 1!'",
+                        flow: "Warm-up: Better/Worse. Teaching: Introduce the extreme end of comparison. Teach that 'The' is mandatory. Practice: Identify 'the tallest', 'the oldest' in the class. Speaking: Group brag: 'I am the fastest.'",
+                        tasks: "Use 'The' before every superlative.",
+                        activities: "Guinness World Records: Hand out fact cards. Students must announce the records: 'The cheetah is the fastest animal!'",
+                        assessment: "Never drops 'The' before the superlative.",
+                        mistake: "Student: 'He is tallest.' Fix: 'He is THE tallest. Number one gets a THE.'",
+                        worksheet: ["(Fill): Mount Everest is ______ highest mountain.", "(Match): Tall -> The tallest", "(MCQ): She is ___ girl in school. (a. the smartest b. smarter)", "(Build): (am / the / I / oldest) -> ______", "(Short): Who is the tallest in your family? ______", "(Speak): Make a superlative sentence about an animal."]
+                    },
+                    {
+                        title: "Session 35: Superlatives (The most)",
+                        goal: "Students can say: 'This is the most expensive car.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Completes the comparison rules by applying the long-syllable rule to superlatives. Essential for giving high praise or harsh criticism.<br><br><strong class='text-emerald-900'>Example:</strong> Recommending a tourist spot, the student says, 'You must visit the museum. It is the most beautiful place in the city.'",
+                        material: "Vocab: The most, The best, The worst. Grammar: The most + long adj.",
+                        script: "'Just like MORE, we have THE MOST for long words. The most beautiful!'",
+                        flow: "Warm-up: -est superlatives. Teaching: Apply the syllable rule to superlatives. Introduce The Best / The Worst. Practice: Rank 3 items (Good, Better, The Best). Speaking: 'What is the most beautiful city in your country?'",
+                        tasks: "Accurately rank items using comparatives and superlatives sequentially.",
+                        activities: "The Critics: Show 3 movies. Students must review them: 'Movie A is good. Movie B is better. But Movie C is the best!'",
+                        assessment: "Uses 'the most' correctly without adding '-est' to the adjective.",
+                        mistake: "Student: 'The most beautifulest.' Fix: 'One change only! The most.'",
+                        worksheet: ["(Fill): This is the ______ expensive watch.", "(Match): Good -> The best", "(MCQ): It is the ___ movie ever. (a. worst b. badest)", "(Build): (most / This / is / beautiful / the) -> ______", "(Short): What is the best food? ______", "(Speak): Tell me the most interesting place you know."]
+                    },
+                    {
+                        title: "Session 36: Phase 6 Review",
+                        goal: "Compare anything fluently using all rules.<br><br><strong class='text-emerald-900'>Elaboration:</strong> Validates the student's ability to instinctively choose between -er, more, -est, and most based on syllable length and context without freezing.<br><br><strong class='text-emerald-900'>Example:</strong> The student seamlessly argues, 'This car is faster and more beautiful, but it is the most expensive.'",
+                        material: "Review: -er, more, better/worse, -est, the most, the best/worst.",
+                        script: "'Today, we find out who is the best, the fastest, and the smartest!'",
+                        flow: "Warm-up: Quick fire best/worst. Teaching: Board review chart of all forms. Practice: 'Olympics' worksheet (comparing athletes' stats). Speaking: Show and Tell comparison. Bring 2 objects and compare them, then declare the 'best'.",
+                        tasks: "Switch between comparatives and superlatives flawlessly.",
+                        activities: "Top Trumps: Play a card game where students compare stats (Speed, Size, Price) using full comparative sentences to win the hand.",
+                        assessment: "Consistently uses 'than' for comparatives and 'the' for superlatives.",
+                        mistake: "Mixing 'than' into superlative sentences. Fix: Clear distinction: 2 things = than. 3+ things = the.",
+                        worksheet: ["(Fill): He is better ______ me.", "(Match): The most -> Beautiful", "(MCQ): She is ___ than him. (a. smarter b. the smartest)", "(Build): (best / the / Pizza / is / food) -> ______", "(Short): Write 3 forms of Good: Good, ____, ____.", "(Speak): Compare your phone to the teacher's phone."]
+                    }
+                ]
+            },
+            {
+                id: 7, title: "PHASE 7: REAL CONVERSATION",
+                sessions: [
+                    {
+                        title: "Session 37: Follow-up Questions",
+                        goal: "Students can ask: 'Oh really? Why did you go there?'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Transforms the student from a passive answerer into an active conversational partner. Follow-up questions prove active listening and keep the interaction alive.<br><br><strong class='text-emerald-900'>Example:</strong> After hearing a friend say 'I bought a new car,' the student immediately leans in and asks, 'Wow! What color is it?'",
+                        material: "Vocab: Really?, Wow, Why, Who with. Grammar: Maintaining a dialogue.",
+                        script: "'If I say I went to Paris, do not just say OK. Ask me! Really? Who with?'",
+                        flow: "Warm-up: Past tense review. Teaching: Teach reactive words (Really, Wow) and follow-up WH-questions. Practice: A statement is read, students race to shout a valid follow-up question. Speaking: Partner interviews requiring 3 follow-ups.",
+                        tasks: "Do not let a conversation die after one answer.",
+                        activities: "The Endless Conversation: Student A says 1 sentence. Student B MUST ask a question. Student A answers. Student B asks ANOTHER question. How long can they go?",
+                        assessment: "Successfully links a follow-up question to the specific detail of the previous answer.",
+                        mistake: "Asking unrelated questions. Fix: Train them to listen for the missing WH-information in the statement.",
+                        worksheet: ["(Fill): 'I bought a car.' 'Oh ______? What color?'", "(Match): I went to Paris. -> Who with?", "(MCQ): 'I am sad.' (a. Why? b. Where?)", "(Build): (did / Why / go / you / there) -> ______ ?", "(Short): Write a follow up to: 'I ate pizza.' -> ______", "(Speak): Keep a conversation going for 4 turns."]
+                    },
+                    {
+                        title: "Session 38: Returning the Question",
+                        goal: "Students can say: 'I am fine, thank you. And you? / What about you?'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Teaches conversational reciprocity. Without this skill, students sound like they are in an interrogation rather than a friendly chat.<br><br><strong class='text-emerald-900'>Example:</strong> When asked 'What did you do this weekend?', the student answers the question and then smoothly adds, 'What about you?'",
+                        material: "Vocab: And you?, What about you?, How about you?",
+                        script: "'Conversation is like ping-pong! I hit the ball, you hit it back. AND YOU?'",
+                        flow: "Warm-up: Follow-ups. Teaching: Teach the concept of returning the same question to keep parity. Practice: Ping-pong drills with simple preferences. Speaking: Mingle and discuss weekend plans, always returning the question.",
+                        tasks: "Automatically append 'And you?' after answering a personal question.",
+                        activities: "Ping-Pong Ball: Pass a literal ball. 'I like blue. What about you?' (Throws ball). 'I like red. What about you?' (Throws).",
+                        assessment: "Never finishes an answer without returning the prompt in the activity.",
+                        mistake: "Silence after answering. Fix: Teacher stares silently and points at them until they say 'And you?'.",
+                        worksheet: ["(Fill): I am good. What ______ you?", "(Match): And you? -> How about you?", "(MCQ): I like dogs. ___? (a. And you b. Are you)", "(Build): (about / What / you) -> ______ ?", "(Short): Reply to 'I am tired. And you?' -> ______", "(Speak): Practice the ping-pong dialogue."]
+                    },
+                    {
+                        title: "Session 39: Making Modifications",
+                        goal: "Students can say: 'I want a burger, but no onions, please.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Takes standard survival English (ordering food) to the next level of real-world functionality by allowing students to customize and negotiate requests.<br><br><strong class='text-emerald-900'>Example:</strong> Ordering at a café, the student confidently says, 'I would like a coffee, but without milk, please.'",
+                        material: "Vocab: Without, Extra, Instead of, No [ingredient].",
+                        script: "'I want a burger. But I hate onions! I say: A burger, NO onions please.'",
+                        flow: "Warm-up: Restaurant vocab (Level 1). Teaching: Elevate the restaurant roleplay by adding complex demands. Practice: Read complex orders. Speaking: Roleplay a difficult customer at a restaurant.",
+                        tasks: "Modify standard requests using 'without' or 'no'.",
+                        activities: "The Difficult Customer: Cashier takes orders. Customer is given a secret card ('Allergic to cheese, wants extra tomato'). They must communicate this clearly.",
+                        assessment: "Successfully communicates the modification and the cashier confirms it.",
+                        mistake: "Using wrong prepositions ('Burger out onions'). Fix: Drill 'Without' or 'No'.",
+                        worksheet: ["(Fill): I want coffee ______ sugar, please.", "(Match): Extra -> More", "(MCQ): A pizza, ___ cheese please. (a. no b. not)", "(Build): (without / please / ice / Water) -> ______", "(Short): How do you ask for more ketchup? ______", "(Speak): Order a difficult meal."]
+                    },
+                    {
+                        title: "Session 40: Explaining Problems",
+                        goal: "Students can say: 'Excuse me, my room is dirty. It does not work.'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Crucial for travel and survival. It equips students to complain politely but effectively when services or products fail.<br><br><strong class='text-emerald-900'>Example:</strong> The student approaches a hotel reception desk and says, 'Excuse me, the air conditioning does not work.'",
+                        material: "Vocab: Broken, Dirty, Doesn't work, Missing. Grammar: Present simple negatives.",
+                        script: "'You are at a hotel. The TV is dead. What do you say? The TV DOES NOT WORK.'",
+                        flow: "Warm-up: Modifications. Teaching: Teach problem vocabulary. Focus on 'does not work' for electronics. Practice: Match pictures of problems to phrases. Speaking: Hotel reception roleplay. 'I have a problem...'",
+                        tasks: "Politely but firmly explain a specific physical issue.",
+                        activities: "Hotel Complaints: Give out 'Room problem' cards (No towels, Broken bed). Students must go to the 'Reception desk' (Teacher) and explain the problem clearly.",
+                        assessment: "Uses 'does not work' correctly for electronics instead of 'is broken'.",
+                        mistake: "Student: 'The TV is no work.' Fix: 'Does not! The TV does not work.'",
+                        worksheet: ["(Fill): The TV does not ______.", "(Match): Dirty -> Needs cleaning", "(MCQ): The window is ___. (a. broken b. break)", "(Build): (my / work / phone / not / does) -> ______", "(Short): How do you say a towel is not there? It is ______.", "(Speak): Complain to the hotel manager."]
+                    },
+                    {
+                        title: "Session 41: Invitations & Plans",
+                        goal: "Students can say: 'Do you want to go to the cinema with me?'<br><br><strong class='text-emerald-900'>Elaboration:</strong> Enables social initiation. Students learn to navigate the delicate steps of finding out if someone is free, proposing an activity, and handling the response.<br><br><strong class='text-emerald-900'>Example:</strong> A student messages a classmate: 'Are you free tomorrow? Do you want to study together?'",
+                        material: "Vocab: Invite, Free, Busy, Let's. Pattern: 'Do you want to [verb] with me?'",
+                        script: "'Are you free on Saturday? Let's go to the park! DO YOU WANT TO go?'",
+                        flow: "Warm-up: Time expressions. Teaching: Teach how to check schedules (Are you free?) and make invitations. Teach accepting/declining politely. Practice: Fill in schedule diaries. Speaking: Walk around inviting people to events until you find someone free.",
+                        tasks: "Successfully navigate an invitation interaction (Check time -> Invite -> Accept/Decline).",
+                        activities: "The Social Butterfly: Students have a calendar with busy/free days. They must find a partner who is free on the same day to go to a concert.",
+                        assessment: "Uses polite declination ('Sorry, I am busy') rather than blunt rejection.",
+                        mistake: "Student: 'You go cinema?' Fix: 'Do you want to go!'",
+                        worksheet: ["(Fill): Are you ______ on Friday?", "(Match): Let's go -> Yes, okay.", "(MCQ): ___ you want to eat? (a. Do b. Are)", "(Build): (with / to / come / me / want / Do / you) -> ______ ?", "(Short): Politely say no to an invite: ______", "(Speak): Invite your friend to the park."]
+                    },
+                    {
+                        title: "Session 42: Phase 7 Review",
+                        goal: "Sustain a 2-minute real-world interaction.<br><br><strong class='text-emerald-900'>Elaboration:</strong> Tests the student's endurance and agility. Can they use all their conversational tools (follow-ups, returns, requests) without breaking down when the script disappears?<br><br><strong class='text-emerald-900'>Example:</strong> The student successfully navigates a mock party, introducing themselves, asking questions, and inviting a peer to a future event entirely in English.",
+                        material: "Review: Follow-ups, And you?, Modifications, Problems, Invitations.",
+                        script: "'Today is real life! No scripts! Talk, ask, complain, invite!'",
+                        flow: "Warm-up: Ping-pong questions. Teaching: Combine all conversational tools into a massive roleplay map. Practice: Improv exercises. Speaking: The 'Party' roleplay. Students mingle, chat, invite, and deal with unexpected 'problem' cards.",
+                        tasks: "Fluidly utilize all conversational tools without breaking character.",
+                        activities: "The Dinner Party: A simulated party. Students must introduce themselves, ask follow-up questions, order drinks (with modifications), and invite someone to a future event.",
+                        assessment: "Maintains English continuity for 2 full minutes without teacher intervention.",
+                        mistake: "Freezing. Fix: Remind them to use 'What about you?' as a lifeline to pass the turn.",
+                        worksheet: ["(Fill): I am busy, ______ about Sunday?", "(Match): Really? -> Follow up", "(MCQ): Excuse me, the door is ___. (a. break b. broken)", "(Build): (you / free / tomorrow / Are) -> ______ ?", "(Short): Write a 3-line dialogue invite: ______", "(Speak): Do the Dinner Party roleplay."]
+                    }
+                ]
+            },
+            {
+                id: 8, title: "PHASE 8: MASTERY & ASSESSMENT",
+                sessions: [
+                    {
+                        title: "Session 43: Grammar Mega Review",
+                        goal: "Master Past vs Present vs Future.<br><br><strong class='text-emerald-900'>Elaboration:</strong> The ultimate test of grammatical agility. Students must prove they can shift temporal states rapidly without confusing their auxiliary verbs (did, do, will, was).<br><br><strong class='text-emerald-900'>Example:</strong> Without hesitating, the student says, 'Yesterday I played tennis, today I am tired, and tomorrow I will rest.'",
+                        material: "Review: Phase 2, 3, 4 (Frequency, Past, Future).",
+                        script: "'Time travel! Yesterday I went, today I go, tomorrow I will go!'",
+                        flow: "Warm-up: Verb tense chanting. Teaching: Draw the ultimate timeline on the board. Test rapid tense-shifting. Practice: 'Fill in the blanks' shifting paragraphs through time. Speaking: Tell a story that involves past memories, present habits, and future plans.",
+                        tasks: "Accurately shift verbs across 3 tenses without confusion.",
+                        activities: "The Time Spinner: Spin a wheel (Past, Present, Future). Draw a verb card (Eat). Student must immediately make a correct sentence based on the wheel.",
+                        assessment: "Zero mixing of future time words with past tense verbs.",
+                        mistake: "Using past tense with future time (I went tomorrow). Fix: Strict timeline visual correction.",
+                        worksheet: ["(Fill): Yesterday I ___, tomorrow I ___.", "(Match): Last week -> Past", "(MCQ): I ___ to Paris next year. (a. went b. will go)", "(Build): (usually / I / study / night / at) -> ______", "(Short): Shift to past: 'I am happy.' -> ______", "(Speak): Tell a past, present, and future sentence."]
+                    },
+                    {
+                        title: "Session 44: Expression Mega Review",
+                        goal: "Master Opinions, Reasons, and Comparisons.<br><br><strong class='text-emerald-900'>Elaboration:</strong> Consolidates the ability to argue and persuade. Students must prove they can string together an opinion, a comparative measure, and a logical reason.<br><br><strong class='text-emerald-900'>Example:</strong> A student successfully argues, 'I think dogs are better than cats because they are more friendly.'",
+                        material: "Review: Phase 5, 6 (Think, Because, -er, -est).",
+                        script: "'What do you think is the best thing in the world? Why?'",
+                        flow: "Warm-up: This or That. Teaching: Review superlative rules and opinion framing. Practice: Write persuasive paragraphs. Speaking: Sell a product to the class by comparing it to competitors and giving reasons.",
+                        tasks: "Deliver a persuasive argument using target grammar.",
+                        activities: "The Sales Pitch: Give groups a useless object (a broken pen). They must convince the class it is 'the best' and 'better than a new pen because...'",
+                        assessment: "Successfully links comparatives with 'because' reasons.",
+                        mistake: "Forgetting 'the' before superlatives during speech. Fix: Audience must raise hands if speaker drops 'the'.",
+                        worksheet: ["(Fill): I think this is ___ best car.", "(Match): More expensive -> Than", "(MCQ): I prefer dogs ___ cats. (a. to b. than)", "(Build): (is / English / think / I / fun / because / useful / is / it) -> ______", "(Short): Defend pizza as the best food: ______", "(Speak): Pitch a product to the class."]
+                    },
+                    {
+                        title: "Session 45: Conversational Mega Review",
+                        goal: "Master Ping-Pong dialogue and Follow-ups.<br><br><strong class='text-emerald-900'>Elaboration:</strong> The final polishing of the student's social English. Ensures they will not sound robotic when speaking with native speakers in the real world.<br><br><strong class='text-emerald-900'>Example:</strong> The student fluidly controls a conversation, answering a question, giving a reason, and then bouncing the topic back to their partner with 'And you?'",
+                        material: "Review: Phase 7 (Follow-ups, And you?, Invites).",
+                        script: "'Don't let the conversation die! Keep the ball in the air!'",
+                        flow: "Warm-up: Ping-pong. Teaching: Review conversational lifelines. Practice: Transcribe a messy conversation and fix the missing follow-ups. Speaking: 3-minute blind dates.",
+                        tasks: "Sustain uninterrupted dialogue using all learned techniques.",
+                        activities: "Speed Dating (Friendship): 2 minutes per partner. Must find 3 things they both like and agree on, using follow-up questions. Rotate.",
+                        assessment: "Conversation flows naturally without awkward silences.",
+                        mistake: "Interrogating instead of conversing. Fix: Remind them to offer their own information before asking the next question.",
+                        worksheet: ["(Fill): 'I like tea.' '___ really? Me too!'", "(Match): And you? -> Keep talking", "(MCQ): Are you ___ on Friday? (a. free b. time)", "(Build): (to / want / you / Do / play) -> ______ ?", "(Short): Write 2 follow-up questions to 'I bought a dog.' -> ______", "(Speak): Do the speed dating activity."]
+                    },
+                    {
+                        title: "Session 46: Test Preparation",
+                        goal: "Familiarize with test format and ease anxiety.<br><br><strong class='text-emerald-900'>Elaboration:</strong> Reduces cognitive load on test day so students can focus entirely on producing language rather than trying to understand instructions.<br><br><strong class='text-emerald-900'>Example:</strong> The student easily navigates the mock exam, knowing exactly how to handle the fill-in-the-blank and speaking prompts.",
+                        material: "All Level 2 Content.",
+                        script: "'The test is easy because you know everything! Let's practice.'",
+                        flow: "Warm-up: Deep breathing. Teaching: Walk through the sections of the written and speaking exams. Practice: Take a mini mock-test. Speaking: Practice the exact speaking test format with a partner.",
+                        tasks: "Understand expectations and clarify any remaining doubts.",
+                        activities: "Mock Test Rotation: Stations set up for Grammar, Reading, and Speaking practice. Students rotate and get immediate feedback.",
+                        assessment: "Identifies weak points for final home study.",
+                        mistake: "Rushing. Fix: Teach test-taking strategies (read the whole sentence first).",
+                        worksheet: ["(Fill): General grammar review.", "(Match): General vocabulary review.", "(MCQ): Tense selection.", "(Build): Complex sentence building.", "(Short): Reading comprehension.", "(Speak): Practice test prompt."]
+                    },
+                    {
+                        title: "Session 47: Speaking Test",
+                        goal: "Demonstrate conversational fluency.<br><br><strong class='text-emerald-900'>Elaboration:</strong> The capstone spoken assessment. Proves the student has transitioned from Level 1 survival English to Level 2 elementary conversation.<br><br><strong class='text-emerald-900'>Example:</strong> In a 7-minute dialogue, the student tells a story about their past, explains a future plan, and defends an opinion while maintaining eye contact.",
+                        material: "1-on-1 Teacher Assessment.",
+                        script: "'Take a breath. Just talk to me like a friend.'",
+                        flow: "Warm-up: Icebreaker. Teaching: None. Practice: Independent review. Speaking: 5-7 minute interview. 1) Intro & Habits. 2) Past story. 3) Future plans. 4) Opinion & Defense.",
+                        tasks: "Communicate fluidly across all tenses and defend an opinion.",
+                        activities: "Silent Study/Games: Non-testing students play English board games quietly.",
+                        assessment: "Graded on Tense Accuracy, Vocabulary Use, Conversational Flow, and Pronunciation.",
+                        mistake: "Nervous translation. Fix: Gentle encouragement to 'stay in English'.",
+                        worksheet: ["(1) Introduce habits", "(2) Tell a past story", "(3) Explain future plans", "(4) Give and defend opinion", "(5) Keep conversation going", "(6) Final Grade"]
+                    },
+                    {
+                        title: "Session 48: Final Written Exam",
+                        goal: "Demonstrate grammatical and reading mastery.<br><br><strong class='text-emerald-900'>Elaboration:</strong> The final quantitative measure of their literacy. Validates that they can read, process, and accurately write the structures they've been speaking.<br><br><strong class='text-emerald-900'>Example:</strong> The student completes a rigorous 45-minute exam, scoring highly on tense shifting and multi-clause sentence building.",
+                        material: "Comprehensive Level 2 Written Test.",
+                        script: "'You have worked so hard for 6 months. Show me your brilliance!'",
+                        flow: "Warm-up: Hand out tests. Teaching: Read instructions. Practice: 45 minutes silent testing. Speaking: Post-test celebration and certificate hand-out.",
+                        tasks: "Complete the exam independently.",
+                        activities: "Graduation: Hand out 'Level 2 Elementary' certificates. Take class photo. Discuss goals for Level 3.",
+                        assessment: "Pass mark: 75% to enter Level 3.",
+                        mistake: "Careless spelling/grammar errors. Fix: Remind to double-check work.",
+                        worksheet: ["(Fill): 20 Question Grammar Fill", "(Match): 10 Vocab Matches", "(MCQ): 15 Tense & Conjunction Questions", "(Build): 5 Multi-clause sentences", "(Short): Paragraph Reading & Writing", "(Speak): Graduation!"]
+                    }
+                ]
+            }
+        ];
+
+        let progressionChartInstance = null;
+        let expandedPhaseId = 1; 
+        let selectedSession = { phase: 1, index: 0 }; 
+
+        document.addEventListener("DOMContentLoaded", initApp);
+
+        function initApp() {
+            renderProgressionChart();
+            renderSidebar();
+            loadSession(1, 0); 
+        }
+
+        function renderProgressionChart() {
+            const ctx = document.getElementById('progressionChart').getContext('2d');
+            progressionChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Start (Ph 1)', 'Mid (Ph 4)', 'Goal (Ph 8)'],
+                    datasets: [
+                        { label: 'Vocab', data: [30, 65, 98], backgroundColor: '#10b981', borderRadius: 4 }, 
+                        { label: 'Grammar', data: [20, 60, 95], backgroundColor: '#3b82f6', borderRadius: 4 }, 
+                        { label: 'Speaking', data: [40, 70, 98], backgroundColor: '#f59e0b', borderRadius: 4 }, 
+                        { label: 'Comprehension', data: [35, 75, 95], backgroundColor: '#8b5cf6', borderRadius: 4 } 
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, max: 100, ticks: { stepSize: 50, font: { size: 10 } }, grid: { color: 'rgba(0,0,0,0.05)' }, border: { display: false } },
+                        x: { grid: { display: false }, ticks: { font: { weight: '600', size: 11 }, color: '#57534e' }, border: { display: false } }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10, family: "'Inter', sans-serif" } } },
+                        tooltip: { callbacks: { label: function(context) { return ` ${context.dataset.label}: ${context.raw}%`; } } }
+                    }
+                }
+            });
+        }
+
+        function togglePhase(phaseId) {
+            expandedPhaseId = expandedPhaseId === phaseId ? null : phaseId;
+            renderSidebar();
+        }
+
+        function renderSidebar() {
+            const container = document.getElementById('sidebar-container');
+            container.innerHTML = '';
+            curriculumData.forEach(phase => {
+                const phaseBtn = document.createElement('button');
+                const isExpanded = phase.id === expandedPhaseId;
+                phaseBtn.className = `w-full text-left px-4 py-3 font-bold flex justify-between items-center transition-colors border-b border-stone-200 ${isExpanded ? 'bg-emerald-50 text-emerald-800' : 'bg-white text-stone-700 hover:bg-stone-50'}`;
+                phaseBtn.innerHTML = `<span class="text-sm uppercase tracking-wide truncate pr-2">${phase.title}</span><span class="transform transition-transform text-xs ${isExpanded ? 'rotate-180 text-emerald-600' : 'text-stone-400'}">▼</span>`;
+                phaseBtn.onclick = () => togglePhase(phase.id);
+                container.appendChild(phaseBtn);
+
+                const sessionsDiv = document.createElement('div');
+                sessionsDiv.className = isExpanded ? 'block' : 'hidden';
+                sessionsDiv.classList.add('bg-stone-50', 'border-b', 'border-stone-200');
+                phase.sessions.forEach((session, idx) => {
+                    const sessionBtn = document.createElement('button');
+                    const isSelected = selectedSession && selectedSession.phase === phase.id && selectedSession.index === idx;
+                    sessionBtn.className = `w-full text-left px-6 py-2.5 text-sm transition-colors block border-l-4 ${isSelected ? 'bg-white text-emerald-700 font-semibold border-emerald-500 shadow-sm' : 'text-stone-600 border-transparent hover:bg-stone-100'}`;
+                    sessionBtn.textContent = session.title;
+                    sessionBtn.onclick = () => loadSession(phase.id, idx);
+                    sessionsDiv.appendChild(sessionBtn);
+                });
+                container.appendChild(sessionsDiv);
+            });
+        }
+
+        function loadSession(phaseId, sessionIndex) {
+            selectedSession = { phase: phaseId, index: sessionIndex };
+            renderSidebar(); 
+            const phase = curriculumData.find(p => p.id === phaseId);
+            const session = phase.sessions[sessionIndex];
+
+            document.getElementById('empty-state').classList.add('hidden');
+            document.getElementById('session-display').classList.remove('hidden');
+            document.getElementById('session-display').classList.add('flex');
+
+            document.getElementById('display-phase-badge').textContent = phase.title;
+            document.getElementById('display-session-title').textContent = session.title;
+            document.getElementById('content-goal').innerHTML = session.goal || "";
+            document.getElementById('content-material').innerHTML = session.material || "";
+            document.getElementById('content-script').innerHTML = session.script ? `"${session.script}"` : "";
+            document.getElementById('content-flow').innerHTML = session.flow || "";
+            document.getElementById('content-tasks').innerHTML = session.tasks || "";
+            document.getElementById('content-activities').innerHTML = session.activities || "";
+            document.getElementById('content-assessment').innerHTML = session.assessment || "";
+            document.getElementById('content-mistake').innerHTML = session.mistake || "";
+            document.getElementById('content-worksheet').innerHTML = (session.worksheet || []).map(w => `<li class="ml-5 list-disc text-stone-700">${w}</li>`).join('');
+
+            switchTab('goal');
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = 'tab-btn px-5 py-3 font-semibold text-sm transition-colors border-b-2 border-transparent text-stone-500 hover:text-stone-800 hover:border-stone-300 focus:outline-none';
+            });
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            document.getElementById(`btn-tab-${tabName}`).className = 'tab-btn px-5 py-3 font-bold text-sm transition-colors border-b-2 border-emerald-600 text-emerald-700 focus:outline-none';
+        }
+    </script>
+</body>
+</html>
