@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagasa English Course - Level 4 Speaking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@1,500&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; color: #1c1917; overflow-x: hidden; }
+        .bg-elegant-gradient { background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 50%, #eef2ff 100%); }
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: -0.06em;
+            background: linear-gradient(to right, #0f766e, #4338ca);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased bg-elegant-gradient min-h-screen flex flex-col">
+
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-indigo-100/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+    <nav class="w-full px-6 py-5 md:px-12 flex flex-col xl:flex-row items-center justify-between z-50 sticky top-0 bg-fafaf9/90 backdrop-blur-md border-b border-stone-200/50 shadow-sm">
+        <div class="flex items-center gap-2 mb-4 xl:mb-0 cursor-pointer group" onclick="window.location.href='index.html'">
+            <div class="relative flex items-center justify-center w-12 h-12">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full transform group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
+                    <defs>
+                        <linearGradient id="logo-grad" x1="0" y1="0" x2="100" y2="100">
+                            <stop offset="0%" stop-color="#0d9488"/>
+                            <stop offset="100%" stop-color="#4f46e5"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M15 15C8.37258 15 3 20.3726 3 28.5C3 36.6274 8.37258 42 15 42L5 55L25 42H70C76.6274 42 82 36.6274 82 28.5C82 20.3726 76.6274 15 70 15H15Z" fill="#312e81" fill-opacity="0.1"/>
+                    <path d="M25 25C13.9543 25 5 33.9543 5 45C5 56.0457 13.9543 65 25 65L10 85L35 65H80C91.0457 65 100 56.0457 100 45C100 33.9543 91.0457 25 80 25H25Z" fill="url(#logo-grad)"/>
+                    <rect x="26" y="32" width="48" height="8" rx="4" fill="#fafaf9"/>
+                    <rect x="38" y="44" width="18" height="8" rx="4" fill="#fafaf9"/>
+                    <rect x="38" y="56" width="10" height="8" rx="4" fill="#fafaf9"/>
+                    <rect x="52" y="56" width="4" height="8" rx="4" fill="#fafaf9"/>
+                </svg>
+            </div>
+            <span class="text-3xl font-black logo-text">TAGASA</span>
+        </div>
+        
+        <div class="flex items-center gap-1 md:gap-4 flex-wrap justify-center">
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Video <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="vdoc.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Documentation</a>
+                        <a href="vedu.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Galeri <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="gmemo.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Memories</a>
+                        <a href="gmaterial.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Material</a>
+                        <a href="gedu.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-indigo-700 bg-indigo-50 transition-all flex items-center gap-1.5">
+                    Speaking <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="speaking1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                        <a href="speaking2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                        <a href="speaking3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                        <a href="speaking4.html" class="px-5 py-2.5 text-sm font-medium text-indigo-600 bg-indigo-50">Level 4</a>
+                        <a href="speaking5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                        <a href="speaking6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                        <a href="speaking7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                        <a href="speaking8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Reading <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="reading1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                        <a href="reading2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                        <a href="reading3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                        <a href="reading4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                        <a href="reading5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                        <a href="reading6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                        <a href="reading7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                        <a href="reading8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Writing <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="writing1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                        <a href="writing2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                        <a href="writing3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                        <a href="writing4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                        <a href="writing5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                        <a href="writing6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                        <a href="speaking7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                        <a href="speaking8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Worksheet <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="worksheet1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                        <a href="worksheet2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                        <a href="worksheet3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                        <a href="worksheet4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                        <a href="worksheet5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                        <a href="worksheet6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                        <a href="worksheet7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                        <a href="worksheet8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-12">
+        <section class="text-center w-full max-w-4xl mx-auto mb-12">
+            <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 text-sm font-bold tracking-widest uppercase mb-6 border border-indigo-100">Speaking • Level 4</div>
+            <h1 style="font-family: 'Montserrat', sans-serif;" class="text-4xl md:text-5xl font-black text-stone-900 tracking-tighter mb-4 uppercase">
+                Intermediate Speaking
+            </h1>
+            <p class="text-lg text-stone-600 leading-relaxed">
+                Connect complex ideas. Practice using relative clauses to describe, master hypothetical conditions, utilize formal connectors, and perform structured professional interviews.
+            </p>
+        </section>
+
+        <!-- Category Tabs -->
+        <div class="flex flex-wrap justify-center gap-2 mb-10 border-b border-stone-200">
+            <button onclick="showTab('hypothetical')" id="btn-hypothetical" class="px-6 py-3 font-bold text-indigo-700 border-b-2 border-indigo-600">Hypotheticals</button>
+            <button onclick="showTab('connectors')" id="btn-connectors" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Connectors</button>
+            <button onclick="showTab('polite')" id="btn-polite" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Polite Inquiries</button>
+            <button onclick="showTab('professional')" id="btn-professional" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Professional Basics</button>
+            <button onclick="showTab('negotiation')" id="btn-negotiation" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Negotiation</button>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 p-8 md:p-12 min-h-[500px]">
+            
+            <!-- HYPOTHETICALS -->
+            <div id="tab-hypothetical" class="tab-content block">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">🔮</span> Unreal Present (2nd Conditional)</h3>
+                <p class="text-stone-500 mb-6 italic">Answer the prompts aloud using 'If I had/were..., I would...'.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
+                        <h4 class="font-bold text-stone-700 mb-4">Task 1: If I won the lottery...</h4>
+                        <p class="text-stone-600 leading-relaxed">Speak for 45 seconds about what you would do with $10 million. Mention where you would live and what you would buy.</p>
+                    </div>
+                    <div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
+                        <h4 class="font-bold text-stone-700 mb-4">Task 2: If I were the President...</h4>
+                        <p class="text-stone-600 leading-relaxed">Name three laws you would change. Start with: "If I were the leader of my country, I would..."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONNECTORS -->
+            <div id="tab-connectors" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">🔗</span> Advanced Connectors</h3>
+                <p class="text-stone-500 mb-6 italic">Explain your answer using 'Furthermore', 'Moreover', or 'On the other hand'.</p>
+                <div class="space-y-4">
+                    <div class="p-4 bg-indigo-50 border border-indigo-100 rounded-lg text-lg text-indigo-900 font-medium">1. Why is remote work good? (Use: Furthermore)</div>
+                    <div class="p-4 bg-indigo-50 border border-indigo-100 rounded-lg text-lg text-indigo-900 font-medium">2. Compare city life vs country life. (Use: On the other hand)</div>
+                    <div class="p-4 bg-indigo-50 border border-indigo-100 rounded-lg text-lg text-indigo-900 font-medium">3. Why should people exercise? (Use: Moreover)</div>
+                    <div class="p-4 bg-indigo-50 border border-indigo-100 rounded-lg text-lg text-indigo-900 font-medium">4. Is technology helpful? (Use: Although)</div>
+                </div>
+            </div>
+
+            <!-- POLITE INQUIRIES -->
+            <div id="tab-polite" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">💼</span> Embedded Questions</h3>
+                <p class="text-stone-500 mb-6 italic">Transform direct questions into polite embedded questions (Do you know where... is?).</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-white border border-stone-200 shadow-sm rounded-lg">
+                        <span class="font-bold text-stone-700">Direct:</span> "Where is the post office?" <br>
+                        <span class="font-bold text-indigo-600">Polite:</span> "Do you know where the post office is?"
+                    </div>
+                    <div class="p-4 bg-white border border-stone-200 shadow-sm rounded-lg">
+                        <span class="font-bold text-stone-700">Direct:</span> "What time does the bank close?" <br>
+                        <span class="font-bold text-indigo-600">Polite:</span> "Could you tell me what time the bank closes?"
+                    </div>
+                    <div class="p-4 bg-white border border-stone-200 shadow-sm rounded-lg">
+                        <span class="font-bold text-stone-700">Direct:</span> "Who is the manager?" <br>
+                        <span class="font-bold text-indigo-600">Polite:</span> "I was wondering if you know who the manager is."
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROFESSIONAL BASICS -->
+            <div id="tab-professional" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">👔</span> Interview Mastery</h3>
+                <p class="text-stone-500 mb-6 italic">Answer these standard interview questions with structured paragraphs.</p>
+                <div class="space-y-6">
+                    <div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
+                        <h4 class="font-bold text-indigo-700 mb-2">"What are your greatest strengths?"</h4>
+                        <p class="text-stone-800 leading-relaxed font-medium">Structure: Statement -> Relative Clause detail -> Example. <br> (e.g. "I am a person who learns quickly...")</p>
+                    </div>
+                    <div class="bg-stone-50 p-6 rounded-xl border border-stone-200">
+                        <h4 class="font-bold text-indigo-700 mb-2">"Tell me about a difficult situation you handled."</h4>
+                        <p class="text-stone-800 leading-relaxed font-medium">Use 'Although' and 'Therefore' to structure your story.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEGOTIATION -->
+            <div id="tab-negotiation" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">🤝</span> Negotiation & Concession</h3>
+                <p class="text-stone-500 mb-6 italic">Handle this workplace scenario using 'While it is true that...'</p>
+                <div class="space-y-6">
+                    <div class="p-5 border border-stone-200 rounded-xl bg-white shadow-sm">
+                        <h4 class="font-bold text-lg text-stone-800 mb-2">Scenario: Budget Dispute</h4>
+                        <p class="text-stone-600 mb-3">Your partner says the project is too expensive. Acknowledge their point but explain why the investment is necessary.</p>
+                        <div class="bg-stone-100 p-3 rounded text-sm font-mono text-indigo-500">Hint: "While it is true that the cost is high, I believe the value is..."</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="w-full text-center py-8 bg-transparent text-stone-500 relative z-10 mt-auto border-t border-stone-200/50">
+        <p class="text-sm font-medium">&copy; 2026 Tagasa English Course. Cultivating global communicators.</p>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('block');
+                el.classList.add('hidden');
+            });
+            document.querySelectorAll('button[id^="btn-"]').forEach(btn => {
+                btn.className = 'px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors';
+            });
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            document.getElementById('tab-' + tabName).classList.add('block');
+            document.getElementById('btn-' + tabName).className = 'px-6 py-3 font-bold text-indigo-700 border-b-2 border-indigo-600';
+        }
+    </script>
+</body>
+</html>
