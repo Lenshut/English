@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagasa English Course - Level 5</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@1,500&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; color: #1c1917; }
+        .bg-elegant-gradient { background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 50%, #f5f3ff 100%); }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin: 0 auto; height: 300px; max-height: 400px; }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
+        .sidebar-scroll::-webkit-scrollbar { width: 6px; }
+        .sidebar-scroll::-webkit-scrollbar-track { background: #f5f5f4; }
+        .sidebar-scroll::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 10px; }
+        .sidebar-scroll::-webkit-scrollbar-thumb:hover { background: #a8a29e; }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <div id="level5-view" class="flex flex-col min-h-screen relative bg-elegant-gradient w-full">
+        <!-- Decorative Violet Glow -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-violet-200/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+        <nav class="w-full z-50 sticky top-0 bg-fafaf9/80 backdrop-blur-md border-b border-stone-200/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <div class="flex items-center">
+                        <span class="font-black text-xl tracking-widest text-stone-800 uppercase" style="font-family: 'Montserrat', sans-serif;">LEVEL 5 : UPPER-INTERMEDIATE</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <button onclick="window.location.href='index.html'" class="px-5 py-2 rounded-full bg-white border border-stone-200 shadow-sm text-stone-600 hover:bg-stone-50 hover:text-stone-900 transition-all font-semibold text-sm tracking-wide">
+                            Homepage
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 w-full relative z-10">
+            <section id="overview" class="bg-white rounded-3xl shadow-sm border border-stone-200/80 p-6 md:p-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center mb-8">
+                    <div>
+                        <h1 class="text-3xl font-bold text-stone-800 mb-4">Program Overview</h1>
+                        <p class="text-stone-600 text-lg leading-relaxed">
+                            Welcome to Level 5. This program transforms students into advanced, natural communicators. Students will master perfect tense continuous forms, sophisticated debate tactics, formal vs. informal register switching, and critical problem-solving in high-stakes environments.
+                        </p>
+                    </div>
+                    <div class="bg-stone-50 rounded-xl p-4 border border-stone-100 flex flex-col justify-center">
+                        <div class="mb-2 text-center">
+                            <h2 class="text-lg font-semibold text-violet-800">Skill Progression Path</h2>
+                            <p class="text-stone-500 text-xs mt-1">Skill expansion at Start (Ph 1), Midpoint (Ph 4), and Goal (Ph 8).</p>
+                        </div>
+                        <div class="w-full flex justify-center flex-grow">
+                            <div class="chart-container" style="height: 200px; max-height: 200px; max-width: 100%;">
+                                <canvas id="progressionChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-violet-50 border border-violet-200 rounded-xl p-6 shadow-sm">
+                    <h3 class="text-xl font-bold text-violet-800 mb-2 flex items-center gap-2"><span>🏆</span> Master Goal</h3>
+                    <p class="text-violet-900 font-medium leading-relaxed">
+                        Speak fluidly in 8–12 sentence blocks. Defend complex opinions using advanced connectors, recount layered narratives utilizing past perfect tenses, seamlessly adapt language register to the audience, and navigate unpredictable, spontaneous dialogues with native-like agility.
+                    </p>
+                </div>
+            </section>
+
+            <section id="syllabus" class="scroll-mt-20">
+                <div class="mb-6">
+                    <h2 class="text-3xl font-bold text-stone-800">Interactive Syllabus</h2>
+                    <p class="text-stone-600 mt-2">Click a phase to expand its session list, then select a session to explore its detailed pedagogical breakdown.</p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-8 items-start">
+                    <div class="lg:w-1/3 w-full border border-stone-200/80 bg-white rounded-3xl shadow-sm overflow-hidden flex flex-col h-[600px]">
+                        <div class="bg-stone-50 px-4 py-3 border-b border-stone-200">
+                            <h3 class="font-bold text-stone-700">Course Structure</h3>
+                        </div>
+                        <div class="overflow-y-auto sidebar-scroll p-2 flex-grow" id="sidebar-container"></div>
+                    </div>
+
+                    <div class="lg:w-2/3 w-full bg-white rounded-3xl shadow-sm border border-stone-200/80 min-h-[600px] flex flex-col overflow-hidden">
+                        <div id="empty-state" class="flex-grow flex flex-col items-center justify-center text-center p-10">
+                            <span class="text-4xl mb-4">👈</span>
+                            <h3 class="text-xl font-bold text-stone-700 mb-2">Select a Session</h3>
+                            <p class="text-stone-500 max-w-sm">Choose a specific session from the menu on the left.</p>
+                        </div>
+
+                        <div id="session-display" class="hidden flex-col h-full">
+                            <div class="px-6 py-5 border-b border-stone-200 bg-stone-50 rounded-t-2xl">
+                                <span id="display-phase-badge" class="text-xs font-bold tracking-wider text-violet-700 uppercase mb-2 block"></span>
+                                <h3 id="display-session-title" class="text-2xl font-bold text-stone-800"></h3>
+                            </div>
+                            
+                            <div class="flex flex-wrap border-b border-stone-200 bg-white" id="session-tabs">
+                                <button id="btn-tab-goal" class="tab-btn" onclick="switchTab('goal')">Goal</button>
+                                <button id="btn-tab-teachermaterial" class="tab-btn" onclick="switchTab('teachermaterial')">Teacher Material</button>
+                                <button id="btn-tab-activitiesassessment" class="tab-btn" onclick="switchTab('activitiesassessment')">Activities & Assessment</button>
+                                <button id="btn-tab-worksheet" class="tab-btn" onclick="switchTab('worksheet')">Worksheet Details</button>
+                            </div>
+
+                            <div class="p-6 flex-grow overflow-y-auto">
+                                <div id="tab-goal" class="tab-content hidden">
+                                    <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>🎯</span> Primary Goal</h4>
+                                    <div id="content-goal" class="text-stone-700 bg-violet-50 p-5 rounded-lg border border-violet-100 text-lg font-medium"></div>
+                                </div>
+                                
+                                <div id="tab-teachermaterial" class="tab-content hidden space-y-8">
+                                    <div>
+                                        <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>📚</span> Material & Focus</h4>
+                                        <div id="content-material" class="text-stone-700 p-2 leading-relaxed"></div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>🧠</span> Step-by-Step Flow</h4>
+                                        <div id="content-flow" class="text-stone-700 p-2 leading-relaxed"></div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>🧑‍🏫</span> Exact Teacher Script</h4>
+                                        <p class="text-sm text-stone-500 mb-4">Read this word-by-word to ensure clarity.</p>
+                                        <div id="content-script" class="text-stone-800 italic bg-stone-100 p-6 rounded-lg border-l-4 border-violet-400 text-lg leading-relaxed"></div>
+                                    </div>
+                                </div>
+
+                                <div id="tab-activitiesassessment" class="tab-content hidden space-y-8">
+                                    <div>
+                                        <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>🎮</span> Activities & Student Tasks</h4>
+                                        <div class="mb-4 space-y-4">
+                                            <div class="p-4 bg-white border border-stone-200 rounded-lg shadow-sm">
+                                                <h5 class="font-bold text-stone-800 mb-1">Student Tasks:</h5>
+                                                <p id="content-tasks" class="text-stone-600"></p>
+                                            </div>
+                                            <div class="p-4 bg-violet-50 border border-violet-100 rounded-lg shadow-sm">
+                                                <h5 class="font-bold text-violet-900 mb-1">Interactive Activity:</h5>
+                                                <p id="content-activities" class="text-violet-800"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>⚠️</span> Assessment & Fixes</h4>
+                                        <div class="space-y-4">
+                                            <div class="p-4 bg-white border border-stone-200 rounded-lg shadow-sm">
+                                                <h5 class="font-bold text-stone-800 mb-1">Check For:</h5>
+                                                <p id="content-assessment" class="text-stone-600"></p>
+                                            </div>
+                                            <div class="p-4 bg-rose-50 border border-rose-100 rounded-lg shadow-sm">
+                                                <h5 class="font-bold text-rose-900 mb-1">Common Mistake & Fix:</h5>
+                                                <p id="content-mistake" class="text-rose-800"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="tab-worksheet" class="tab-content hidden">
+                                    <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>📄</span> Worksheet Details</h4>
+                                    <p class="text-sm text-stone-500 mb-4">Specific questions targeted to this session's grammar and vocabulary.</p>
+                                    <ul id="content-worksheet" class="space-y-2 bg-stone-50 p-5 rounded-lg border border-stone-200 mb-6"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="w-full text-center py-10 bg-transparent text-stone-500 relative z-10 mt-12">
+            <p class="text-sm font-medium">&copy; 2026 Tagasa English Course. Cultivating global communicators.</p>
+        </footer>
+    </div>
+
+    <script>
+        const curriculumData = [
+            {
+                id: 1, title: "PHASE 1: PRESENT PERFECT CONTINUOUS",
+                sessions: [
+                    {
+                        title: "Session 1: Ongoing Actions (Duration)",
+                        goal: "Students can say: 'I have been working on this report for three hours, and I'm still not finished.'<br><br><strong class='text-violet-900'>Example:</strong> A student explains their current exhaustion: 'I am so tired because I have been studying English since 8 AM.'",
+                        material: "Vocab: Exhausted, Uninterrupted, Dedicate, Commit, Project. Grammar: Present Perfect Continuous (have/has been + v-ing).",
+                        script: "'What are you doing now? Studying. When did you start? 8 AM. To connect the past directly to this exact moment, we say: I HAVE BEEN STUDYING since 8 AM. It emphasizes the length and the effort.'",
+                        flow: "Warm-up: Present continuous vs Past simple. Teaching: Introduce PPC formula. Focus on the emotional weight of 'been doing' (implies effort/fatigue). Practice: Convert 'started at 9, still doing it' scenarios into PPC sentences. Speaking: Complain about tasks that are taking too long.",
+                        tasks: "Produce 8-sentence complaints explaining a current state of fatigue using PPC.",
+                        activities: "The Interrogation: 'You look terrible. What have you been doing?' Student must invent a complex, ongoing ordeal: 'I have been repairing my car for five hours in the freezing rain.'",
+                        assessment: "Uses 'have been -ing' without dropping 'been' or reverting to present continuous.",
+                        mistake: "Student: 'I am studying for 3 hours.' Fix: 'If you use FOR or SINCE, you must use HAVE BEEN. I have been studying.'",
+                        worksheet: ["(Fill): I ______ (work) on this project for a month.", "(Match): Exhausted -> Very tired", "(MCQ): She ___ playing tennis since noon. (a. is b. has been c. was)", "(Build): (been / waiting / have / We / here / hours / two / for) -> ______", "(Short): Why are your hands dirty? ______", "(Write): Write 5 sentences explaining a difficult task you started yesterday and are still doing.", "(Speak): Complain to a manager about a long task.", "(Fill): They have been ______ (try) to fix it.", "(Match): Commit -> Dedicate time", "(MCQ): How long ___ waiting? (a. are you b. have you been)", "(Build): (since / morning / raining / been / has / It) -> ______", "(Short): What have you been thinking about lately? ______"]
+                    },
+                    {
+                        title: "Session 2: Recent Evidence",
+                        goal: "Students can say: 'The streets are completely flooded because it has been raining heavily all night.'<br><br><strong class='text-violet-900'>Example:</strong> Deducing facts from clues: 'Your eyes are red. Have you been crying?'",
+                        material: "Vocab: Flooded, Sweating, Out of breath, Evidence, Deduce. Grammar: PPC for recently stopped actions with present evidence.",
+                        script: "'Look at him. He is sweating and out of breath. Is he running now? No. But the EVIDENCE is here. He HAS BEEN RUNNING.'",
+                        flow: "Warm-up: Duration PPC. Teaching: Explain how PPC is used for actions that just stopped but left visible clues. Practice: Match evidence pictures to PPC causes. Speaking: Play 'Sherlock Holmes' deducing what classmates have been doing.",
+                        tasks: "Connect physical evidence in the present to a recently completed continuous action in the past.",
+                        activities: "Sherlock Holmes: S1 acts out a physical state (panting, shivering, looking stuffed). S2 must deduce: 'You are panting. You have been running up the stairs.' S1 confirms or denies.",
+                        assessment: "Accurately applies PPC to explain a present state, rather than using past simple.",
+                        mistake: "Student: 'You are wet. Did you swim?' Fix: 'More natural: Have you been swimming?'",
+                        worksheet: ["(Fill): You smell like garlic. Have you ______ (cook)?", "(Match): Out of breath -> Panting heavily", "(MCQ): The ground is wet. It ___ raining. (a. was b. has been c. is)", "(Build): (crying / you / eyes / red / Are / have / because / been / your) -> ______", "(Short): Why is the kitchen a mess? ______", "(Write): Write a paragraph deducing what happened at a messy crime scene.", "(Speak): Act out a symptom and have your partner guess.", "(Fill): He is exhausted because he has been ______ (work) night shifts.", "(Match): Deduce -> Figure out from clues", "(MCQ): Why are you dirty? ___ in the garden? (a. Did you work b. Have you been working)", "(Build): (repairing / been / hands / dirty / are / My / I / car / my / have / because) -> ______", "(Short): Explain why your friend looks so stressed. ______"]
+                    },
+                    {
+                        title: "Session 3: Emphasizing Annoyance",
+                        goal: "Students can say: 'My neighbor has been playing loud music all night, and I absolutely cannot tolerate it anymore.'<br><br><strong class='text-violet-900'>Example:</strong> A student vents: 'My computer has been crashing constantly this week, and it's driving me crazy.'",
+                        material: "Vocab: Tolerate, Frustrating, Constantly, Driving me crazy, Getting on my nerves. Grammar: PPC with adverbs of frequency.",
+                        script: "'PPC is great for complaining! If something repeats and annoys you, use it. He HAS BEEN CALLING me constantly. It's driving me crazy!'",
+                        flow: "Warm-up: Evidence deduction. Teaching: Introduce annoyance vocabulary. Show how 'constantly' fits into PPC to emphasize frustration. Practice: Rewrite mild complaints into furious PPC complaints. Speaking: Venting session about modern life.",
+                        tasks: "Deploy PPC alongside strong emotive vocabulary to express sustained frustration.",
+                        activities: "The Complaint Department: S1 is a resident complaining to a landlord (S2). 'The dog upstairs has been barking constantly for three days, and I cannot tolerate it.' S2 must apologize and propose a solution.",
+                        assessment: "Integrates adverbs like 'constantly' correctly between the auxiliary and the main verb.",
+                        mistake: "Student: 'He has been constantly play.' Fix: 'Keep the ING! Has been constantly play-ING.'",
+                        worksheet: ["(Fill): He has been ______ (interrupt) me constantly during meetings.", "(Match): Driving me crazy -> Very annoying", "(MCQ): I cannot ___ this noise anymore. (a. tolerate b. tolerating c. tolerated)", "(Build): (constantly / crashing / My / computer / been / has) -> ______", "(Short): What has been getting on your nerves lately? ______", "(Write): Draft an angry email to a landlord about an ongoing issue.", "(Speak): Roleplay the Complaint Department.", "(Fill): They have been ______ (ignore) my emails all week.", "(Match): Frustrating -> Annoying and difficult", "(MCQ): She ___ complaining about the AC since Monday. (a. is constantly b. has been constantly)", "(Build): (nerves / getting / on / That / noise / my / has / been) -> ______", "(Short): How do you politely tell someone they have been talking too much? ______"]
+                    },
+                    {
+                        title: "Session 4: PPC vs Present Perfect Simple",
+                        goal: "Students can say: 'I have been reading that book, but I haven't finished it. I have read three chapters so far.'<br><br><strong class='text-violet-900'>Example:</strong> A student updates their boss: 'I have been writing the report all morning, and I have completed five pages.'",
+                        material: "Vocab: Accomplish, Progress, Unfinished, So far, Up to now. Grammar: Contrasting PPC (process) with PPS (result/quantity).",
+                        script: "'Action vs Result. I HAVE BEEN PAINTING the house. (Process, maybe not done). I HAVE PAINTED three rooms. (Result, finished quantity).'",
+                        flow: "Warm-up: Complaining with PPC. Teaching: Draw a clear distinction: PPC focuses on the *activity*, PPS focuses on the *completed amount*. Practice: Fill in blanks choosing between PPC and PPS based on context clues ('all day' vs 'three times'). Speaking: Progress updates on life goals.",
+                        tasks: "Fluidly switch between PPC and PPS to give a comprehensive status update.",
+                        activities: "The Status Report: Teacher plays a strict boss. 'What is the status of the project?' Student: 'I have been calling clients all morning (PPC), and I have secured three contracts so far (PPS).'",
+                        assessment: "Never uses PPC for a completed quantity (e.g., 'I have been drinking three coffees').",
+                        mistake: "Student: 'I have been writing 5 emails.' Fix: 'Did you finish them? Yes? Then use simple! I have WRITTEN 5 emails.'",
+                        worksheet: ["(Fill): I have ______ (write) emails all day, and I have ______ (send) ten.", "(Match): So far -> Up to this point", "(MCQ): I ___ this movie three times. (a. have been watching b. have watched)", "(Build): (cleaning / morning / all / been / We / have) -> ______", "(Short): Give a progress update on your English studies: ______", "(Write): Write a status report for a hypothetical job.", "(Speak): Deliver your status report to the 'boss'.", "(Fill): She has been ______ (try) to call you, but you haven't ______ (answer).", "(Match): Accomplish -> Achieve a result", "(MCQ): How many pages ___? (a. have you been reading b. have you read)", "(Build): (far / read / I / chapters / so / have / four) -> ______", "(Short): What is something you have been trying to do recently? ______"]
+                    },
+                    {
+                        title: "Session 5: Academic & Professional Experience",
+                        goal: "Students can say: 'I have been working in the marketing sector for five years, during which I have managed several major campaigns.'<br><br><strong class='text-violet-900'>Example:</strong> A student introduces themselves formally: 'I have been studying economics at university, and I have developed a strong interest in global markets.'",
+                        material: "Vocab: Sector, Campaign, Develop, Gain experience, Specialize. Grammar: Professional integration of PPC and PPS.",
+                        script: "'In an interview, you must sound dynamic. Connect your ongoing effort (PPC) to your hard skills (PPS). I have been working in IT, and I have developed new software.'",
+                        flow: "Warm-up: Status reports. Teaching: Provide templates for professional introductions. Teach high-level corporate vocabulary. Practice: Draft professional bio statements. Speaking: Networking mixer roleplay.",
+                        tasks: "Deliver a polished, 10-sentence professional introduction highlighting ongoing experience and concrete achievements.",
+                        activities: "The Networking Event: Students pin fake job titles to their shirts. They mingle and pitch themselves: 'Hello, I'm Sarah. I've been managing teams for 5 years, and I have successfully launched 3 products.'",
+                        assessment: "Integrates sophisticated vocabulary (sector, specialize) naturally into the grammar structures.",
+                        mistake: "Using simple present for long-term jobs. 'I work here 5 years.' Fix: 'Professional upgrade! I have been working here.'",
+                        worksheet: ["(Fill): I have been ______ (specialize) in graphic design since 2019.", "(Match): Sector -> Area of industry", "(MCQ): During this time, I ___ valuable experience. (a. have been gaining b. have gained)", "(Build): (campaigns / managed / I / several / have / successful) -> ______", "(Short): Write a 2-sentence professional intro: ______", "(Write): Draft a cover letter introduction paragraph.", "(Speak): Introduce yourself at the Networking Event.", "(Fill): She has been ______ (develop) new strategies for the team.", "(Match): Campaign -> Organized business effort", "(MCQ): I have been working in this ___ for a decade. (a. sector b. section)", "(Build): (interest / developed / strong / a / have / I / in / finance) -> ______", "(Short): What skills have you gained recently? ______"]
+                    },
+                    {
+                        title: "Session 6: Phase 1 Mastery & Discussion",
+                        goal: "Students engage in a 15-minute unscripted discussion about modern lifestyle trends, utilizing PPC to express ongoing societal shifts.<br><br><strong class='text-violet-900'>Example:</strong> A student debates: 'People have been spending far too much time on social media recently, and it has caused a decline in real communication.'",
+                        material: "Review: PPC vs PPS, Annoyance adverbs, Professional register.",
+                        script: "'Today we look at the world. How is it changing? What have people been doing differently?'",
+                        flow: "Warm-up: Professional intros. Teaching: Frame discussion topics around societal trends (technology, health, work). Practice: 5 minutes prep to draft arguments using PPC. Speaking: Socratic seminar discussion.",
+                        tasks: "Sustain a high-level academic discussion, spontaneously deploying PPC to describe ongoing trends.",
+                        activities: "Socratic Seminar: Teacher poses a broad question: 'Is technology ruining sleep?' Students must discuss independently for 15 minutes. Teacher only moderates. Points awarded for seamless PPC/PPS usage.",
+                        assessment: "Deploys target grammar automatically without pausing to calculate the formula.",
+                        mistake: "Reverting to present simple for ongoing trends ('People spend too much time'). Fix: Intervene and ask, 'Is this a new, ongoing trend? Then use the continuous form!'",
+                        worksheet: ["(Fill): Recently, society has been ______ (rely) heavily on smartphones.", "(Match): Socratic seminar -> Open academic discussion", "(MCQ): People ___ working from home more often since 2020. (a. have been b. are)", "(Build): (decline / caused / It / a / has / communication / in) -> ______", "(Short): Describe a recent trend in your country: ______", "(Write): Write an 8-sentence essay on how work has changed in the last 5 years.", "(Speak): Participate in the Socratic Seminar.", "(Fill): We have been ______ (ignore) the environmental consequences.", "(Match): Trend -> General direction of change", "(MCQ): The economy ___ recovering slowly. (a. has been b. is been)", "(Build): (much / too / spending / been / They / have / money) -> ______", "(Short): What have politicians been arguing about lately? ______"]
+                    }
+                ]
+            },
+            {
+                id: 2, title: "PHASE 2: PAST PERFECT (THE PAST IN THE PAST)",
+                sessions: [
+                    {
+                        title: "Session 7: Chronological Order (Had + V3)",
+                        goal: "Students can say: 'By the time I arrived at the station, the train had already left.'<br><br><strong class='text-violet-900'>Example:</strong> A student explains a disaster: 'When I got to the party, everyone had eaten the cake.'",
+                        material: "Vocab: By the time, Already, Prior to, Depart, Realize. Grammar: Past Perfect (had + past participle) vs Past Simple.",
+                        script: "'You have two events in the past. Event 1: The train leaves (8:00). Event 2: I arrive (8:15). How do we show which happened first? Use HAD. When I arrived, the train HAD left.'",
+                        flow: "Warm-up: Past simple irregulars. Teaching: Draw a dual-point timeline. Teach the formula. Emphasize that Past Perfect is ONLY used to show sequence relative to another past action. Practice: Combine two simple sentences into one Past Perfect sentence. Speaking: Share 'bad luck' stories.",
+                        tasks: "Correctly assign the Past Perfect to the older action and Past Simple to the newer action.",
+                        activities: "The Unlucky Traveler: Students pull two cards. 'You reach the airport' / 'Flight departs'. They must combine them: 'By the time I reached the airport, the flight had departed.'",
+                        assessment: "Does not use Past Perfect for single, isolated past events.",
+                        mistake: "Student: 'Yesterday I had gone to the store.' Fix: 'No! If it's just one event, use simple past. I went. Only use HAD if there is a second event.'",
+                        worksheet: ["(Fill): When I woke up, my roommate ______ already ______ (leave).", "(Match): By the time -> At the moment that", "(MCQ): She ___ dinner before I arrived. (a. finished b. had finished)", "(Build): (already / started / movie / had / the / arrived / we / When) -> ______", "(Short): Combine: I lost my ticket. I reached the gate. -> ______", "(Write): Write a paragraph about a day everything went wrong.", "(Speak): Tell a 'bad luck' story using Past Perfect.", "(Fill): I realized I ______ (forget) my wallet.", "(Match): Prior to -> Before", "(MCQ): By the time the police came, the thief ___. (a. escaped b. had escaped)", "(Build): (eaten / they / When / had / everything / arrived / I) -> ______", "(Short): What had you done before class started today? ______"]
+                    },
+                    {
+                        title: "Session 8: Explaining Regrets & Realizations",
+                        goal: "Students can say: 'I suddenly realized that I had sent the email to the wrong person.'<br><br><strong class='text-violet-900'>Example:</strong> A student recounts a workplace error: 'I was embarrassed because I had forgotten the client's name.'",
+                        material: "Vocab: Realize, Notice, Discover, Embarrassed, Mortified. Grammar: Verbs of perception + Past Perfect.",
+                        script: "'You are walking. Suddenly, you check your pocket. Oh no! You REALIZE that you HAD LEFT your phone at home.'",
+                        flow: "Warm-up: By the time... Teaching: Introduce perception verbs in the past simple (realized, noticed) followed by the past perfect mistake. Practice: Match the realization to the previous error. Speaking: Tell stories of embarrassing mistakes at work or school.",
+                        tasks: "Use a perception verb in the past simple to trigger a past perfect clause.",
+                        activities: "The Oh No! Moment: Teacher gives a prompt: 'You are at the cash register.' Student continues: 'I opened my bag and realized I had left my money on the kitchen table.'",
+                        assessment: "Smoothly connects the psychological realization to the older physical action.",
+                        mistake: "Student: 'I realized I forgot my keys.' Fix: 'Technically okay, but to sound advanced, use the gap: I realized I HAD forgotten.'",
+                        worksheet: ["(Fill): I noticed that someone ______ (break) the window.", "(Match): Mortified -> Extremely embarrassed", "(MCQ): He was angry because I ___ his cup. (a. broke b. had broken)", "(Build): (wrong / sent / I / had / realized / file / I / the / that) -> ______", "(Short): Finish this: I looked in my bag and discovered that ______.", "(Write): Write a story about a massive misunderstanding.", "(Speak): Share an 'Oh no!' moment.", "(Fill): She suddenly remembered she ______ (leave) the oven on.", "(Match): Realize -> Become aware of", "(MCQ): I was shocked to see they ___ my car. (a. took b. had taken)", "(Build): (forgotten / embarrassed / I / her / name / had / I / because / was) -> ______", "(Short): What is a mistake you realized too late? ______"]
+                    },
+                    {
+                        title: "Session 9: Giving Context to Narratives",
+                        goal: "Students can say: 'I didn't want to eat the sushi because I had already had a massive lunch two hours prior.'<br><br><strong class='text-violet-900'>Example:</strong> A student explains a decision: 'I knew the city well because I had lived there for ten years as a child.'",
+                        material: "Vocab: Context, Background, Familiar with, Massive, Prior. Grammar: Using Past Perfect to establish backstory.",
+                        script: "'Why did you do it? You need backstory! I refused the food. Why? Because I HAD ALREADY EATEN. Past perfect builds the history of your story.'",
+                        flow: "Warm-up: Realizations. Teaching: Show how past perfect serves as the 'background layer' in a story, explaining *why* a past simple decision was made. Practice: Read short stories and underline the 'backstory' clauses. Speaking: Explain past decisions by providing deep context.",
+                        tasks: "Embed a past perfect clause into a narrative to justify a past action.",
+                        activities: "The Interrogation 2.0: 'Why did you refuse the million-dollar job offer last year?' Student: 'I refused it because I had already accepted a job in Japan, and I had promised my wife we would move.'",
+                        assessment: "Effectively uses 'because I had...' to justify a past simple action.",
+                        mistake: "Student: 'I didn't eat because I ate before.' Fix: 'Upgrade it! Because I HAD eaten before.'",
+                        worksheet: ["(Fill): I recognized him because we ______ (meet) before.", "(Match): Familiar with -> Know well", "(MCQ): She was tired because she ___ all night. (a. worked b. had worked)", "(Build): (lunch / I / already / massive / a / had / had) -> ______", "(Short): Why did you know the answer to the test? ______", "(Write): Explain a major life choice and the background context.", "(Speak): Explain why you refused an offer in the past.", "(Fill): He didn't want to watch the movie because he ______ (see) it twice.", "(Match): Prior -> Before that time", "(MCQ): They were lost because they ___ a map. (a. didn't bring b. hadn't brought)", "(Build): (there / lived / child / a / I / because / had / I / city / the / knew / as) -> ______", "(Short): Why were you so confident on your first day? ______"]
+                    },
+                    {
+                        title: "Session 10: Unfulfilled Expectations (Had hoped/planned)",
+                        goal: "Students can say: 'I had hoped to travel to Spain, but my visa was denied.'<br><br><strong class='text-violet-900'>Example:</strong> A student expresses disappointment: 'We had planned to launch the product in June, but we encountered technical issues.'",
+                        material: "Vocab: Hope, Plan, Intend, Deny, Encounter, Issue. Grammar: Past Perfect of intention + But.",
+                        script: "'You had a dream in the past. It died. Say: I HAD HOPED to go, BUT I couldn't. I HAD PLANNED to win, BUT I lost.'",
+                        flow: "Warm-up: Backstory. Teaching: Introduce 'had hoped/planned/intended' + infinitive. Pair it strictly with 'but' to show the failure of the plan. Practice: Rewrite failed 1st conditional plans into past perfect regrets. Speaking: Discuss cancelled plans and broken dreams.",
+                        tasks: "Use the past perfect of intention to describe a plan that was ultimately thwarted.",
+                        activities: "The Ruined Vacation: Students plan a perfect luxury vacation. Teacher acts as 'Fate' and destroys the plans. Student: 'I had intended to stay in a 5-star hotel, but the airline lost my luggage and my credit cards.'",
+                        assessment: "Correctly follows 'had hoped/planned' with an infinitive (to + verb).",
+                        mistake: "Student: 'I had hoped going.' Fix: 'I had hoped TO GO. Infinitive of purpose!'",
+                        worksheet: ["(Fill): I had ______ (hope) to see you, but you were busy.", "(Match): Deny -> Reject/Refuse", "(MCQ): We had ___ to finish early, but the system crashed. (a. planning b. planned)", "(Build): (but / intended / buy / I / it / had / to / expensive / too / was / it) -> ______", "(Short): What is something you had planned to do last weekend but didn't? ______", "(Write): Write an email apologizing to a boss about a failed project.", "(Speak): Discuss a ruined plan.", "(Fill): She had ______ (intend) to resign, but they offered her a raise.", "(Match): Encounter -> Meet or face a problem", "(MCQ): I ___ to call you, but my battery died. (a. had meant b. meant)", "(Build): (product / launch / the / planned / had / We / to / June / in) -> ______", "(Short): Why didn't you finish the homework? ______"]
+                    },
+                    {
+                        title: "Session 11: Third Conditional Deep Dive",
+                        goal: "Students can say: 'If the management had listened to the engineers, the crisis would have been avoided.'<br><br><strong class='text-violet-900'>Example:</strong> A student analyzes a historical event: 'If the captain had seen the iceberg sooner, the ship wouldn't have sunk.'",
+                        material: "Vocab: Avoid, Crisis, Management, Consequence, Prevent. Grammar: Advanced 3rd Conditional (If + Past Perfect, Would have + V3).",
+                        script: "'Let's change history. IF the Titanic HAD NOT HIT the ice... it WOULD HAVE SURVIVED. You are manipulating the past perfect to change reality.'",
+                        flow: "Warm-up: Unfulfilled expectations. Teaching: Review the 3rd conditional from Level 4, but apply it to complex, multi-clause corporate or historical scenarios. Practice: Analyze case studies of business failures and write 3rd conditional analyses. Speaking: Debate alternative historical timelines.",
+                        tasks: "Construct flawlessly balanced 3rd conditional sentences to analyze cause and effect in the past.",
+                        activities: "The Hindsight Consultant: Present a business disaster (e.g., Blockbuster ignoring Netflix). Students act as consultants analyzing the failure: 'If Blockbuster had bought Netflix, they would have dominated the market.'",
+                        assessment: "Does not mix tenses; maintains 'had + V3' and 'would have + V3'.",
+                        mistake: "Student: 'If they had bought it, they would dominate.' Fix: 'Would HAVE dominated. Keep it fully in the past.'",
+                        worksheet: ["(Fill): If they ______ (invest) earlier, they would have made a fortune.", "(Match): Avoid -> Prevent from happening", "(MCQ): If the alarm had rung, we ___ saved. (a. would be b. would have been)", "(Build): (avoided / had / listened / crisis / the / If / they / been / have / would) -> ______", "(Short): Change the past: You failed the test. -> If I had studied... ______", "(Write): Analyze a famous mistake in history using 3rd conditionals.", "(Speak): Play the Hindsight Consultant.", "(Fill): If the doctor had arrived sooner, he wouldn't ______ (die).", "(Match): Prevent -> Stop from occurring", "(MCQ): We ___ the game if we hadn't made that mistake. (a. would have won b. had won)", "(Build): (sooner / seen / had / iceberg / the / captain / the / If) -> ______", "(Short): What would have happened if you hadn't come to class today? ______"]
+                    },
+                    {
+                        title: "Session 12: Phase 2 Mastery (The Grand Narrative)",
+                        goal: "Students deliver an 8-minute, highly detailed narrative speech combining Past Simple, Past Continuous, Past Perfect, and 3rd Conditionals.<br><br><strong class='text-violet-900'>Example:</strong> A student tells a gripping story of a personal failure, detailing the background context, the sudden interruption, the realization of the mistake, and a reflection on what they should have done differently.",
+                        material: "Review: By the time, Realized that, Context building, Had planned to, 3rd Conditional.",
+                        script: "'You are master storytellers now. I want the background, the drama, the twist, and the reflection!'",
+                        flow: "Warm-up: 3rd Conditional regrets. Teaching: Map the 'Master Narrative Arc' on the board. (Context -> Plan -> Interruption -> Realization -> Reflection). Practice: 20 minutes of silent drafting and peer-reviewing their speeches. Speaking: The Grand Narrative presentation.",
+                        tasks: "Seamlessly transition between 4 different past tenses to create depth and perspective in a story.",
+                        activities: "The TEDx Story: Students deliver a compelling, emotional story about a turning point in their lives, actively employing all Phase 2 grammar to manipulate time and reflection.",
+                        assessment: "Grammar shifts feel motivated by the story's emotional beats rather than forced.",
+                        mistake: "Flattening the story into just Past Simple out of laziness. Fix: Grade strictly on the variety of tenses used.",
+                        worksheet: ["(Fill): (Comprehensive Past Tense Review)", "(Match): Match narrative beats to the correct grammar form.", "(MCQ): Select the most advanced narrative transition.", "(Build): Unscramble a 4-clause sentence.", "(Short): Outline your Grand Narrative.", "(Write): Write the introductory paragraph of your speech.", "(Speak): Deliver the Grand Narrative.", "(Fill): By the time the police ______, the thief had escaped.", "(Match): Reflection -> 3rd Conditional", "(MCQ): Choose the correct form: 'I ___ to call you, but I forgot.' (a. meant b. had meant)", "(Build): (already / the / started / had / arrived / meeting / I / when) -> ______", "(Short): What is the moral of your story? ______"]
+                    }
+                ]
+            },
+            {
+                id: 3, title: "PHASE 3: COMPLEX SENTENCES & NUANCE",
+                sessions: [
+                    {
+                        title: "Session 13: Non-Defining Relative Clauses",
+                        goal: "Students can say: 'My boss, who has been working here for twenty years, is retiring next month.'<br><br><strong class='text-violet-900'>Elaboration:</strong> Teaches students to add 'bonus' information into a sentence using commas, elevating their writing and formal speaking style.<br><br><strong class='text-blue-900'>Example:</strong> A student introduces a colleague: 'This is Sarah, who leads the marketing team, and she will be helping us.'",
+                        material: "Vocab: Retiring, Headquarters, Founder, Establish. Grammar: Non-defining relative clauses (with commas).",
+                        script: "'My boss is retiring. Bonus fact: He has worked here 20 years. Put the bonus inside commas! My boss, WHO HAS WORKED HERE 20 YEARS, is retiring.'",
+                        flow: "Warm-up: Defining relative clauses (Level 4). Teaching: Explain the 'comma pause' for extra information. Emphasize that 'that' cannot be used here. Practice: Insert extra information clauses into basic sentences. Speaking: Gossip about celebrities or politicians using non-defining clauses.",
+                        tasks: "Insert a non-defining clause between the subject and main verb, marking it with clear vocal pauses.",
+                        activities: "The Name Dropper: Students must talk about famous people or companies, dropping 'bonus facts' in the middle of sentences. 'Apple, which was founded by Steve Jobs, is releasing a new phone.'",
+                        assessment: "Does not use 'that' in a non-defining clause (e.g., Apple, that was founded...).",
+                        mistake: "Student: 'My brother, that is a doctor, is coming.' Fix: 'No THAT with commas! Use WHO or WHICH.'",
+                        worksheet: ["(Fill): Paris, ______ is the capital of France, is beautiful.", "(Match): Non-defining -> Extra information", "(MCQ): My car, ___ is very old, still runs well. (a. that b. which c. who)", "(Build): (month / retiring / boss / who / twenty / My / years / worked / has / here / is / next) -> ______", "(Short): Add a bonus fact about your city: My city, ______, is very busy.", "(Write): Write 3 sentences about famous landmarks using non-defining clauses.", "(Speak): Be the Name Dropper.", "(Fill): Mr. Smith, ______ teaches math, is strict.", "(Match): Founder -> Creator of a company", "(MCQ): The Eiffel Tower, ___ was built in 1889, is famous. (a. that b. which)", "(Build): (headquarters / The / which / London / is / in / relocating / is) -> ______", "(Short): Add a bonus fact about a friend: ______"]
+                    },
+                    {
+                        title: "Session 14: Contrast (Whereas / While)",
+                        goal: "Students can say: 'While the first option is cheaper, the second option provides much better long-term value.'<br><br><strong class='text-violet-900'>Elaboration:</strong> The language of direct comparison and analysis. Essential for writing reports or presenting business choices.<br><br><strong class='text-blue-900'>Example:</strong> A student analyzes a chart: 'Whereas sales increased in Europe, they declined in Asia.'",
+                        material: "Vocab: Whereas, While, Long-term, Value, Fluctuate. Grammar: Subordinating conjunctions of contrast.",
+                        script: "'Don't just say A is good, B is bad. Connect them! WHEREAS option A is cheap, option B is better.'",
+                        flow: "Warm-up: Although / Even though. Teaching: Introduce 'Whereas' and 'While' as formal contrast tools. Show how they balance two opposing facts in one sentence. Practice: Compare two very different countries or products. Speaking: Present a business comparison to 'investors'.",
+                        tasks: "Balance two opposing clauses gracefully using 'whereas' or 'while' at the beginning or middle of the sentence.",
+                        activities: "The Consultant Pitch: Give students two imperfect solutions to a problem. They must analyze them: 'While Solution A is fast, it is risky. Whereas Solution B is slow, it is guaranteed to work.'",
+                        assessment: "Uses 'whereas' to contrast two subjects directly, not just a single subject's mixed traits.",
+                        mistake: "Student: 'Whereas I am tired, I will work.' Fix: 'No! That is ALTHOUGH. Whereas compares TWO different things. Whereas John is tired, I am energetic.'",
+                        worksheet: ["(Fill): ______ dogs are loud, cats are usually quiet.", "(Match): Whereas -> Direct comparison of two things", "(MCQ): The north is cold, ___ the south is hot. (a. although b. whereas)", "(Build): (cheaper / option / is / first / the / While / risky / is / it) -> ______", "(Short): Compare the city and the country using 'whereas': ______", "(Write): Write a paragraph comparing two brands of phones.", "(Speak): Pitch two business options.", "(Fill): ______ sales rose in Q1, they fell in Q2.", "(Match): Fluctuate -> Go up and down", "(MCQ): ___ he loves sports, his brother hates them. (a. While b. Despite)", "(Build): (value / better / provides / option / second / The / whereas / cheap / is / first / the) -> ______", "(Short): Compare two of your friends using 'while': ______"]
+                    },
+                    {
+                        title: "Session 15: Participle Clauses (Ing / Ed)",
+                        goal: "Students can say: 'Realizing he was late, John sprinted to the station.' or 'Exhausted by the heat, we stopped walking.'<br><br><strong class='text-violet-900'>Elaboration:</strong> Advanced narrative compression. This structure eliminates extra pronouns and conjunctions, creating a highly sophisticated, literary rhythm.<br><br><strong class='text-blue-900'>Example:</strong> A student writes a formal report: 'Having reviewed the data, the committee approved the project.'",
+                        material: "Vocab: Realizing, Exhausted, Having reviewed, Committee, Sprint. Grammar: Present and Past Participle clauses replacing 'Because/When'.",
+                        script: "'Instead of saying: Because he realized he was late... Cut the fat! REALIZING he was late, John sprinted. Start with the ING!'",
+                        flow: "Warm-up: Storytelling transitions. Teaching: Show how participle clauses condense 'Because I was...' or 'After I had...'. Practice: Sentence compression worksheets. Speaking: Retell a dramatic story using only participle clause openers.",
+                        tasks: "Compress complex reasons or time sequences into tight, elegant participle clauses.",
+                        activities: "The Novelist: Give students clunky, robotic paragraphs. They must rewrite and perform them as a dramatic audiobook using participle clauses. 'Frightened by the noise, she hid.'",
+                        assessment: "Ensures the subject of the participle clause matches the subject of the main clause.",
+                        mistake: "Student: 'Walking down the street, a car hit me.' (Dangling participle). Fix: 'Was the CAR walking? No! Walking down the street, I WAS HIT by a car.'",
+                        worksheet: ["(Fill): ______ (exhaust) from the run, he collapsed.", "(Match): Realizing -> Because he realized", "(MCQ): ___ the data, we made a decision. (a. Having reviewed b. Reviewed)", "(Build): (late / Realizing / sprinted / was / he / he / station / the / to) -> ______", "(Short): Compress: 'Because I was tired, I slept.' -> ______", "(Write): Rewrite a clunky paragraph using 3 participle clauses.", "(Speak): Perform as The Novelist.", "(Fill): ______ (shock) by the news, she started to cry.", "(Match): Having finished -> After he finished", "(MCQ): ___ down the street, I saw a friend. (a. Walked b. Walking)", "(Build): (heat / by / the / stopped / we / Exhausted / walking) -> ______", "(Short): Compress: 'After I finished work, I went home.' -> ______"]
+                    },
+                    {
+                        title: "Session 16: Cleft Sentences (Focus & Emphasis)",
+                        goal: "Students can say: 'What I really need is a vacation.' or 'It was the manager who made the mistake.'<br><br><strong class='text-violet-900'>Elaboration:</strong> Teaches students how to manipulate sentence structure to shine a spotlight on the most important piece of information. Highly effective in arguments.<br><br><strong class='text-blue-900'>Example:</strong> Defending a point in a debate: 'What concerns me most is the lack of funding for this project.'",
+                        material: "Vocab: Emphasize, Crucial, Core issue, Lack of, Funding. Grammar: What clauses and It-clefts.",
+                        script: "'I need a vacation. Fine. But to show deep emotion? WHAT I REALLY NEED... is a vacation! Put the spotlight on your feeling.'",
+                        flow: "Warm-up: Strong opinions. Teaching: Introduce 'What [subject] [verb] is...' and 'It was [noun] who...'. Practice: Transform flat sentences into dynamic cleft sentences. Speaking: Rant about pet peeves using 'What annoys me is...'",
+                        tasks: "Isolate the emotional or critical core of a sentence and frame it using a cleft structure.",
+                        activities: "The Spotlight Rant: Students have 30 seconds to complain about a modern problem. They must start with: 'What bothers me most about society is...'",
+                        assessment: "Maintains grammatical agreement across the cleft (What I need *is* / What they want *are*).",
+                        mistake: "Student: 'What I want is go home.' Fix: 'What I want is TO go home. Keep the infinitive!'",
+                        worksheet: ["(Fill): ______ I really hate is cold weather.", "(Match): What I need -> The thing I need", "(MCQ): It ___ John who broke the window. (a. was b. had)", "(Build): (vacation / is / really / a / need / What / I) -> ______", "(Short): Emphasize the subject: 'Sarah bought the car.' -> It was Sarah who ______.", "(Write): Write 4 cleft sentences emphasizing different parts of a crime story.", "(Speak): Deliver a Spotlight Rant.", "(Fill): ______ bothers me most is the noise.", "(Match): It was the manager who -> The manager did it", "(MCQ): What concerns me ___ the lack of funding. (a. are b. is)", "(Build): (mistake / who / manager / the / It / the / made / was) -> ______", "(Short): Emphasize the object: 'I bought a phone.' -> What I bought ______."]
+                    },
+                    {
+                        title: "Session 17: Expressing Hypothetical Outcomes (Otherwise)",
+                        goal: "Students can say: 'We need to leave now; otherwise, we will miss the flight.'<br><br><strong class='text-violet-900'>Elaboration:</strong> A sleeker, more sophisticated alternative to 'If we don't...'. It connects a required action directly to its negative consequence.<br><br><strong class='text-blue-900'>Example:</strong> A student warns a team member: 'You must back up your files; otherwise, you might lose your data.'",
+                        material: "Vocab: Otherwise, Alternative, Consequence, Backup, Mandatory. Grammar: Imperative/Obligation + otherwise + future consequence.",
+                        script: "'You must study. If you don't study, you will fail. Too long! Say: You must study; OTHERWISE, you will fail.'",
+                        flow: "Warm-up: Warnings (You'd better). Teaching: Show how 'otherwise' replaces the negative 'If' clause. Emphasize the semicolon punctuation in writing. Practice: Match commands to terrible 'otherwise' consequences. Speaking: Give strict instructions for surviving a horror movie.",
+                        tasks: "Issue an imperative or strong modal command followed by 'otherwise' and a logical disaster.",
+                        activities: "The Drill Sergeant: You are training soldiers. Issue commands using 'otherwise'. 'You must clean your boots; otherwise, I will make you run 10 miles.'",
+                        assessment: "Places 'otherwise' between two independent clauses correctly.",
+                        mistake: "Student: 'Otherwise you will fail, you must study.' Fix: 'It goes in the middle! Command first, THEN the consequence.'",
+                        worksheet: ["(Fill): Bring an umbrella; ______, you will get wet.", "(Match): Otherwise -> Or else / If not", "(MCQ): You must pay the bill, ___ they will cut the power. (a. although b. otherwise)", "(Build): (flight / now / miss / leave / otherwise / to / We / the / will / we / need) -> ______", "(Short): Rewrite using otherwise: 'If you don't hurry, you'll be late.' -> ______", "(Write): Write a set of safety rules for a laboratory.", "(Speak): Act as the Drill Sergeant.", "(Fill): You must back up your files; ______, you might lose them.", "(Match): Consequence -> Result of an action", "(MCQ): Wake up early, ___ you'll miss the train. (a. otherwise b. however)", "(Build): (data / lose / otherwise / your / might / You / back / must / files / your / up / you) -> ______", "(Short): Give a warning about studying: ______"]
+                    },
+                    {
+                        title: "Session 18: Phase 3 Mega Review (The Academic Essay)",
+                        goal: "Write and speak a highly complex paragraph utilizing participle clauses, cleft sentences, and nuanced contrasts.<br><br><strong class='text-violet-900'>Elaboration:</strong> Forces the synthesis of the most difficult grammatical structures in the English language into a single, elegant thesis statement.<br><br><strong class='text-blue-900'>Example:</strong> A student presents: 'Having reviewed the budget, it is clear we are losing money. What we need is a new strategy. Whereas our competitors are innovating, we are stagnant. We must change; otherwise, we will fail.'",
+                        material: "Review: Non-defining clauses, Whereas, Participles, Cleft sentences, Otherwise.",
+                        script: "'This is university-level English. Build me a masterpiece paragraph.'",
+                        flow: "Warm-up: Cleft sentence rapid fire. Teaching: Deconstruct a master-level paragraph on the board. Practice: 30 minutes of intensive drafting and peer editing. Speaking: Read the 'Masterpiece Paragraphs' aloud with formal, deliberate pacing.",
+                        tasks: "Integrate 5 distinct advanced grammatical structures into a cohesive, persuasive argument.",
+                        activities: "The Keynote Speaker: Students deliver their paragraphs as if they are the keynote speaker at a major global conference, focusing on gravity, pausing, and perfect grammar.",
+                        assessment: "Maintains clarity and flow despite the high density of complex grammar.",
+                        mistake: "Creating a 'run-on' monster sentence. Fix: Coach them on pacing. A short, punchy sentence after a long participle clause creates good rhythm.",
+                        worksheet: ["(Fill): (Comprehensive Grammar Review of Phase 3)", "(Match): Match the grammatical term to the example.", "(MCQ): Select the most elegant sentence structure.", "(Build): Unscramble a 20-word academic sentence.", "(Short): Draft your Masterpiece outline.", "(Write): Write the Masterpiece Paragraph.", "(Speak): Deliver the Keynote.", "(Fill): ______, which is an important skill, takes time to learn.", "(Match): Cleft Sentence -> Emphasis", "(MCQ): Choose the correct form: (a. Having finish, I left b. Having finished, I left)", "(Build): (otherwise / must / fail / change / we / we / will) -> ______", "(Short): What makes a good presentation? ______"]
+                    }
+                ]
+            },
+            {
+                id: 4, title: "PHASE 4: ADVANCED CONNECTORS & DEBATE LOGIC",
+                sessions: [
+                    {
+                        title: "Session 19: Sequencing Complex Arguments",
+                        goal: "Students can say: 'Primarily, this policy affects the economy. Furthermore, it impacts education. Ultimately, it harms society.'<br><br><strong class='text-violet-900'>Elaboration:</strong> Upgrades Level 4 signposting ('First of all') to executive-level academic connectors, creating a sophisticated intellectual tone.<br><br><strong class='text-blue-900'>Example:</strong> A student outlines a debate case: 'Primarily, we must consider the cost. Subsequently, we must evaluate the timeline.'",
+                        material: "Vocab: Primarily, Subsequently, Ultimately, Policy, Impact, Evaluate. Grammar: Advanced Enumeration.",
+                        script: "'First, second, third... that is for children. You are executives! PRIMARILY... SUBSEQUENTLY... ULTIMATELY.'",
+                        flow: "Warm-up: First of all / Secondly. Teaching: Introduce the advanced tier of sequence adverbs. Practice: Outline a complex argument (e.g., 'The impact of AI') using the new signposts. Speaking: Deliver a 3-point thesis statement.",
+                        tasks: "Deploy academic sequence adverbs to map out a multi-layered argument.",
+                        activities: "The Think Tank Briefing: Teams must brief the 'President' (Teacher) on a new policy, hitting the three beats: Primarily (the main issue), Subsequently (the secondary effect), Ultimately (the final result).",
+                        assessment: "Uses appropriate pauses after the heavy adverbs to command the room.",
+                        mistake: "Student: 'Primarily I like dogs.' Fix: 'Too casual! Save 'primarily' for big, serious topics. I primarily focus on my career.'",
+                        worksheet: ["(Fill): ______, we must focus on lowering costs.", "(Match): Subsequently -> Following that", "(MCQ): ___, this decision will save us money in the long run. (a. Primarily b. Ultimately)", "(Build): (economy / the / affects / policy / Primarily / this) -> ______", "(Short): What is your primary goal for next year? ______", "(Write): Outline a 3-point argument about social media.", "(Speak): Deliver the Think Tank Briefing.", "(Fill): ______, it impacts the education system.", "(Match): Ultimately -> In the end", "(MCQ): We must ___ the risks before acting. (a. evaluate b. impact)", "(Build): (evaluate / timeline / the / must / we / Subsequently) -> ______", "(Short): What is the ultimate goal of learning English? ______"]
+                    },
+                    {
+                        title: "Session 20: Expressing Conditions (Provided that / Unless)",
+                        goal: "Students can say: 'We will hit the deadline, provided that there are no technical issues. Unless we get more funding, we will fail.'<br><br><strong class='text-violet-900'>Elaboration:</strong> Advanced alternatives to 'If'. These establish strict boundaries, ultimatums, and prerequisites in professional negotiations.<br><br><strong class='text-blue-900'>Example:</strong> A student negotiates a contract: 'I will accept the offer, provided that I can work from home twice a week.'",
+                        material: "Vocab: Provided that, As long as, Unless, Funding, Prerequisite. Grammar: Conditional subordinating conjunctions.",
+                        script: "'I will go IF you pay me. Make it a strict contract: I will go PROVIDED THAT you pay me. If you DON'T pay me? UNLESS you pay me, I will not go.'",
+                        flow: "Warm-up: 1st Conditional (If/Will). Teaching: Differentiate 'Provided that' (positive condition) from 'Unless' (negative condition = if not). Practice: Write binding contracts and ultimatums. Speaking: Labor union negotiations.",
+                        tasks: "Issue strict demands and conditions using 'provided that' and 'unless'.",
+                        activities: "The Union Strike: Half the class is Management, half is the Union. 'We will return to work, provided that you increase our salary. Unless you agree by Friday, we will strike forever.'",
+                        assessment: "Does not double-negative with 'unless' (e.g., Unless you don't pay me).",
+                        mistake: "Student: 'Unless you don't help, I will fail.' Fix: 'Unless ALREADY MEANS if not! Unless you help me, I will fail.'",
+                        worksheet: ["(Fill): I will help you, ______ that you pay for lunch.", "(Match): Unless -> If not", "(MCQ): We will lose the game ___ we practice more. (a. provided that b. unless)", "(Build): (funding / fail / we / get / more / Unless / we / will) -> ______", "(Short): Make a demand using 'provided that': ______", "(Write): Draft a contract with 3 strict conditions.", "(Speak): Negotiate as a Union leader.", "(Fill): You can borrow the car, as ______ as you fill the gas.", "(Match): Provided that -> On the condition that", "(MCQ): I will sign the contract ___ the terms change. (a. unless b. as long as)", "(Build): (issues / no / are / there / that / provided / deadline / the / hit / will / We / technical) -> ______", "(Short): What will happen unless you study? ______"]
+                    },
+                    {
+                        title: "Session 21: Highlighting Significance (Crucially / Notably)",
+                        goal: "Students can say: 'The project was difficult. Crucially, however, it was completed under budget.'<br><br><strong class='text-violet-900'>Elaboration:</strong> Teaches students how to forcefully draw the listener's attention to the most vital piece of an argument amidst a sea of details.<br><br><strong class='text-blue-900'>Example:</strong> A student emphasizes a key fact: 'The medicine is effective. Notably, it has zero side effects.'",
+                        material: "Vocab: Crucially, Notably, Significantly, Above all, Vital. Grammar: Sentence adverbs for emphasis.",
+                        script: "'You have 10 facts. Fact 4 is the most important. Highlight it! Say: CRUCIALLY, we saved a million dollars.'",
+                        flow: "Warm-up: Cleft sentences. Teaching: Introduce significance adverbs. Show how they act like a vocal highlighter pen. Practice: Read dense paragraphs and insert 'Crucially' before the 'golden nugget' of information. Speaking: Pitch an idea where one benefit outshines the rest.",
+                        tasks: "Use a significance adverb to elevate one specific point above the surrounding context.",
+                        activities: "The Golden Nugget: Present a boring list of stats about a fake company. Students must find the one stat that saves the company from bankruptcy and present it: 'Profits are down. However, CRUCIALLY, our user base doubled.'",
+                        assessment: "Deploys the adverb with a distinct, heavy vocal emphasis.",
+                        mistake: "Student: 'Crucially I ate pizza.' Fix: 'Don't waste powerful words on boring facts! Save it for the big moment.'",
+                        worksheet: ["(Fill): The team is tired, but ______, they are still motivated.", "(Match): Notably -> Especially important", "(MCQ): He was sick. ___, he still won the race. (a. Specifically b. Crucially)", "(Build): (was / budget / Crucially / under / completed / it / however) -> ______", "(Short): Highlight a key fact about your country: ______", "(Write): Write a business update emphasizing one major success.", "(Speak): Deliver the Golden Nugget pitch.", "(Fill): Above ______, we must ensure safety.", "(Match): Vital -> Absolutely necessary", "(MCQ): The new phone is fast. ___, it is much cheaper. (a. Crucially b. Notably)", "(Build): (zero / has / it / Notably / effects / side) -> ______", "(Short): What is crucially important for learning English? ______"]
+                    },
+                    {
+                        title: "Session 22: Speculating & Hypothesizing (Suppose / Imagine)",
+                        goal: "Students can say: 'Suppose we lose the client; what would our next step be?'<br><br><strong class='text-violet-900'>Elaboration:</strong> Replaces the basic 'If' with more dramatic, thought-provoking scenario-building tools. Used to command attention in meetings when forecasting disasters or opportunities.<br><br><strong class='text-blue-900'>Example:</strong> A student leads a brainstorming session: 'Imagine we had unlimited funding. What would we build?'",
+                        material: "Vocab: Suppose, Imagine, Assuming, Scenario, Forecast. Grammar: Supposition + 2nd/3rd Conditional logic.",
+                        script: "'Don't just say IF. Paint a picture for me! IMAGINE we lose everything. SUPPOSE the market crashes. What do we do?'",
+                        flow: "Warm-up: 2nd Conditional. Teaching: Teach 'Suppose/Imagine' as conversation starters that trigger conditional grammar. Practice: Write disaster recovery plans based on 'Suppose...' prompts. Speaking: 'Doomsday' planning meetings.",
+                        tasks: "Initiate a hypothetical discussion using 'Suppose' or 'Imagine' and follow it with conditional logic.",
+                        activities: "The War Room: The CEO says: 'Suppose our competitor steals our product. What is our strategy?' Students must rapidly debate and formulate a survival plan based on the hypothetical.",
+                        assessment: "Correctly shifts into past tense (2nd conditional grammar) after 'Imagine' for unreal scenarios.",
+                        mistake: "Student: 'Imagine we will lose.' Fix: 'You're dreaming! Imagine we LOST. Shift to the past.'",
+                        worksheet: ["(Fill): ______ we run out of money, what would we do?", "(Match): Imagine -> Picture this scenario", "(MCQ): ___ he had said no, what would have happened? (a. Assuming b. Suppose)", "(Build): (client / Suppose / lose / we / the) -> ______", "(Short): Start a hypothetical about aliens: ______", "(Write): Write a disaster plan for a business scenario.", "(Speak): Lead a War Room discussion.", "(Fill): ______ we had unlimited time, where would we go?", "(Match): Scenario -> A possible situation", "(MCQ): Imagine you ___ fly. What would you do? (a. can b. could)", "(Build): (be / step / next / our / would / what) -> ______", "(Short): Pose a 'Suppose' question to a friend: ______"]
+                    },
+                    {
+                        title: "Session 23: Conceding and Pivoting (Be that as it may)",
+                        goal: "Students can say: 'The budget is tight. Be that as it may, we must proceed with the marketing launch.'<br><br><strong class='text-violet-900'>Elaboration:</strong> The ultimate executive transition phrase. Acknowledges an undeniable negative truth, dismisses it politely, and pushes the agenda forward.<br><br><strong class='text-blue-900'>Example:</strong> A student debates a tough issue: 'You are right that it is risky. Be that as it may, the potential reward is too high to ignore.'",
+                        material: "Vocab: Be that as it may, Having said that, Proceed, Potential, Ignore. Grammar: Concession transitions.",
+                        script: "'Someone tells you a terrible fact. You agree it's terrible, but you don't care! Say: BE THAT AS IT MAY... we must continue.'",
+                        flow: "Warm-up: Acknowledging counter-arguments (While it is true...). Teaching: Introduce 'Be that as it may' and 'Having said that' as ultimate pivot tools. Practice: Respond to crushing bad news with a stoic pivot. Speaking: Hostile press conference roleplay.",
+                        tasks: "Absorb a negative fact and seamlessly pivot back to the main goal using the target phrase.",
+                        activities: "The Stubborn Politician: Press: 'Sir, your plan costs 10 billion dollars and everyone hates it.' Politician: 'Be that as it may, it is the only way to save the city.'",
+                        assessment: "Uses the phrase independently (with commas), not as a conjunction.",
+                        mistake: "Student: 'Be that as it may I will go.' Fix: 'Heavy pause! Be that as it may, [PAUSE], I will go.'",
+                        worksheet: ["(Fill): It is raining. Be that as it ______, we will still play the game.", "(Match): Having said that -> Despite what was just said", "(MCQ): The work is hard. ___, it must be done. (a. Be that as it may b. Because)", "(Build): (proceed / may / it / as / that / Be / must / we) -> ______", "(Short): Pivot away from this: 'We have no experience.' -> ______", "(Write): Write a speech defending a difficult choice.", "(Speak): Play the Stubborn Politician.", "(Fill): You are right about the danger. ______ said that, I am not afraid.", "(Match): Proceed -> Move forward", "(MCQ): It is very late. ___, we should finish the report. (a. Having said that b. Therefore)", "(Build): (ignore / to / high / too / is / reward / potential / the) -> ______", "(Short): What does 'Be that as it may' mean? ______"]
+                    },
+                    {
+                        title: "Session 24: Phase 4 Mega Review (The Boardroom Pitch)",
+                        goal: "Deliver a highly persuasive, 3-minute executive pitch utilizing sequence, strict conditions, emphasis, and diplomatic pivots.<br><br><strong class='text-violet-900'>Elaboration:</strong> Tests the student's ability to command a room using advanced rhetoric, mimicking the highest levels of corporate communication.<br><br><strong class='text-blue-900'>Example:</strong> A student pitches: 'Primarily, this app saves time. Suppose we capture 10% of the market. We will succeed, provided that we secure funding. It is expensive. Be that as it may, it is the future.'",
+                        material: "Review: Primarily, Provided that, Crucially, Suppose, Be that as it may.",
+                        script: "'You are pitching to billionaires. Your language must be sharp, logical, and unstoppable.'",
+                        flow: "Warm-up: The Stubborn Politician. Teaching: Map the 'Billion Dollar Pitch' structure on the board. Practice: 30 minutes of intensive team drafting for a startup pitch. Speaking: The Shark Tank presentation.",
+                        tasks: "Integrate 5 advanced discourse markers flawlessly to persuade a hostile audience.",
+                        activities: "Shark Tank: Teams pitch a wild startup idea. The 'Sharks' (Teacher/Classmates) attack the idea. The team must use 'Suppose' to sell the vision and 'Be that as it may' to deflect criticism.",
+                        assessment: "Maintains high-level vocabulary and syntax even when defending against aggressive questioning.",
+                        mistake: "Crumbling under the Sharks' questions and reverting to 'I think it is good.' Fix: Coach them to use the lifelines: 'That is a fair point, but crucially...'",
+                        worksheet: ["(Fill): (Comprehensive Phrase Review)", "(Match): Match the executive phrase to its function.", "(MCQ): Choose the most persuasive sentence.", "(Build): Unscramble a complex pitch statement.", "(Short): Outline your Startup Pitch.", "(Write): Draft the opening to your Shark Tank pitch.", "(Speak): Survive the Shark Tank.", "(Fill): ______, we must evaluate the market size.", "(Match): Shark Tank -> High pressure pitch", "(MCQ): ___ we fail, what is the backup plan? (a. Suppose b. Primarily)", "(Build): (funding / secure / we / that / provided / succeed / will / We) -> ______", "(Short): Write a concluding statement for your pitch: ______"]
+                    }
+                ]
+            },
+            {
+                id: 5, title: "PHASE 5: DEBATE TACTICS & DOMINATION",
+                sessions: [
+                    {
+                        title: "Session 25: Asserting Dominance (The fact of the matter is...)",
+                        goal: "Students can say: 'You can argue about the details, but the fact of the matter is that we are out of time.'<br><br><strong class='text-violet-900'>Elaboration:</strong> The 'nuclear option' in an argument. Teaches students how to cut through noise and refocus a debate on an undeniable core truth.<br><br><strong class='text-blue-900'>Example:</strong> A student shuts down a tangent in a debate: 'The fact of the matter is, without funding, none of this matters.'",
+                        material: "Vocab: The fact of the matter is, At the end of the day, Details, Distraction, Core issue. Grammar: Emphatic declarations.",
+                        script: "'People are arguing about stupid things. Stop them! Hit the table and say: THE FACT OF THE MATTER IS... we have no money. End of story.'",
+                        flow: "Warm-up: Be that as it may. Teaching: Introduce 'The fact of the matter is' and 'At the end of the day'. Discuss when to use them (to end cyclical arguments). Practice: Read a transcript of a messy argument and write the definitive closing statement. Speaking: Cut off a rambling partner with a cold, hard fact.",
+                        tasks: "Use an emphatic declaration to forcefully summarize and end a point of contention.",
+                        activities: "The Hammer: Two students argue in circles about something trivial (e.g., what color to paint a room). S3 steps in, hits the desk, and ends it: 'The fact of the matter is, we don't even own the house yet!'",
+                        assessment: "Delivers the phrase with appropriate vocal weight and gravity.",
+                        mistake: "Student: 'The fact of matter is...' Fix: 'The fact OF THE matter. Don't forget the THE.'",
+                        worksheet: ["(Fill): The fact of the ______ is, we need more staff.", "(Match): At the end of the day -> Ultimately", "(MCQ): You can complain, but the fact of the matter ___ we must work. (a. is b. are)", "(Build): (time / of / out / are / we / that / is / matter / the / of / fact / The) -> ______", "(Short): End an argument about where to eat: ______", "(Write): Write a paragraph ending a debate about school uniforms.", "(Speak): Act as 'The Hammer'.", "(Fill): At the end of the ______, health is most important.", "(Match): Core issue -> The most important problem", "(MCQ): We can argue, but the ___ of the matter is it failed. (a. fact b. truth)", "(Build): (matters / this / of / none / funding / without) -> ______", "(Short): What is the core issue with pollution? ______"]
+                    },
+                    {
+                        title: "Session 26: Dismantling Logic (That doesn't necessarily mean...)",
+                        goal: "Students can say: 'Just because he is rich, that doesn't necessarily mean he is happy.'<br><br><strong class='text-violet-900'>Elaboration:</strong> Teaches students to attack logical fallacies. Essential for high-level academic writing and advanced intellectual debate.<br><br><strong class='text-blue-900'>Example:</strong> A student rebuts an opponent: 'Just because the test scores went up, it doesn't necessarily mean the students are learning more.'",
+                        material: "Vocab: Necessarily, Just because, Guarantee, Correlation, Fallacy. Grammar: Just because X, doesn't mean Y.",
+                        script: "'Your friend says: He wears glasses, so he is smart. Attack the logic! JUST BECAUSE he wears glasses, THAT DOESN'T NECESSARILY MEAN he is smart.'",
+                        flow: "Warm-up: The Hammer. Teaching: Introduce the 'Just because... doesn't mean' formula. Teach 'necessarily' to soften the blow. Practice: Identify logical fallacies and write rebuttals. Speaking: Rapid-fire logical takedowns.",
+                        tasks: "Identify a flawed premise and dismantle it using the target formula.",
+                        activities: "Fallacy Fighters: Teacher presents terrible logic: 'It's raining, so the sun exploded.' Students must instantly rebut: 'Just because it's raining, that doesn't necessarily mean the sun exploded.'",
+                        assessment: "Balances the two clauses correctly without using 'so' in the middle.",
+                        mistake: "Student: 'Just because he is rich, so he is not happy.' Fix: 'No SO! Just because X, [comma], that doesn't mean Y.'",
+                        worksheet: ["(Fill): Just ______ it is new, that doesn't necessarily mean it is better.", "(Match): Necessarily -> Definitely / Always", "(MCQ): Just because she smiled, it doesn't ___ mean she agrees. (a. necessary b. necessarily)", "(Build): (happy / mean / necessarily / doesn't / that / rich / is / he / because / Just / he / is) -> ______", "(Short): Rebut this: 'He is quiet, so he is angry.' -> ______", "(Write): Write 3 rebuttals to common stereotypes.", "(Speak): Play Fallacy Fighters.", "(Fill): Just because you studied, that doesn't ______ mean you'll pass.", "(Match): Fallacy -> False logic", "(MCQ): Just because it's expensive, ___ doesn't mean it's good. (a. it b. that)", "(Build): (learning / are / students / the / mean / necessarily / doesn't / it) -> ______", "(Short): Rebut this: 'They are late, so they don't care.' -> ______"]
+                    },
+                    {
+                        title: "Session 27: Deflecting & Pivoting (That's not the point...)",
+                        goal: "Students can say: 'That's not the point. The real issue here is how we move forward.'<br><br><strong class='text-violet-900'>Elaboration:</strong> Masterful political and media training. Teaches students how to escape a losing argument or a hostile question by shifting the focus entirely.<br><br><strong class='text-blue-900'>Example:</strong> A student dodges a tough question: 'You're right that mistakes were made, but that's beside the point. The real issue is fixing it.'",
+                        material: "Vocab: That's not the point, That's beside the point, The real issue here is, Deflect, Focus. Grammar: Conversational redirection.",
+                        script: "'You are losing the argument. They trapped you! Escape! Say: THAT IS BESIDE THE POINT. THE REAL ISSUE IS... and change the subject to your strong point.'",
+                        flow: "Warm-up: Fallacy fighters. Teaching: Teach deflection phrases. Explain how politicians use this constantly. Practice: Read an aggressive interview transcript and write a deflection. Speaking: The 'Politician' roleplay.",
+                        tasks: "Absorb a hostile question, verbally dismiss its relevance, and state a new 'real issue'.",
+                        activities: "The Hostile Press: S1 is a politician caught in a scandal. The class acts as aggressive reporters asking about the scandal. S1 must deflect every question: 'That's not the point, the real issue is the economy!'",
+                        assessment: "Smoothly transitions from the deflection phrase to a completely new topic.",
+                        mistake: "Student: 'That is not point.' Fix: 'That's not THE point. Memorize the whole chunk.'",
+                        worksheet: ["(Fill): You are right about the cost, but that's beside the ______.", "(Match): The real issue is -> The main problem is", "(MCQ): That's not the point. The real ___ here is safety. (a. issue b. issued)", "(Build): (here / issue / real / The / forward / move / we / how / is) -> ______", "(Short): Deflect this: 'Why were you late?' -> ______", "(Write): Write a script deflecting blame for a failed project.", "(Speak): Survive the Hostile Press.", "(Fill): That's not the point. The real issue ______ is our strategy.", "(Match): Deflect -> Change the subject", "(MCQ): You made a mistake, but that's ___ the point. (a. beside b. next)", "(Build): (point / the / not / That's) -> ______", "(Short): Deflect this: 'You spent too much money.' -> ______"]
+                    },
+                    {
+                        title: "Session 28: Playing Devil's Advocate",
+                        goal: "Students can say: 'Let me play devil's advocate for a second. What if the competitor launches first?'<br><br><strong class='text-violet-900'>Elaboration:</strong> Teaches students how to safely introduce a negative or controversial idea into a meeting without taking personal blame for it.<br><br><strong class='text-blue-900'>Example:</strong> A student challenges the group: 'Just to play devil's advocate, what if our customers actually hate this new design?'",
+                        material: "Vocab: Devil's advocate, What if, Challenge, Perspective, Blind spot. Grammar: Introducing hypotheticals safely.",
+                        script: "'You think the boss's idea is bad, but you can't say that! Be sneaky. Say: LET ME PLAY DEVIL'S ADVOCATE. What if it fails? You are protected!'",
+                        flow: "Warm-up: Deflection. Teaching: Explain the cultural concept of 'Devil's Advocate'. Show how it protects the speaker while challenging the group. Practice: Look at 'perfect' plans and find the fatal flaw, then phrase it as the Devil's Advocate. Speaking: Team brainstorming sessions with an assigned 'saboteur'.",
+                        tasks: "Challenge a group consensus safely by using the 'Devil's Advocate' framing.",
+                        activities: "The Saboteur: S1 and S2 present a flawless business plan. S3 is assigned to destroy it politely: 'Let me play devil's advocate for a second. What if the factory burns down?'",
+                        assessment: "Uses the phrase specifically to introduce a counter-argument to a prevailing consensus.",
+                        mistake: "Student: 'I am the devil's advocate.' Fix: 'No, you PLAY the devil's advocate. Let me PLAY devil's advocate.'",
+                        worksheet: ["(Fill): Let me ______ devil's advocate for a minute.", "(Match): Devil's advocate -> Argue the opposite side safely", "(MCQ): Just to play devil's advocate, ___ it rains? (a. what if b. because)", "(Build): (if / what / first / competitor / launches / the / second / a / for / advocate / devil's / play / me / Let) -> ______", "(Short): Challenge a plan to open a restaurant: ______", "(Write): Write 3 Devil's Advocate questions for a new tech product.", "(Speak): Act as The Saboteur.", "(Fill): Just to play devil's advocate, what ______ the customers hate it?", "(Match): Blind spot -> Something you didn't think of", "(MCQ): Let me play devil's ___ for a second. (a. advocate b. argument)", "(Build): (perspective / another / from / it / at / look / Let's) -> ______", "(Short): Challenge a plan to go to the beach: ______"]
+                    },
+                    {
+                        title: "Session 29: Forcing Agreement (Tag Questions)",
+                        goal: "Students can say: 'This is the best option, isn't it? We can't afford to wait, can we?'<br><br><strong class='text-violet-900'>Elaboration:</strong> The grammar of manipulation and confirmation. Used heavily by native speakers to trap opponents into agreeing with them or to seek validation.<br><br><strong class='text-blue-900'>Example:</strong> A student corners a debate opponent: 'You don't actually believe that, do you?'",
+                        material: "Vocab: Validation, Confirm, Option, Afford, Trap. Grammar: Advanced Tag Questions (Positive/Negative inversion).",
+                        script: "'I want you to agree with me. I don't ask 'Do you agree?'. I trap you! This is a great idea... ISN'T IT? You don't want to fail... DO YOU?'",
+                        flow: "Warm-up: Devil's advocate. Teaching: Teach the math of tag questions (+ statement = - tag / - statement = + tag). Explain the intonation (voice down = forcing agreement, voice up = actual question). Practice: Rapid-fire tag formulation on the board. Speaking: Try to trap a partner into agreeing to a crazy idea.",
+                        tasks: "Instantly formulate the correct inverted auxiliary verb for the tag question.",
+                        activities: "The Trap: Student must get a classmate to agree to 3 ridiculous things using downward-intonation tag questions. 'English is easy, isn't it?' 'Yes...' 'We should do 10 hours of homework, shouldn't we?'",
+                        assessment: "Calculates the correct auxiliary verb (e.g., 'You went there, didn't you?' NOT 'You went there, aren't you?').",
+                        mistake: "Student: 'He is smart, isn't he is?' Fix: 'Drop the final pronoun! Just ISN'T HE.'",
+                        worksheet: ["(Fill): You have finished the report, ______ you?", "(Match): Voice goes down -> Forcing agreement", "(MCQ): She will come to the meeting, ___ she? (a. won't b. will)", "(Build): (wait / to / afford / can't / We / we / can) -> ______ ?", "(Short): Add a tag: 'You didn't see him.' -> ______", "(Write): Write a dialogue full of manipulative tag questions.", "(Speak): Try to trap your partner.", "(Fill): This is the best option, ______ it?", "(Match): Voice goes up -> Real question", "(MCQ): They went to Paris, ___ they? (a. didn't b. don't)", "(Build): (that / believe / actually / don't / You / you / do) -> ______ ?", "(Short): Add a tag: 'It's cold today.' -> ______"]
+                    },
+                    {
+                        title: "Session 30: Phase 5 Mega Review (The Hostile Takeover)",
+                        goal: "Dominate a multi-party, high-conflict debate using the fact of the matter, deflections, devil's advocate, and tag questions.<br><br><strong class='text-violet-900'>Elaboration:</strong> Tests the psychological and grammatical endurance of the student. Can they command a hostile room and bend the narrative to their will?<br><br><strong class='text-blue-900'>Example:</strong> A student survives a barrage of attacks, deflects irrelevant points, plays devil's advocate against the CEO, and forces the room to agree using tag questions.",
+                        material: "Review: Fact of the matter, Doesn't necessarily mean, Beside the point, Devil's advocate, Tag questions.",
+                        script: "'This is a hostile boardroom. Protect your ideas, destroy bad logic, and command the room.'",
+                        flow: "Warm-up: Rapid tag questions. Teaching: Review the 'Debate Domination' flowchart. (Deflect attack -> Dismantle logic -> State fact -> Force agreement). Practice: Write out a Domination Flow script. Speaking: The Hostile Takeover roleplay.",
+                        tasks: "Chain 4 advanced rhetorical strategies together to win an argument against multiple attackers.",
+                        activities: "The Hostile Takeover: 1 CEO vs 3 Angry Shareholders. The CEO must defend their terrible decisions. 'That's beside the point. The fact of the matter is, we survived, didn't we?'",
+                        assessment: "Seamlessly links deflections into facts and ends with a rhetorical tag trap.",
+                        mistake: "Getting flustered and forgetting the chunks. Fix: Allow them to hold a 'cheat sheet' card with the 5 main phrases.",
+                        worksheet: ["(Fill): (Comprehensive Rhetoric Review)", "(Match): Match the phrase to its psychological goal (Deflect, Trap, Dominate).", "(MCQ): Select the best way to escape a logical trap.", "(Build): Unscramble a brutal rebuttal.", "(Short): Draft your CEO defense speech.", "(Write): Write an analysis of a political debate.", "(Speak): Survive the Hostile Takeover.", "(Fill): Just because we lost money, that doesn't ______ mean we failed.", "(Match): Hostile -> Aggressive and unfriendly", "(MCQ): The real ___ here is our future. (a. issue b. point)", "(Build): (advocate / devil's / play / me / Let) -> ______", "(Short): End the debate strong: ______"]
+                    }
+                ]
+            },
+            {
+                id: 6, title: "PHASE 6: REGISTER & REAL-WORLD ADAPTATION",
+                sessions: [
+                    {
+                        title: "Session 31: Formal vs Informal Vocabulary",
+                        goal: "Students can switch: 'Give me a hand' (Informal) to 'I require some assistance' (Formal).<br><br><strong class='text-violet-900'>Elaboration:</strong> The core of Level 5 fluency. Speaking perfect formal English to a friend is just as 'wrong' as using slang with a judge. They must learn to code-switch.<br><br><strong class='text-blue-900'>Example:</strong> A student roleplays texting a friend ('Can't make it, sorry') and emailing a boss ('I regret to inform you that I am unable to attend').",
+                        material: "Vocab pairs: Help/Assist, Ask/Inquire, Tell/Inform, Get/Obtain, Need/Require. Grammar: Register switching.",
+                        script: "'You are at a bar with a friend. You say: Get me a beer! You are at a palace with the Queen. Do you say GET? No. You say OBTAIN. Context is everything.'",
+                        flow: "Warm-up: Basic verbs. Teaching: Present a chart of 10 common Phrasal Verbs/Casual words and their Latin-based Formal equivalents. Practice: Translate casual emails into hyper-formal corporate emails. Speaking: The 'Jekyll and Hyde' roleplay.",
+                        tasks: "Instantly translate a casual thought into professional business English and vice versa.",
+                        activities: "Jekyll and Hyde: Teacher gives a prompt: 'You need money.' Student turns left to a 'friend': 'Hey, spot me ten bucks?' Student turns right to a 'banker': 'I would like to inquire about a loan.'",
+                        assessment: "Never uses Latin-heavy vocabulary (require, obtain, assist) in casual chat roleplays.",
+                        mistake: "Student to friend: 'I require your assistance.' Fix: 'You sound like a robot! Speak to your friend: Can you give me a hand?'",
+                        worksheet: ["(Fill): I need to ______ (get/obtain) a copy of the report.", "(Match): Ask -> Inquire", "(MCQ): To a boss: I regret to ___ you... (a. tell b. inform)", "(Build): (assistance / some / require / I) -> ______", "(Short): Make formal: 'I need help.' -> ______", "(Write): Write an informal text and a formal email saying you will be late.", "(Speak): Play Jekyll and Hyde.", "(Fill): Could you ______ (help/assist) me with this?", "(Match): Need -> Require", "(MCQ): To a friend: Can you ___ me a hand? (a. give b. provide)", "(Build): (inform / regret / to / I / you / attend / unable / am / I / that / to) -> ______", "(Short): Make informal: 'I require your assistance.' -> ______"]
+                    },
+                    {
+                        title: "Session 32: Softening Bad News (Diplomacy)",
+                        goal: "Students can say: 'Unfortunately, there has been a slight delay, but we are working on it.'<br><br><strong class='text-violet-900'>Elaboration:</strong> Crucial corporate survival skill. Teaches how to deliver terrible news without causing panic, using euphemisms and softeners.<br><br><strong class='text-blue-900'>Example:</strong> A student informs a client: 'It seems we've run into a minor complication with your order.'",
+                        material: "Vocab: Unfortunately, Slight, Minor, Complication, Setback, Issue. Grammar: Euphemisms and passive voice for softening.",
+                        script: "'The factory exploded. Do you tell the client that? No! You say: We have experienced a SLIGHT SETBACK. You must be diplomatic.'",
+                        flow: "Warm-up: Formal vs Informal. Teaching: Teach the vocabulary of corporate disaster softening (Slight, Minor issue, Complication). Practice: Rewrite brutal truths ('We lost your money') into diplomatic emails. Speaking: Deliver terrible news to the CEO with a straight face.",
+                        tasks: "Deliver devastating information using soft, minimizing vocabulary and passive structures to avoid panic.",
+                        activities: "The PR Manager: Students draw a disaster card ('The chef dropped the wedding cake'). They must explain it to the customer: 'Unfortunately, there has been a minor complication regarding the dessert...'",
+                        assessment: "Uses words like 'slight' or 'minor' to successfully downplay a major problem.",
+                        mistake: "Student: 'Unfortunately, everything is destroyed.' Fix: 'Too honest! You are fired. Say: We encountered a significant complication.'",
+                        worksheet: ["(Fill): ______, we cannot accept your application.", "(Match): Setback -> Delay/Problem", "(MCQ): We ran into a ___ complication. (a. minor b. tiny)", "(Build): (delay / a / slight / been / has / there / Unfortunately) -> ______", "(Short): Soften this: 'We broke it.' -> ______", "(Write): Write a diplomatic email explaining a missed deadline.", "(Speak): Act as the PR Manager.", "(Fill): It seems we've run into a minor ______ (issue/problem).", "(Match): Complication -> Unexpected difficulty", "(MCQ): We are currently ___ on a solution. (a. working b. doing)", "(Build): (complication / minor / a / experienced / have / We) -> ______", "(Short): Soften this: 'The system crashed.' -> ______"]
+                    },
+                    {
+                        title: "Session 33: Phrasal Verbs in Context",
+                        goal: "Students can say: 'We need to figure out a plan before the deal falls through.'<br><br><strong class='text-violet-900'>Elaboration:</strong> Native speakers rely heavily on phrasal verbs. While Phase 1 taught formal verbs, this session teaches the essential casual verbs required to actually understand native speech.<br><br><strong class='text-blue-900'>Example:</strong> A student brainstorms with a team: 'Let's hash this out before we wrap up the meeting.'",
+                        material: "Vocab: Figure out, Fall through, Wrap up, Look into, Come up with. Grammar: Separable vs inseparable phrasal verbs.",
+                        script: "'In a textbook, you RESOLVE a problem. In a real American office? You FIGURE IT OUT. Let's learn how natives actually speak.'",
+                        flow: "Warm-up: Formal translation. Teaching: Introduce the top 5 most common business phrasal verbs. Show the grammar rule for pronoun placement ('figure it out', not 'figure out it'). Practice: Replace formal verbs in a text with phrasal verbs. Speaking: Casual brainstorming session.",
+                        tasks: "Accurately place pronouns between the verb and particle in separable phrasal verbs.",
+                        activities: "The Casual Office: Give a hyper-formal corporate memo. Teams race to translate it into casual, phrasal-verb-heavy 'water cooler' English. 'We must resolve this' -> 'We gotta figure this out.'",
+                        assessment: "Says 'figure it out' perfectly, demonstrating mastery of separable verb rules.",
+                        mistake: "Student: 'We need to look it into.' Fix: 'Look into is unbreakable! Look into it.'",
+                        worksheet: ["(Fill): We need to figure ______ a solution.", "(Match): Wrap up -> Finish", "(MCQ): The deal fell ___. (a. out b. through)", "(Build): (plan / a / with / up / come / to / need / We) -> ______", "(Short): Replace 'investigate': We need to ______ the problem.", "(Write): Write a casual slack message to a coworker using 3 phrasal verbs.", "(Speak): Translate a formal memo to casual speech.", "(Fill): Let's hash this ______ before we leave.", "(Match): Come up with -> Invent / Create", "(MCQ): I'll look ___ the issue tomorrow. (a. into b. at)", "(Build): (it / out / figure / will / We) -> ______", "(Short): Replace 'finish': Let's ______ the meeting. ______"]
+                    },
+                    {
+                        title: "Session 34: Small Talk & Networking",
+                        goal: "Students can say: 'So, how long have you been in this industry? What do you do outside of work?'<br><br><strong class='text-violet-900'>Elaboration:</strong> The art of filling silence. Teaches the culturally appropriate questions and responses to build rapport before doing business.<br><br><strong class='text-blue-900'>Example:</strong> At a networking event, a student asks: 'Have you attended this conference before? How are you finding it?'",
+                        material: "Vocab: Industry, Outside of work, Free time, Catch up, Networking. Grammar: PPC (How long have you been...) + Open WH- questions.",
+                        script: "'Before the big meeting, there is coffee. You cannot just stand in silence! Ask questions! How long have you been here? What do you do for fun? Be interested!'",
+                        flow: "Warm-up: Phrasal verbs. Teaching: Map out a 'Small Talk Flowchart' (Weather -> Journey -> Job -> Hobbies). Teach safe topics vs taboo topics. Practice: Fill in the blanks in networking dialogues. Speaking: 10-minute cocktail party simulation.",
+                        tasks: "Keep a casual, polite conversation going for 3 minutes without touching on 'heavy' or taboo topics.",
+                        activities: "The Cocktail Party: Play soft jazz. Students walk around with fake business cards. They must execute perfect small talk (open, chat, politely excuse themselves) with at least 3 people.",
+                        assessment: "Uses open-ended questions to keep the other person talking, rather than asking closed yes/no questions.",
+                        mistake: "Asking 'Are you married?' or 'How much money do you make?' Fix: 'Taboo! Stick to safe topics: Travel, weather, job, hobbies.'",
+                        worksheet: ["(Fill): How ______ have you been working here?", "(Match): Catch up -> Talk after a long time", "(MCQ): What do you do ___ of work? (a. out b. outside)", "(Build): (finding / conference / the / you / How / are) -> ______ ?", "(Short): Write a safe small talk question: ______", "(Write): Script a 4-line networking interaction.", "(Speak): Act out a networking conversation.", "(Fill): So, ______ do you do for a living?", "(Match): Industry -> Business sector", "(MCQ): Have you ___ this event before? (a. attend b. attended)", "(Build): (work / outside / do / you / what / of / do) -> ______ ?", "(Short): How do you politely end a conversation? ______"]
+                    },
+                    {
+                        title: "Session 35: Handling Aggressive Complaints",
+                        goal: "Students can say: 'I understand why you are frustrated, and I apologize. Let's see how we can resolve this.'<br><br><strong class='text-violet-900'>Elaboration:</strong> De-escalation tactics. Teaches the psychological language required to calm down an angry native speaker and regain control of a situation.<br><br><strong class='text-blue-900'>Example:</strong> A student roleplays customer service: 'I completely understand your anger. Let me look into this for you immediately.'",
+                        material: "Vocab: Frustrated, Unacceptable, Apologize, Resolve, Look into. Grammar: Validating emotions (I understand why...) + Action steps.",
+                        script: "'The customer is screaming! Don't fight back. Absorb the punch. I UNDERSTAND WHY YOU ARE FRUSTRATED. Validate them. Then, offer action: LET'S FIX THIS.'",
+                        flow: "Warm-up: Small talk escape routes. Teaching: Teach the De-escalation loop: Validate -> Apologize -> Take Ownership -> Propose Action. Practice: Write de-escalation responses to furious Yelp reviews. Speaking: Customer Service nightmare roleplay.",
+                        tasks: "Absorb verbal aggression and deploy the 4-step de-escalation loop perfectly under pressure.",
+                        activities: "The Karen: The teacher plays the angriest customer on earth. 'This is unacceptable! I want a refund now!' The student must remain calm, validate the anger, and propose a solution without breaking character.",
+                        assessment: "Does not become defensive or say 'It's not my fault.' Uses 'I understand why...'",
+                        mistake: "Student: 'Calm down.' Fix: 'Never tell an angry person to calm down! Say: I understand why you are upset.'",
+                        worksheet: ["(Fill): I understand why you are ______, and I apologize.", "(Match): Resolve -> Fix the problem", "(MCQ): This service is absolutely ___. (a. unacceptable b. accept)", "(Build): (how / see / we / this / resolve / Let's / can) -> ______", "(Short): How do you validate an angry customer? I understand ______.", "(Write): Write a response to a terrible Yelp review.", "(Speak): Survive 'The Karen' roleplay.", "(Fill): Let me look ______ this for you immediately.", "(Match): Unacceptable -> Not okay", "(MCQ): I completely understand your ___. (a. anger b. angry)", "(Build): (apologize / for / inconvenience / I / the) -> ______", "(Short): What should you NEVER tell an angry person? ______"]
+                    },
+                    {
+                        title: "Session 36: Phase 6 Mega Review (The Assessment Center)",
+                        goal: "Fluidly code-switch between small talk, aggressive negotiation, and diplomatic reporting in a continuous 15-minute simulation.<br><br><strong class='text-violet-900'>Elaboration:</strong> The ultimate test of Register. Can the student seamlessly change their vocabulary and grammar based on who they are talking to in the room?<br><br><strong class='text-blue-900'>Example:</strong> A student chats casually with a peer, immediately turns to de-escalate an angry client, and then formally reports the incident to the CEO.",
+                        material: "Review: Formal/Informal vocab, Diplomacy, Phrasal verbs, Small talk, De-escalation.",
+                        script: "'You are the manager today. You will talk to your friend, your angry client, and your boss. Don't mix up your language!'",
+                        flow: "Warm-up: Register translation. Teaching: Map the 'Three Rooms' on the board (Watercooler, Front Desk, Boardroom). Review the vocab for each. Practice: 10 minutes of mental prep and scenario review. Speaking: The Assessment Center Gauntlet.",
+                        tasks: "Successfully change tone, vocabulary, and grammar to match 3 distinct social scenarios back-to-back.",
+                        activities: "The Assessment Center: The student walks through 3 stations. 1. Small talk with a coworker ('figure it out'). 2. An angry client ('I understand your frustration'). 3. Reporting to the boss ('We had a slight complication').",
+                        assessment: "Achieves 100% register accuracy—no slang with the boss, no hyper-formal Latin words with the coworker.",
+                        mistake: "Using 'complication' with a friend instead of 'problem' or 'mess'. Fix: Stop and ask: 'Who are you talking to? Adjust your mask!'",
+                        worksheet: ["(Fill): (Comprehensive Register Review)", "(Match): Match the word to its register (Formal/Casual/Diplomatic).", "(MCQ): Select the most appropriate response for the audience.", "(Build): Unscramble a de-escalation sentence.", "(Short): Draft your CEO report.", "(Write): Write 3 different versions of the same event.", "(Speak): Run the Assessment Center Gauntlet.", "(Fill): I regret to ______ you that...", "(Match): Assessment -> Evaluation", "(MCQ): Best way to start small talk? (a. How much money do you make? b. How long have you been in this industry?)", "(Build): (we / out / gotta / this / figure) -> ______", "(Short): What is the formal version of 'Ask'? ______"]
+                    }
+                ]
+            },
+            {
+                id: 7, title: "PHASE 7: ADVANCED PROBLEM SOLVING & CRITICAL THINKING",
+                sessions: [
+                    {
+                        title: "Session 37: Identifying Root Causes",
+                        goal: "Students can say: 'The underlying issue is not the price, but rather the quality of the materials.'<br><br><strong class='text-violet-900'>Elaboration:</strong> Moves students from complaining about symptoms to analyzing deep, structural problems. Essential for academic essays and executive meetings.<br><br><strong class='text-blue-900'>Example:</strong> A student diagnoses a failing project: 'We are focusing on marketing, but the root cause of the failure is bad software.'",
+                        material: "Vocab: Underlying issue, Root cause, Symptom, Stem from, Fundamentally. Grammar: 'Not X, but rather Y' structure.",
+                        script: "'Your arm hurts. That is a symptom. WHY does it hurt? It is broken! The broken bone is the ROOT CAUSE. We must look deeper.'",
+                        flow: "Warm-up: Problem descriptions. Teaching: Differentiate between a symptom and a root cause. Teach the 'Not X, but rather Y' comparative structure. Practice: Read case studies of failing companies and write root cause analyses. Speaking: Debate the *actual* cause of global problems (e.g., pollution, poverty).",
+                        tasks: "Use the 'Not X, but rather Y' structure to shift focus from a superficial symptom to a deep root cause.",
+                        activities: "The Diagnostician: Give students a problem ('Students are failing'). They must dig deeper using the '5 Whys' technique, ending with: 'The underlying issue is a lack of sleep.'",
+                        assessment: "Correctly balances the two halves of the 'not... but rather' structure grammatically.",
+                        mistake: "Student: 'The problem is not price, but the quality.' Fix: 'Make it punchy! Not the price, BUT RATHER the quality.'",
+                        worksheet: ["(Fill): The ______ issue is a lack of funding.", "(Match): Root cause -> The deep reason", "(MCQ): The problem stems ___ bad management. (a. from b. to)", "(Build): (issue / underlying / The / price / not / is / the / rather / quality / but / the) -> ______", "(Short): Identify a symptom vs a root cause: ______", "(Write): Write a root cause analysis for a failing restaurant.", "(Speak): Act as The Diagnostician.", "(Fill): Fundamentally, we need to ______ (change) our approach.", "(Match): Symptom -> A surface-level sign of a problem", "(MCQ): It is not the software, but ___ the hardware. (a. rather b. other)", "(Build): (from / stems / communication / lack / The / problem / of / a) -> ______", "(Short): What is the root cause of traffic? ______"]
+                    },
+                    {
+                        title: "Session 38: Evaluating Feasibility",
+                        goal: "Students can say: 'In theory, it's a great idea, but realistically, it's just not feasible given our current budget.'<br><br><strong class='text-violet-900'>Elaboration:</strong> The language of practical reality. Teaches students how to politely destroy a good-sounding but impossible idea in a meeting setting.<br><br><strong class='text-blue-900'>Example:</strong> A student critiques a plan: 'Building a base on Mars is a fantastic concept, but it simply isn't viable right now.'",
+                        material: "Vocab: In theory, Realistically, Feasible, Viable, Practical, Given. Grammar: Prepositional 'Given' + Noun to state constraints.",
+                        script: "'Your friend wants to buy a Ferrari. Great idea! IN THEORY. But he has no money. REALISTICALLY, it is not FEASIBLE.'",
+                        flow: "Warm-up: Devil's advocate. Teaching: Contrast 'In theory' with 'Realistically'. Introduce 'feasible' and 'viable'. Teach 'given' to introduce the limitation (e.g., given the time). Practice: Evaluate wild startup ideas for feasibility. Speaking: The 'Idea Crusher' meeting.",
+                        tasks: "Use 'In theory' and 'Realistically' to contrast the ideal with the practical, citing a specific constraint using 'given'.",
+                        activities: "The Reality Check: S1 pitches a wild idea ('Let's give everyone free cars'). S2 must crush it politely: 'In theory, that's beautiful. Realistically, it's not feasible given the cost.'",
+                        assessment: "Uses 'given' properly followed by a noun phrase representing the constraint.",
+                        mistake: "Student: 'It is not feasible because of the time.' Fix: 'Upgrade it! It is not feasible GIVEN the timeline.'",
+                        worksheet: ["(Fill): In ______, it works, but realistically it doesn't.", "(Match): Feasible -> Possible to do", "(MCQ): It is not viable ___ our current budget. (a. given b. gave)", "(Build): (idea / theory / great / a / In / it's) -> ______", "(Short): Why is living on the moon not feasible? ______", "(Write): Evaluate a city plan to build a massive bridge.", "(Speak): Play The Reality Check.", "(Fill): Realistically, we don't have the ______ (time).", "(Match): Viable -> Capable of working successfully", "(MCQ): ___ the circumstances, we must cancel. (a. Given b. Giving)", "(Build): (budget / our / given / feasible / not / It's) -> ______", "(Short): What is an idea that works in theory but not reality? ______"]
+                    },
+                    {
+                        title: "Session 39: Proposing Comprehensive Solutions",
+                        goal: "Students can say: 'In order to mitigate the risk, I propose that we implement a new training program.'<br><br><strong class='text-violet-900'>Elaboration:</strong> High-level problem solving. Moves beyond 'we should' to formal, systemic proposals using advanced business vocabulary.<br><br><strong class='text-blue-900'>Example:</strong> A student presents a solution: 'To mitigate the drop in sales, I propose we launch a new ad campaign.'",
+                        material: "Vocab: Mitigate, Implement, Propose, Strategy, Prevent. Grammar: In order to + Base Verb, Propose that + Subject + Base Verb (Subjunctive).",
+                        script: "'You don't just 'fix' things anymore. You MITIGATE risks. You IMPLEMENT solutions. IN ORDER TO mitigate the risk, I PROPOSE THAT we hire more staff.'",
+                        flow: "Warm-up: Evaluating feasibility. Teaching: Teach the 'In order to' purpose clause. Teach the formal subjunctive 'propose that we [base verb]'. Practice: Draft formal proposals solving the root causes identified in Session 37. Speaking: Formal boardroom pitch of a solution.",
+                        tasks: "Construct a formal proposal sentence starting with 'In order to' and featuring the verb 'implement' or 'mitigate'.",
+                        activities: "The Fixer: Present a catastrophic company problem. Students have 5 minutes to draft a 3-sentence formal proposal, standing to deliver: 'In order to save the company, I propose that we implement...'",
+                        assessment: "Correctly uses the base verb after 'I propose that we...', demonstrating control of the subjunctive mood.",
+                        mistake: "Student: 'I propose that we will implement.' Fix: 'No will! The subjunctive is invisible. I propose that we IMPLEMENT.'",
+                        worksheet: ["(Fill): In order to ______ the risk, we must act now.", "(Match): Implement -> Put a plan into action", "(MCQ): I propose that he ___ the team. (a. leads b. lead)", "(Build): (propose / program / training / a / new / we / implement / that / I) -> ______", "(Short): Propose a solution for late students: ______", "(Write): Write a formal proposal to fix traffic in your city.", "(Speak): Pitch your proposal as The Fixer.", "(Fill): We need a new ______ (strategy).", "(Match): Mitigate -> Make less severe", "(MCQ): In order ___ win, we must practice. (a. to b. for)", "(Build): (risk / the / mitigate / to / order / In) -> ______", "(Short): How do you mitigate the risk of failing a test? ______"]
+                    },
+                    {
+                        title: "Session 40: Discussing Ethical Dilemmas (Nuance)",
+                        goal: "Students can say: 'It's a grey area. While the action was technically wrong, their intentions were good.'<br><br><strong class='text-violet-900'>Elaboration:</strong> The ultimate test of vocabulary depth. Teaches students how to discuss morality, intent vs. outcome, and situations where there is no 'right' answer.<br><br><strong class='text-blue-900'>Example:</strong> A student discusses a famous court case: 'It's a complex issue. The outcome was bad, but the underlying intention was positive.'",
+                        material: "Vocab: Grey area, Intention, Outcome, Justify, Ethical, Dilemma. Grammar: Balancing abstract nouns in complex sentences.",
+                        script: "'Is stealing always bad? What if you steal medicine to save a life? It is not black and white. It is a GREY AREA. Does the OUTCOME justify the INTENTION?'",
+                        flow: "Warm-up: Devil's advocate review. Teaching: Introduce the vocabulary of ethics and ambiguity. Discuss 'Intention vs Outcome'. Practice: Analyze famous moral dilemmas (e.g., the Trolley Problem). Speaking: Deep, philosophical roundtable discussion.",
+                        tasks: "Navigate an emotionally and morally complex topic without relying on simple 'good/bad' vocabulary.",
+                        activities: "The Ethics Board: Present the classic 'Trolley Problem'. Students must debate what to do, using the terms 'justify', 'intention', and 'outcome'. 'The outcome is terrible, but can we justify the action?'",
+                        assessment: "Uses 'grey area' correctly to describe ambiguous situations.",
+                        mistake: "Student: 'It is a black area.' Fix: 'Black and white means clear. GREY means confusing. It's a grey area.'",
+                        worksheet: ["(Fill): This is not black and white; it is a ______ area.", "(Match): Intention -> What you meant to do", "(MCQ): Does the outcome ___ the means? (a. justify b. justice)", "(Build): (wrong / technically / action / the / While / was) -> ______", "(Short): Explain the difference between intention and outcome: ______", "(Write): Analyze a moral dilemma using target vocabulary.", "(Speak): Discuss the Trolley Problem.", "(Fill): The ______ (outcome) was worse than we expected.", "(Match): Dilemma -> A difficult choice", "(MCQ): It's a highly ___ situation. (a. ethical b. ethic)", "(Build): (good / intentions / their / were / area / a / grey / it's / but) -> ______", "(Short): Give an example of a grey area in life: ______"]
+                    },
+                    {
+                        title: "Session 41: Resolving Deadlocks (Moving Forward)",
+                        goal: "Students can say: 'Since we can't reach a consensus, I suggest we table this for now and revisit it tomorrow.'<br><br><strong class='text-violet-900'>Elaboration:</strong> High-level meeting management. Teaches how to gracefully pause an argument that is going nowhere, preserving relationships while maintaining control.<br><br><strong class='text-blue-900'>Example:</strong> A student acts as a chairperson: 'We are stuck. Let's table this discussion and move to the next agenda item.'",
+                        material: "Vocab: Consensus, Table this, Revisit, Deadlock, Move forward. Grammar: 'Since' as a causal conjunction.",
+                        script: "'We have argued for an hour. Nobody agrees! It is a DEADLOCK. Stop fighting! Say: Let's TABLE THIS for now. Put it on the table. Walk away. We will REVISIT it later.'",
+                        flow: "Warm-up: The Ethics Board. Teaching: Teach the idioms 'table this' and 'revisit'. Introduce 'Since' as a formal replacement for 'Because' at the start of a sentence. Practice: Read deadlocked meeting transcripts and write the intervention script. Speaking: Roleplay a meeting that is falling apart.",
+                        tasks: "Intervene in a stalled argument, state the lack of consensus using 'since', and formally pause the topic.",
+                        activities: "The Chairperson: Two students are assigned to argue stubbornly about a budget. S3 (the Chair) must let them fight for 1 minute, then intervene: 'Since we can't reach a consensus, let's table this and revisit it tomorrow.'",
+                        assessment: "Uses 'Since' correctly at the beginning of the sentence to establish the cause of the intervention.",
+                        mistake: "Student: 'Let's table it away.' Fix: 'Just TABLE IT. Like putting it on a desk to look at later.'",
+                        worksheet: ["(Fill): Since we cannot reach a ______, let's stop.", "(Match): Table this -> Pause the discussion", "(MCQ): Let's ___ this topic tomorrow. (a. revisit b. re-look)", "(Build): (now / for / this / table / we / suggest / I) -> ______", "(Short): What do you say when an argument is stuck? ______", "(Write): Write a script for a chairperson ending a bad meeting.", "(Speak): Act as The Chairperson.", "(Fill): We are in a ______ (deadlock) and cannot agree.", "(Match): Consensus -> General agreement", "(MCQ): ___ we are out of time, let's move on. (a. Since b. So)", "(Build): (forward / move / we / how / is / question / the) -> ______", "(Short): Define 'deadlock': ______"]
+                    },
+                    {
+                        title: "Session 42: Phase 7 Mega Review (The Crisis Task Force)",
+                        goal: "Analyze a complex disaster scenario, identify root causes, dismiss unfeasible ideas, propose solutions, and navigate ethical grey areas in a 20-minute simulation.<br><br><strong class='text-violet-900'>Elaboration:</strong> The ultimate synthesis of critical thinking and advanced English. Tests their ability to think deeply and speak structurally under immense simulated pressure.<br><br><strong class='text-blue-900'>Example:</strong> A student leads a task force: 'The root cause is structural. In theory, we could rebuild, but given the budget, it isn't feasible. I propose we mitigate the damage first. If we deadlock on this, people will suffer.'",
+                        material: "Review: Root cause, Feasible/Given, Propose/Implement, Grey area, Table this/Consensus.",
+                        script: "'You are the government's Crisis Task Force. A meteor has hit the city. You have 20 minutes to save everyone. Go!'",
+                        flow: "Warm-up: Deadlock intervention. Teaching: Distribute the 5-page 'Crisis Briefing' document (reading comprehension). Practice: 10 minutes individual prep outlining root causes and feasible proposals. Speaking: The Task Force Simulation.",
+                        tasks: "Collaboratively draft and verbally present a comprehensive survival plan using all Phase 7 vocabulary.",
+                        activities: "The Crisis Task Force: Students are given a massive, complex scenario with ethical traps and budget limits. They must argue, propose, and eventually reach a consensus, presenting their final plan to the teacher.",
+                        assessment: "Successfully uses the 'Not X, but rather Y' and 'In order to... I propose' structures during the heated debate.",
+                        mistake: "Falling back to basic 'We should' language. Fix: The teacher, acting as 'The President', rejects any proposal that isn't formatted formally.",
+                        worksheet: ["(Fill): (Comprehensive Phase 7 Review)", "(Match): Match the crisis phase to the vocabulary.", "(MCQ): Select the most authoritative phrasing.", "(Build): Unscramble a complex crisis proposal.", "(Short): Outline your Crisis plan.", "(Write): Write the final report of the Task Force.", "(Speak): Survive the Crisis Task Force Simulation.", "(Fill): The ______ issue is not money, but time.", "(Match): Task Force -> Group solving a problem", "(MCQ): We must ___ a new plan. (a. implement b. implant)", "(Build): (consensus / reach / a / must / We) -> ______", "(Short): What was the hardest part of the simulation? ______"]
+                    }
+                ]
+            },
+            {
+                id: 8, title: "PHASE 8: UPPER-INTERMEDIATE MASTERY",
+                sessions: [
+                    {
+                        title: "Session 43: Advanced Grammar Synthesis (The Master Paragraph)",
+                        goal: "Write and speak a 10-sentence paragraph seamlessly blending PPC, Past Perfect, Conditionals, Participles, and Cleft sentences.<br><br><strong class='text-violet-900'>Elaboration:</strong> The final test of mechanical grammar. Ensures that none of the heavy structures learned in Months 1-4 have decayed while focusing on vocabulary.<br><br><strong class='text-blue-900'>Example:</strong> A student writes: 'Having worked here for years, I have been noticing a decline. What concerns me is the budget. If we had planned better, this wouldn't be happening.'",
+                        material: "Review: Have been -ing, Had + V3, 3rd/Mixed Conditionals, Having + V3, What bothers me is...",
+                        script: "'This is the grammatical decathlon. Every sentence must flex a different advanced muscle. Show me what you can build.'",
+                        flow: "Warm-up: Tense shifting drills. Teaching: Deconstruct a 'Level 5 Master Paragraph' on the board, labeling every grammatical structure. Practice: 'Sentence Sudoku' - fitting complex structures together logically. Speaking: Presenting the Master Paragraph.",
+                        tasks: "Produce a grammatically dense, yet logically flowing paragraph without run-on sentences.",
+                        activities: "The Masterpiece: Students are given 30 minutes to write the most advanced paragraph they can on the topic of 'The Future of Humanity'. They read it aloud like a dramatic audiobook.",
+                        assessment: "Zero tense confusion. Participle clauses match the subject. Cleft sentences are grammatically balanced.",
+                        mistake: "Sacrificing logic for grammar (making sentences that are grammatically correct but make no sense). Fix: Enforce the rule: Clarity first, complexity second.",
+                        worksheet: ["(Fill): (Grammar Decathlon Review)", "(Match): Match the grammatical structure to its name.", "(MCQ): Select the grammatically perfect complex sentence.", "(Build): Unscramble a 30-word masterpiece sentence.", "(Short): Draft your Masterpiece outline.", "(Write): Write the Masterpiece Paragraph.", "(Speak): Deliver the Masterpiece.", "(Fill): ______ reviewed the data, we decided to act.", "(Match): Cleft -> Emphasis", "(MCQ): What I need ___ a new computer. (a. is b. are)", "(Build): (had / known / gone / have / would / I / I / If) -> ______", "(Short): What is the hardest grammar rule for you? ______"]
+                    },
+                    {
+                        title: "Session 44: The Spontaneous Impromptu",
+                        goal: "Deliver a structured, 3-minute persuasive speech on a completely unknown topic with only 1 minute of preparation.<br><br><strong class='text-violet-900'>Elaboration:</strong> The ultimate test of fluency and structural internalization. Can they access Level 5 signposting and vocabulary when they are panicking?<br><br><strong class='text-blue-900'>Example:</strong> Handed the prompt 'Paper books vs E-books', a student instantly outlines 3 points and speaks fluently for 3 minutes.",
+                        material: "Review: Signposting (Primarily, Secondly), Examples (Specifically), Conclusions (Based on this).",
+                        script: "'In the real world, you don't get 30 minutes to prepare. You get 30 seconds. Think fast, structure faster.'",
+                        flow: "Warm-up: 30-second rants. Teaching: Teach the 'Impromptu Framework' (Intro -> Point 1 + Example -> Point 2 + Contrast -> Conclusion). Practice: 1-minute prep drills on silly topics. Speaking: The Impromptu Gauntlet.",
+                        tasks: "Maintain vocal confidence and structural integrity while speaking off the cuff.",
+                        activities: "The Gauntlet: Student stands up. Teacher draws a random topic from a hat ('Why Mondays should be illegal'). Student has 60 seconds to look at a blank paper, then must speak for 3 minutes straight.",
+                        assessment: "Does not rely on 'um', 'ah', or native language. Uses 'Let me think about that' to buy time effectively.",
+                        mistake: "Rambling without structure. Fix: Force them to physically hold up 1 finger for point 1, 2 fingers for point 2, to anchor their brain to the structure.",
+                        worksheet: ["(Fill): (Impromptu Structure Review)", "(Match): Match the transition to the speech section.", "(MCQ): Best way to buy time.", "(Build): Unscramble an impromptu opening.", "(Short): Write 3 points for: 'Cats vs Dogs'.", "(Write): Outline an impromptu speech in 60 seconds.", "(Speak): Run the Impromptu Gauntlet.", "(Fill): ______, I believe this is a bad idea.", "(Match): Point 1 -> Primarily", "(MCQ): What do you do if you forget your point? (a. Panic b. Use a filler phrase)", "(Build): (example / For / instance / this / take) -> ______", "(Short): Give a 1-sentence conclusion for 'Cats vs Dogs'. ______"]
+                    },
+                    {
+                        title: "Session 45: Advanced Active Listening (The Interrogation)",
+                        goal: "Listen to a 5-minute native-speed monologue, extract the core arguments, and dismantle them using targeted follow-ups and rebuttals.<br><br><strong class='text-violet-900'>Elaboration:</strong> Upgrades listening from simple comprehension to critical analysis. Students must listen not just to understand, but to *attack* or *deconstruct* the logic.<br><br><strong class='text-blue-900'>Example:</strong> After a long speech, a student replies: 'You mentioned X, but you failed to consider Y. Can you clarify your stance on Z?'",
+                        material: "Review: You mentioned, Failed to consider, What I mean is, Clarify, Underlying issue.",
+                        script: "'Listening isn't passive. It's active. You are a shark looking for weakness in the argument. Listen, analyze, and strike!'",
+                        flow: "Warm-up: Fallacy fighting. Teaching: Teach note-taking strategies for active listening (shorthand for main points). Practice: Listen to TED clips and write down the single weakest point. Speaking: The 'Grilling' roleplay.",
+                        tasks: "Take effective notes during a long speech and formulate a devastating, polite rebuttal based on those notes.",
+                        activities: "The Grilling: Teacher delivers a very fast, slightly flawed 3-minute speech on a policy. Students take notes. Then, students have 5 minutes to 'grill' the teacher, pointing out flaws and asking for clarification on specific points.",
+                        assessment: "Directly quotes the teacher ('You said that...') before asking the follow-up question.",
+                        mistake: "Asking general questions ('Why do you think that?') instead of specific, targeted questions. Fix: Demand they reference a specific sentence from the speech.",
+                        worksheet: ["(Fill): (Active Listening Review)", "(Match): Note-taking shorthand.", "(MCQ): Best way to ask for clarification.", "(Build): Unscramble a targeted rebuttal.", "(Short): What is active listening?", "(Write): Write 3 questions based on a provided text.", "(Speak): Grill the Teacher.", "(Fill): You ______ that taxes should rise, but...", "(Match): Grill -> Ask tough questions", "(MCQ): If you don't understand a point, you should: (a. Ignore it b. Ask them to clarify)", "(Build): (clarify / stance / your / Can / you / on / this) -> ______ ?", "(Short): Quote a friend and disagree: ______"]
+                    },
+                    {
+                        title: "Session 46: Level 5 Exam Preparation",
+                        goal: "Master the expectations of the Upper-Intermediate final exam, focusing on complex essay writing and unscripted debate performance.<br><br><strong class='text-violet-900'>Elaboration:</strong> Calibrates the student to the highest standard of the course. Ensures they understand that Level 5 requires nuance, diplomacy, and flawless complex grammar.<br><br><strong class='text-blue-900'>Example:</strong> A student reviews the rubric, realizing they need to use more passive voice and conditional mixing in their final essay.",
+                        material: "All Level 5 Content.",
+                        script: "'You are at the top of the mountain. The air is thin. The standards are high. Let's make sure your gear is ready.'",
+                        flow: "Warm-up: Deep breathing. Teaching: Breakdown the written exam (PPC/Past Perfect, Connectors, Reading, Essay) and the Speaking prompt (Debate, Roleplay, Impromptu). Practice: Complete a brutal 20-question advanced grammar quiz. Speaking: Review common speaking test pitfalls (register drops, tense collapse).",
+                        tasks: "Identify their single greatest weakness (e.g., 3rd conditionals, formal register) and drill it relentlessly.",
+                        activities: "The Weakest Link: Students self-identify their worst grammar point. Teacher sets up intensive 1-on-1 drills for that specific point while others work on mock essays.",
+                        assessment: "Student demonstrates a clear understanding of the difference between a Level 4 'good' answer and a Level 5 'excellent' answer.",
+                        mistake: "Overconfidence leading to sloppy basic grammar (dropping 's' on present simple). Fix: Remind them that advanced structures don't excuse basic errors.",
+                        worksheet: ["(Fill): General Level 5 grammar review.", "(Match): Advanced Connector function review.", "(MCQ): Complex tense selection.", "(Build): Multi-clause sentence building.", "(Short): Reading comprehension analysis.", "(Write): Mock essay prompt.", "(Speak): Mock speaking prompt practice.", "(Fill): If I had known, I ______ (go).", "(Match): Exam -> Final test", "(MCQ): Which is more formal? (a. Give me a hand b. I require assistance)", "(Build): (the / review / Let's / for / rubric / exam / the) -> ______", "(Short): What is your weakest grammar point? ______"]
+                    },
+                    {
+                        title: "Session 47: Final Speaking Assessment",
+                        goal: "Demonstrate upper-intermediate fluency, advanced register control, and unscripted conversational dominance in a 20-minute interview.<br><br><strong class='text-violet-900'>Elaboration:</strong> The capstone spoken assessment. Proves the student can operate in a fully native-paced, complex English environment without translation or hesitation.<br><br><strong class='text-blue-900'>Example:</strong> A student fluently debates a complex ethical dilemma with the examiner, employing cleft sentences, hedging, and advanced vocabulary.",
+                        material: "1-on-1 Teacher Assessment.",
+                        script: "'Show me that you are ready for the real world.'",
+                        flow: "Warm-up: Icebreaker. Teaching: None. Practice: Independent review. Speaking: 20-minute interview. 1) Professional Introduction. 2) The Impromptu Speech. 3) The Socratic Debate. 4) The Hostile Roleplay.",
+                        tasks: "Communicate fluidly using 8-12 sentence paragraphs, demonstrating mastery of all Level 5 grammatical and rhetorical structures.",
+                        activities: "Silent Study/Prep: Non-testing students prepare their 'Impromptu' mental frameworks or review essay structures quietly.",
+                        assessment: "Graded on Tense Synthesis, Discourse Marker Accuracy, Register Agility, and Pronunciation/Pacing.",
+                        mistake: "Losing control of the register during the Hostile Roleplay (becoming too casual when stressed). Fix: Examiner notes the drop; student must actively correct it to regain points.",
+                        worksheet: ["(1) Professional Introduction", "(2) Impromptu Speech (3 mins)", "(3) Socratic Debate (Ethics)", "(4) Hostile Workplace Roleplay", "(5) Use target connectors", "(6) Final Grade", "(7) Teacher Feedback", "(8) Peer Review (optional)", "(9) Self-Reflection", "(10) Strengths", "(11) Areas for Improvement", "(12) Next Steps"]
+                    },
+                    {
+                        title: "Session 48: Final Written Exam",
+                        goal: "Demonstrate comprehensive mastery of upper-intermediate grammar, high-level reading comprehension, and sophisticated essay writing.<br><br><strong class='text-violet-900'>Elaboration:</strong> The final quantitative measure. Validates that they possess the rigorous academic and grammatical foundation required to enter Advanced (Level 6).<br><br><strong class='text-blue-900'>Example:</strong> A student writes a flawless 5-paragraph academic essay analyzing the root causes of a global issue, using participle clauses and mixed conditionals.",
+                        material: "Comprehensive Level 5 Written Test.",
+                        script: "'You have mastered the mechanics of English. Now, prove it on paper.'",
+                        flow: "Warm-up: Hand out tests. Teaching: Read instructions. Practice: 90 minutes silent testing. Speaking: Post-test celebration, deep reflection, and certificate hand-out.",
+                        tasks: "Complete the grueling exam independently, paying special attention to advanced tense forms and persuasive essay architecture.",
+                        activities: "Graduation: Hand out 'Level 5 Upper-Intermediate' certificates. Take a class photo. Discuss the leap to Level 6 (Advanced Fluency).",
+                        assessment: "Pass mark: 80% to enter Level 6.",
+                        mistake: "Running out of time on the essay due to over-thinking grammar. Fix: Remind them to stick to the structural outline they practiced in Session 46.",
+                        worksheet: ["(Fill): 30 Advanced Grammar Fills", "(Match): 20 Academic Vocab Matches", "(MCQ): 20 Complex Tense Questions", "(Build): 10 Multi-clause sentences", "(Short): Advanced Reading Comprehension", "(Write): 5-Paragraph Persuasive Essay", "(Speak): Graduation Celebration!", "(Fill): Final grammar check.", "(Match): Final vocab check.", "(MCQ): Final structure check.", "(Build): Final sentence check.", "(Short): Final comprehension check."]
+                    }
+                ]
+            }
+        ];
+
+        let progressionChartInstance = null;
+        let expandedPhaseId = 1; 
+        let selectedSession = { phase: 1, index: 0 }; 
+
+        document.addEventListener("DOMContentLoaded", initApp);
+
+        function initApp() {
+            renderProgressionChart();
+            renderSidebar();
+            loadSession(1, 0); 
+        }
+
+        function renderProgressionChart() {
+            const ctx = document.getElementById('progressionChart').getContext('2d');
+            progressionChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Start (Ph 1)', 'Mid (Ph 4)', 'Goal (Ph 8)'],
+                    datasets: [
+                        { label: 'Vocab', data: [60, 85, 99], backgroundColor: '#8b5cf6', borderRadius: 4 }, 
+                        { label: 'Grammar', data: [50, 80, 97], backgroundColor: '#3b82f6', borderRadius: 4 }, 
+                        { label: 'Speaking', data: [65, 90, 99], backgroundColor: '#f59e0b', borderRadius: 4 }, 
+                        { label: 'Comprehension', data: [40, 75, 96], backgroundColor: '#14b8a6', borderRadius: 4 } 
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, max: 100, ticks: { stepSize: 50, font: { size: 10 } }, grid: { color: 'rgba(0,0,0,0.05)' }, border: { display: false } },
+                        x: { grid: { display: false }, ticks: { font: { weight: '600', size: 11 }, color: '#57534e' }, border: { display: false } }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10, family: "'Inter', sans-serif" } } },
+                        tooltip: { callbacks: { label: function(context) { return ` ${context.dataset.label}: ${context.raw}%`; } } }
+                    }
+                }
+            });
+        }
+
+        function togglePhase(phaseId) {
+            expandedPhaseId = expandedPhaseId === phaseId ? null : phaseId;
+            renderSidebar();
+        }
+
+        function renderSidebar() {
+            const container = document.getElementById('sidebar-container');
+            container.innerHTML = '';
+            curriculumData.forEach(phase => {
+                const phaseBtn = document.createElement('button');
+                const isExpanded = phase.id === expandedPhaseId;
+                phaseBtn.className = `w-full text-left px-4 py-3 font-bold flex justify-between items-center transition-colors border-b border-stone-200 ${isExpanded ? 'bg-violet-50 text-violet-800' : 'bg-white text-stone-700 hover:bg-stone-50'}`;
+                phaseBtn.innerHTML = `<span class="text-sm uppercase tracking-wide truncate pr-2">${phase.title}</span><span class="transform transition-transform text-xs ${isExpanded ? 'rotate-180 text-violet-600' : 'text-stone-400'}">▼</span>`;
+                phaseBtn.onclick = () => togglePhase(phase.id);
+                container.appendChild(phaseBtn);
+
+                const sessionsDiv = document.createElement('div');
+                sessionsDiv.className = isExpanded ? 'block' : 'hidden';
+                sessionsDiv.classList.add('bg-stone-50', 'border-b', 'border-stone-200');
+                phase.sessions.forEach((session, idx) => {
+                    const sessionBtn = document.createElement('button');
+                    const isSelected = selectedSession && selectedSession.phase === phase.id && selectedSession.index === idx;
+                    sessionBtn.className = `w-full text-left px-6 py-2.5 text-sm transition-colors block border-l-4 ${isSelected ? 'bg-white text-violet-700 font-semibold border-violet-500 shadow-sm' : 'text-stone-600 border-transparent hover:bg-stone-100'}`;
+                    sessionBtn.textContent = session.title;
+                    sessionBtn.onclick = () => loadSession(phase.id, idx);
+                    sessionsDiv.appendChild(sessionBtn);
+                });
+                container.appendChild(sessionsDiv);
+            });
+        }
+
+        function loadSession(phaseId, sessionIndex) {
+            selectedSession = { phase: phaseId, index: sessionIndex };
+            renderSidebar(); 
+            const phase = curriculumData.find(p => p.id === phaseId);
+            const session = phase.sessions[sessionIndex];
+
+            document.getElementById('empty-state').classList.add('hidden');
+            document.getElementById('session-display').classList.remove('hidden');
+            document.getElementById('session-display').classList.add('flex');
+
+            document.getElementById('display-phase-badge').textContent = phase.title;
+            document.getElementById('display-session-title').textContent = session.title;
+            document.getElementById('content-goal').innerHTML = session.goal || "";
+            document.getElementById('content-material').innerHTML = session.material || "";
+            document.getElementById('content-script').innerHTML = session.script ? `"${session.script}"` : "";
+            document.getElementById('content-flow').innerHTML = session.flow || "";
+            document.getElementById('content-tasks').innerHTML = session.tasks || "";
+            document.getElementById('content-activities').innerHTML = session.activities || "";
+            document.getElementById('content-assessment').innerHTML = session.assessment || "";
+            document.getElementById('content-mistake').innerHTML = session.mistake || "";
+            document.getElementById('content-worksheet').innerHTML = (session.worksheet || []).map(w => `<li class="ml-5 list-disc text-stone-700">${w}</li>`).join('');
+
+            switchTab('goal');
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = 'tab-btn px-5 py-3 font-semibold text-sm transition-colors border-b-2 border-transparent text-stone-500 hover:text-stone-800 hover:border-stone-300 focus:outline-none';
+            });
+            document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+            document.getElementById(`btn-tab-${tabName}`).className = 'tab-btn px-5 py-3 font-bold text-sm transition-colors border-b-2 border-violet-600 text-violet-700 focus:outline-none';
+        }
+    </script>
+</body>
+</html>
