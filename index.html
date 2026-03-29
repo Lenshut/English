@@ -11,6 +11,7 @@
         body {
             font-family: 'Inter', sans-serif;
             color: #1c1917; 
+            overflow-x: hidden;
         }
         
         .quote-text {
@@ -19,24 +20,264 @@
         .bg-elegant-gradient {
             background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 50%, #eef2ff 100%);
         }
+        
+        /* Dropdown transition utilities */
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* Logo text integration */
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: -0.06em;
+            background: linear-gradient(to right, #0f766e, #4338ca);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body class="antialiased bg-elegant-gradient">
 
-    <div id="home-view" class="flex flex-col min-h-screen relative bg-elegant-gradient w-full">
+    <!-- Interactive Parallax Background (Modern Adult Communication) -->
+    <div id="parallax-container" class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <!-- Stage 1: Instant Messaging -->
+        <div class="parallax-item absolute top-[5%] left-[2%] flex flex-col items-center opacity-20" data-speed="-0.1">
+            <div class="w-40 h-40 bg-white rounded-3xl shadow-lg flex items-center justify-center p-8 border border-stone-100">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                    <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                </svg>
+            </div>
+            <span class="text-lg font-bold text-stone-500 mt-4 tracking-widest uppercase">Messaging</span>
+        </div>
+        
+        <!-- Stage 2: Formal Email -->
+        <div class="parallax-item absolute top-[20%] right-[2%] flex flex-col items-center opacity-20" data-speed="-0.2">
+            <div class="w-56 h-56 bg-white rounded-3xl shadow-lg flex items-center justify-center p-12 border border-stone-100">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+            </div>
+            <span class="text-xl font-bold text-stone-500 mt-4 tracking-widest uppercase">Email</span>
+        </div>
+        
+        <!-- Stage 3: Virtual Meetings -->
+        <div class="parallax-item absolute top-[40%] left-[5%] flex flex-col items-center opacity-20" data-speed="-0.3">
+            <div class="w-72 h-72 bg-white rounded-3xl shadow-lg flex items-center justify-center p-16 border border-stone-100">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
+                    <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                </svg>
+            </div>
+            <span class="text-2xl font-bold text-stone-500 mt-4 tracking-widest uppercase">Virtual</span>
+        </div>
+
+        <!-- Stage 4: Collaborative Workspace -->
+        <div class="parallax-item absolute top-[60%] right-[5%] flex flex-col items-center opacity-20" data-speed="-0.4">
+            <div class="w-80 h-80 bg-white rounded-3xl shadow-lg flex items-center justify-center p-16 border border-stone-100">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+            </div>
+            <span class="text-3xl font-bold text-stone-500 mt-4 tracking-widest uppercase">Collaboration</span>
+        </div>
+        
+        <!-- Stage 5: Public Speaking & Pitching -->
+        <div class="parallax-item absolute top-[75%] left-[5%] flex flex-col items-center opacity-20" data-speed="-0.5">
+            <div class="w-96 h-96 bg-white rounded-3xl shadow-2xl flex items-center justify-center p-20 border border-stone-100">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#db2777" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                    <line x1="12" y1="19" x2="12" y2="22"></line>
+                </svg>
+            </div>
+            <span class="text-4xl font-bold text-stone-500 mt-4 tracking-widest uppercase">Presentation</span>
+        </div>
+
+        <!-- Stage 6: Global Networking -->
+        <div class="parallax-item absolute top-[90%] right-[10%] flex flex-col items-center opacity-20" data-speed="-0.6">
+            <div class="w-[30rem] h-[30rem] bg-white rounded-3xl shadow-2xl flex items-center justify-center p-24 border border-stone-100">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+            </div>
+            <span class="text-5xl font-bold text-stone-500 mt-6 tracking-widest uppercase">Global Network</span>
+        </div>
+
+        <!-- Floating ambient elements -->
+        <div class="parallax-item absolute top-[10%] left-[45%] opacity-15 text-8xl font-black text-teal-600" data-speed="-0.15">@</div>
+        <div class="parallax-item absolute top-[25%] right-[40%] opacity-15 text-9xl" data-speed="-0.25">✉️</div>
+        <div class="parallax-item absolute top-[45%] left-[40%] opacity-15 text-[120px]" data-speed="-0.35">💻</div>
+        <div class="parallax-item absolute top-[65%] right-[45%] opacity-15 text-[150px]" data-speed="-0.45">🎙️</div>
+        <div class="parallax-item absolute top-[85%] left-[45%] opacity-15 text-[180px]" data-speed="-0.55">🌐</div>
+    </div>
+
+    <div id="home-view" class="flex flex-col min-h-screen relative w-full z-10">
         <!-- Decorative Top Glow -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-teal-100/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
-        <!-- Header Navigation -->
-        <nav class="w-full px-6 py-6 md:px-12 flex items-center justify-between z-50 sticky top-0 bg-fafaf9/80 backdrop-blur-md border-b border-stone-200/50">
-            <div class="flex items-center gap-3">
-                <span class="text-2xl drop-shadow-sm">📘</span>
-                <span class="text-xl font-bold text-stone-800 tracking-tight">Tagasa English Course</span>
+        <!-- Header Navigation with Dropdowns -->
+        <nav class="w-full px-6 py-5 md:px-12 flex flex-col xl:flex-row items-center justify-between z-50 sticky top-0 bg-fafaf9/90 backdrop-blur-md border-b border-stone-200/50 shadow-sm">
+            
+            <!-- Educative, Futuristic TAGASA Logo -->
+            <div class="flex items-center gap-2 mb-4 xl:mb-0 cursor-pointer group" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="relative flex items-center justify-center w-12 h-12">
+                    <!-- Modern Speech Bubble Logo with Staggered Abstract 'T' -->
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full transform group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
+                        <defs>
+                            <linearGradient id="logo-grad" x1="0" y1="0" x2="100" y2="100">
+                                <stop offset="0%" stop-color="#0d9488"/>
+                                <stop offset="100%" stop-color="#4f46e5"/>
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- Background Shadow Bubble for depth (Spike moved left) -->
+                        <path d="M15 15C8.37258 15 3 20.3726 3 28.5C3 36.6274 8.37258 42 15 42L5 55L25 42H70C76.6274 42 82 36.6274 82 28.5C82 20.3726 76.6274 15 70 15H15Z" fill="#312e81" fill-opacity="0.1"/>
+                        
+                        <!-- Primary Speech Bubble (Spike moved left) -->
+                        <path d="M25 25C13.9543 25 5 33.9543 5 45C5 56.0457 13.9543 65 25 65L10 85L35 65H80C91.0457 65 100 56.0457 100 45C100 33.9543 91.0457 25 80 25H25Z" fill="url(#logo-grad)"/>
+                        
+                        <!-- White inner abstract 'T' (Top bar is full, bottom is staggered) -->
+                        <rect x="26" y="32" width="48" height="8" rx="4" fill="#fafaf9"/>
+                        <rect x="38" y="44" width="18" height="8" rx="4" fill="#fafaf9"/>
+                        <rect x="38" y="56" width="10" height="8" rx="4" fill="#fafaf9"/>
+                        <rect x="52" y="56" width="4" height="8" rx="4" fill="#fafaf9"/>
+                    </svg>
+                </div>
+                <span class="text-3xl font-black logo-text">TAGASA</span>
+            </div>
+            
+            <!-- Right Side Dropdown Menus -->
+            <div class="flex items-center gap-1 md:gap-4 flex-wrap justify-center">
+
+                <!-- Video Dropdown -->
+                <div class="group relative">
+                    <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                        Video
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                        <div class="py-2 flex flex-col">
+                            <a href="video_documentation.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Documentation</a>
+                            <a href="video_education.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Galeri Dropdown -->
+                <div class="group relative">
+                    <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                        Galeri
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                        <div class="py-2 flex flex-col">
+                            <a href="galeri_memories.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Memories</a>
+                            <a href="galeri_material.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Material</a>
+                            <a href="galeri_education.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Speaking Dropdown -->
+                <div class="group relative">
+                    <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                        Speaking
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                        <div class="py-2 flex flex-col">
+                            <a href="speaking1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                            <a href="speaking2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                            <a href="speaking3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                            <a href="speaking4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                            <a href="speaking5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                            <a href="speaking6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                            <a href="speaking7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                            <a href="speaking8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reading Dropdown -->
+                <div class="group relative">
+                    <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                        Reading
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                        <div class="py-2 flex flex-col">
+                            <a href="reading1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                            <a href="reading2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                            <a href="reading3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                            <a href="reading4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                            <a href="reading5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                            <a href="reading6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                            <a href="reading7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                            <a href="reading8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Writing Dropdown -->
+                <div class="group relative">
+                    <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                        Writing
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                        <div class="py-2 flex flex-col">
+                            <a href="writing1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                            <a href="writing2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                            <a href="writing3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                            <a href="writing4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                            <a href="writing5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                            <a href="writing6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                            <a href="writing7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                            <a href="writing8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Worksheet Dropdown -->
+                <div class="group relative">
+                    <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                        Worksheet
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                        <div class="py-2 flex flex-col">
+                            <a href="worksheet1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                            <a href="worksheet2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                            <a href="worksheet3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                            <a href="worksheet4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                            <a href="worksheet5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                            <a href="worksheet6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                            <a href="worksheet7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                            <a href="worksheet8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </nav>
 
         <!-- Main Content -->
-        <main class="flex-grow flex flex-col items-center pt-20 md:pt-32 px-4 w-full max-w-6xl mx-auto">
+        <main class="flex-grow flex flex-col items-center pt-16 md:pt-24 px-4 w-full max-w-6xl mx-auto">
             
             <!-- Hero Section -->
             <section class="text-center w-full max-w-4xl mb-24 px-4 relative">
@@ -62,163 +303,115 @@
             <section class="w-full pb-32">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
                     
-                    <!-- Level 1 Card: Teal Theme -->
-                    <a href="level1.html" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-teal-500/20 hover:border-teal-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                    <!-- Level 1 Card -->
+                    <a href="level1.html" class="opacity-70 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-teal-500/20 hover:border-teal-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
                         <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-teal-50 transition-colors duration-700 pointer-events-none select-none z-0">1</span>
-                        
                         <div class="relative z-10">
                             <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-teal-50 text-teal-700 text-xs font-bold tracking-widest uppercase mb-6 border border-teal-100 group-hover:bg-teal-500 group-hover:text-white group-hover:border-teal-500 transition-colors duration-500">Level 1</div>
                             <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-teal-900 transition-colors duration-300">Foundation</h2>
-                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
-                                Absolute beginner concepts. Learn to introduce yourself, master basic verbs, and navigate everyday survival conversations.
-                            </p>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">Absolute beginner concepts. Learn to introduce yourself, master basic verbs, and navigate everyday survival conversations.</p>
                         </div>
-                        
                         <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
                             <span class="text-stone-500 font-semibold group-hover:text-teal-700 transition-colors duration-300">Proceed</span>
-                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-teal-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
-                                &rarr;
-                            </div>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-teal-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">&rarr;</div>
                         </div>
                     </a>
 
-                    <!-- Level 2 Card: Emerald Theme -->
-                    <a href="level2.html" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-emerald-500/20 hover:border-emerald-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                    <!-- Level 2 Card -->
+                    <a href="level2.html" class="opacity-70 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-emerald-500/20 hover:border-emerald-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
                         <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-emerald-50 transition-colors duration-700 pointer-events-none select-none z-0">2</span>
-                        
                         <div class="relative z-10">
                             <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold tracking-widest uppercase mb-6 border border-emerald-100 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500 transition-colors duration-500">Level 2</div>
                             <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-emerald-900 transition-colors duration-300">Elementary</h2>
-                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
-                                Expand your vocabulary. Understand past and future tenses, and begin forming compound sentences for deeper interactions.
-                            </p>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">Expand your vocabulary. Understand past and future tenses, and begin forming compound sentences for deeper interactions.</p>
                         </div>
-                        
                         <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
                             <span class="text-stone-500 font-semibold group-hover:text-emerald-700 transition-colors duration-300">Proceed</span>
-                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
-                                &rarr;
-                            </div>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">&rarr;</div>
                         </div>
                     </a>
 
-                    <!-- Level 3 Card: Blue Theme -->
-                    <a href="level3.html" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-blue-500/20 hover:border-blue-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                    <!-- Level 3 Card -->
+                    <a href="level3.html" class="opacity-70 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-blue-500/20 hover:border-blue-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
                         <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-blue-50 transition-colors duration-700 pointer-events-none select-none z-0">3</span>
-                        
                         <div class="relative z-10">
                             <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs font-bold tracking-widest uppercase mb-6 border border-blue-100 group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500 transition-colors duration-500">Level 3</div>
                             <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-blue-900 transition-colors duration-300">Pre-Intermediate</h2>
-                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
-                                Engage in continuous dialogues. Discuss your experiences, give advice, and comfortably handle travel and social situations.
-                            </p>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">Engage in continuous dialogues. Discuss your experiences, give advice, and comfortably handle travel and social situations.</p>
                         </div>
-                        
                         <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
                             <span class="text-stone-500 font-semibold group-hover:text-blue-700 transition-colors duration-300">Proceed</span>
-                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
-                                &rarr;
-                            </div>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">&rarr;</div>
                         </div>
                     </a>
 
-                    <!-- Level 4 Card: Indigo Theme -->
-                    <a href="level4.html" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/20 hover:border-indigo-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                    <!-- Level 4 Card -->
+                    <a href="level4.html" class="opacity-70 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/20 hover:border-indigo-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
                         <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-indigo-50 transition-colors duration-700 pointer-events-none select-none z-0">4</span>
-                        
                         <div class="relative z-10">
                             <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold tracking-widest uppercase mb-6 border border-indigo-100 group-hover:bg-indigo-500 group-hover:text-white group-hover:border-indigo-500 transition-colors duration-500">Level 4</div>
                             <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-indigo-900 transition-colors duration-300">Intermediate</h2>
-                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
-                                Express complex opinions. Read standard articles, understand spoken media, and participate actively in group discussions.
-                            </p>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">Express complex opinions. Read standard articles, understand spoken media, and participate actively in group discussions.</p>
                         </div>
-                        
                         <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
                             <span class="text-stone-500 font-semibold group-hover:text-indigo-700 transition-colors duration-300">Proceed</span>
-                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
-                                &rarr;
-                            </div>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">&rarr;</div>
                         </div>
                     </a>
 
-                    <!-- Level 5 Card: Violet Theme -->
-                    <a href="level5.html" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-violet-500/20 hover:border-violet-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                    <!-- Level 5 Card -->
+                    <a href="level5.html" class="opacity-70 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-violet-500/20 hover:border-violet-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
                         <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-violet-50 transition-colors duration-700 pointer-events-none select-none z-0">5</span>
-                        
                         <div class="relative z-10">
                             <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-violet-50 text-violet-700 text-xs font-bold tracking-widest uppercase mb-6 border border-violet-100 group-hover:bg-violet-500 group-hover:text-white group-hover:border-violet-500 transition-colors duration-500">Level 5</div>
                             <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-violet-900 transition-colors duration-300">Upper-Intermediate</h2>
-                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
-                                Master complex grammar. Deliver presentations, write structured essays, and comprehend diverse regional accents.
-                            </p>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">Master complex grammar. Deliver presentations, write structured essays, and comprehend diverse regional accents.</p>
                         </div>
-                        
                         <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
                             <span class="text-stone-500 font-semibold group-hover:text-violet-700 transition-colors duration-300">Proceed</span>
-                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-violet-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
-                                &rarr;
-                            </div>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-violet-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">&rarr;</div>
                         </div>
                     </a>
 
-                    <!-- Level 6 Card: Fuchsia Theme -->
-                    <a href="level6.html" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-fuchsia-500/20 hover:border-fuchsia-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                    <!-- Level 6 Card -->
+                    <a href="level6.html" class="opacity-70 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-fuchsia-500/20 hover:border-fuchsia-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
                         <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-fuchsia-50 transition-colors duration-700 pointer-events-none select-none z-0">6</span>
-                        
                         <div class="relative z-10">
                             <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-fuchsia-50 text-fuchsia-700 text-xs font-bold tracking-widest uppercase mb-6 border border-fuchsia-100 group-hover:bg-fuchsia-500 group-hover:text-white group-hover:border-fuchsia-500 transition-colors duration-500">Level 6</div>
                             <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-fuchsia-900 transition-colors duration-300">Advanced</h2>
-                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
-                                Achieve operational fluency. Debate sophisticated topics, interpret subtext, and communicate effectively in a professional setting.
-                            </p>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">Achieve operational fluency. Debate sophisticated topics, interpret subtext, and communicate effectively in a professional setting.</p>
                         </div>
-                        
                         <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
                             <span class="text-stone-500 font-semibold group-hover:text-fuchsia-700 transition-colors duration-300">Proceed</span>
-                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-fuchsia-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
-                                &rarr;
-                            </div>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-fuchsia-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">&rarr;</div>
                         </div>
                     </a>
 
-                    <!-- Level 7 Card: Rose Theme -->
-                    <a href="level7.html" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-rose-500/20 hover:border-rose-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                    <!-- Level 7 Card -->
+                    <a href="level7.html" class="opacity-70 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-rose-500/20 hover:border-rose-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
                         <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-rose-50 transition-colors duration-700 pointer-events-none select-none z-0">7</span>
-                        
                         <div class="relative z-10">
                             <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-rose-50 text-rose-700 text-xs font-bold tracking-widest uppercase mb-6 border border-rose-100 group-hover:bg-rose-500 group-hover:text-white group-hover:border-rose-500 transition-colors duration-500">Level 7</div>
                             <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-rose-900 transition-colors duration-300">Mastery</h2>
-                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
-                                Refine your nuance. Understand cultural idioms, consume classic literature, and express ideas with native-level precision.
-                            </p>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">Refine your nuance. Understand cultural idioms, consume classic literature, and express ideas with native-level precision.</p>
                         </div>
-                        
                         <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
                             <span class="text-stone-500 font-semibold group-hover:text-rose-700 transition-colors duration-300">Proceed</span>
-                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-rose-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
-                                &rarr;
-                            </div>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-rose-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">&rarr;</div>
                         </div>
                     </a>
 
-                    <!-- Level 8 Card: Amber Theme -->
-                    <a href="level8.html" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-amber-500/20 hover:border-amber-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                    <!-- Level 8 Card -->
+                    <a href="level8.html" class="opacity-70 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-amber-500/20 hover:border-amber-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
                         <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-amber-50 transition-colors duration-700 pointer-events-none select-none z-0">8</span>
-                        
                         <div class="relative z-10">
                             <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-bold tracking-widest uppercase mb-6 border border-amber-100 group-hover:bg-amber-500 group-hover:text-white group-hover:border-amber-500 transition-colors duration-500">Level 8</div>
                             <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-amber-900 transition-colors duration-300">Proficiency</h2>
-                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
-                                Near-native execution. Navigate highly technical academic texts and lead multifaceted professional negotiations flawlessly.
-                            </p>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">Near-native execution. Navigate highly technical academic texts and lead multifaceted professional negotiations flawlessly.</p>
                         </div>
-                        
                         <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
                             <span class="text-stone-500 font-semibold group-hover:text-amber-700 transition-colors duration-300">Proceed</span>
-                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-amber-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
-                                &rarr;
-                            </div>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-amber-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">&rarr;</div>
                         </div>
                     </a>
 
@@ -232,5 +425,21 @@
         </footer>
     </div>
 
+    <script>
+        // Parallax scroll effect
+        document.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxItems = document.querySelectorAll('.parallax-item');
+            
+            // Use requestAnimationFrame for smoother rendering
+            window.requestAnimationFrame(() => {
+                parallaxItems.forEach(item => {
+                    const speed = item.getAttribute('data-speed');
+                    // Positive scrolled value * negative speed moves items up
+                    item.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+        });
+    </script>
 </body>
 </html>
