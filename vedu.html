@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagasa English - Video Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@1,500&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1c1917; 
+            overflow-x: hidden;
+        }
+        
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-elegant-gradient {
+            background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 50%, #eef2ff 100%);
+        }
+        
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: -0.06em;
+            background: linear-gradient(to right, #0f766e, #4338ca);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased bg-elegant-gradient">
+
+    <div class="flex flex-col min-h-screen relative w-full z-10">
+        <!-- Decorative Top Glow -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-teal-100/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+        <!-- Header Navigation with Dropdowns -->
+        <nav class="w-full px-6 py-5 md:px-12 flex flex-col xl:flex-row items-center justify-between z-50 sticky top-0 bg-fafaf9/90 backdrop-blur-md border-b border-stone-200/50 shadow-sm">
+            
+            <!-- Educative, Futuristic TAGASA Logo -->
+            <div class="flex items-center gap-2 mb-4 xl:mb-0 cursor-pointer group" onclick="window.location.href='index.html'">
+                <div class="relative flex items-center justify-center w-12 h-12">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full transform group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
+                        <defs>
+                            <linearGradient id="logo-grad" x1="0" y1="0" x2="100" y2="100">
+                                <stop offset="0%" stop-color="#0d9488"/>
+                                <stop offset="100%" stop-color="#4f46e5"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M15 15C8.37258 15 3 20.3726 3 28.5C3 36.6274 8.37258 42 15 42L5 55L25 42H70C76.6274 42 82 36.6274 82 28.5C82 20.3726 76.6274 15 70 15H15Z" fill="#312e81" fill-opacity="0.1"/>
+                        <path d="M25 25C13.9543 25 5 33.9543 5 45C5 56.0457 13.9543 65 25 65L10 85L35 65H80C91.0457 65 100 56.0457 100 45C100 33.9543 91.0457 25 80 25H25Z" fill="url(#logo-grad)"/>
+                        <rect x="26" y="32" width="48" height="8" rx="4" fill="#fafaf9"/>
+                        <rect x="38" y="44" width="18" height="8" rx="4" fill="#fafaf9"/>
+                        <rect x="38" y="56" width="10" height="8" rx="4" fill="#fafaf9"/>
+                        <rect x="52" y="56" width="4" height="8" rx="4" fill="#fafaf9"/>
+                    </svg>
+                </div>
+                <span class="text-3xl font-black logo-text">TAGASA</span>
+            </div>
+            
+            <!-- Right Side Dropdown Menus -->
+            <div class="flex items-center gap-1 md:gap-4 flex-wrap justify-center">
+
+                <!-- Video Dropdown -->
+                <div class="group relative">
+                    <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                        Video
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                        <div class="py-2 flex flex-col">
+                            <a href="video_documentation.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Documentation</a>
+                            <a href="vedu.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Galeri Dropdown -->
+                <div class="group relative">
+                    <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                        Galeri
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                        <div class="py-2 flex flex-col">
+                            <a href="galeri_memories.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Memories</a>
+                            <a href="galeri_material.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Material</a>
+                            <a href="galeri_education.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Speaking Dropdown -->
+                <div class="group relative">
+                    <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                        Speaking
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                        <div class="py-2 flex flex-col">
+                            <a href="speaking1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                            <a href="speaking2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                            <a href="speaking3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                            <a href="speaking4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                            <a href="speaking5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                            <a href="speaking6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                            <a href="speaking7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                            <a href="speaking8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reading Dropdown -->
+                <div class="group relative">
+                    <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                        Reading
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                        <div class="py-2 flex flex-col">
+                            <a href="reading1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                            <a href="reading2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                            <a href="reading3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                            <a href="reading4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                            <a href="reading5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                            <a href="reading6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                            <a href="reading7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                            <a href="reading8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Writing Dropdown -->
+                <div class="group relative">
+                    <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                        Writing
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                        <div class="py-2 flex flex-col">
+                            <a href="writing1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                            <a href="writing2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                            <a href="writing3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                            <a href="writing4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                            <a href="writing5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                            <a href="writing6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                            <a href="writing7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                            <a href="writing8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Worksheet Dropdown -->
+                <div class="group relative">
+                    <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                        Worksheet
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                        <div class="py-2 flex flex-col">
+                            <a href="worksheet1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                            <a href="worksheet2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                            <a href="worksheet3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                            <a href="worksheet4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                            <a href="worksheet5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                            <a href="worksheet6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                            <a href="worksheet7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                            <a href="worksheet8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-grow flex flex-col items-center pt-16 md:pt-24 px-4 w-full max-w-7xl mx-auto">
+            
+            <section class="text-center w-full max-w-4xl mb-16 px-4">
+                <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 text-sm font-bold tracking-widest uppercase mb-6 border border-indigo-100">Video Education</div>
+                <h1 style="font-family: 'Montserrat', sans-serif;" class="text-4xl md:text-5xl lg:text-6xl font-black text-stone-900 tracking-tighter mb-6 drop-shadow-sm uppercase">
+                    Interactive Learning
+                </h1>
+                <p class="text-lg md:text-xl text-stone-600 max-w-2xl mx-auto leading-relaxed">
+                    Master your English pronunciation, letters, and essential vocabulary with our curated video collection.
+                </p>
+            </section>
+
+            <!-- Video Grid -->
+            <section class="w-full pb-32">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Video 1: Phonics/Alphabet -->
+                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/hq3yfQnllfQ" title="Phonics Song" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800 mb-2">The Phonics Song</h3>
+                        <p class="text-stone-500 text-sm flex-grow">Master the sounds of the alphabet with clear examples and pronunciation guides.</p>
+                    </div>
+
+                    <!-- Video 2: ABC Song -->
+                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/75p-N9YKqNo" title="The ABC Song" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800 mb-2">The Alphabet A to Z</h3>
+                        <p class="text-stone-500 text-sm flex-grow">A classic, easy-to-follow guide to reciting the English alphabet perfectly.</p>
+                    </div>
+
+                    <!-- Video 3: Colors -->
+                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/tkpfg-1FJLU" title="Colors Song" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800 mb-2">Learn Basic Colors</h3>
+                        <p class="text-stone-500 text-sm flex-grow">Identify and pronounce the most common colors in everyday English.</p>
+                    </div>
+
+                    <!-- Video 4: Numbers 1-10 -->
+                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/DR-cfDsHCGA" title="Numbers Song" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800 mb-2">Counting 1 to 10</h3>
+                        <p class="text-stone-500 text-sm flex-grow">Practice counting and pronouncing numbers clearly from one to ten.</p>
+                    </div>
+
+                    <!-- Video 5: Days of the Week -->
+                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/mXMofxtDPUQ" title="Days of the Week" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800 mb-2">Days of the Week</h3>
+                        <p class="text-stone-500 text-sm flex-grow">Memorize the seven days of the week with proper English intonation.</p>
+                    </div>
+
+                    <!-- Video 6: Months of the Year -->
+                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Fe9bnYRzFvk" title="Months of the Year" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800 mb-2">Months of the Year</h3>
+                        <p class="text-stone-500 text-sm flex-grow">Learn how to pronounce all 12 months for scheduling and planning.</p>
+                    </div>
+
+                    <!-- Video 7: Body Parts -->
+                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/l4WNrvVjiTw" title="Body Parts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800 mb-2">Basic Body Parts</h3>
+                        <p class="text-stone-500 text-sm flex-grow">Identify human anatomy and pronounce words like head, shoulders, and knees.</p>
+                    </div>
+
+                    <!-- Video 8: Animals -->
+                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/p5qwOxlvyhk" title="Animals" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800 mb-2">Animal Vocabulary</h3>
+                        <p class="text-stone-500 text-sm flex-grow">Expand your nouns by learning the names of common animals.</p>
+                    </div>
+
+                    <!-- Video 9: Greetings & Manners -->
+                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/gVIFEVLzP4o" title="Greetings" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800 mb-2">Greetings & Phrases</h3>
+                        <p class="text-stone-500 text-sm flex-grow">Learn essential conversational starters and polite everyday phrases.</p>
+                    </div>
+
+                    <!-- Video 10: Action Verbs -->
+                    <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col">
+                        <div class="relative w-full pt-[56.25%] rounded-2xl overflow-hidden mb-5 bg-stone-100 shadow-inner">
+                            <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/hft6uJQIF4g" title="Action Verbs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-800 mb-2">Simple Action Verbs</h3>
+                        <p class="text-stone-500 text-sm flex-grow">Master basic action words like walk, run, hop, and jump.</p>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="w-full text-center py-10 bg-transparent text-stone-500 relative z-10 mt-auto">
+            <p class="text-sm font-medium">&copy; 2026 Tagasa English Course. Cultivating global communicators.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
