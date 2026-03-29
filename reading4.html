@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagasa English Course - Level 4 Reading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@1,500&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; color: #1c1917; overflow-x: hidden; }
+        .bg-elegant-gradient { background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 50%, #eef2ff 100%); }
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: -0.06em;
+            background: linear-gradient(to right, #0f766e, #4338ca);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .reading-input {
+            border: none;
+            border-bottom: 2px solid #cbd5e1;
+            background: transparent;
+            outline: none;
+            padding: 0 0.5rem;
+            color: #4f46e5; /* Indigo 600 */
+            font-weight: 600;
+            text-align: center;
+            transition: border-color 0.3s;
+        }
+        .reading-input:focus { border-bottom-color: #4f46e5; }
+    </style>
+</head>
+<body class="antialiased bg-elegant-gradient min-h-screen flex flex-col">
+
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-indigo-100/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+    <nav class="w-full px-6 py-5 md:px-12 flex flex-col xl:flex-row items-center justify-between z-50 sticky top-0 bg-fafaf9/90 backdrop-blur-md border-b border-stone-200/50 shadow-sm">
+        <div class="flex items-center gap-2 mb-4 xl:mb-0 cursor-pointer group" onclick="window.location.href='index.html'">
+            <div class="relative flex items-center justify-center w-12 h-12">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full transform group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
+                    <defs>
+                        <linearGradient id="logo-grad" x1="0" y1="0" x2="100" y2="100">
+                            <stop offset="0%" stop-color="#0d9488"/>
+                            <stop offset="100%" stop-color="#4f46e5"/>
+                        </linearGradient>
+                    </defs>
+                    <path d="M15 15C8.37258 15 3 20.3726 3 28.5C3 36.6274 8.37258 42 15 42L5 55L25 42H70C76.6274 42 82 36.6274 82 28.5C82 20.3726 76.6274 15 70 15H15Z" fill="#312e81" fill-opacity="0.1"/>
+                    <path d="M25 25C13.9543 25 5 33.9543 5 45C5 56.0457 13.9543 65 25 65L10 85L35 65H80C91.0457 65 100 56.0457 100 45C100 33.9543 91.0457 25 80 25H25Z" fill="url(#logo-grad)"/>
+                    <rect x="26" y="32" width="48" height="8" rx="4" fill="#fafaf9"/>
+                    <rect x="38" y="44" width="18" height="8" rx="4" fill="#fafaf9"/>
+                    <rect x="38" y="56" width="10" height="8" rx="4" fill="#fafaf9"/>
+                    <rect x="52" y="56" width="4" height="8" rx="4" fill="#fafaf9"/>
+                </svg>
+            </div>
+            <span class="text-3xl font-black logo-text">TAGASA</span>
+        </div>
+        
+        <div class="flex items-center gap-1 md:gap-4 flex-wrap justify-center">
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Video <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="vdoc.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Documentation</a>
+                        <a href="vedu.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Galeri <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="gmemo.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Memories</a>
+                        <a href="gmaterial.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Material</a>
+                        <a href="gedu.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Speaking <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="speaking1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                        <a href="speaking2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                        <a href="speaking3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                        <a href="speaking4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                        <a href="speaking5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                        <a href="speaking6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                        <a href="speaking7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                        <a href="speaking8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-indigo-700 bg-indigo-50 transition-all flex items-center gap-1.5">
+                    Reading <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="reading1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                        <a href="reading2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                        <a href="reading3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                        <a href="reading4.html" class="px-5 py-2.5 text-sm font-medium text-indigo-600 bg-indigo-50">Level 4</a>
+                        <a href="reading5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                        <a href="reading6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                        <a href="reading7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                        <a href="reading8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Writing <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="writing1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                        <a href="writing2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                        <a href="writing3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                        <a href="writing4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                        <a href="writing5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                        <a href="writing6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                        <a href="writing7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                        <a href="writing8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative">
+                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                    Worksheet <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                    <div class="py-2 flex flex-col">
+                        <a href="worksheet1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
+                        <a href="worksheet2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
+                        <a href="worksheet3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
+                        <a href="worksheet4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
+                        <a href="worksheet5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
+                        <a href="worksheet6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
+                        <a href="worksheet7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
+                        <a href="worksheet8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 py-12">
+        <section class="text-center w-full max-w-4xl mx-auto mb-12">
+            <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 text-sm font-bold tracking-widest uppercase mb-6 border border-indigo-100">Reading • Level 4</div>
+            <h1 style="font-family: 'Montserrat', sans-serif;" class="text-4xl md:text-5xl font-black text-stone-900 tracking-tighter mb-4 uppercase">
+                Intermediate Reading
+            </h1>
+            <p class="text-lg text-stone-600 leading-relaxed">
+                Test your comprehension of multi-clause paragraphs. Practice reading formal emails, identifying complex cause-and-effect, evaluating business phrasal verbs, and understanding indirect tone.
+            </p>
+        </section>
+
+        <!-- Category Tabs -->
+        <div class="flex flex-wrap justify-center gap-2 mb-10 border-b border-stone-200">
+            <button onclick="showTab('passage')" id="btn-passage" class="px-6 py-3 font-bold text-indigo-700 border-b-2 border-indigo-600">Short Passage</button>
+            <button onclick="showTab('tf')" id="btn-tf" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">True / False</button>
+            <button onclick="showTab('vocab')" id="btn-vocab" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Vocab in Context</button>
+            <button onclick="showTab('sequence')" id="btn-sequence" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Sequencing</button>
+            <button onclick="showTab('inference')" id="btn-inference" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Main Idea & Inference</button>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 p-8 md:p-12 min-h-[500px]">
+            
+            <!-- SHORT PASSAGE -->
+            <div id="tab-passage" class="tab-content block">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">📖</span> Read & Answer</h3>
+                
+                <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 mb-8 text-lg text-stone-700 leading-relaxed font-medium">
+                    "Dear Team, Please be advised that the quarterly meeting, which was scheduled for Tuesday, has been delayed due to severe weather conditions. Therefore, we will reschedule it for Friday. Furthermore, I would appreciate it if you could review the attached documents before we meet. Let's figure out a solution to the budget issue quickly."
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex flex-col">
+                        <label class="font-bold text-stone-700 mb-2">1. When was the meeting originally scheduled?</label>
+                        <input type="text" class="reading-input w-full md:w-1/2" placeholder="It was scheduled for...">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="font-bold text-stone-700 mb-2">2. Why has the meeting been delayed?</label>
+                        <input type="text" class="reading-input w-full md:w-1/2" placeholder="Due to...">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="font-bold text-stone-700 mb-2">3. When is the new meeting date?</label>
+                        <input type="text" class="reading-input w-full md:w-1/2" placeholder="It will be on...">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="font-bold text-stone-700 mb-2">4. What does the manager want the team to do before Friday?</label>
+                        <input type="text" class="reading-input w-full md:w-1/2" placeholder="Review the...">
+                    </div>
+                    <div class="flex flex-col">
+                        <label class="font-bold text-stone-700 mb-2">5. What is the main problem they need to solve?</label>
+                        <input type="text" class="reading-input w-full md:w-1/2" placeholder="The...">
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRUE / FALSE -->
+            <div id="tab-tf" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">✅</span> True or False</h3>
+                <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 mb-8 text-lg text-stone-700 leading-relaxed font-medium">
+                    "Many companies are adopting a four-day work week. On one hand, employees report higher satisfaction and better mental health. Furthermore, productivity rarely drops. On the contrary, some studies show it actually increases. However, implementing this system is difficult for customer service departments, which must remain open 24/7."
+                </div>
+
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="flex items-center justify-between p-4 border border-stone-200 rounded-lg hover:bg-indigo-50 transition-colors">
+                        <span class="text-lg font-medium text-stone-700">1. Employees are generally happier with a four-day work week.</span>
+                        <div class="flex gap-4">
+                            <label class="cursor-pointer font-bold text-emerald-600"><input type="radio" name="tf1" class="mr-1 accent-indigo-600"> True</label>
+                            <label class="cursor-pointer font-bold text-rose-600"><input type="radio" name="tf1" class="mr-1 accent-indigo-600"> False</label>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-4 border border-stone-200 rounded-lg hover:bg-indigo-50 transition-colors">
+                        <span class="text-lg font-medium text-stone-700">2. Productivity usually goes down when people work fewer days.</span>
+                        <div class="flex gap-4">
+                            <label class="cursor-pointer font-bold text-emerald-600"><input type="radio" name="tf2" class="mr-1 accent-indigo-600"> True</label>
+                            <label class="cursor-pointer font-bold text-rose-600"><input type="radio" name="tf2" class="mr-1 accent-indigo-600"> False</label>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-4 border border-stone-200 rounded-lg hover:bg-indigo-50 transition-colors">
+                        <span class="text-lg font-medium text-stone-700">3. A four-day work week is easy for all departments to implement.</span>
+                        <div class="flex gap-4">
+                            <label class="cursor-pointer font-bold text-emerald-600"><input type="radio" name="tf3" class="mr-1 accent-indigo-600"> True</label>
+                            <label class="cursor-pointer font-bold text-rose-600"><input type="radio" name="tf3" class="mr-1 accent-indigo-600"> False</label>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-4 border border-stone-200 rounded-lg hover:bg-indigo-50 transition-colors">
+                        <span class="text-lg font-medium text-stone-700">4. The author believes productivity actually increases in some cases.</span>
+                        <div class="flex gap-4">
+                            <label class="cursor-pointer font-bold text-emerald-600"><input type="radio" name="tf4" class="mr-1 accent-indigo-600"> True</label>
+                            <label class="cursor-pointer font-bold text-rose-600"><input type="radio" name="tf4" class="mr-1 accent-indigo-600"> False</label>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between p-4 border border-stone-200 rounded-lg hover:bg-indigo-50 transition-colors">
+                        <span class="text-lg font-medium text-stone-700">5. Customer service departments must be available every day.</span>
+                        <div class="flex gap-4">
+                            <label class="cursor-pointer font-bold text-emerald-600"><input type="radio" name="tf5" class="mr-1 accent-indigo-600"> True</label>
+                            <label class="cursor-pointer font-bold text-rose-600"><input type="radio" name="tf5" class="mr-1 accent-indigo-600"> False</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VOCAB IN CONTEXT -->
+            <div id="tab-vocab" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">🔍</span> Vocabulary in Context</h3>
+                <p class="text-stone-500 mb-6 italic">Read the sentence and guess the meaning of the underlined word based on the context.</p>
+                <div class="space-y-6">
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                        <p class="font-bold text-lg mb-3">1. The project was late <span class="underline text-indigo-600">due to</span> a lack of funding.</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="v1" class="accent-indigo-600 w-4 h-4"> a) In spite of</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="v1" class="accent-indigo-600 w-4 h-4"> b) Because of</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="v1" class="accent-indigo-600 w-4 h-4"> c) As well as</label>
+                        </div>
+                    </div>
+
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                        <p class="font-bold text-lg mb-3">2. It is cheap. <span class="underline text-indigo-600">Furthermore</span>, it is very durable.</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="v2" class="accent-indigo-600 w-4 h-4"> a) But</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="v2" class="accent-indigo-600 w-4 h-4"> b) Therefore</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="v2" class="accent-indigo-600 w-4 h-4"> c) In addition / Also</label>
+                        </div>
+                    </div>
+
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                        <p class="font-bold text-lg mb-3">3. We need to <span class="underline text-indigo-600">figure out</span> how to fix this error.</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="v3" class="accent-indigo-600 w-4 h-4"> a) Understand and solve</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="v3" class="accent-indigo-600 w-4 h-4"> b) Ignore entirely</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="v3" class="accent-indigo-600 w-4 h-4"> c) Complain about</label>
+                        </div>
+                    </div>
+
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                        <p class="font-bold text-lg mb-3">4. Sorry to <span class="underline text-indigo-600">interrupt</span>, but I have a question regarding the timeline.</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="v4" class="accent-indigo-600 w-4 h-4"> a) Leave the room</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="v4" class="accent-indigo-600 w-4 h-4"> b) Stop someone who is speaking</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="v4" class="accent-indigo-600 w-4 h-4"> c) Agree completely</label>
+                        </div>
+                    </div>
+
+                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
+                        <p class="font-bold text-lg mb-3">5. I will <span class="underline text-indigo-600">look into</span> the issue and send you an email tomorrow.</p>
+                        <div class="space-y-2">
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="v5" class="accent-indigo-600 w-4 h-4"> a) Stare at</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="v5" class="accent-indigo-600 w-4 h-4"> b) Investigate / research</label>
+                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="v5" class="accent-indigo-600 w-4 h-4"> c) Forget about</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEQUENCING -->
+            <div id="tab-sequence" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">📑</span> Sequencing</h3>
+                <p class="text-stone-500 mb-6 italic">Read the sentences from a meeting agenda. Put them in the correct logical order (1, 2, 3, 4) using signposting clues.</p>
+                
+                <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-200 mb-6 space-y-4 text-lg text-stone-800 font-medium">
+                    <div class="flex items-center gap-4"><input type="number" min="1" max="4" class="w-12 h-12 text-center rounded border border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"> A. To sum up, we will cut costs and focus on online marketing.</div>
+                    <div class="flex items-center gap-4"><input type="number" min="1" max="4" class="w-12 h-12 text-center rounded border border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"> B. Secondly, we will brainstorm new strategies to attract clients.</div>
+                    <div class="flex items-center gap-4"><input type="number" min="1" max="4" class="w-12 h-12 text-center rounded border border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"> C. Good morning. The purpose of this meeting is to address our recent drop in sales.</div>
+                    <div class="flex items-center gap-4"><input type="number" min="1" max="4" class="w-12 h-12 text-center rounded border border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"> D. First of all, let's review the financial data from last month.</div>
+                </div>
+            </div>
+
+            <!-- MAIN IDEA / INFERENCE -->
+            <div id="tab-inference" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">💡</span> Main Idea & Inference</h3>
+                <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 mb-8 text-lg text-stone-700 leading-relaxed font-medium">
+                    "Hi Mark, I was reviewing the quarterly budget, and there seems to be a misunderstanding regarding the software expenses. You mentioned that we had $5,000 allocated, but the documents show only $3,000. Could you tell me where the extra $2,000 came from? Let me know when you are free to discuss."
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex flex-col">
+                        <label class="font-bold text-stone-700 mb-3 text-xl">1. What is the tone of this email?</label>
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-3 cursor-pointer p-3 border border-stone-200 rounded-lg hover:bg-indigo-50"><input type="radio" name="main1" class="accent-indigo-600 w-5 h-5"> a) Highly aggressive and angry.</label>
+                            <label class="flex items-center gap-3 cursor-pointer p-3 border border-stone-200 rounded-lg hover:bg-indigo-50"><input type="radio" name="main1" class="accent-indigo-600 w-5 h-5"> b) Polite, professional, but pointing out a problem.</label>
+                            <label class="flex items-center gap-3 cursor-pointer p-3 border border-stone-200 rounded-lg hover:bg-indigo-50"><input type="radio" name="main1" class="accent-indigo-600 w-5 h-5"> c) Casual and joking between friends.</label>
+                        </div>
+                    </div>
+                    <div class="flex flex-col mt-6">
+                        <label class="font-bold text-stone-700 mb-3 text-xl">2. What can we infer about the $2,000?</label>
+                        <div class="space-y-3">
+                            <label class="flex items-center gap-3 cursor-pointer p-3 border border-stone-200 rounded-lg hover:bg-indigo-50"><input type="radio" name="infer1" class="accent-indigo-600 w-5 h-5"> a) Mark stole it.</label>
+                            <label class="flex items-center gap-3 cursor-pointer p-3 border border-stone-200 rounded-lg hover:bg-indigo-50"><input type="radio" name="infer1" class="accent-indigo-600 w-5 h-5"> b) It was intentionally hidden.</label>
+                            <label class="flex items-center gap-3 cursor-pointer p-3 border border-stone-200 rounded-lg hover:bg-indigo-50"><input type="radio" name="infer1" class="accent-indigo-600 w-5 h-5"> c) It is unaccounted for based on the current documents.</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="w-full text-center py-8 bg-transparent text-stone-500 relative z-10 mt-auto border-t border-stone-200/50">
+        <p class="text-sm font-medium">&copy; 2026 Tagasa English Course. Cultivating global communicators.</p>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('block');
+                el.classList.add('hidden');
+            });
+            document.querySelectorAll('button[id^="btn-"]').forEach(btn => {
+                btn.className = 'px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors';
+            });
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            document.getElementById('tab-' + tabName).classList.add('block');
+            document.getElementById('btn-' + tabName).className = 'px-6 py-3 font-bold text-indigo-700 border-b-2 border-indigo-600';
+        }
+    </script>
+</body>
+</html>
