@@ -50,6 +50,12 @@
         .folder-card:hover .card-front {
             transform: scale(1.1);
         }
+
+        /* Modal scrollbar */
+        .modal-scroll::-webkit-scrollbar { width: 8px; }
+        .modal-scroll::-webkit-scrollbar-track { background: transparent; }
+        .modal-scroll::-webkit-scrollbar-thumb { background: #d6d3d1; border-radius: 10px; }
+        .modal-scroll::-webkit-scrollbar-thumb:hover { background: #a8a29e; }
     </style>
 </head>
 <body class="antialiased bg-elegant-gradient">
@@ -199,235 +205,15 @@
                     Visual Flashcards
                 </h1>
                 <p class="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
-                    Explore 50 comprehensive visual folders containing 100 flashcards each. Designed to scale from absolute beginner vocabulary to elite mastery jargon.
+                    Explore 50 comprehensive visual folders containing 20 flashcards each. Designed to scale from absolute beginner vocabulary to elite mastery jargon.
                 </p>
             </section>
 
             <!-- Gallery Grid Structure -->
             <section class="w-full pb-32">
                 
-                <!-- BEGINNER (1-10) -->
-                <div class="mb-14">
-                    <div class="flex items-center gap-4 mb-6">
-                        <h2 class="text-2xl font-bold text-stone-800">Beginner (Level 1)</h2>
-                        <div class="h-[1px] flex-grow bg-teal-200"></div>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                        <!-- Items 1-10 -->
-                        <script>
-                            const beginnerTopics = [
-                                { emoji: '🔤', title: 'Alphabet & Phonics', desc: 'A-Z sounds, basic starters.' },
-                                { emoji: '🔴', title: 'Colors & Shapes', desc: 'Primary colors and basic geometry.' },
-                                { emoji: '🔢', title: 'Numbers & Counting', desc: 'Digits 1-100 and simple math.' },
-                                { emoji: '🪑', title: 'Everyday Objects', desc: 'Classroom and home items.' },
-                                { emoji: '👨‍👩‍👧', title: 'Family Members', desc: 'Relatives and relationships.' },
-                                { emoji: '🍔', title: 'Food & Drink', desc: 'Basic meals and beverages.' },
-                                { emoji: '👃', title: 'Body Parts', desc: 'Anatomy for beginners.' },
-                                { emoji: '🐶', title: 'Animals & Pets', desc: 'Common domestic and wild animals.' },
-                                { emoji: '📅', title: 'Days & Months', desc: 'Calendar and time tracking.' },
-                                { emoji: '🏃', title: 'Action Verbs', desc: 'Walk, run, jump, and sleep.' }
-                            ];
-                            beginnerTopics.forEach((t, i) => {
-                                document.write(`
-                                <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-teal-300 transition-all duration-300 flex flex-col cursor-pointer folder-card group">
-                                    <div class="relative w-full h-36 bg-stone-50 rounded-2xl mb-4 flex items-center justify-center overflow-hidden border border-stone-100">
-                                        <div class="card-back-1 absolute w-20 h-28 bg-teal-200 rounded-xl transform -rotate-6 shadow-sm transition-transform duration-300"></div>
-                                        <div class="card-back-2 absolute w-20 h-28 bg-teal-100 rounded-xl transform rotate-6 shadow-sm transition-transform duration-300"></div>
-                                        <div class="card-front absolute w-20 h-28 bg-white rounded-xl shadow-md border border-stone-100 flex items-center justify-center text-4xl transition-transform duration-300">${t.emoji}</div>
-                                        <div class="absolute bottom-2 right-2 bg-stone-800/80 text-white text-[10px] font-bold px-2 py-1 rounded-md backdrop-blur-sm">100 Pics</div>
-                                    </div>
-                                    <h3 class="text-base font-bold text-stone-800 mb-1 leading-tight">${i+1}. ${t.title}</h3>
-                                    <span class="text-[10px] font-bold text-teal-600 uppercase tracking-widest mb-2">Beginner</span>
-                                    <p class="text-stone-500 text-xs leading-relaxed flex-grow">${t.desc}</p>
-                                </div>`);
-                            });
-                        </script>
-                    </div>
-                </div>
-
-                <!-- ELEMENTARY (11-20) -->
-                <div class="mb-14">
-                    <div class="flex items-center gap-4 mb-6">
-                        <h2 class="text-2xl font-bold text-stone-800">Elementary (Level 2)</h2>
-                        <div class="h-[1px] flex-grow bg-emerald-200"></div>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                        <!-- Items 11-20 -->
-                        <script>
-                            const elementaryTopics = [
-                                { emoji: '⏰', title: 'Daily Routines', desc: 'Morning to night actions.' },
-                                { emoji: '👕', title: 'Clothing & Weather', desc: 'Dressing for the seasons.' },
-                                { emoji: '🏠', title: 'House & Furniture', desc: 'Rooms and household goods.' },
-                                { emoji: '🏙️', title: 'City & Places', desc: 'Navigating urban locations.' },
-                                { emoji: '🚗', title: 'Transportation', desc: 'Vehicles and commuting.' },
-                                { emoji: '👨‍🍳', title: 'Jobs & Occupations', desc: 'Professions and workplaces.' },
-                                { emoji: '⚽', title: 'Hobbies & Sports', desc: 'Leisure and physical activities.' },
-                                { emoji: '😀', title: 'Emotions & Feelings', desc: 'Expressing internal states.' },
-                                { emoji: '📦', title: 'Prepositions of Place', desc: 'In, on, under, behind.' },
-                                { emoji: '🌟', title: 'Simple Adjectives', desc: 'Describing size and quality.' }
-                            ];
-                            elementaryTopics.forEach((t, i) => {
-                                document.write(`
-                                <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all duration-300 flex flex-col cursor-pointer folder-card group">
-                                    <div class="relative w-full h-36 bg-stone-50 rounded-2xl mb-4 flex items-center justify-center overflow-hidden border border-stone-100">
-                                        <div class="card-back-1 absolute w-20 h-28 bg-emerald-200 rounded-xl transform -rotate-6 shadow-sm transition-transform duration-300"></div>
-                                        <div class="card-back-2 absolute w-20 h-28 bg-emerald-100 rounded-xl transform rotate-6 shadow-sm transition-transform duration-300"></div>
-                                        <div class="card-front absolute w-20 h-28 bg-white rounded-xl shadow-md border border-stone-100 flex items-center justify-center text-4xl transition-transform duration-300">${t.emoji}</div>
-                                        <div class="absolute bottom-2 right-2 bg-stone-800/80 text-white text-[10px] font-bold px-2 py-1 rounded-md backdrop-blur-sm">100 Pics</div>
-                                    </div>
-                                    <h3 class="text-base font-bold text-stone-800 mb-1 leading-tight">${i+11}. ${t.title}</h3>
-                                    <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-widest mb-2">Elementary</span>
-                                    <p class="text-stone-500 text-xs leading-relaxed flex-grow">${t.desc}</p>
-                                </div>`);
-                            });
-                        </script>
-                    </div>
-                </div>
-
-                <!-- PRE-INTERMEDIATE (21-30) -->
-                <div class="mb-14">
-                    <div class="flex items-center gap-4 mb-6">
-                        <h2 class="text-2xl font-bold text-stone-800">Pre-Intermediate (Level 3)</h2>
-                        <div class="h-[1px] flex-grow bg-blue-200"></div>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                        <!-- Items 21-30 -->
-                        <script>
-                            const preIntTopics = [
-                                { emoji: '🕰️', title: 'Past Experiences', desc: 'Memories and life events.' },
-                                { emoji: '✈️', title: 'Travel & Vacations', desc: 'Airports, hotels, tourism.' },
-                                { emoji: '🏥', title: 'Health & Sickness', desc: 'Symptoms and pharmacies.' },
-                                { emoji: '🛒', title: 'Shopping & Money', desc: 'Transactions and retail.' },
-                                { emoji: '🍳', title: 'Food Recipes', desc: 'Cooking verbs and ingredients.' },
-                                { emoji: '💻', title: 'Tech & Gadgets', desc: 'Devices and the internet.' },
-                                { emoji: '🌲', title: 'Geography & Nature', desc: 'Landscapes and environments.' },
-                                { emoji: '🔗', title: 'Basic Phrasal Verbs', desc: 'Wake up, sit down, give up.' },
-                                { emoji: '💡', title: 'Modals of Advice', desc: 'Should, must, and could.' },
-                                { emoji: '➕', title: 'Connectors', desc: 'And, but, because, so.' }
-                            ];
-                            preIntTopics.forEach((t, i) => {
-                                document.write(`
-                                <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 flex flex-col cursor-pointer folder-card group">
-                                    <div class="relative w-full h-36 bg-stone-50 rounded-2xl mb-4 flex items-center justify-center overflow-hidden border border-stone-100">
-                                        <div class="card-back-1 absolute w-20 h-28 bg-blue-200 rounded-xl transform -rotate-6 shadow-sm transition-transform duration-300"></div>
-                                        <div class="card-back-2 absolute w-20 h-28 bg-blue-100 rounded-xl transform rotate-6 shadow-sm transition-transform duration-300"></div>
-                                        <div class="card-front absolute w-20 h-28 bg-white rounded-xl shadow-md border border-stone-100 flex items-center justify-center text-4xl transition-transform duration-300">${t.emoji}</div>
-                                        <div class="absolute bottom-2 right-2 bg-stone-800/80 text-white text-[10px] font-bold px-2 py-1 rounded-md backdrop-blur-sm">100 Pics</div>
-                                    </div>
-                                    <h3 class="text-base font-bold text-stone-800 mb-1 leading-tight">${i+21}. ${t.title}</h3>
-                                    <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mb-2">Pre-Int</span>
-                                    <p class="text-stone-500 text-xs leading-relaxed flex-grow">${t.desc}</p>
-                                </div>`);
-                            });
-                        </script>
-                    </div>
-                </div>
-
-                <!-- INTERMEDIATE (31-40) -->
-                <div class="mb-14">
-                    <div class="flex items-center gap-4 mb-6">
-                        <h2 class="text-2xl font-bold text-stone-800">Intermediate (Level 4)</h2>
-                        <div class="h-[1px] flex-grow bg-indigo-200"></div>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                        <!-- Items 31-40 -->
-                        <script>
-                            const intTopics = [
-                                { emoji: '🏢', title: 'Prof. Workplaces', desc: 'Office terms and hierarchy.' },
-                                { emoji: '🤝', title: 'Job Interviews', desc: 'Strengths, weaknesses, goals.' },
-                                { emoji: '♻️', title: 'Environmental Issues', desc: 'Pollution, recycling, climate.' },
-                                { emoji: '🎬', title: 'Media & Ent.', desc: 'Film genres, reviews, news.' },
-                                { emoji: '🎭', title: 'Culture & Traditions', desc: 'Festivals and global customs.' },
-                                { emoji: '⚖️', title: 'Crime & Law', desc: 'Police, courts, and rules.' },
-                                { emoji: '💭', title: 'Abstract Nouns', desc: 'Freedom, success, justice.' },
-                                { emoji: '🗣️', title: 'Adv. Phrasal Verbs', desc: 'Look into, figure out, hash out.' },
-                                { emoji: '💬', title: 'Everyday Idioms', desc: 'Break a leg, under the weather.' },
-                                { emoji: '📝', title: 'Collocations', desc: 'Words that naturally go together.' }
-                            ];
-                            intTopics.forEach((t, i) => {
-                                document.write(`
-                                <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col cursor-pointer folder-card group">
-                                    <div class="relative w-full h-36 bg-stone-50 rounded-2xl mb-4 flex items-center justify-center overflow-hidden border border-stone-100">
-                                        <div class="card-back-1 absolute w-20 h-28 bg-indigo-200 rounded-xl transform -rotate-6 shadow-sm transition-transform duration-300"></div>
-                                        <div class="card-back-2 absolute w-20 h-28 bg-indigo-100 rounded-xl transform rotate-6 shadow-sm transition-transform duration-300"></div>
-                                        <div class="card-front absolute w-20 h-28 bg-white rounded-xl shadow-md border border-stone-100 flex items-center justify-center text-4xl transition-transform duration-300">${t.emoji}</div>
-                                        <div class="absolute bottom-2 right-2 bg-stone-800/80 text-white text-[10px] font-bold px-2 py-1 rounded-md backdrop-blur-sm">100 Pics</div>
-                                    </div>
-                                    <h3 class="text-base font-bold text-stone-800 mb-1 leading-tight">${i+31}. ${t.title}</h3>
-                                    <span class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest mb-2">Intermediate</span>
-                                    <p class="text-stone-500 text-xs leading-relaxed flex-grow">${t.desc}</p>
-                                </div>`);
-                            });
-                        </script>
-                    </div>
-                </div>
-
-                <!-- UPPER-INTERMEDIATE & ADVANCED (41-45) -->
-                <div class="mb-14">
-                    <div class="flex items-center gap-4 mb-6">
-                        <h2 class="text-2xl font-bold text-stone-800">Advanced Concepts (Levels 5-6)</h2>
-                        <div class="h-[1px] flex-grow bg-violet-200"></div>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                        <!-- Items 41-45 -->
-                        <script>
-                            const upperTopics = [
-                                { emoji: '📈', title: 'Business Negotiations', desc: 'Contracts, terms, and haggling.' },
-                                { emoji: '🎓', title: 'Academic Writing', desc: 'Essays, thesis, and structures.' },
-                                { emoji: '📰', title: 'Geopolitics & News', desc: 'Global events and politics.' },
-                                { emoji: '🔬', title: 'Science & Space', desc: 'Biology, physics, and astronomy.' },
-                                { emoji: '✨', title: 'Advanced Modifiers', desc: 'Significantly, profoundly, slightly.' }
-                            ];
-                            upperTopics.forEach((t, i) => {
-                                document.write(`
-                                <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-violet-300 transition-all duration-300 flex flex-col cursor-pointer folder-card group">
-                                    <div class="relative w-full h-36 bg-stone-50 rounded-2xl mb-4 flex items-center justify-center overflow-hidden border border-stone-100">
-                                        <div class="card-back-1 absolute w-20 h-28 bg-violet-200 rounded-xl transform -rotate-6 shadow-sm transition-transform duration-300"></div>
-                                        <div class="card-back-2 absolute w-20 h-28 bg-violet-100 rounded-xl transform rotate-6 shadow-sm transition-transform duration-300"></div>
-                                        <div class="card-front absolute w-20 h-28 bg-white rounded-xl shadow-md border border-stone-100 flex items-center justify-center text-4xl transition-transform duration-300">${t.emoji}</div>
-                                        <div class="absolute bottom-2 right-2 bg-stone-800/80 text-white text-[10px] font-bold px-2 py-1 rounded-md backdrop-blur-sm">100 Pics</div>
-                                    </div>
-                                    <h3 class="text-base font-bold text-stone-800 mb-1 leading-tight">${i+41}. ${t.title}</h3>
-                                    <span class="text-[10px] font-bold text-violet-600 uppercase tracking-widest mb-2">Upper/Adv</span>
-                                    <p class="text-stone-500 text-xs leading-relaxed flex-grow">${t.desc}</p>
-                                </div>`);
-                            });
-                        </script>
-                    </div>
-                </div>
-
-                <!-- MASTERY (46-50) -->
-                <div class="mb-14">
-                    <div class="flex items-center gap-4 mb-6">
-                        <h2 class="text-2xl font-bold text-stone-800">Elite Mastery (Levels 7-8)</h2>
-                        <div class="h-[1px] flex-grow bg-rose-200"></div>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                        <!-- Items 46-50 -->
-                        <script>
-                            const masteryTopics = [
-                                { emoji: '🧠', title: 'Psychological Biases', desc: 'Sunk cost, confirmation bias.' },
-                                { emoji: '🏛️', title: 'Philosophical Concepts', desc: 'Ethics, utilitarianism, paradoxes.' },
-                                { emoji: '👔', title: 'C-Suite Jargon', desc: 'KPIs, silos, synergistic approaches.' },
-                                { emoji: '📜', title: 'Legal & Diplomatic', desc: 'Null and void, pursuant to, breach.' },
-                                { emoji: '👑', title: 'C2 Literary Vocab', desc: 'The pinnacle of academic English.' }
-                            ];
-                            masteryTopics.forEach((t, i) => {
-                                document.write(`
-                                <div class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-rose-300 transition-all duration-300 flex flex-col cursor-pointer folder-card group">
-                                    <div class="relative w-full h-36 bg-stone-50 rounded-2xl mb-4 flex items-center justify-center overflow-hidden border border-stone-100">
-                                        <div class="card-back-1 absolute w-20 h-28 bg-rose-200 rounded-xl transform -rotate-6 shadow-sm transition-transform duration-300"></div>
-                                        <div class="card-back-2 absolute w-20 h-28 bg-rose-100 rounded-xl transform rotate-6 shadow-sm transition-transform duration-300"></div>
-                                        <div class="card-front absolute w-20 h-28 bg-white rounded-xl shadow-md border border-stone-100 flex items-center justify-center text-4xl transition-transform duration-300">${t.emoji}</div>
-                                        <div class="absolute bottom-2 right-2 bg-stone-800/80 text-white text-[10px] font-bold px-2 py-1 rounded-md backdrop-blur-sm">100 Pics</div>
-                                    </div>
-                                    <h3 class="text-base font-bold text-stone-800 mb-1 leading-tight">${i+46}. ${t.title}</h3>
-                                    <span class="text-[10px] font-bold text-rose-600 uppercase tracking-widest mb-2">Mastery</span>
-                                    <p class="text-stone-500 text-xs leading-relaxed flex-grow">${t.desc}</p>
-                                </div>`);
-                            });
-                        </script>
-                    </div>
+                <div id="gallery-container">
+                    <!-- Dynamic content generated by JS -->
                 </div>
 
             </section>
@@ -439,5 +225,200 @@
         </footer>
     </div>
 
+    <!-- Interactive Flashcard Modal -->
+    <div id="gallery-modal" class="fixed inset-0 bg-stone-900/95 z-[100] hidden flex-col">
+        <!-- Modal Header -->
+        <div class="w-full px-6 py-4 flex items-center justify-between border-b border-stone-700/50 bg-stone-900 sticky top-0 z-10">
+            <h2 id="modal-title" class="text-2xl font-bold text-white tracking-wide">Topic Title</h2>
+            <button onclick="closeGallery()" class="text-stone-400 hover:text-white transition-colors p-2 flex items-center gap-2 font-semibold">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                Close
+            </button>
+        </div>
+        
+        <!-- Flashcard Grid -->
+        <div class="flex-grow overflow-y-auto modal-scroll p-6 md:p-10">
+            <div id="modal-grid" class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                <!-- Flashcards will be injected here via JS -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data Structure for the 50 Folders and their 20 Vocab words
+        const galleryData = [
+            {
+                level: "Beginner (Level 1)",
+                color: "teal",
+                items: [
+                    { emoji: '🔤', title: 'Alphabet & Phonics', desc: 'A-Z sounds, basic starters.', words: "Apple,Boy,Cat,Dog,Egg,Fish,Girl,Hat,Ice,Jump,Kite,Lion,Moon,Nest,Owl,Pig,Queen,Rat,Sun,Tree" },
+                    { emoji: '🔴', title: 'Colors & Shapes', desc: 'Primary colors and basic geometry.', words: "Red,Blue,Green,Yellow,Black,White,Orange,Purple,Pink,Brown,Gray,Silver,Gold,Cyan,Magenta,Maroon,Navy,Olive,Teal,Indigo" },
+                    { emoji: '🔢', title: 'Numbers & Counting', desc: 'Digits 1-100 and simple math.', words: "One,Two,Three,Four,Five,Six,Seven,Eight,Nine,Ten,Eleven,Twelve,Twenty,Thirty,Forty,Fifty,Hundred,Thousand,Million,Billion" },
+                    { emoji: '🪑', title: 'Everyday Objects', desc: 'Classroom and home items.', words: "Pen,Book,Desk,Chair,Bag,Pencil,Eraser,Ruler,Notebook,Board,Clock,Computer,Window,Door,Paper,Marker,Folder,Stapler,Scissors,Trashcan" },
+                    { emoji: '👨‍👩‍👧', title: 'Family Members', desc: 'Relatives and relationships.', words: "Mother,Father,Brother,Sister,Son,Daughter,Uncle,Aunt,Cousin,Grandfather,Grandmother,Nephew,Niece,Husband,Wife,Parent,Child,Sibling,Twin,Relative" },
+                    { emoji: '🍔', title: 'Food & Drink', desc: 'Basic meals and beverages.', words: "Bread,Rice,Meat,Fish,Chicken,Egg,Milk,Water,Coffee,Tea,Apple,Banana,Orange,Tomato,Potato,Cheese,Butter,Soup,Salad,Cake" },
+                    { emoji: '👃', title: 'Body Parts', desc: 'Anatomy for beginners.', words: "Head,Hair,Eye,Ear,Nose,Mouth,Tooth,Tongue,Lip,Face,Neck,Shoulder,Arm,Hand,Finger,Leg,Foot,Toe,Back,Stomach" },
+                    { emoji: '🐶', title: 'Animals & Pets', desc: 'Common domestic and wild animals.', words: "Dog,Cat,Bird,Fish,Mouse,Horse,Cow,Pig,Sheep,Chicken,Duck,Lion,Tiger,Bear,Elephant,Monkey,Giraffe,Snake,Frog,Rabbit" },
+                    { emoji: '📅', title: 'Days & Months', desc: 'Calendar and time tracking.', words: "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,January,February,March,April,May,June,July,August,September,October,November,December,Year" },
+                    { emoji: '🏃', title: 'Action Verbs', desc: 'Walk, run, jump, and sleep.', words: "Walk,Run,Jump,Sleep,Eat,Drink,Read,Write,Speak,Listen,Look,See,Go,Stop,Sit,Stand,Open,Close,Play,Work" }
+                ]
+            },
+            {
+                level: "Elementary (Level 2)",
+                color: "emerald",
+                items: [
+                    { emoji: '⏰', title: 'Daily Routines', desc: 'Morning to night actions.', words: "Wake,Brush,Wash,Dress,Cook,Eat,Drive,Work,Study,Rest,Clean,Shop,Call,Text,Watch,Relax,Exercise,Shower,Read,Sleep" },
+                    { emoji: '👕', title: 'Clothing & Weather', desc: 'Dressing for the seasons.', words: "Shirt,Pants,Shoes,Hat,Coat,Socks,Dress,Skirt,Jacket,Gloves,Rain,Snow,Sun,Cloud,Wind,Hot,Cold,Warm,Cool,Storm" },
+                    { emoji: '🏠', title: 'House & Furniture', desc: 'Rooms and household goods.', words: "House,Room,Kitchen,Bedroom,Bathroom,Living,Bed,Sofa,Table,Chair,Lamp,TV,Fridge,Stove,Sink,Shower,Toilet,Mirror,Door,Window" },
+                    { emoji: '🏙️', title: 'City & Places', desc: 'Navigating urban locations.', words: "City,Street,Road,Building,Park,School,Bank,Hospital,Store,Shop,Mall,Restaurant,Cafe,Station,Bus,Train,Car,Taxi,Airport,Hotel" },
+                    { emoji: '🚗', title: 'Transportation', desc: 'Vehicles and commuting.', words: "Car,Bus,Train,Bike,Motorcycle,Plane,Boat,Ship,Subway,Taxi,Drive,Ride,Fly,Sail,Ticket,Station,Airport,Stop,Fast,Slow" },
+                    { emoji: '👨‍🍳', title: 'Jobs & Occupations', desc: 'Professions and workplaces.', words: "Teacher,Doctor,Nurse,Police,Pilot,Chef,Baker,Farmer,Worker,Driver,Office,Hospital,School,Farm,Restaurant,Job,Work,Salary,Boss,Employee" },
+                    { emoji: '⚽', title: 'Hobbies & Sports', desc: 'Leisure and physical activities.', words: "Football,Basketball,Tennis,Swimming,Running,Cycling,Reading,Gaming,Painting,Dancing,Singing,Cooking,Fishing,Hiking,Yoga,Gym,Team,Ball,Match,Win" },
+                    { emoji: '😀', title: 'Emotions & Feelings', desc: 'Expressing internal states.', words: "Happy,Sad,Angry,Tired,Hungry,Thirsty,Scared,Surprised,Excited,Bored,Nervous,Relaxed,Proud,Shy,Calm,Upset,Glad,Confused,Lonely,Sick" },
+                    { emoji: '📦', title: 'Prepositions of Place', desc: 'In, on, under, behind.', words: "In,On,Under,Over,Behind,Front,Next,Between,Near,Far,Above,Below,Inside,Outside,Left,Right,Up,Down,Here,There" },
+                    { emoji: '🌟', title: 'Simple Adjectives', desc: 'Describing size and quality.', words: "Big,Small,Tall,Short,Long,Fast,Slow,Hot,Cold,Good,Bad,New,Old,Young,Rich,Poor,Clean,Dirty,Hard,Easy" }
+                ]
+            },
+            {
+                level: "Pre-Intermediate (Level 3)",
+                color: "blue",
+                items: [
+                    { emoji: '🕰️', title: 'Past Experiences', desc: 'Memories and life events.', words: "Have,Has,Had,Been,Gone,Seen,Done,Eaten,Taken,Written,Read,Spoken,Lived,Worked,Studied,Played,Visited,Traveled,Met,Finished" },
+                    { emoji: '✈️', title: 'Travel & Vacations', desc: 'Airports, hotels, tourism.', words: "Ticket,Passport,Visa,Flight,Gate,Board,Seat,Bag,Luggage,Suitcase,Hotel,Room,Key,Bed,Check,Stay,Visit,Tour,Map,Guide" },
+                    { emoji: '🏥', title: 'Health & Sickness', desc: 'Symptoms and pharmacies.', words: "Doctor,Nurse,Pain,Hurt,Sick,Ill,Medicine,Pill,Pharmacy,Cough,Cold,Fever,Headache,Stomach,Rest,Sleep,Better,Worse,Hospital,Clinic" },
+                    { emoji: '🛒', title: 'Shopping & Money', desc: 'Transactions and retail.', words: "Price,Cost,Money,Dollar,Cent,Cheap,Expensive,Buy,Sell,Pay,Offer,Deal,Discount,Bargain,Negotiate,Agree,Accept,Reject,Sign,Contract" },
+                    { emoji: '🍳', title: 'Food Recipes', desc: 'Cooking verbs and ingredients.', words: "Cook,Bake,Boil,Fry,Cut,Chop,Mix,Add,Pour,Stir,Taste,Serve,Hot,Cold,Sweet,Sour,Salty,Spicy,Recipe,Ingredient" },
+                    { emoji: '💻', title: 'Tech & Gadgets', desc: 'Devices and the internet.', words: "Phone,Computer,Laptop,Screen,Keyboard,Mouse,Click,Type,Send,Email,Message,Internet,Web,Online,App,Download,Upload,Save,Delete,Share" },
+                    { emoji: '🌲', title: 'Geography & Nature', desc: 'Landscapes and environments.', words: "Tree,Forest,River,Lake,Ocean,Sea,Mountain,Hill,Valley,Desert,Island,Beach,Sand,Rock,Grass,Flower,Plant,Earth,World,Nature" },
+                    { emoji: '🔗', title: 'Basic Phrasal Verbs', desc: 'Wake up, sit down, give up.', words: "Wake,Up,Sit,Down,Stand,Give,Take,Look,Find,Figure,Work,Set,Put,Get,Turn,Off,On,Away,Back,Over" },
+                    { emoji: '💡', title: 'Modals of Advice', desc: 'Should, must, and could.', words: "Can,Could,Should,Must,Would,Might,May,Will,Shall,Ought,Need,Have,Has,Advice,Rule,Law,Idea,Good,Bad,Better" },
+                    { emoji: '➕', title: 'Connectors', desc: 'And, but, because, so.', words: "And,But,Or,So,Because,Therefore,However,Furthermore,Also,Too,Then,Next,Finally,First,Second,Later,While,When,Before,After" }
+                ]
+            },
+            {
+                level: "Intermediate (Level 4)",
+                color: "indigo",
+                items: [
+                    { emoji: '🏢', title: 'Prof. Workplaces', desc: 'Office terms and hierarchy.', words: "Job,Interview,Resume,CV,Skill,Strength,Weakness,Experience,Hire,Fire,Boss,Manager,Team,Leader,Goal,Plan,Future,Success,Learn,Grow" },
+                    { emoji: '🤝', title: 'Job Interviews', desc: 'Strengths, weaknesses, goals.', words: "Question,Answer,Strength,Weakness,Goal,Five,Years,Future,Plan,Hope,Dream,Work,Hard,Smart,Team,Solo,Lead,Follow,Success,Failure" },
+                    { emoji: '♻️', title: 'Environmental Issues', desc: 'Pollution, recycling, climate.', words: "Green,Eco,Recycle,Trash,Waste,Pollution,Air,Water,Clean,Dirty,Save,Protect,Earth,Planet,Global,Warming,Climate,Change,Nature,Future" },
+                    { emoji: '🎬', title: 'Media & Ent.', desc: 'Film genres, reviews, news.', words: "Movie,Film,Show,TV,Watch,Screen,Actor,Actress,Director,Action,Comedy,Drama,Horror,Scary,Funny,Sad,Review,Good,Bad,Rating" },
+                    { emoji: '🎭', title: 'Culture & Traditions', desc: 'Festivals and global customs.', words: "Culture,Tradition,Custom,Habit,Rule,Respect,Festival,Holiday,Celebrate,Party,Dance,Music,Food,Clothing,History,Past,Future,People,World,Global" },
+                    { emoji: '⚖️', title: 'Crime & Law', desc: 'Police, courts, and rules.', words: "Law,Rule,Court,Judge,Lawyer,Police,Cop,Crime,Steal,Rob,Thief,Bad,Wrong,Right,Justice,Fair,Unfair,Jail,Prison,Free" },
+                    { emoji: '💭', title: 'Abstract Nouns', desc: 'Freedom, success, justice.', words: "Love,Hate,Fear,Joy,Success,Failure,Truth,Lie,Peace,War,Justice,Crime,Freedom,Rules,Hope,Dream,Life,Death,Time,Space" },
+                    { emoji: '🗣️', title: 'Adv. Phrasal Verbs', desc: 'Look into, figure out, hash out.', words: "Look,Into,Figure,Out,Hash,Wrap,Come,Bring,Call,Drop,Fill,Hold,Keep,Let,Make,Pass,Run,Show,Stand,Turn" },
+                    { emoji: '💬', title: 'Everyday Idioms', desc: 'Break a leg, under the weather.', words: "Break,Leg,Under,Weather,Piece,Cake,Cost,Arm,Eye,To,Ball,Court,Hit,Sack,Bite,Bullet,Cut,Corners,Call,Day" },
+                    { emoji: '📝', title: 'Collocations', desc: 'Words that naturally go together.', words: "Make,Do,Have,Take,Break,Catch,Keep,Pay,Save,Go,Come,Get,Give,Look,Watch,See,Hear,Listen,Feel,Think" }
+                ]
+            },
+            {
+                level: "Upper-Intermediate & Advanced (Levels 5-6)",
+                color: "violet",
+                items: [
+                    { emoji: '📈', title: 'Business Negotiations', desc: 'Contracts, terms, and haggling.', words: "Deal,Contract,Sign,Agree,Disagree,Negotiate,Bargain,Offer,Accept,Reject,Price,Cost,Value,Profit,Loss,Margin,Market,Sell,Buy,Trade" },
+                    { emoji: '🎓', title: 'Academic Writing', desc: 'Essays, thesis, and structures.', words: "Essay,Thesis,Paper,Write,Read,Study,Research,Data,Fact,Opinion,Argue,Defend,Prove,Show,Conclude,Summary,Intro,Body,Text,Word" },
+                    { emoji: '📰', title: 'Geopolitics & News', desc: 'Global events and politics.', words: "News,Global,World,Country,Nation,Leader,President,Vote,Election,Law,Policy,Economy,Trade,War,Peace,Treaty,Sign,Agree,Border,Security" },
+                    { emoji: '🔬', title: 'Science & Space', desc: 'Biology, physics, and astronomy.', words: "Science,Math,Physics,Biology,Space,Star,Planet,Moon,Sun,Galaxy,Universe,Discover,Invent,Create,Test,Experiment,Lab,Result,Data,Fact" },
+                    { emoji: '✨', title: 'Advanced Modifiers', desc: 'Significantly, profoundly, slightly.', words: "Very,Much,A,Lot,Slightly,Significantly,Profoundly,Deeply,Highly,Extremely,Barely,Hardly,Mostly,Almost,Completely,Totally,Fully,Absolutely,Entirely,Wholly" }
+                ]
+            },
+            {
+                level: "Elite Mastery (Levels 7-8)",
+                color: "rose",
+                items: [
+                    { emoji: '🧠', title: 'Psychological Biases', desc: 'Sunk cost, confirmation bias.', words: "Bias,Cognitive,Psychology,Sunk,Cost,Confirmation,Echo,Chamber,Mind,Thought,Logic,Reason,Flaw,Error,Mistake,Blind,Spot,Assumption,Theory,Fact" },
+                    { emoji: '🏛️', title: 'Philosophical Concepts', desc: 'Ethics, utilitarianism, paradoxes.', words: "Ethics,Moral,Right,Wrong,Utilitarian,Deontological,Paradox,Irony,Truth,Lie,Philosophy,Think,Deep,Meaning,Life,Purpose,Goal,Value,Belief,System" },
+                    { emoji: '👔', title: 'C-Suite Jargon', desc: 'KPIs, silos, synergistic approaches.', words: "KPI,Silo,Synergy,Bandwidth,Pivot,Align,Deliverable,Actionable,Leverage,Scalable,Metric,Benchmark,Strategy,Tactical,Operational,Executive,Board,Director,Stakeholder,ROI" },
+                    { emoji: '📜', title: 'Legal & Diplomatic', desc: 'Null and void, pursuant to, breach.', words: "Null,Void,Pursuant,Breach,Contract,Liability,Stipulate,Clause,Mandate,Compliance,Regulation,Diplomacy,Treaty,Sanction,Embargo,Sovereignty,Jurisdiction,Litigation,Arbitration,Mediation" },
+                    { emoji: '👑', title: 'C2 Literary Vocab', desc: 'The pinnacle of academic English.', words: "Paradigm,Synthesize,Empirical,Delineate,Mitigate,Inherent,Crucial,Optimal,Deficit,Implement,Facilitate,Articulate,Elucidate,Reiterate,Obsolete,Anomaly,Trajectory,Fiscal,Unforeseen,Equitable" }
+                ]
+            }
+        ];
+
+        // Function to render the folder grid
+        function initGallery() {
+            const container = document.getElementById('gallery-container');
+            let globalIndex = 1;
+
+            galleryData.forEach(section => {
+                const sectionHtml = `
+                    <div class="mb-14">
+                        <div class="flex items-center gap-4 mb-6">
+                            <h2 class="text-2xl font-bold text-stone-800">${section.level}</h2>
+                            <div class="h-[1px] flex-grow bg-${section.color}-200"></div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                            ${section.items.map(t => {
+                                const currentIndex = globalIndex++;
+                                return `
+                                <div onclick="openFolder('${t.title.replace(/'/g, "\\'")}', '${t.words}')" class="bg-white rounded-3xl p-5 border border-stone-200/80 shadow-sm hover:shadow-xl hover:border-${section.color}-300 transition-all duration-300 flex flex-col cursor-pointer folder-card group">
+                                    <div class="relative w-full h-36 bg-stone-50 rounded-2xl mb-4 flex items-center justify-center overflow-hidden border border-stone-100">
+                                        <div class="card-back-1 absolute w-20 h-28 bg-${section.color}-200 rounded-xl transform -rotate-6 shadow-sm transition-transform duration-300"></div>
+                                        <div class="card-back-2 absolute w-20 h-28 bg-${section.color}-100 rounded-xl transform rotate-6 shadow-sm transition-transform duration-300"></div>
+                                        <div class="card-front absolute w-20 h-28 bg-white rounded-xl shadow-md border border-stone-100 flex items-center justify-center text-4xl transition-transform duration-300">${t.emoji}</div>
+                                        <div class="absolute bottom-2 right-2 bg-stone-800/80 text-white text-[10px] font-bold px-2 py-1 rounded-md backdrop-blur-sm">20 Pics</div>
+                                    </div>
+                                    <h3 class="text-base font-bold text-stone-800 mb-1 leading-tight">${currentIndex}. ${t.title}</h3>
+                                    <span class="text-[10px] font-bold text-${section.color}-600 uppercase tracking-widest mb-2">${section.level.split(' ')[0]}</span>
+                                    <p class="text-stone-500 text-xs leading-relaxed flex-grow">${t.desc}</p>
+                                </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += sectionHtml;
+            });
+        }
+
+        // Function to open modal and generate images based on keywords
+        function openFolder(title, wordList) {
+            const modal = document.getElementById('gallery-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const grid = document.getElementById('modal-grid');
+            
+            modalTitle.textContent = title;
+            grid.innerHTML = '';
+            
+            const words = wordList.split(',');
+            
+            words.forEach((word, index) => {
+                // Using loremflickr for keyword-based diverse placeholder images
+                const safeWord = encodeURIComponent(word.trim().toLowerCase());
+                const imgUrl = `https://loremflickr.com/400/300/${safeWord}?lock=${index}`;
+                // Fallback to picsum if loremflickr fails
+                const fallbackUrl = `https://picsum.photos/seed/${safeWord}${index}/400/300`;
+
+                grid.innerHTML += `
+                    <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300 transform hover:-translate-y-1">
+                        <div class="w-full h-48 bg-stone-100 overflow-hidden relative">
+                            <img src="${imgUrl}" alt="${word}" class="w-full h-full object-cover" loading="lazy" onerror="this.onerror=null; this.src='${fallbackUrl}'">
+                            <div class="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold text-stone-600 border border-stone-200">#${index + 1}</div>
+                        </div>
+                        <div class="p-5 text-center flex-grow flex flex-col justify-center">
+                            <h4 class="text-xl font-bold text-stone-800 capitalize mb-1">${word}</h4>
+                            <p class="text-xs text-stone-500 font-medium tracking-wide uppercase">Vocab Card</p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        // Function to close modal
+        function closeGallery() {
+            const modal = document.getElementById('gallery-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto'; // Restore background scrolling
+            document.getElementById('modal-grid').innerHTML = ''; // clear memory
+        }
+
+        // Initialize on load
+        document.addEventListener("DOMContentLoaded", initGallery);
+    </script>
 </body>
 </html>
