@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagasa English Course Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@1,500&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1c1917; 
+        }
+        
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-elegant-gradient {
+            background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 50%, #eef2ff 100%);
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <div id="home-view" class="flex flex-col min-h-screen relative bg-elegant-gradient w-full">
+        <!-- Decorative Top Glow -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-teal-100/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+        <!-- Header Navigation -->
+        <nav class="w-full px-6 py-6 md:px-12 flex items-center justify-between z-50 sticky top-0 bg-fafaf9/80 backdrop-blur-md border-b border-stone-200/50">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl drop-shadow-sm">📘</span>
+                <span class="text-xl font-bold text-stone-800 tracking-tight">Tagasa English Course</span>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-grow flex flex-col items-center pt-20 md:pt-32 px-4 w-full max-w-6xl mx-auto">
+            
+            <!-- Hero Section -->
+            <section class="text-center w-full max-w-4xl mb-24 px-4 relative">
+                <h1 style="font-family: 'Montserrat', sans-serif;" class="text-5xl md:text-6xl lg:text-7xl font-black text-stone-900 tracking-tighter mb-10 drop-shadow-sm uppercase">
+                    TAGASA ENGLISH PROGRAM
+                </h1>
+                
+                <div class="flex flex-col items-center justify-center relative">
+                    <p class="quote-text text-2xl md:text-3xl lg:text-4xl text-stone-700 italic mb-6 max-w-3xl leading-snug">
+                        A different language is a different vision of life.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-[1px] bg-teal-300"></div>
+                        <p class="text-stone-500 font-bold tracking-widest text-sm uppercase">
+                            Federico Fellini
+                        </p>
+                        <div class="w-12 h-[1px] bg-teal-300"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Levels Grid (2 Columns) -->
+            <section class="w-full pb-32">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+                    
+                    <!-- Level 1 Card: Teal Theme -->
+                    <a href="level1.html" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-teal-500/20 hover:border-teal-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                        <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-teal-50 transition-colors duration-700 pointer-events-none select-none z-0">1</span>
+                        
+                        <div class="relative z-10">
+                            <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-teal-50 text-teal-700 text-xs font-bold tracking-widest uppercase mb-6 border border-teal-100 group-hover:bg-teal-500 group-hover:text-white group-hover:border-teal-500 transition-colors duration-500">Level 1</div>
+                            <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-teal-900 transition-colors duration-300">Foundation</h2>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
+                                Absolute beginner concepts. Learn to introduce yourself, master basic verbs, and navigate everyday survival conversations.
+                            </p>
+                        </div>
+                        
+                        <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
+                            <span class="text-stone-500 font-semibold group-hover:text-teal-700 transition-colors duration-300">Proceed</span>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-teal-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
+                                &rarr;
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Level 2 Card: Emerald Theme -->
+                    <a href="#" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-emerald-500/20 hover:border-emerald-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                        <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-emerald-50 transition-colors duration-700 pointer-events-none select-none z-0">2</span>
+                        
+                        <div class="relative z-10">
+                            <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold tracking-widest uppercase mb-6 border border-emerald-100 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500 transition-colors duration-500">Level 2</div>
+                            <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-emerald-900 transition-colors duration-300">Elementary</h2>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
+                                Expand your vocabulary. Understand past and future tenses, and begin forming compound sentences for deeper interactions.
+                            </p>
+                        </div>
+                        
+                        <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
+                            <span class="text-stone-500 font-semibold group-hover:text-emerald-700 transition-colors duration-300">Proceed</span>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
+                                &rarr;
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Level 3 Card: Blue Theme -->
+                    <a href="#" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-blue-500/20 hover:border-blue-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                        <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-blue-50 transition-colors duration-700 pointer-events-none select-none z-0">3</span>
+                        
+                        <div class="relative z-10">
+                            <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs font-bold tracking-widest uppercase mb-6 border border-blue-100 group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500 transition-colors duration-500">Level 3</div>
+                            <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-blue-900 transition-colors duration-300">Pre-Intermediate</h2>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
+                                Engage in continuous dialogues. Discuss your experiences, give advice, and comfortably handle travel and social situations.
+                            </p>
+                        </div>
+                        
+                        <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
+                            <span class="text-stone-500 font-semibold group-hover:text-blue-700 transition-colors duration-300">Proceed</span>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
+                                &rarr;
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Level 4 Card: Indigo Theme -->
+                    <a href="#" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/20 hover:border-indigo-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                        <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-indigo-50 transition-colors duration-700 pointer-events-none select-none z-0">4</span>
+                        
+                        <div class="relative z-10">
+                            <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold tracking-widest uppercase mb-6 border border-indigo-100 group-hover:bg-indigo-500 group-hover:text-white group-hover:border-indigo-500 transition-colors duration-500">Level 4</div>
+                            <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-indigo-900 transition-colors duration-300">Intermediate</h2>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
+                                Express complex opinions. Read standard articles, understand spoken media, and participate actively in group discussions.
+                            </p>
+                        </div>
+                        
+                        <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
+                            <span class="text-stone-500 font-semibold group-hover:text-indigo-700 transition-colors duration-300">Proceed</span>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
+                                &rarr;
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Level 5 Card: Violet Theme -->
+                    <a href="#" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-violet-500/20 hover:border-violet-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                        <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-violet-50 transition-colors duration-700 pointer-events-none select-none z-0">5</span>
+                        
+                        <div class="relative z-10">
+                            <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-violet-50 text-violet-700 text-xs font-bold tracking-widest uppercase mb-6 border border-violet-100 group-hover:bg-violet-500 group-hover:text-white group-hover:border-violet-500 transition-colors duration-500">Level 5</div>
+                            <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-violet-900 transition-colors duration-300">Upper-Intermediate</h2>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
+                                Master complex grammar. Deliver presentations, write structured essays, and comprehend diverse regional accents.
+                            </p>
+                        </div>
+                        
+                        <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
+                            <span class="text-stone-500 font-semibold group-hover:text-violet-700 transition-colors duration-300">Proceed</span>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-violet-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
+                                &rarr;
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Level 6 Card: Fuchsia Theme -->
+                    <a href="#" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-fuchsia-500/20 hover:border-fuchsia-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                        <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-fuchsia-50 transition-colors duration-700 pointer-events-none select-none z-0">6</span>
+                        
+                        <div class="relative z-10">
+                            <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-fuchsia-50 text-fuchsia-700 text-xs font-bold tracking-widest uppercase mb-6 border border-fuchsia-100 group-hover:bg-fuchsia-500 group-hover:text-white group-hover:border-fuchsia-500 transition-colors duration-500">Level 6</div>
+                            <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-fuchsia-900 transition-colors duration-300">Advanced</h2>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
+                                Achieve operational fluency. Debate sophisticated topics, interpret subtext, and communicate effectively in a professional setting.
+                            </p>
+                        </div>
+                        
+                        <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
+                            <span class="text-stone-500 font-semibold group-hover:text-fuchsia-700 transition-colors duration-300">Proceed</span>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-fuchsia-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
+                                &rarr;
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Level 7 Card: Rose Theme -->
+                    <a href="#" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-rose-500/20 hover:border-rose-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                        <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-rose-50 transition-colors duration-700 pointer-events-none select-none z-0">7</span>
+                        
+                        <div class="relative z-10">
+                            <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-rose-50 text-rose-700 text-xs font-bold tracking-widest uppercase mb-6 border border-rose-100 group-hover:bg-rose-500 group-hover:text-white group-hover:border-rose-500 transition-colors duration-500">Level 7</div>
+                            <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-rose-900 transition-colors duration-300">Mastery</h2>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
+                                Refine your nuance. Understand cultural idioms, consume classic literature, and express ideas with native-level precision.
+                            </p>
+                        </div>
+                        
+                        <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
+                            <span class="text-stone-500 font-semibold group-hover:text-rose-700 transition-colors duration-300">Proceed</span>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-rose-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
+                                &rarr;
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Level 8 Card: Amber Theme -->
+                    <a href="#" class="group relative bg-white rounded-3xl p-10 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-amber-500/20 hover:border-amber-300/50 transform hover:-translate-y-2 active:translate-y-0 active:scale-[0.98] active:shadow-md transition-all duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer">
+                        <span class="absolute -top-8 -right-8 text-[180px] leading-none font-black text-stone-50 group-hover:text-amber-50 transition-colors duration-700 pointer-events-none select-none z-0">8</span>
+                        
+                        <div class="relative z-10">
+                            <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-bold tracking-widest uppercase mb-6 border border-amber-100 group-hover:bg-amber-500 group-hover:text-white group-hover:border-amber-500 transition-colors duration-500">Level 8</div>
+                            <h2 class="text-3xl md:text-4xl font-bold text-stone-800 mb-4 group-hover:text-amber-900 transition-colors duration-300">Proficiency</h2>
+                            <p class="text-stone-600 leading-relaxed text-lg mb-8">
+                                Near-native execution. Navigate highly technical academic texts and lead multifaceted professional negotiations flawlessly.
+                            </p>
+                        </div>
+                        
+                        <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-6 mt-auto">
+                            <span class="text-stone-500 font-semibold group-hover:text-amber-700 transition-colors duration-300">Proceed</span>
+                            <div class="w-12 h-12 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-amber-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-xl">
+                                &rarr;
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+        </main>
+
+        <!-- Simple Footer -->
+        <footer class="w-full text-center py-10 bg-transparent text-stone-500 relative z-10">
+            <p class="text-sm font-medium">&copy; 2026 Tagasa English Course. Cultivating global communicators.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
