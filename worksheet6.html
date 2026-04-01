@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tagasa English Course - Level 6 Worksheets</title>
+    <title>Tagasa English Course - Advanced Worksheet</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@1,500&display=swap');
@@ -30,7 +30,7 @@
             transform: translateY(0);
         }
 
-        .question-input {
+        .ws-input {
             border: none;
             border-bottom: 2px solid #cbd5e1;
             background: transparent;
@@ -38,10 +38,27 @@
             padding: 0 0.5rem;
             color: #c026d3; /* Fuchsia 600 */
             font-weight: 600;
-            text-align: center;
             transition: border-color 0.3s;
         }
-        .question-input:focus { border-bottom-color: #c026d3; }
+        .ws-input:focus { border-bottom-color: #c026d3; }
+        
+        /* Column layout for top-to-bottom, left-to-right flow */
+        .task-grid { 
+            column-count: 1; 
+            column-gap: 1.5rem; 
+        }
+        @media (min-width: 768px) {
+            .task-grid { column-count: 2; }
+        }
+        @media (min-width: 1024px) {
+            .task-grid { column-count: 3; }
+        }
+        .task-item { 
+            break-inside: avoid; 
+            margin-bottom: 1rem; 
+            display: inline-block; 
+            width: 100%; 
+        }
     </style>
 </head>
 <body class="antialiased bg-elegant-gradient min-h-screen flex flex-col">
@@ -51,19 +68,26 @@
     <nav class="w-full px-6 py-5 md:px-12 flex flex-col xl:flex-row items-center justify-between z-50 sticky top-0 bg-fafaf9/90 backdrop-blur-md border-b border-stone-200/50 shadow-sm">
         <div class="flex items-center gap-2 mb-4 xl:mb-0 cursor-pointer group" onclick="window.location.href='index.html'">
             <div class="relative flex items-center justify-center w-12 h-12">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full transform group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
+                <svg viewBox="0 0 100 80" class="w-auto h-[40px] overflow-visible">
                     <defs>
-                        <linearGradient id="logo-grad" x1="0" y1="0" x2="100" y2="100">
-                            <stop offset="0%" stop-color="#0d9488"/>
-                            <stop offset="100%" stop-color="#4f46e5"/>
+                        <linearGradient id="patent-teal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#0f766e"/>
+                            <stop offset="100%" stop-color="#5eead4"/>
                         </linearGradient>
+                        <filter id="top-left-shadow" x="-30%" y="-30%" width="160%" height="160%">
+                            <feOffset dx="-4" dy="-4" in="SourceAlpha" result="offOut" />
+                            <feGaussianBlur stdDeviation="3" in="offOut" result="blurOut" />
+                            <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="blurOut" result="colorOut" />
+                            <feBlend in="SourceGraphic" in2="colorOut" mode="normal" />
+                        </filter>
                     </defs>
-                    <path d="M15 15C8.37258 15 3 20.3726 3 28.5C3 36.6274 8.37258 42 15 42L5 55L25 42H70C76.6274 42 82 36.6274 82 28.5C82 20.3726 76.6274 15 70 15H15Z" fill="#312e81" fill-opacity="0.1"/>
-                    <path d="M25 25C13.9543 25 5 33.9543 5 45C5 56.0457 13.9543 65 25 65L10 85L35 65H80C91.0457 65 100 56.0457 100 45C100 33.9543 91.0457 25 80 25H25Z" fill="url(#logo-grad)"/>
-                    <rect x="26" y="32" width="48" height="8" rx="4" fill="#fafaf9"/>
-                    <rect x="38" y="44" width="18" height="8" rx="4" fill="#fafaf9"/>
-                    <rect x="38" y="56" width="10" height="8" rx="4" fill="#fafaf9"/>
-                    <rect x="52" y="56" width="4" height="8" rx="4" fill="#fafaf9"/>
+                    <g filter="url(#top-left-shadow)">
+                        <path d="M 10 0 H 90 C 95.523 0 100 4.477 100 10 V 70 C 100 75.523 95.523 80 90 80 H 25 L 0 105 V 10 C 0 4.477 4.477 0 10 0 Z" fill="url(#patent-teal-grad)"/>
+                    </g>
+                    <rect x="20" y="16" width="60" height="10" rx="3" fill="white"/>
+                    <rect x="40" y="32" width="20" height="10" rx="3" fill="white"/>
+                    <rect x="45" y="48" width="10" height="10" rx="3" fill="white"/>
+                    <circle cx="50" cy="68" r="4.5" fill="white"/>
                 </svg>
             </div>
             <span class="text-3xl font-black logo-text">TAGASA</span>
@@ -74,7 +98,7 @@
                 <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
                     Video <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
                         <a href="vdoc.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Documentation</a>
                         <a href="vedu.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
@@ -86,7 +110,7 @@
                 <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
                     Galeri <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
                         <a href="gmemo.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Memories</a>
                         <a href="gmaterial.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Material</a>
@@ -101,14 +125,14 @@
                 </button>
                 <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
-                        <a href="speaking1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
-                        <a href="speaking2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
-                        <a href="speaking3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
-                        <a href="speaking4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
-                        <a href="speaking5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
-                        <a href="speaking6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
-                        <a href="speaking7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
-                        <a href="speaking8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        <a href="speaking1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Foundation</a>
+                        <a href="speaking2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Elementary</a>
+                        <a href="speaking3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Pre-Intermediate</a>
+                        <a href="speaking4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Intermediate</a>
+                        <a href="speaking5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Upper-Intermediate</a>
+                        <a href="speaking6.html" class="px-5 py-2.5 text-sm font-medium text-fuchsia-600 bg-fuchsia-50">Advanced</a>
+                        <a href="speaking7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Master</a>
+                        <a href="speaking8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Proficiency</a>
                     </div>
                 </div>
             </div>
@@ -119,14 +143,14 @@
                 </button>
                 <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
-                        <a href="reading1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
-                        <a href="reading2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
-                        <a href="reading3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
-                        <a href="reading4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
-                        <a href="reading5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
-                        <a href="reading6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
-                        <a href="reading7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
-                        <a href="reading8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        <a href="reading1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Foundation</a>
+                        <a href="reading2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Elementary</a>
+                        <a href="reading3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Pre-Intermediate</a>
+                        <a href="reading4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Intermediate</a>
+                        <a href="reading5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Upper-Intermediate</a>
+                        <a href="reading6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Advanced</a>
+                        <a href="reading7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Master</a>
+                        <a href="reading8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Proficiency</a>
                     </div>
                 </div>
             </div>
@@ -137,32 +161,32 @@
                 </button>
                 <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
-                        <a href="writing1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
-                        <a href="writing2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
-                        <a href="writing3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
-                        <a href="writing4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
-                        <a href="writing5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
-                        <a href="writing6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
-                        <a href="writing7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
-                        <a href="writing8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        <a href="writing1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Foundation</a>
+                        <a href="writing2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Elementary</a>
+                        <a href="writing3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Pre-Intermediate</a>
+                        <a href="writing4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Intermediate</a>
+                        <a href="writing5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Upper-Intermediate</a>
+                        <a href="writing6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Advanced</a>
+                        <a href="writing7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Master</a>
+                        <a href="writing8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Proficiency</a>
                     </div>
                 </div>
             </div>
 
             <div class="group relative">
-                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                <button class="px-3 py-2 rounded-full font-bold text-fuchsia-700 bg-fuchsia-50 transition-all flex items-center gap-1.5">
                     Worksheet <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
-                        <a href="worksheet1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
-                        <a href="worksheet2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
-                        <a href="worksheet3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
-                        <a href="worksheet4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
-                        <a href="worksheet5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
-                        <a href="worksheet6.html" class="px-5 py-2.5 text-sm font-medium text-fuchsia-600 bg-fuchsia-50">Level 6</a>
-                        <a href="worksheet7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
-                        <a href="worksheet8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        <a href="worksheet1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Foundation</a>
+                        <a href="worksheet2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Elementary</a>
+                        <a href="worksheet3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Pre-Intermediate</a>
+                        <a href="worksheet4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Intermediate</a>
+                        <a href="worksheet5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Upper-Intermediate</a>
+                        <a href="worksheet6.html" class="px-5 py-2.5 text-sm font-medium text-fuchsia-600 bg-fuchsia-50">Advanced</a>
+                        <a href="worksheet7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Master</a>
+                        <a href="worksheet8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Proficiency</a>
                     </div>
                 </div>
             </div>
@@ -177,297 +201,473 @@
                 Advanced Exercises
             </h1>
             <p class="text-lg text-stone-600 leading-relaxed">
-                Test your knowledge of Advanced concepts: Negative Inversion, Hedging, Executive Register, Code-switching, and Philosophical Abstract discussions.
+                Complete all 360 tasks to master Advanced concepts: Negative Inversion, Conditional Inversion, Cleft Sentences, Academic Distancing, and Hedging.
             </p>
         </section>
 
         <!-- Category Tabs -->
         <div class="flex flex-wrap justify-center gap-2 mb-10 border-b border-stone-200">
-            <button onclick="showTab('fill')" id="btn-fill" class="px-6 py-3 font-bold text-fuchsia-700 border-b-2 border-fuchsia-600">Fill in the Blanks</button>
-            <button onclick="showTab('match')" id="btn-match" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Matching</button>
-            <button onclick="showTab('mcq')" id="btn-mcq" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Multiple Choice</button>
-            <button onclick="showTab('build')" id="btn-build" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Sentence Building</button>
-            <button onclick="showTab('short')" id="btn-short" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Short Answer</button>
-            <button onclick="showTab('speak')" id="btn-speak" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Speaking Tasks</button>
+            <button onclick="showTab('blanks')" id="btn-blanks" class="px-4 py-2 font-bold text-fuchsia-700 border-b-2 border-fuchsia-600">1. Fill in the Blanks</button>
+            <button onclick="showTab('matching')" id="btn-matching" class="px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">2. Matching</button>
+            <button onclick="showTab('mcq')" id="btn-mcq" class="px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">3. Multiple Choice</button>
+            <button onclick="showTab('building')" id="btn-building" class="px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">4. Sentence Building</button>
+            <button onclick="showTab('short')" id="btn-short" class="px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">5. Short Answer</button>
+            <button onclick="showTab('speaking')" id="btn-speaking" class="px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">6. Speaking Tasks</button>
         </div>
 
-        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 p-8 md:p-12 min-h-[500px]">
+        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 p-8 min-h-[500px]">
             
-            <!-- FILL IN THE BLANKS -->
-            <div id="tab-fill" class="tab-content block">
-                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 flex items-center gap-3"><span class="text-3xl">✍️</span> Fill in the Blanks</h3>
-                <div class="space-y-6">
-                    <div class="text-lg">1. Not only ______ (did/do/was) we exceed expectations, but we also lowered costs.</div>
-                    <div class="text-lg">2. ______ we anticipated the crisis, we would have restructured. (Had/If/Were)</div>
-                    <div class="text-lg">3. It was the logistics team ______ made the error.</div>
-                    <div class="text-lg">4. What concerns me ______ is the lack of transparency.</div>
-                    <div class="text-lg">5. Evidence ______ that the demographic is shifting. (suggests/looks)</div>
-                    <div class="text-lg">6. This policy could ______ lead to logistical issues. (potential/potentially)</div>
-                    <div class="text-lg">7. While one ______ argue it is fast, it remains true that it is dangerous.</div>
-                    <div class="text-lg">8. It is ______ upon the board to rectify this discrepancy. (incumbent/important)</div>
-                    <div class="text-lg">9. We must ______ the jargon to help the public understand. (demystify/destroy)</div>
-                    <div class="text-lg">10. The AI revolution poses an existential ______ to manual labor.</div>
+            <!-- 1. FILL IN THE BLANKS (60) -->
+            <div id="tab-blanks" class="tab-content block">
+                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 border-b pb-2">1. Fill in the Blanks (60 Tasks)</h3>
+                <p class="text-stone-500 mb-4 text-sm">Fill the blank with the correct advanced syntax, inversion, or hedging word.</p>
+                <div class="task-grid">
+                    <!-- 1-10: Negative Inversion -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">1. Not only ______ (did/do) we exceed expectations, but we also lowered costs.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">2. Never before ______ I seen such a disaster. (have/has)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">3. Under no circumstances ______ you press this button. (should/are)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">4. Seldom ______ the manager leave the office before 8 PM. (does/is)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">5. Rarely ______ we witness such rapid growth. (do/are)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">6. Not only ______ he arrive late, but he also forgot the report. (did/was)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">7. On no account ______ this information be shared. (must/is)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">8. Only then ______ I realize my mistake. (did/was)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">9. Scarcely ______ she entered the room when the alarm rang. (had/did)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">10. No sooner ______ we sat down than the film started. (had/did)</div>
+
+                    <!-- 11-20: Conditional Inversion -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">11. ______ we anticipated the crisis, we would have restructured. (Had/If)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">12. ______ you require further assistance, please contact me. (Should/Would)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">13. ______ I to resign, the company would struggle. (Were/Was)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">14. Had they ______ (know) the truth, they wouldn't have invested.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">15. Should anyone ______ (ask), tell them I am out.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">16. Were she ______ (find) out, she would be furious. (to find / finding)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">17. ______ the board approved the budget, we could proceed. (Had/If)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">18. ______ you need clarification, do not hesitate to call. (Should/Must)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">19. ______ it not been for his help, we would have failed. (Had/Were)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">20. ______ I in your position, I would accept the offer. (Were/Was)</div>
+
+                    <!-- 21-30: Cleft Sentences -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">21. It was the logistics team ______ made the error. (who/which)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">22. What concerns me ______ is the lack of transparency. (most/more)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">23. It is the cost ______ we need to worry about. (that/what)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">24. What I really need ______ a vacation. (is/are)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">25. It wasn't until yesterday ______ I found out. (that/when)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">26. What frustrates him is ______ he has to work weekends. (that/because)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">27. It was in 2020 ______ the pandemic started. (that/where)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">28. What they want ______ higher salaries. (are/is)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">29. It is the CEO ______ takes the final responsibility. (who/that)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">30. What we must prioritize ______ safety. (is/being)</div>
+
+                    <!-- 31-40: Academic Distancing & Fronting -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">31. Evidence ______ that the demographic is shifting. (suggests/looks)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">32. It ______ to be the case that this theory is flawed. (appears/shows)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">33. It has been ______ (argue) that taxes stifle growth.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">34. Down ______ the stock market yesterday. (plunged/plunging)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">35. Out of the darkness ______ a voice. (came/coming)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">36. Research ______ that sleep is vital for memory. (indicates/thinks)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">37. It ______ generally accepted that exercise is beneficial. (is/has)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">38. High on the hill ______ the ancient castle. (sat/sitting)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">39. It seems ______ that they will sign the contract. (likely/like)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">40. In the corner ______ a strange machine. (stood/standing)</div>
+
+                    <!-- 41-50: Hedging & Probability -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">41. This policy could ______ lead to logistical issues. (potentially/potential)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">42. ______, we could launch the product next week. (Conceivably/Conceive)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">43. The costs would ______ be astronomical. (presumably/presume)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">44. It might be ______ that this is too risky. (argued/argue)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">45. This is ______ the best solution available. (undoubtedly/undoubted)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">46. The results could ______ vary based on location. (arguably/argue)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">47. It is highly ______ that the plan will succeed. (probable/probability)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">48. We ______ perhaps reconsider our stance. (should/must)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">49. The data ______ suggest a downward trend. (might/will)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">50. ______, this is the only viable option. (Plausibly/Plausible)</div>
+
+                    <!-- 51-60: Concession & Nuanced Disagreement -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">51. While one ______ argue it is fast, it remains dangerous. (could/must)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">52. I am not entirely ______ that this is optimal. (convinced/convince)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">53. I have some ______ about the timeline. (reservations/reserves)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">54. Granted, it is expensive; ______, it is necessary. (nevertheless/because)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">55. It ______ true that automation displaces workers. (remains/is)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">56. We should perhaps consider ______ metrics. (alternative/alternate)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">57. I am ______ to concede that point. (willing/will)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">58. That is a ______ perspective, but I disagree. (valid/value)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">59. While I ______ the delay, the quality is perfect. (acknowledge/knowledge)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">60. Your timeline seems overly ______. (optimistic/optimal)</div>
                 </div>
             </div>
 
-            <!-- MATCHING -->
-            <div id="tab-match" class="tab-content hidden">
-                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 flex items-center gap-3"><span class="text-3xl">🔗</span> Matching Pairs</h3>
-                <p class="text-stone-500 mb-6 italic">Draw a line mentally between the left and right columns.</p>
-                <div class="grid grid-cols-2 gap-4 text-lg">
-                    <div class="space-y-4">
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">1. Under no circumstances</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">2. Ascertain</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">3. Paradigm shift</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">4. Conceivably</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">5. Rectify</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">6. Dilute</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">7. Let me play devil's advocate</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">8. Layperson</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">9. Extrinsic motivation</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">10. Proliferation</div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">A. Correct an issue</div>
-                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">B. A non-expert</div>
-                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">C. A massive cultural change</div>
-                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">D. Should we do this</div>
-                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">E. Rapid increase in numbers</div>
-                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">F. Safely challenging a consensus</div>
-                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">G. Within the realm of possibility</div>
-                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">H. Find out for certain</div>
-                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">I. Driven by external rewards</div>
-                        <div class="p-3 bg-fuchsia-50 border border-fuchsia-200 rounded-lg shadow-sm text-fuchsia-900 font-medium">J. Weaken cultural heritage</div>
-                    </div>
+            <!-- 2. MATCHING (60) -->
+            <div id="tab-matching" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 border-b pb-2">2. Matching (60 Pairs)</h3>
+                <p class="text-stone-500 mb-4 text-sm">Match the advanced phrase on the left with its function or meaning on the right.</p>
+                <div class="task-grid">
+                    <!-- 1-10: Inversion -->
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>1. Not only did we...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">A. Negative inversion (frequency)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>2. Under no circumstances should you...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">B. Conditional inversion (If we had)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>3. Seldom do I...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">C. Conditional inversion (If you need)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>4. Had we known...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">D. Negative inversion (addition)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>5. Should you require...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">E. Negative inversion (absolute rule)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>6. Were I to resign...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">F. Negative inversion (immediate sequence)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>7. Rarely have we seen...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">G. Conditional inversion (If I were)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>8. Only then did I...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">H. Negative inversion (timing)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>9. Scarcely had she...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">I. Negative inversion (rarity)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>10. On no account must you...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">J. Negative inversion (prohibition)</span></div>
+
+                    <!-- 11-20: Clefts & Fronting -->
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>11. What concerns me is...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">K. It-cleft (Person focus)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>12. It was John who...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">L. Fronting (Direction)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>13. It is the cost that...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">M. What-cleft (Action focus)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>14. What we need to do is...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">N. It-cleft (Time focus)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>15. It was yesterday that...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">O. What-cleft (Emotion focus)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>16. Down plunged the...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">P. It-cleft (Thing focus)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>17. High on the hill sat...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">Q. Fronting (Source)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>18. Out of the darkness came...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">R. What-cleft (Desire focus)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>19. What they want is...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">S. It-cleft (Place focus)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>20. It was in London that...</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">T. Fronting (Location)</span></div>
+
+                    <!-- 21-30: Academic Distancing -->
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>21. Evidence suggests</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">U. It has been theorized</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>22. It appears to be</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">V. The numbers show</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>23. It seems that</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">W. Distancing phrase (looks like)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>24. Research indicates</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">X. Universal acceptance</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>25. It is generally accepted</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">Y. Distancing phrase (impression)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>26. It has been argued</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">Z. Some people claim</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>27. The data highlights</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">AA. It is believed by most</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>28. It is widely believed</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">BB. It is highly likely</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>29. It is highly probable</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">CC. The data points out</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>30. It has been postulated</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">DD. Studies point out</span></div>
+
+                    <!-- 31-40: Hedging & Probability -->
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>31. Could potentially</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">EE. 100% certain</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>32. Might be argued</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">FF. Believable</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>33. Conceivably</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">GG. Double hedging (modal + adverb)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>34. Presumably</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">HH. Double hedging (modal + passive)</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>35. Undoubtedly</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">II. Within the realm of possibility</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>36. Plausibly</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">JJ. Assumed based on logic</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>37. Arguably</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">KK. Very likely</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>38. Highly probable</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">LL. It is possible to argue</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>39. Somewhat likely</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">MM. Not completely certain</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>40. Not entirely certain</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">NN. A bit likely</span></div>
+
+                    <!-- 41-50: Concession & Disagreement -->
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>41. While one could argue</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">OO. Acknowledging a flaw</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>42. It remains true that</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">PP. Introducing a hypothetical opponent</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>43. Granted, it is expensive</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">QQ. Stating an undeniable fact</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>44. Nevertheless</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">RR. I am doubtful</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>45. I am not entirely convinced</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">SS. Despite that fact</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>46. I have some reservations</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">TT. Soft rejection of an idea</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>47. Alternative metrics</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">UU. Too positive</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>48. Overly optimistic</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">VV. Different ways to measure</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>49. I acknowledge the delay</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">WW. Reasonable viewpoint</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>50. Valid perspective</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">XX. Admitting a mistake</span></div>
+
+                    <!-- 51-60: Sarcasm, Jargon, & Register -->
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>51. Demystify</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">YY. Slang / Casual phrases</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>52. Colloquialism</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">ZZ. Make clear / Simplify</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>53. Paradigm shift</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">AAA. Discrepancy</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>54. Mess up (Formal)</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">BBB. Massive conceptual change</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>55. Fix (Formal)</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">CCC. Ascertain</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>56. Find out (Formal)</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">DDD. Rectify</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>57. Deadpan</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">EEE. Saying the opposite of truth</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>58. Sarcasm</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">FFF. Delivering a joke without emotion</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>59. Inextricably linked</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">GGG. Ending a contract</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>60. Terminate</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">HHH. Impossible to separate</span></div>
                 </div>
             </div>
 
-            <!-- MULTIPLE CHOICE -->
+            <!-- 3. MULTIPLE CHOICE (60) -->
             <div id="tab-mcq" class="tab-content hidden">
-                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 flex items-center gap-3"><span class="text-3xl">☑️</span> Multiple Choice</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">1. ___ you require assistance, contact HR.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" class="accent-fuchsia-600 w-4 h-4"> a. Should</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" class="accent-fuchsia-600 w-4 h-4"> b. If should</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">2. Never before ___ such a disruption.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" class="accent-fuchsia-600 w-4 h-4"> a. we have seen</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" class="accent-fuchsia-600 w-4 h-4"> b. have we seen</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">3. I have some ___ about this timeline.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" class="accent-fuchsia-600 w-4 h-4"> a. reservations</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" class="accent-fuchsia-600 w-4 h-4"> b. reserves</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">4. It is fundamentally a ___ area in ethics.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q4" class="accent-fuchsia-600 w-4 h-4"> a. grey</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q4" class="accent-fuchsia-600 w-4 h-4"> b. black</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">5. Success is not ___ wealth.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q5" class="accent-fuchsia-600 w-4 h-4"> a. merely</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q5" class="accent-fuchsia-600 w-4 h-4"> b. absolutely</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">6. The formal word for "find out" is:</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q6" class="accent-fuchsia-600 w-4 h-4"> a. Ascertain</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q6" class="accent-fuchsia-600 w-4 h-4"> b. Implement</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">7. This technology ___ an existential threat.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q7" class="accent-fuchsia-600 w-4 h-4"> a. makes</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q7" class="accent-fuchsia-600 w-4 h-4"> b. poses</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">8. We remain cautiously ___ about the deal.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q8" class="accent-fuchsia-600 w-4 h-4"> a. optimistic</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q8" class="accent-fuchsia-600 w-4 h-4"> b. optimal</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">9. Down ___ the stock market yesterday.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q9" class="accent-fuchsia-600 w-4 h-4"> a. the stock market plunged</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q9" class="accent-fuchsia-600 w-4 h-4"> b. plunged the stock market</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">10. Globalization is a double-___ sword.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q10" class="accent-fuchsia-600 w-4 h-4"> a. edged</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q10" class="accent-fuchsia-600 w-4 h-4"> b. sided</label>
-                        </div>
-                    </div>
+                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 border-b pb-2">3. Multiple Choice (60 Tasks)</h3>
+                <div class="task-grid">
+                    <!-- 1-15: Inversion & Clefts -->
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">1. Not only ___ win, but we set a record. <br><label><input type="radio" name="m1"> did we</label> <label><input type="radio" name="m1"> we did</label> <label><input type="radio" name="m1"> we have</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">2. Never before ___ such a shift. <br><label><input type="radio" name="m2"> I have seen</label> <label><input type="radio" name="m2"> have I seen</label> <label><input type="radio" name="m2"> did I saw</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">3. ___ we known, we would have stopped. <br><label><input type="radio" name="m3"> If</label> <label><input type="radio" name="m3"> Had</label> <label><input type="radio" name="m3"> Were</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">4. ___ you require help, contact HR. <br><label><input type="radio" name="m4"> If</label> <label><input type="radio" name="m4"> Should</label> <label><input type="radio" name="m4"> Were</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">5. Under no circumstances ___ press this. <br><label><input type="radio" name="m5"> you should</label> <label><input type="radio" name="m5"> should you</label> <label><input type="radio" name="m5"> you must</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">6. ___ I the CEO, I would change it. <br><label><input type="radio" name="m6"> If</label> <label><input type="radio" name="m6"> Was</label> <label><input type="radio" name="m6"> Were</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">7. What concerns me ___ the budget. <br><label><input type="radio" name="m7"> are</label> <label><input type="radio" name="m7"> is</label> <label><input type="radio" name="m7"> does</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">8. It was John ___ deleted the file. <br><label><input type="radio" name="m8"> which</label> <label><input type="radio" name="m8"> who</label> <label><input type="radio" name="m8"> whom</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">9. It is the cost ___ worries me. <br><label><input type="radio" name="m9"> that</label> <label><input type="radio" name="m9"> who</label> <label><input type="radio" name="m9"> what</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">10. What we need to do ___ restructure. <br><label><input type="radio" name="m10"> is</label> <label><input type="radio" name="m10"> are</label> <label><input type="radio" name="m10"> be</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">11. Only then ___ realize the error. <br><label><input type="radio" name="m11"> did I</label> <label><input type="radio" name="m11"> I did</label> <label><input type="radio" name="m11"> I had</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">12. Scarcely ___ she entered when it rang. <br><label><input type="radio" name="m12"> she had</label> <label><input type="radio" name="m12"> had she</label> <label><input type="radio" name="m12"> did she</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">13. Down ___ the value of the currency. <br><label><input type="radio" name="m13"> plunged</label> <label><input type="radio" name="m13"> did plunge</label> <label><input type="radio" name="m13"> it plunged</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">14. Out of the building ___ the people. <br><label><input type="radio" name="m14"> ran</label> <label><input type="radio" name="m14"> they ran</label> <label><input type="radio" name="m14"> did run</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">15. High on the hill ___ the castle. <br><label><input type="radio" name="m15"> sat</label> <label><input type="radio" name="m15"> it sat</label> <label><input type="radio" name="m15"> sitting</label></div>
+
+                    <!-- 16-30: Distancing & Hedging -->
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">16. Evidence ___ that this is true. <br><label><input type="radio" name="m16"> suggests</label> <label><input type="radio" name="m16"> thinks</label> <label><input type="radio" name="m16"> believes</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">17. It ___ to be the case that we failed. <br><label><input type="radio" name="m17"> looks</label> <label><input type="radio" name="m17"> appears</label> <label><input type="radio" name="m17"> shows</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">18. It has been ___ that taxes stifle growth. <br><label><input type="radio" name="m18"> argued</label> <label><input type="radio" name="m18"> argument</label> <label><input type="radio" name="m18"> arguing</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">19. This could ___ lead to issues. <br><label><input type="radio" name="m19"> potentially</label> <label><input type="radio" name="m19"> potential</label> <label><input type="radio" name="m19"> potent</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">20. It might ___ argued that it's risky. <br><label><input type="radio" name="m20"> be</label> <label><input type="radio" name="m20"> been</label> <label><input type="radio" name="m20"> to be</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">21. ___, we could launch next week. <br><label><input type="radio" name="m21"> Conceivably</label> <label><input type="radio" name="m21"> Conceivable</label> <label><input type="radio" name="m21"> Conceive</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">22. The costs would ___ be massive. <br><label><input type="radio" name="m22"> presumably</label> <label><input type="radio" name="m22"> presume</label> <label><input type="radio" name="m22"> presumed</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">23. This is ___ the best solution. <br><label><input type="radio" name="m23"> undoubtedly</label> <label><input type="radio" name="m23"> undoubted</label> <label><input type="radio" name="m23"> doubt</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">24. It is generally ___ that this works. <br><label><input type="radio" name="m24"> accepted</label> <label><input type="radio" name="m24"> accepting</label> <label><input type="radio" name="m24"> accept</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">25. The data ___ a downward trend. <br><label><input type="radio" name="m25"> indicates</label> <label><input type="radio" name="m25"> indicator</label> <label><input type="radio" name="m25"> indication</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">26. We must take a ___ approach. <br><label><input type="radio" name="m26"> nuanced</label> <label><input type="radio" name="m26"> nuance</label> <label><input type="radio" name="m26"> nuancing</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">27. It is ___ likely to succeed. <br><label><input type="radio" name="m27"> highly</label> <label><input type="radio" name="m27"> high</label> <label><input type="radio" name="m27"> height</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">28. The results could ___ vary. <br><label><input type="radio" name="m28"> arguably</label> <label><input type="radio" name="m28"> argue</label> <label><input type="radio" name="m28"> argument</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">29. It ___ true that automation is here. <br><label><input type="radio" name="m29"> remains</label> <label><input type="radio" name="m29"> is remaining</label> <label><input type="radio" name="m29"> remain</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">30. ___ one could argue it is fast, it is bad. <br><label><input type="radio" name="m30"> While</label> <label><input type="radio" name="m30"> During</label> <label><input type="radio" name="m30"> Because</label></div>
+
+                    <!-- 31-45: Concession & Disagreement -->
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">31. I am not ___ convinced. <br><label><input type="radio" name="m31"> entirely</label> <label><input type="radio" name="m31"> entire</label> <label><input type="radio" name="m31"> complete</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">32. I have some ___ about this. <br><label><input type="radio" name="m32"> reservations</label> <label><input type="radio" name="m32"> reserves</label> <label><input type="radio" name="m32"> reserving</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">33. Granted, it is expensive; ___, it is good. <br><label><input type="radio" name="m33"> nevertheless</label> <label><input type="radio" name="m33"> therefore</label> <label><input type="radio" name="m33"> because</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">34. We should consider ___ metrics. <br><label><input type="radio" name="m34"> alternative</label> <label><input type="radio" name="m34"> alternate</label> <label><input type="radio" name="m34"> altering</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">35. Your timeline is ___ optimistic. <br><label><input type="radio" name="m35"> overly</label> <label><input type="radio" name="m35"> over</label> <label><input type="radio" name="m35"> overing</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">36. I am willing to ___ that point. <br><label><input type="radio" name="m36"> concede</label> <label><input type="radio" name="m36"> conceding</label> <label><input type="radio" name="m36"> concession</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">37. That is a ___ perspective. <br><label><input type="radio" name="m37"> valid</label> <label><input type="radio" name="m37"> value</label> <label><input type="radio" name="m37"> validate</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">38. I ___ the delay, but the quality is good. <br><label><input type="radio" name="m38"> acknowledge</label> <label><input type="radio" name="m38"> knowledge</label> <label><input type="radio" name="m38"> know</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">39. It is a ___ area in ethics. <br><label><input type="radio" name="m39"> grey</label> <label><input type="radio" name="m39"> black</label> <label><input type="radio" name="m39"> dark</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">40. We must remain ___. <br><label><input type="radio" name="m40"> circumspect</label> <label><input type="radio" name="m40"> respect</label> <label><input type="radio" name="m40"> inspect</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">41. I take your ___, but I disagree. <br><label><input type="radio" name="m41"> point</label> <label><input type="radio" name="m41"> dot</label> <label><input type="radio" name="m41"> line</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">42. Let me play devil's ___. <br><label><input type="radio" name="m42"> advocate</label> <label><input type="radio" name="m42"> lawyer</label> <label><input type="radio" name="m42"> doctor</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">43. Just because he is rich doesn't ___ mean he is happy. <br><label><input type="radio" name="m43"> necessarily</label> <label><input type="radio" name="m43"> necessary</label> <label><input type="radio" name="m43"> necessity</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">44. That is a false ___. <br><label><input type="radio" name="m44"> equivalence</label> <label><input type="radio" name="m44"> equal</label> <label><input type="radio" name="m44"> equation</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">45. The real ___ is safety. <br><label><input type="radio" name="m45"> issue</label> <label><input type="radio" name="m45"> issued</label> <label><input type="radio" name="m45"> issuing</label></div>
+
+                    <!-- 46-60: Register & Sarcasm -->
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">46. We must ___ the jargon. <br><label><input type="radio" name="m46"> demystify</label> <label><input type="radio" name="m46"> mystify</label> <label><input type="radio" name="m46"> mystic</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">47. A ___ shift is occurring. <br><label><input type="radio" name="m47"> paradigm</label> <label><input type="radio" name="m47"> paradise</label> <label><input type="radio" name="m47"> parameter</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">48. We must ___ the root cause. <br><label><input type="radio" name="m48"> ascertain</label> <label><input type="radio" name="m48"> certain</label> <label><input type="radio" name="m48"> certainty</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">49. We decided to ___ the contract. <br><label><input type="radio" name="m49"> terminate</label> <label><input type="radio" name="m49"> end up</label> <label><input type="radio" name="m49"> terminal</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">50. We must ___ the discrepancy. <br><label><input type="radio" name="m50"> rectify</label> <label><input type="radio" name="m50"> rectangle</label> <label><input type="radio" name="m50"> direct</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">51. Poverty and crime are ___ linked. <br><label><input type="radio" name="m51"> inextricably</label> <label><input type="radio" name="m51"> exactly</label> <label><input type="radio" name="m51"> extraction</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">52. To a layperson, avoid ___. <br><label><input type="radio" name="m52"> jargon</label> <label><input type="radio" name="m52"> simple words</label> <label><input type="radio" name="m52"> clarity</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">53. The proliferation of AI is ___. <br><label><input type="radio" name="m53"> unprecedented</label> <label><input type="radio" name="m53"> precedent</label> <label><input type="radio" name="m53"> preceding</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">54. This poses an existential ___. <br><label><input type="radio" name="m54"> threat</label> <label><input type="radio" name="m54"> threatening</label> <label><input type="radio" name="m54"> thread</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">55. Oh brilliant, a perfect recipe for ___. (Sarcasm) <br><label><input type="radio" name="m55"> disaster</label> <label><input type="radio" name="m55"> success</label> <label><input type="radio" name="m55"> winning</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">56. Delivered completely without emotion: ___. <br><label><input type="radio" name="m56"> Deadpan</label> <label><input type="radio" name="m56"> Happy</label> <label><input type="radio" name="m56"> Angry</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">57. We must take ___ steps. <br><label><input type="radio" name="m57"> proactive</label> <label><input type="radio" name="m57"> reacting</label> <label><input type="radio" name="m57"> reactive</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">58. The agreement was ___. <br><label><input type="radio" name="m58"> dissolved</label> <label><input type="radio" name="m58"> dissolving</label> <label><input type="radio" name="m58"> dissolve</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">59. Please forgive the ___ error. <br><label><input type="radio" name="m59"> inadvertent</label> <label><input type="radio" name="m59"> deliberate</label> <label><input type="radio" name="m59"> advert</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">60. That is ___ to stealing. <br><label><input type="radio" name="m60"> tantamount</label> <label><input type="radio" name="m60"> mounting</label> <label><input type="radio" name="m60"> amount</label></div>
                 </div>
             </div>
 
             <!-- SENTENCE BUILDING -->
-            <div id="tab-build" class="tab-content hidden">
-                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 flex items-center gap-3"><span class="text-3xl">🧩</span> Sentence Building</h3>
-                <p class="text-stone-500 mb-6 italic">Unscramble the words to make correct sentences.</p>
-                <div class="space-y-6">
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( only / is / Not / fast / also / it / cheap / but / is / it )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( we / known / Had / adjusted / have / would / we )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( is / transparency / What / is / lack / frustrates / of / me )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( suggests / that / Evidence / changing / market / is / the )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( potentially / could / This / lead / issues / to )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( true / remains / It / that / expensive / is / it )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( appreciate / would / I / it / could / if / you / help )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( rather / wealth / pursuit / The / of / merely / not / but / money / is )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( shift / profound / paradigm / A / occurring / is )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( demystify / To / jargon / the / failing / are / we )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500" placeholder="Type sentence here...">
-                    </div>
+            <div id="tab-building" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 border-b pb-2">4. Sentence Building (60 Tasks)</h3>
+                <p class="text-stone-500 mb-4 text-sm">Rearrange the words to make a correct Advanced sentence.</p>
+                <div class="task-grid">
+                    <!-- Inversion & Clefts -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">1. (only / did / Not / win / we / broke / also / we / record / the / but) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">2. (before / have / Never / seen / disaster / a / I / such) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">3. (circumstances / no / Under / you / should / this / press) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">4. (we / Had / known / restructured / have / would / we) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">5. (you / Should / require / contact / please / assistance / me) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">6. (I / Were / to / company / resign / the / fail / would) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">7. (then / Only / did / realize / mistake / I / my) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">8. (team / was / It / the / logistics / who / error / made / the) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">9. (concerns / What / me / most / lack / the / is / transparency / of) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">10. (cost / is / It / the / about / worry / we / that / must) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">11. (need / What / I / really / vacation / a / is) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">12. (plunged / Down / market / stock / the / yesterday) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">13. (darkness / Out / of / the / voice / came / a) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">14. (hill / High / the / on / castle / sat / the) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">15. (was / yesterday / It / out / found / that / I) <input type="text" class="ws-input w-full mt-1"></div>
+
+                    <!-- Distancing & Hedging -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">16. (suggests / Evidence / shifting / is / demographic / the / that) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">17. (appears / It / to / be / case / the / flawed / is / theory / this / that) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">18. (argued / been / has / It / growth / stifle / taxes / that) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">19. (indicates / Research / vital / sleep / is / that) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">20. (accepted / generally / is / It / beneficial / exercise / is / that) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">21. (potentially / could / policy / This / issues / logistical / to / lead) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">22. (Conceivably / launch / could / we / product / the / week / next) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">23. (presumably / costs / The / astronomical / be / would) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">24. (argued / might / It / be / risky / too / is / this / that) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">25. (undoubtedly / is / This / solution / best / the) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">26. (could / results / The / vary / arguably) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">27. (probable / highly / is / It / succeed / plan / will / the / that) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">28. (perhaps / should / We / stance / our / reconsider) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">29. (suggest / might / data / The / trend / downward / a) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">30. (Plausibly / option / viable / only / the / is / this) <input type="text" class="ws-input w-full mt-1"></div>
+
+                    <!-- Concession & Disagreement -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">31. (argue / could / one / While / fast / is / it / remains / true / it / dangerous / is / it / that) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">32. (convinced / entirely / not / am / I / optimal / is / this / that) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">33. (reservations / some / have / I / timeline / the / about) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">34. (Granted / expensive / is / it / nevertheless / necessary / is / it) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">35. (true / remains / It / displaces / automation / workers / that) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">36. (consider / perhaps / should / We / metrics / alternative) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">37. (concede / willing / am / I / to / point / that) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">38. (perspective / a / is / That / valid / disagree / I / but) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">39. (acknowledge / I / While / delay / the / perfect / is / quality / the) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">40. (optimistic / overly / seems / timeline / Your) <input type="text" class="ws-input w-full mt-1"></div>
+
+                    <!-- Register & Lexicon -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">41. (jargon / demystify / must / We / the / public / the / for) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">42. (shift / paradigm / A / profound / occurring / is) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">43. (cause / ascertain / must / We / root / the) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">44. (terminate / decided / to / We / contract / the) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">45. (discrepancy / rectify / must / We / this) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">46. (linked / inextricably / are / crime / and / Poverty) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">47. (colloquialisms / avoid / layperson / a / to / speaking / When) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">48. (unprecedented / is / AI / of / proliferation / The) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">49. (threat / existential / an / poses / technology / This) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">50. (recipe / perfect / the / is / That / disaster / for) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">51. (deadpan / delivered / joke / the / He / with / a / tone) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">52. (steps / proactive / take / must / We) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">53. (dissolved / ultimately / was / agreement / The) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">54. (error / inadvertent / the / forgive / Please) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">55. (stealing / to / tantamount / is / That) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">56. (advocate / devil's / play / me / Let / second / a / for) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">57. (mean / necessarily / doesn't / happy / is / he / rich / is / he / because / Just) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">58. (equivalence / false / a / is / That) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">59. (point / the / beside / is / That) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">60. (issue / real / The / safety / is / here) <input type="text" class="ws-input w-full mt-1"></div>
                 </div>
             </div>
 
             <!-- SHORT ANSWER -->
             <div id="tab-short" class="tab-content hidden">
-                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 flex items-center gap-3"><span class="text-3xl">📝</span> Short Answer</h3>
-                <div class="space-y-6">
-                    <div>
-                        <p class="font-bold text-lg mb-2">1. Change to negative inversion: "We have never seen this."</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">2. Soften this claim: "AI will replace jobs."</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">3. Replace "help" with a C-suite verb.</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">4. Disagree diplomatically: "I take your point, but..."</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">5. What is a "paradigm shift"?</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">6. Emphasize "time" using a cleft sentence.</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">7. Write a sentence using "conceivably".</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">8. Give an example of "intrinsic motivation".</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">9. Translate to formal: "We need to fix this."</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">10. What does "existential threat" mean?</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-fuchsia-500">
-                    </div>
+                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 border-b pb-2">5. Short Answer (60 Tasks)</h3>
+                <div class="task-grid">
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">1. Change to negative inversion: "We have never seen this." <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">2. Change to conditional inversion: "If I had known..." <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">3. Emphasize with It-cleft: "John made the error." -> It was John ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">4. Emphasize with What-cleft: "I need money." -> What I ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">5. Front this sentence: "The stock market plunged down." -> Down ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">6. Soften this claim: "AI will destroy jobs." -> It might be ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">7. Distance this claim: "I think it is broken." -> Evidence ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">8. Concede gracefully: "Granted, it's expensive; ______, it's worth it." <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">9. Disagree diplomatically: "I have some ______ about the plan." <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">10. What does "demystify" mean? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">11. What is a "colloquialism"? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">12. What does "paradigm shift" mean? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">13. Translate to formal: "Find out the reason." -> ______ the root cause. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">14. Translate to formal: "Fix the problem." -> ______ the discrepancy. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">15. What does "deadpan" delivery mean? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">16. What is "sarcasm"? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">17. Define "inextricably linked". <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">18. Define "tantamount to". <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">19. Challenge safely: "Let me play devil's ______." <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">20. What is a "false equivalence"? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">21. Deflect an issue: "That's ______ the point." <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">22. Change to conditional inversion: "If you should need..." -> ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">23. Change to conditional inversion: "If I were the boss..." -> ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">24. Add a probability adverb: "It could ______ happen." <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">25. Add a certainty adverb: "It is ______ the best." <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">26. What does "conceivably" mean? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">27. Frame a complex concession: "While one ______ argue..." <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">28. What does "proliferation" mean? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">29. Translate "accidental error": ______ error. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">30. What does an "existential threat" endanger? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">31. Rewrite with 'Not only': "It is fast and safe." -> ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">32. Emphasize location: "We met in Paris." -> It was in Paris ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">33. Front this: "The king sat on the throne." -> On the throne ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">34. Soften: "The numbers will drop." -> The numbers might ______ drop. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">35. Distance: "I believe it's true." -> It is generally ______ that it's true. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">36. Concede politely: "I am not entirely ______ this is right." <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">37. Jargon for 'normal person': ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">38. Formal word for 'end': ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">39. Formal word for 'take action early': Be ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">40. Formal word for 'cancelled': ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">41. Make negative inversion: "I seldom go." -> Seldom ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">42. Conditional inversion: "If they had paid..." -> ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">43. What-cleft focus: "I want peace." -> What I want ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">44. Fronting source: "A loud scream came out of the dark." -> Out of the dark ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">45. Hedging: "It will arguably be..." What does arguably mean? ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">46. Disagree softly: "Your timeline seems overly ______." <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">47. What does "rectify" mean? ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">48. What does "ascertain" mean? ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">49. What is "code-switching"? ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">50. Respond sarcastically: "Let's delete everything." -> Oh, ______ idea. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">51. Call out bad logic: "Just because X, doesn't ______ mean Y." <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">52. Pivot an argument: "The real ______ here is..." <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">53. Identify a fallacy: "If we do X, society will end." -> ______ slope. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">54. Invert this prohibition: "You must not touch it on any account." -> On no account ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">55. What does "plausibly" mean? ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">56. Frame an alternative: "We could consider ______ metrics." <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">57. Explain "extrinsic motivation": ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">58. Frame an event logically: "It is highly ______ that..." <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">59. What does it mean to "dilute" heritage? ______ <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">60. Finish the defense: "While one could argue..., it ______ true that..." <input type="text" class="ws-input w-full mt-1"></div>
                 </div>
             </div>
 
-            <!-- SPEAKING TASKS -->
-            <div id="tab-speak" class="tab-content hidden">
-                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 flex items-center gap-3"><span class="text-3xl">🗣️</span> Speaking Tasks</h3>
-                <p class="text-stone-500 mb-6 italic">Practice these aloud with a partner or teacher.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-fuchsia-500">01</span>
-                        <p class="text-fuchsia-900 font-medium pt-1">Deliver a 30-second pitch opening with "Not only... but also".</p>
-                    </div>
-                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-fuchsia-500">02</span>
-                        <p class="text-fuchsia-900 font-medium pt-1">Defend a controversial theory using triple-hedging ("It would seem that...").</p>
-                    </div>
-                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-fuchsia-500">03</span>
-                        <p class="text-fuchsia-900 font-medium pt-1">Roleplay: Veto a CEO's idea diplomatically ("I have some reservations").</p>
-                    </div>
-                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-fuchsia-500">04</span>
-                        <p class="text-fuchsia-900 font-medium pt-1">Define "Freedom" using the "Not merely... but rather" framework.</p>
-                    </div>
-                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-fuchsia-500">05</span>
-                        <p class="text-fuchsia-900 font-medium pt-1">Demystify a piece of complex corporate jargon for a layperson.</p>
-                    </div>
-                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-fuchsia-500">06</span>
-                        <p class="text-fuchsia-900 font-medium pt-1">Make a polite, conditional demand ("I would appreciate it if...").</p>
-                    </div>
-                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-fuchsia-500">07</span>
-                        <p class="text-fuchsia-900 font-medium pt-1">Respond to a hostile question using strategic ambiguity ("At this juncture...").</p>
-                    </div>
-                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-fuchsia-500">08</span>
-                        <p class="text-fuchsia-900 font-medium pt-1">Debate a topic by "Steelmanning" your opponent's view first.</p>
-                    </div>
-                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-fuchsia-500">09</span>
-                        <p class="text-fuchsia-900 font-medium pt-1">Deliver a heavily sarcastic comment using a deadpan tone.</p>
-                    </div>
-                    <div class="bg-fuchsia-50 p-5 rounded-xl border border-fuchsia-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-fuchsia-500">10</span>
-                        <p class="text-fuchsia-900 font-medium pt-1">Perform the "Chameleon" drill: Explain AI to a child, then to a professor.</p>
-                    </div>
+            <!-- 6. SPEAKING TASKS (60) -->
+            <div id="tab-speaking" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-fuchsia-800 mb-6 border-b pb-2">6. Speaking Tasks (60 Tasks)</h3>
+                <p class="text-stone-500 mb-4 text-sm">Read the sentence aloud with authoritative pacing and executive tone.</p>
+                <div class="task-grid">
+                    <!-- Inversions & Clefts -->
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">1. Read: "Not only did we exceed expectations, but we also lowered costs."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">2. Read: "Never before have I seen such a disaster."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">3. Read: "Under no circumstances should you press this button."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">4. Read: "Had we anticipated the crisis, we would have restructured."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">5. Read: "Should you require further assistance, please contact me."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">6. Read: "Were I to resign, the company would struggle."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">7. Read: "It was the logistics team who made the error."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">8. Read: "What concerns me most is the lack of transparency."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">9. Read: "It is the cost that we need to worry about."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">10. Read: "What I really need is a vacation."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">11. Read: "Down plunged the stock market yesterday."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">12. Read: "Out of the darkness came a voice."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">13. Read: "High on the hill sat the ancient castle."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">14. Read: "Seldom do we witness such growth."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">15. Read: "Only then did I realize my mistake."</div>
+
+                    <!-- Distancing & Hedging -->
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">16. Read: "Evidence suggests that the demographic is shifting."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">17. Read: "It appears to be the case that this theory is flawed."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">18. Read: "It has been argued that taxes stifle growth."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">19. Read: "Research indicates that sleep is vital."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">20. Read: "It is generally accepted that exercise is beneficial."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">21. Read: "This policy could potentially lead to logistical issues."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">22. Read: "Conceivably, we could launch the product next week."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">23. Read: "The costs would presumably be astronomical."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">24. Read: "It might be argued that this is too risky."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">25. Read: "This is undoubtedly the best solution available."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">26. Read: "The results could arguably vary based on location."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">27. Read: "It is highly probable that the plan will succeed."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">28. Read: "We should perhaps reconsider our stance."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">29. Read: "The data might suggest a downward trend."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">30. Read: "Plausibly, this is the only viable option."</div>
+
+                    <!-- Concessions & Disagreements -->
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">31. Read: "While one could argue it is fast, it remains dangerous."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">32. Read: "I am not entirely convinced that this is optimal."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">33. Read: "I have some reservations about the timeline."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">34. Read: "Granted, it is expensive; nevertheless, it is necessary."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">35. Read: "It remains true that automation displaces workers."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">36. Read: "We should consider alternative metrics."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">37. Read: "I am willing to concede that point."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">38. Read: "That is a valid perspective, but I disagree."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">39. Read: "While I acknowledge the delay, the quality is perfect."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">40. Read: "Your timeline seems overly optimistic."</div>
+
+                    <!-- Register & Tactics -->
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">41. Read: "We must demystify the jargon for the public."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">42. Read: "A profound paradigm shift is occurring."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">43. Read: "We must ascertain the root cause."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">44. Read: "We decided to terminate the contract."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">45. Read: "We must rectify this discrepancy."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">46. Read: "Poverty and crime are inextricably linked."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">47. Read: "Avoid colloquialisms when speaking to a layperson."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">48. Read: "The proliferation of AI is unprecedented."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">49. Read: "This technology poses an existential threat."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">50. Read: "Oh brilliant. That is the perfect recipe for disaster."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">51. Read: "Let me play devil's advocate for a second."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">52. Read: "Just because he is rich doesn't necessarily mean he is happy."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">53. Read: "That is a false equivalence."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">54. Read: "That is beside the point. The real issue here is safety."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">55. Read: "Please forgive the inadvertent error."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">56. Read: "That is tantamount to stealing."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">57. Read: "The agreement was ultimately dissolved."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">58. Read: "We must take proactive steps."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">59. Read: "On no account are you to leave the building."</div>
+                    <div class="task-item p-3 border rounded-lg bg-fuchsia-50 text-fuchsia-900 font-medium text-sm">60. Read: "Scarcely had we finished when the power went out."</div>
                 </div>
             </div>
 
         </div>
     </main>
-
-    <footer class="w-full text-center py-8 bg-transparent text-stone-500 relative z-10 mt-auto border-t border-stone-200/50">
-        <p class="text-sm font-medium">&copy; 2026 Tagasa English Course. Cultivating global communicators.</p>
-    </footer>
 
     <script>
         function showTab(tabName) {
@@ -476,11 +676,11 @@
                 el.classList.add('hidden');
             });
             document.querySelectorAll('button[id^="btn-"]').forEach(btn => {
-                btn.className = 'px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors';
+                btn.className = 'px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors';
             });
             document.getElementById('tab-' + tabName).classList.remove('hidden');
             document.getElementById('tab-' + tabName).classList.add('block');
-            document.getElementById('btn-' + tabName).className = 'px-6 py-3 font-bold text-fuchsia-700 border-b-2 border-fuchsia-600';
+            document.getElementById('btn-' + tabName).className = 'px-4 py-2 font-bold text-fuchsia-700 border-b-2 border-fuchsia-600';
         }
     </script>
 </body>
