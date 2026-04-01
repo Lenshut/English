@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tagasa English Course - Level 2 Worksheets</title>
+    <title>Tagasa English Course - Elementary Worksheet</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@1,500&display=swap');
@@ -30,7 +30,7 @@
             transform: translateY(0);
         }
 
-        .question-input {
+        .ws-input {
             border: none;
             border-bottom: 2px solid #cbd5e1;
             background: transparent;
@@ -38,48 +38,67 @@
             padding: 0 0.5rem;
             color: #059669; /* Emerald 600 */
             font-weight: 600;
-            text-align: center;
             transition: border-color 0.3s;
         }
-        .question-input:focus { border-bottom-color: #059669; }
+        .ws-input:focus { border-bottom-color: #059669; }
+        
+        /* Column layout for top-to-bottom, left-to-right flow */
+        .task-grid { 
+            column-count: 1; 
+            column-gap: 1.5rem; 
+        }
+        @media (min-width: 768px) {
+            .task-grid { column-count: 2; }
+        }
+        @media (min-width: 1024px) {
+            .task-grid { column-count: 3; }
+        }
+        .task-item { 
+            break-inside: avoid; 
+            margin-bottom: 1rem; 
+            display: inline-block; 
+            width: 100%; 
+        }
     </style>
 </head>
 <body class="antialiased bg-elegant-gradient min-h-screen flex flex-col">
 
-    <!-- Decorative Top Glow -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-emerald-100/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
-    <!-- Header Navigation with Dropdowns -->
     <nav class="w-full px-6 py-5 md:px-12 flex flex-col xl:flex-row items-center justify-between z-50 sticky top-0 bg-fafaf9/90 backdrop-blur-md border-b border-stone-200/50 shadow-sm">
-        
-        <!-- Educative, Futuristic TAGASA Logo -->
         <div class="flex items-center gap-2 mb-4 xl:mb-0 cursor-pointer group" onclick="window.location.href='index.html'">
             <div class="relative flex items-center justify-center w-12 h-12">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full transform group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
+                <svg viewBox="0 0 100 80" class="w-auto h-[40px] overflow-visible">
                     <defs>
-                        <linearGradient id="logo-grad" x1="0" y1="0" x2="100" y2="100">
-                            <stop offset="0%" stop-color="#0d9488"/>
-                            <stop offset="100%" stop-color="#4f46e5"/>
+                        <linearGradient id="patent-teal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#0f766e"/>
+                            <stop offset="100%" stop-color="#5eead4"/>
                         </linearGradient>
+                        <filter id="top-left-shadow" x="-30%" y="-30%" width="160%" height="160%">
+                            <feOffset dx="-4" dy="-4" in="SourceAlpha" result="offOut" />
+                            <feGaussianBlur stdDeviation="3" in="offOut" result="blurOut" />
+                            <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="blurOut" result="colorOut" />
+                            <feBlend in="SourceGraphic" in2="colorOut" mode="normal" />
+                        </filter>
                     </defs>
-                    <path d="M15 15C8.37258 15 3 20.3726 3 28.5C3 36.6274 8.37258 42 15 42L5 55L25 42H70C76.6274 42 82 36.6274 82 28.5C82 20.3726 76.6274 15 70 15H15Z" fill="#312e81" fill-opacity="0.1"/>
-                    <path d="M25 25C13.9543 25 5 33.9543 5 45C5 56.0457 13.9543 65 25 65L10 85L35 65H80C91.0457 65 100 56.0457 100 45C100 33.9543 91.0457 25 80 25H25Z" fill="url(#logo-grad)"/>
-                    <rect x="26" y="32" width="48" height="8" rx="4" fill="#fafaf9"/>
-                    <rect x="38" y="44" width="18" height="8" rx="4" fill="#fafaf9"/>
-                    <rect x="38" y="56" width="10" height="8" rx="4" fill="#fafaf9"/>
-                    <rect x="52" y="56" width="4" height="8" rx="4" fill="#fafaf9"/>
+                    <g filter="url(#top-left-shadow)">
+                        <path d="M 10 0 H 90 C 95.523 0 100 4.477 100 10 V 70 C 100 75.523 95.523 80 90 80 H 25 L 0 105 V 10 C 0 4.477 4.477 0 10 0 Z" fill="url(#patent-teal-grad)"/>
+                    </g>
+                    <rect x="20" y="16" width="60" height="10" rx="3" fill="white"/>
+                    <rect x="40" y="32" width="20" height="10" rx="3" fill="white"/>
+                    <rect x="45" y="48" width="10" height="10" rx="3" fill="white"/>
+                    <circle cx="50" cy="68" r="4.5" fill="white"/>
                 </svg>
             </div>
             <span class="text-3xl font-black logo-text">TAGASA</span>
         </div>
         
-        <!-- Right Side Dropdown Menus -->
         <div class="flex items-center gap-1 md:gap-4 flex-wrap justify-center">
             <div class="group relative">
                 <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
                     Video <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
                         <a href="vdoc.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Documentation</a>
                         <a href="vedu.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
@@ -91,7 +110,7 @@
                 <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
                     Galeri <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
                         <a href="gmemo.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Memories</a>
                         <a href="gmaterial.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Material</a>
@@ -106,14 +125,14 @@
                 </button>
                 <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
-                        <a href="speaking1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
-                        <a href="speaking2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
-                        <a href="speaking3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
-                        <a href="speaking4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
-                        <a href="speaking5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
-                        <a href="speaking6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
-                        <a href="speaking7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
-                        <a href="speaking8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        <a href="speaking1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Foundation</a>
+                        <a href="speaking2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Elementary</a>
+                        <a href="speaking3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Pre-Intermediate</a>
+                        <a href="speaking4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Intermediate</a>
+                        <a href="speaking5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Upper-Intermediate</a>
+                        <a href="speaking6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Advanced</a>
+                        <a href="speaking7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Master</a>
+                        <a href="speaking8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Proficiency</a>
                     </div>
                 </div>
             </div>
@@ -124,14 +143,14 @@
                 </button>
                 <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
-                        <a href="reading1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
-                        <a href="reading2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
-                        <a href="reading3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
-                        <a href="reading4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
-                        <a href="reading5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
-                        <a href="reading6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
-                        <a href="reading7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
-                        <a href="reading8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        <a href="reading1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Foundation</a>
+                        <a href="reading2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Elementary</a>
+                        <a href="reading3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Pre-Intermediate</a>
+                        <a href="reading4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Intermediate</a>
+                        <a href="reading5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Upper-Intermediate</a>
+                        <a href="reading6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Advanced</a>
+                        <a href="reading7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Master</a>
+                        <a href="reading8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Proficiency</a>
                     </div>
                 </div>
             </div>
@@ -142,32 +161,32 @@
                 </button>
                 <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
-                        <a href="writing1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
-                        <a href="writing2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
-                        <a href="writing3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
-                        <a href="writing4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
-                        <a href="writing5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
-                        <a href="writing6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
-                        <a href="writing7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
-                        <a href="writing8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        <a href="writing1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Foundation</a>
+                        <a href="writing2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Elementary</a>
+                        <a href="writing3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Pre-Intermediate</a>
+                        <a href="writing4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Intermediate</a>
+                        <a href="writing5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Upper-Intermediate</a>
+                        <a href="writing6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Advanced</a>
+                        <a href="writing7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Master</a>
+                        <a href="writing8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Proficiency</a>
                     </div>
                 </div>
             </div>
 
             <div class="group relative">
-                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                <button class="px-3 py-2 rounded-full font-bold text-emerald-700 bg-emerald-50 transition-all flex items-center gap-1.5">
                     Worksheet <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
-                        <a href="worksheet1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
-                        <a href="worksheet2.html" class="px-5 py-2.5 text-sm font-medium text-emerald-600 bg-emerald-50">Level 2</a>
-                        <a href="worksheet3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
-                        <a href="worksheet4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
-                        <a href="worksheet5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
-                        <a href="worksheet6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
-                        <a href="worksheet7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
-                        <a href="worksheet8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        <a href="worksheet1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Foundation</a>
+                        <a href="worksheet2.html" class="px-5 py-2.5 text-sm font-medium text-emerald-600 bg-emerald-50">Elementary</a>
+                        <a href="worksheet3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Pre-Intermediate</a>
+                        <a href="worksheet4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Intermediate</a>
+                        <a href="worksheet5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Upper-Intermediate</a>
+                        <a href="worksheet6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Advanced</a>
+                        <a href="worksheet7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Master</a>
+                        <a href="worksheet8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Proficiency</a>
                     </div>
                 </div>
             </div>
@@ -182,337 +201,455 @@
                 Elementary Exercises
             </h1>
             <p class="text-lg text-stone-600 leading-relaxed">
-                Test your knowledge of elementary concepts: Past and Future Tenses, Habits, Adverbs of Frequency, Comparatives, and Conversational Opinions.
+                Complete all 360 tasks to master Elementary concepts: Past Simple, Future Plans, Frequency Adverbs, Comparatives, and giving Reasons.
             </p>
         </section>
 
         <!-- Category Tabs -->
         <div class="flex flex-wrap justify-center gap-2 mb-10 border-b border-stone-200">
-            <button onclick="showTab('fill')" id="btn-fill" class="px-6 py-3 font-bold text-emerald-700 border-b-2 border-emerald-600">Fill in the Blanks</button>
-            <button onclick="showTab('match')" id="btn-match" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Matching</button>
-            <button onclick="showTab('mcq')" id="btn-mcq" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Multiple Choice</button>
-            <button onclick="showTab('build')" id="btn-build" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Sentence Building</button>
-            <button onclick="showTab('short')" id="btn-short" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Short Answer</button>
-            <button onclick="showTab('speak')" id="btn-speak" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Speaking Tasks</button>
+            <button onclick="showTab('blanks')" id="btn-blanks" class="px-4 py-2 font-bold text-emerald-700 border-b-2 border-emerald-600">1. Fill in the Blanks</button>
+            <button onclick="showTab('matching')" id="btn-matching" class="px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">2. Matching</button>
+            <button onclick="showTab('mcq')" id="btn-mcq" class="px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">3. Multiple Choice</button>
+            <button onclick="showTab('building')" id="btn-building" class="px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">4. Sentence Building</button>
+            <button onclick="showTab('short')" id="btn-short" class="px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">5. Short Answer</button>
+            <button onclick="showTab('speaking')" id="btn-speaking" class="px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">6. Speaking Tasks</button>
         </div>
 
-        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 p-8 md:p-12 min-h-[500px]">
+        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 p-8 min-h-[500px]">
             
-            <!-- FILL IN THE BLANKS -->
-            <div id="tab-fill" class="tab-content block">
-                <h3 class="text-2xl font-bold text-emerald-800 mb-6 flex items-center gap-3"><span class="text-3xl">✍️</span> Fill in the Blanks</h3>
-                <div class="space-y-6">
-                    <div class="text-lg">1. I went to the store <input type="text" class="question-input w-24" placeholder="..."> I wanted to buy apples.</div>
-                    <div class="text-lg">2. She <input type="text" class="question-input w-20" placeholder="..."> (go) to Paris last summer.</div>
-                    <div class="text-lg">3. I am <input type="text" class="question-input w-20" placeholder="..."> (plan) to visit my grandmother next week.</div>
-                    <div class="text-lg">4. He is taller <input type="text" class="question-input w-16" placeholder="..."> his brother.</div>
-                    <div class="text-lg">5. I <input type="text" class="question-input w-16" placeholder="..."> always tired on Monday mornings.</div>
-                    <div class="text-lg">6. <input type="text" class="question-input w-16" placeholder="..."> you go to the cinema yesterday?</div>
-                    <div class="text-lg">7. I think pizza is <input type="text" class="question-input w-20" placeholder="..."> (good) than hamburgers.</div>
-                    <div class="text-lg">8. I will <input type="text" class="question-input w-20" placeholder="..."> you with your homework tomorrow.</div>
-                    <div class="text-lg">9. What <input type="text" class="question-input w-16" placeholder="..."> you do last weekend?</div>
-                    <div class="text-lg">10. She is the <input type="text" class="question-input w-24" placeholder="..."> (smart) student in the class.</div>
-                </div>
-            </div>
-
-            <!-- MATCHING -->
-            <div id="tab-match" class="tab-content hidden">
-                <h3 class="text-2xl font-bold text-emerald-800 mb-6 flex items-center gap-3"><span class="text-3xl">🔗</span> Matching Pairs</h3>
-                <p class="text-stone-500 mb-6 italic">Draw a line mentally between the left and right columns.</p>
-                <div class="grid grid-cols-2 gap-4 text-lg">
-                    <div class="space-y-4">
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">1. Always</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">2. Go</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">3. Better</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">4. I think</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">5. Because</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">6. Going to</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">7. Did not</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">8. More beautiful</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">9. What about you?</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">10. Will</div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg shadow-sm text-emerald-900 font-medium">A. Past negative</div>
-                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg shadow-sm text-emerald-900 font-medium">B. In my opinion</div>
-                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg shadow-sm text-emerald-900 font-medium">C. Instant decision / Promise</div>
-                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg shadow-sm text-emerald-900 font-medium">D. Gives a reason</div>
-                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg shadow-sm text-emerald-900 font-medium">E. A solid future plan</div>
-                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg shadow-sm text-emerald-900 font-medium">F. 100% of the time</div>
-                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg shadow-sm text-emerald-900 font-medium">G. Went</div>
-                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg shadow-sm text-emerald-900 font-medium">H. Returning the question</div>
-                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg shadow-sm text-emerald-900 font-medium">I. Worse</div>
-                        <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-lg shadow-sm text-emerald-900 font-medium">J. Than</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MULTIPLE CHOICE -->
-            <div id="tab-mcq" class="tab-content hidden">
-                <h3 class="text-2xl font-bold text-emerald-800 mb-6 flex items-center gap-3"><span class="text-3xl">☑️</span> Multiple Choice</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- 1. FILL IN THE BLANKS (60) -->
+            <div id="tab-blanks" class="tab-content block">
+                <h3 class="text-2xl font-bold text-emerald-800 mb-6 border-b pb-2">1. Fill in the Blanks (60 Tasks)</h3>
+                <p class="text-stone-500 mb-4 text-sm">Fill the blank with the correct past verb, future word, comparative, or conjunction.</p>
+                <div class="task-grid">
+                    <!-- Past Tense 1-15 -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">1. Yesterday, I <input type="text" class="ws-input w-12" placeholder="(go)"> to the park.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">2. She <input type="text" class="ws-input w-16" placeholder="(play)"> football last week.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">3. We <input type="text" class="ws-input w-12" placeholder="(eat)"> a big pizza yesterday.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">4. He <input type="text" class="ws-input w-16" placeholder="(watch)"> a movie last night.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">5. They <input type="text" class="ws-input w-12" placeholder="(see)"> a bird in the tree.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">6. I <input type="text" class="ws-input w-12" placeholder="(have)"> an apple for breakfast.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">7. My mother <input type="text" class="ws-input w-16" placeholder="(cook)"> dinner yesterday.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">8. I did <input type="text" class="ws-input w-12"> go to school.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">9. She <input type="text" class="ws-input w-16" placeholder="(do not)"> like the movie.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">10. <input type="text" class="ws-input w-12"> you play tennis yesterday?</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">11. Yes, I <input type="text" class="ws-input w-12">.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">12. No, I <input type="text" class="ws-input w-16"> (did not).</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">13. I <input type="text" class="ws-input w-12" placeholder="(is)"> happy yesterday.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">14. They <input type="text" class="ws-input w-16" placeholder="(are)"> late last night.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">15. She <input type="text" class="ws-input w-16" placeholder="(is not)"> tired yesterday.</div>
                     
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">1. I am hungry, ___ I will eat a sandwich.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" class="accent-emerald-600 w-4 h-4"> a. so</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" class="accent-emerald-600 w-4 h-4"> b. because</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" class="accent-emerald-600 w-4 h-4"> c. but</label>
-                        </div>
-                    </div>
+                    <!-- Future Tense 16-30 -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">16. I <input type="text" class="ws-input w-12"> call you tomorrow.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">17. The phone is ringing! I <input type="text" class="ws-input w-12"> answer it.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">18. I am <input type="text" class="ws-input w-16"> to visit London next year.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">19. She <input type="text" class="ws-input w-12"> going to study tonight.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">20. We are going <input type="text" class="ws-input w-12"> play soccer.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">21. <input type="text" class="ws-input w-12"> you going to sleep now?</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">22. Yes, I <input type="text" class="ws-input w-12">.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">23. I <input type="text" class="ws-input w-16" placeholder="(will not)"> go to the party.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">24. <input type="text" class="ws-input w-12"> you help me, please?</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">25. He is not <input type="text" class="ws-input w-16"> to come tomorrow.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">26. I am going to buy a car next <input type="text" class="ws-input w-16" placeholder="(bulan)">.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">27. She will travel next <input type="text" class="ws-input w-16" placeholder="(tahun)">.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">28. See you <input type="text" class="ws-input w-16" placeholder="(besok)">.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">29. I am going to the store <input type="text" class="ws-input w-16" placeholder="(malam ini)">.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">30. We will meet <input type="text" class="ws-input w-12"> two days.</div>
 
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">2. She ___ to the park yesterday.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" class="accent-emerald-600 w-4 h-4"> a. goes</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" class="accent-emerald-600 w-4 h-4"> b. went</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" class="accent-emerald-600 w-4 h-4"> c. going</label>
-                        </div>
-                    </div>
+                    <!-- Frequency 31-45 -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">31. 100% of the time: I <input type="text" class="ws-input w-16"> drink water.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">32. 80% of the time: I <input type="text" class="ws-input w-16"> read books.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">33. 50% of the time: I <input type="text" class="ws-input w-16"> eat fish.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">34. 0% of the time: I <input type="text" class="ws-input w-16"> smoke.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">35. I <input type="text" class="ws-input w-16"> wake up at 7 AM.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">36. She is <input type="text" class="ws-input w-16"> happy. (100%)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">37. He is <input type="text" class="ws-input w-16"> late. (0%)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">38. <input type="text" class="ws-input w-16"> often do you exercise?</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">39. I am <input type="text" class="ws-input w-16"> tired on Mondays. (80%)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">40. We <input type="text" class="ws-input w-16"> go to the cinema. (50%)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">41. I <input type="text" class="ws-input w-16"> play soccer. (0%)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">42. Do you <input type="text" class="ws-input w-16"> study English? (100%)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">43. She <input type="text" class="ws-input w-16"> eats breakfast. (80%)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">44. They are <input type="text" class="ws-input w-16"> busy. (50%)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">45. How <input type="text" class="ws-input w-16"> do you call your mother?</div>
 
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">3. I ___ watch TV tonight.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" class="accent-emerald-600 w-4 h-4"> a. am going to</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" class="accent-emerald-600 w-4 h-4"> b. going to</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" class="accent-emerald-600 w-4 h-4"> c. will to</label>
-                        </div>
-                    </div>
-
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">4. A cheetah is ___ than a turtle.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q4" class="accent-emerald-600 w-4 h-4"> a. faster</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q4" class="accent-emerald-600 w-4 h-4"> b. fast</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q4" class="accent-emerald-600 w-4 h-4"> c. the fastest</label>
-                        </div>
-                    </div>
-
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">5. I ___ eat meat. I am a vegetarian.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q5" class="accent-emerald-600 w-4 h-4"> a. always</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q5" class="accent-emerald-600 w-4 h-4"> b. never</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q5" class="accent-emerald-600 w-4 h-4"> c. sometimes</label>
-                        </div>
-                    </div>
-
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">6. Did you ___ the game last night?</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q6" class="accent-emerald-600 w-4 h-4"> a. saw</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q6" class="accent-emerald-600 w-4 h-4"> b. seeing</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q6" class="accent-emerald-600 w-4 h-4"> c. see</label>
-                        </div>
-                    </div>
-
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">7. This is the ___ expensive car in the store.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q7" class="accent-emerald-600 w-4 h-4"> a. more</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q7" class="accent-emerald-600 w-4 h-4"> b. most</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q7" class="accent-emerald-600 w-4 h-4"> c. much</label>
-                        </div>
-                    </div>
-
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">8. I prefer tea ___ coffee.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q8" class="accent-emerald-600 w-4 h-4"> a. to</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q8" class="accent-emerald-600 w-4 h-4"> b. than</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q8" class="accent-emerald-600 w-4 h-4"> c. from</label>
-                        </div>
-                    </div>
-
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">9. I meant to call you, ___ I forgot.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q9" class="accent-emerald-600 w-4 h-4"> a. and</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q9" class="accent-emerald-600 w-4 h-4"> b. so</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q9" class="accent-emerald-600 w-4 h-4"> c. but</label>
-                        </div>
-                    </div>
-
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">10. How ___ do you go to the gym?</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q10" class="accent-emerald-600 w-4 h-4"> a. much</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q10" class="accent-emerald-600 w-4 h-4"> b. often</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q10" class="accent-emerald-600 w-4 h-4"> c. many</label>
-                        </div>
-                    </div>
-
+                    <!-- Comparatives/Conjunctions 46-60 -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">46. A car is fast<input type="text" class="ws-input w-12"> than a bike.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">47. An elephant is big<input type="text" class="ws-input w-12"> than a dog.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">48. My brother is tall<input type="text" class="ws-input w-12"> than me.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">49. A mouse is small<input type="text" class="ws-input w-12"> than a cat.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">50. Gold is <input type="text" class="ws-input w-16"> expensive than silver.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">51. Pizza is <input type="text" class="ws-input w-16"> (good) than vegetables.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">52. Being sick is <input type="text" class="ws-input w-16"> (bad) than being tired.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">53. I like apples <input type="text" class="ws-input w-12"> I like bananas.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">54. I like coffee, <input type="text" class="ws-input w-12"> I do not like tea.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">55. I eat <input type="text" class="ws-input w-16"> I am hungry.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">56. I am tired, <input type="text" class="ws-input w-12"> I will sleep.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">57. I think English is <input type="text" class="ws-input w-16"> (mudah).</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">58. I <input type="text" class="ws-input w-16"> with you. (Setuju)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">59. I prefer summer <input type="text" class="ws-input w-12"> winter.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">60. What do you think <input type="text" class="ws-input w-16"> this movie?</div>
                 </div>
             </div>
 
-            <!-- SENTENCE BUILDING -->
-            <div id="tab-build" class="tab-content hidden">
-                <h3 class="text-2xl font-bold text-emerald-800 mb-6 flex items-center gap-3"><span class="text-3xl">🧩</span> Sentence Building</h3>
-                <p class="text-stone-500 mb-6 italic">Unscramble the words to make correct sentences.</p>
-                <div class="space-y-6">
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( tired / am / because / I / late / slept / I )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( to / going / am / I / travel / year / next )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( than / is / older / me / brother / My )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( you / Did / movie / watch / the / yesterday )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( play / usually / I / on / tennis / Sundays )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( best / the / pizza / This / ever / is / have / I / eaten )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( prefer / I / summer / winter / to )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( free / Are / tomorrow / you )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( will / open / I / door / the )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( went / store / the / to / She )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Type sentence here...">
-                    </div>
+            <!-- 2. MATCHING (60) -->
+            <div id="tab-matching" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-emerald-800 mb-6 border-b pb-2">2. Matching (60 Pairs)</h3>
+                <p class="text-stone-500 mb-4 text-sm">Match the word on the left with its past tense, future form, or opposite on the right by writing the letter.</p>
+                <div class="task-grid">
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>1. Go</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">A. Was</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>2. Eat</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">B. Saw</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>3. See</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">C. Ate</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>4. Have</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">D. Went</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>5. Am/Is</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">E. Had</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>6. Are</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">F. Were</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>7. Play</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">G. Watched</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>8. Watch</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">H. Played</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>9. Cook</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">I. Walked</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>10. Walk</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">J. Cooked</span></div>
+                    
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>11. Will not</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">K. Didn't</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>12. Do not</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">L. Won't</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>13. Did not</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">M. Don't</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>14. I am</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">N. They are</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>15. He is</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">O. Going to</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>16. We are</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">P. Going to</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>17. 100%</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">Q. Never</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>18. 80%</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">R. Sometimes</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>19. 50%</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">S. Usually</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>20. 0%</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">T. Always</span></div>
+                    
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>21. Fast</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">U. Smaller</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>22. Big</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">V. Taller</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>23. Small</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">W. Faster</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>24. Tall</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">X. Bigger</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>25. Short</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">Y. Hotter</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>26. Hot</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">Z. Shorter</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>27. Cold</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">AA. Worse</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>28. Good</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">BB. Colder</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>29. Bad</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">CC. More expensive</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>30. Expensive</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">DD. Better</span></div>
+                    
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>31. And</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">EE. Result</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>32. But</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">FF. Reason</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>33. Because</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">GG. Contrast</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>34. So</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">HH. Addition</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>35. I think</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">II. Disagree</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>36. I don't agree</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">JJ. Opinion</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>37. I prefer</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">KK. To</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>38. Tomorrow</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">LL. I like more</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>39. Yesterday</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">MM. Past</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>40. Prefer</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">NN. Future</span></div>
+                    
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>41. The fastest</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">OO. Paling lambat</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>42. The slowest</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">PP. Paling tinggi</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>43. The biggest</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">QQ. Paling cepat</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>44. The smallest</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">RR. Paling besar</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>45. The tallest</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">SS. Paling baik</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>46. The shortest</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">TT. Paling kecil</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>47. The best</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">UU. Paling pendek</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>48. The worst</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">VV. Paling mahal</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>49. The most expensive</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">WW. Seberapa sering</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>50. How often</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">XX. Paling buruk</span></div>
+                    
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>51. I wake up</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">YY. Rencana</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>52. I sleep</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">ZZ. Pagi</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>53. I eat</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">AAA. Janji</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>54. I drink</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">BBB. Malam</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>55. Will</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">CCC. Makanan</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>56. Going to</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">DDD. Air</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>57. What about you?</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">EEE. Saya setuju</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>58. I agree</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">FFF. Tanya balik</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>59. The end</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">GGG. Mulai</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>60. The start</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">HHH. Selesai</span></div>
                 </div>
             </div>
 
-            <!-- SHORT ANSWER -->
+            <!-- 3. MULTIPLE CHOICE (60) -->
+            <div id="tab-mcq" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-emerald-800 mb-6 border-b pb-2">3. Multiple Choice (60 Tasks)</h3>
+                <div class="task-grid">
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">1. Yesterday I ___ to the store. <br><label><input type="radio" name="m1"> go</label> <label><input type="radio" name="m1"> went</label> <label><input type="radio" name="m1"> goes</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">2. She ___ pizza last night. <br><label><input type="radio" name="m2"> ate</label> <label><input type="radio" name="m2"> eat</label> <label><input type="radio" name="m2"> eating</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">3. We ___ a movie on Sunday. <br><label><input type="radio" name="m3"> watch</label> <label><input type="radio" name="m3"> watched</label> <label><input type="radio" name="m3"> watching</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">4. They ___ a dog in the park. <br><label><input type="radio" name="m4"> saw</label> <label><input type="radio" name="m4"> see</label> <label><input type="radio" name="m4"> seeing</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">5. I ___ breakfast at 7 AM yesterday. <br><label><input type="radio" name="m5"> have</label> <label><input type="radio" name="m5"> had</label> <label><input type="radio" name="m5"> has</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">6. I ___ not go to the park. <br><label><input type="radio" name="m6"> do</label> <label><input type="radio" name="m6"> did</label> <label><input type="radio" name="m6"> am</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">7. She did not ___ the book. <br><label><input type="radio" name="m7"> read</label> <label><input type="radio" name="m7"> readed</label> <label><input type="radio" name="m7"> reading</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">8. ___ you play soccer yesterday? <br><label><input type="radio" name="m8"> Do</label> <label><input type="radio" name="m8"> Are</label> <label><input type="radio" name="m8"> Did</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">9. Yes, I ___. <br><label><input type="radio" name="m9"> do</label> <label><input type="radio" name="m9"> did</label> <label><input type="radio" name="m9"> am</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">10. No, I ___. <br><label><input type="radio" name="m10"> didn't</label> <label><input type="radio" name="m10"> don't</label> <label><input type="radio" name="m10"> wasn't</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">11. I ___ tired yesterday. <br><label><input type="radio" name="m11"> am</label> <label><input type="radio" name="m11"> was</label> <label><input type="radio" name="m11"> were</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">12. We ___ late last night. <br><label><input type="radio" name="m12"> are</label> <label><input type="radio" name="m12"> was</label> <label><input type="radio" name="m12"> were</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">13. He ___ not happy. <br><label><input type="radio" name="m13"> was</label> <label><input type="radio" name="m13"> were</label> <label><input type="radio" name="m13"> did</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">14. ___ they at home? <br><label><input type="radio" name="m14"> Was</label> <label><input type="radio" name="m14"> Were</label> <label><input type="radio" name="m14"> Did</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">15. Yes, they ___. <br><label><input type="radio" name="m15"> was</label> <label><input type="radio" name="m15"> were</label> <label><input type="radio" name="m15"> did</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">16. I ___ call you tomorrow. <br><label><input type="radio" name="m16"> will</label> <label><input type="radio" name="m16"> am</label> <label><input type="radio" name="m16"> going to</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">17. I am ___ to visit my friend. <br><label><input type="radio" name="m17"> will</label> <label><input type="radio" name="m17"> going</label> <label><input type="radio" name="m17"> go</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">18. She ___ going to study. <br><label><input type="radio" name="m18"> am</label> <label><input type="radio" name="m18"> is</label> <label><input type="radio" name="m18"> are</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">19. We ___ going to play. <br><label><input type="radio" name="m19"> am</label> <label><input type="radio" name="m19"> is</label> <label><input type="radio" name="m19"> are</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">20. ___ you going to sleep? <br><label><input type="radio" name="m20"> Am</label> <label><input type="radio" name="m20"> Is</label> <label><input type="radio" name="m20"> Are</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">21. Yes, I ___. <br><label><input type="radio" name="m21"> am</label> <label><input type="radio" name="m21"> is</label> <label><input type="radio" name="m21"> will</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">22. I ___ not go to the party. <br><label><input type="radio" name="m22"> will</label> <label><input type="radio" name="m22"> am</label> <label><input type="radio" name="m22"> do</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">23. ___ you help me? <br><label><input type="radio" name="m23"> Will</label> <label><input type="radio" name="m23"> Are</label> <label><input type="radio" name="m23"> Do</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">24. He ___ not going to come. <br><label><input type="radio" name="m24"> am</label> <label><input type="radio" name="m24"> is</label> <label><input type="radio" name="m24"> are</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">25. See you ___. <br><label><input type="radio" name="m25"> yesterday</label> <label><input type="radio" name="m25"> tomorrow</label> <label><input type="radio" name="m25"> last night</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">26. I ___ drink water. (100%) <br><label><input type="radio" name="m26"> always</label> <label><input type="radio" name="m26"> never</label> <label><input type="radio" name="m26"> sometimes</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">27. I ___ read books. (80%) <br><label><input type="radio" name="m27"> always</label> <label><input type="radio" name="m27"> usually</label> <label><input type="radio" name="m27"> never</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">28. I ___ eat fish. (50%) <br><label><input type="radio" name="m28"> usually</label> <label><input type="radio" name="m28"> sometimes</label> <label><input type="radio" name="m28"> always</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">29. I ___ smoke. (0%) <br><label><input type="radio" name="m29"> always</label> <label><input type="radio" name="m29"> sometimes</label> <label><input type="radio" name="m29"> never</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">30. She is ___ happy. <br><label><input type="radio" name="m30"> always</label> <label><input type="radio" name="m30"> always is</label> <label><input type="radio" name="m30"> is always</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">31. ___ often do you exercise? <br><label><input type="radio" name="m31"> What</label> <label><input type="radio" name="m31"> How</label> <label><input type="radio" name="m31"> Who</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">32. A car is ___ than a bike. <br><label><input type="radio" name="m32"> fast</label> <label><input type="radio" name="m32"> faster</label> <label><input type="radio" name="m32"> fastest</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">33. An elephant is ___ than a dog. <br><label><input type="radio" name="m33"> big</label> <label><input type="radio" name="m33"> bigger</label> <label><input type="radio" name="m33"> biggest</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">34. My brother is ___ than me. <br><label><input type="radio" name="m34"> tall</label> <label><input type="radio" name="m34"> taller</label> <label><input type="radio" name="m34"> tallest</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">35. Gold is ___ expensive than silver. <br><label><input type="radio" name="m35"> more</label> <label><input type="radio" name="m35"> most</label> <label><input type="radio" name="m35"> much</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">36. Pizza is ___ than vegetables. <br><label><input type="radio" name="m36"> gooder</label> <label><input type="radio" name="m36"> better</label> <label><input type="radio" name="m36"> best</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">37. Being sick is ___ than being tired. <br><label><input type="radio" name="m37"> badder</label> <label><input type="radio" name="m37"> worse</label> <label><input type="radio" name="m37"> worst</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">38. I like apples ___ I like bananas. <br><label><input type="radio" name="m38"> and</label> <label><input type="radio" name="m38"> but</label> <label><input type="radio" name="m38"> so</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">39. I like coffee, ___ I do not like tea. <br><label><input type="radio" name="m39"> and</label> <label><input type="radio" name="m39"> but</label> <label><input type="radio" name="m39"> because</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">40. I eat ___ I am hungry. <br><label><input type="radio" name="m40"> so</label> <label><input type="radio" name="m40"> because</label> <label><input type="radio" name="m40"> and</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">41. I am tired, ___ I will sleep. <br><label><input type="radio" name="m41"> so</label> <label><input type="radio" name="m41"> because</label> <label><input type="radio" name="m41"> but</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">42. I ___ English is easy. <br><label><input type="radio" name="m42"> think</label> <label><input type="radio" name="m42"> am think</label> <label><input type="radio" name="m42"> thinking</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">43. I agree ___ you. <br><label><input type="radio" name="m43"> to</label> <label><input type="radio" name="m43"> with</label> <label><input type="radio" name="m43"> for</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">44. I prefer summer ___ winter. <br><label><input type="radio" name="m44"> to</label> <label><input type="radio" name="m44"> than</label> <label><input type="radio" name="m44"> for</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">45. What do you think ___ this movie? <br><label><input type="radio" name="m45"> about</label> <label><input type="radio" name="m45"> to</label> <label><input type="radio" name="m45"> of</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">46. He is the ___ student. <br><label><input type="radio" name="m46"> taller</label> <label><input type="radio" name="m46"> tallest</label> <label><input type="radio" name="m46"> most tall</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">47. This is the ___ expensive car. <br><label><input type="radio" name="m47"> more</label> <label><input type="radio" name="m47"> most</label> <label><input type="radio" name="m47"> much</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">48. I ___ to Paris last year. <br><label><input type="radio" name="m48"> go</label> <label><input type="radio" name="m48"> went</label> <label><input type="radio" name="m48"> gone</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">49. She ___ not play tennis. <br><label><input type="radio" name="m49"> do</label> <label><input type="radio" name="m49"> does</label> <label><input type="radio" name="m49"> is</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">50. We ___ happy today. <br><label><input type="radio" name="m50"> was</label> <label><input type="radio" name="m50"> are</label> <label><input type="radio" name="m50"> will</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">51. They ___ not here yesterday. <br><label><input type="radio" name="m51"> are</label> <label><input type="radio" name="m51"> were</label> <label><input type="radio" name="m51"> was</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">52. I ___ read a book tomorrow. <br><label><input type="radio" name="m52"> will</label> <label><input type="radio" name="m52"> going to</label> <label><input type="radio" name="m52"> am</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">53. He is going to ___ his friend. <br><label><input type="radio" name="m53"> visits</label> <label><input type="radio" name="m53"> visit</label> <label><input type="radio" name="m53"> visiting</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">54. A turtle is ___ than a rabbit. <br><label><input type="radio" name="m54"> slow</label> <label><input type="radio" name="m54"> slower</label> <label><input type="radio" name="m54"> slowest</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">55. The sun is ___ than the moon. <br><label><input type="radio" name="m55"> hot</label> <label><input type="radio" name="m55"> hotter</label> <label><input type="radio" name="m55"> hottest</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">56. I like apples, ___ I don't like oranges. <br><label><input type="radio" name="m56"> and</label> <label><input type="radio" name="m56"> but</label> <label><input type="radio" name="m56"> so</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">57. I sleep ___ I am tired. <br><label><input type="radio" name="m57"> because</label> <label><input type="radio" name="m57"> so</label> <label><input type="radio" name="m57"> but</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">58. It is raining, ___ I will take an umbrella. <br><label><input type="radio" name="m58"> because</label> <label><input type="radio" name="m58"> so</label> <label><input type="radio" name="m58"> and</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">59. I ___ agree with you. <br><label><input type="radio" name="m59"> am not</label> <label><input type="radio" name="m59"> do not</label> <label><input type="radio" name="m59"> no</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">60. What ___ you think? <br><label><input type="radio" name="m60"> are</label> <label><input type="radio" name="m60"> do</label> <label><input type="radio" name="m60"> does</label></div>
+                </div>
+            </div>
+
+            <!-- 4. SENTENCE BUILDING (60) -->
+            <div id="tab-building" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-emerald-800 mb-6 border-b pb-2">4. Sentence Building (60 Tasks)</h3>
+                <p class="text-stone-500 mb-4 text-sm">Rearrange the words to make a correct sentence.</p>
+                <div class="task-grid">
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">1. (went / I / yesterday / park / the / to) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">2. (football / She / week / last / played) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">3. (eat / did / not / pizza / We) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">4. (movie / watched / a / He / night / last) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">5. (you / play / yesterday / Did / tennis) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">6. (happy / I / yesterday / was) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">7. (late / They / night / were / last) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">8. (was / She / tired / not) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">9. (you / home / Were / at) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">10. (will / you / call / I / tomorrow) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">11. (help / will / you / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">12. (am / to / next / travel / I / going / year) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">13. (is / study / tonight / She / going / to) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">14. (going / you / Are / sleep / to) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">15. (will / go / party / to / not / I / the) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">16. (always / water / drink / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">17. (usually / books / read / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">18. (sometimes / fish / eat / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">19. (never / smoke / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">20. (always / is / happy / She) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">21. (often / you / do / How / exercise) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">22. (faster / A / than / car / bike / is / a) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">23. (bigger / An / than / dog / elephant / is / a) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">24. (taller / me / brother / My / is / than) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">25. (smaller / mouse / A / cat / than / is / a) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">26. (expensive / Gold / silver / more / is / than) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">27. (better / Pizza / vegetables / is / than) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">28. (worse / Being / tired / sick / is / than / being) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">29. (apples / like / I / bananas / like / and / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">30. (coffee / like / I / do / but / not / tea / I / like) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">31. (eat / hungry / because / I / am / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">32. (tired / am / I / sleep / so / will / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">33. (think / English / I / easy / is) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">34. (agree / you / with / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">35. (prefer / summer / I / winter / to) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">36. (think / What / you / movie / do / this / about) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">37. (tallest / He / student / the / is) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">38. (most / This / the / expensive / car / is) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">39. (went / to / Paris / last / I / year) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">40. (not / play / does / She / tennis) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">41. (happy / We / today / are) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">42. (were / not / They / yesterday / here) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">43. (will / read / I / book / a / tomorrow) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">44. (going / visit / He / to / is / friend / his) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">45. (slower / turtle / rabbit / A / than / is / a) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">46. (hotter / sun / moon / The / is / than / the) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">47. (like / apples / I / don't / I / but / like / oranges) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">48. (sleep / I / tired / am / because / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">49. (raining / It / is / umbrella / take / so / I / will / an) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">50. (not / agree / do / I / you / with) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">51. (think / you / What / do) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">52. (fastest / cheetah / animal / The / is / the) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">53. (best / Pizza / the / food / is) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">54. (worst / Sick / is / being / the) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">55. (always / I / happy / am) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">56. (never / He / late / is) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">57. (usually / We / early / wake / up) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">58. (sometimes / They / TV / watch) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">59. (will / I / door / the / open) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">60. (going / She / is / sleep / to) <input type="text" class="ws-input w-full mt-1"></div>
+                </div>
+            </div>
+
+            <!-- 5. SHORT ANSWER (60) -->
             <div id="tab-short" class="tab-content hidden">
-                <h3 class="text-2xl font-bold text-emerald-800 mb-6 flex items-center gap-3"><span class="text-3xl">📝</span> Short Answer</h3>
-                <div class="space-y-6">
-                    <div>
-                        <p class="font-bold text-lg mb-2">1. What did you do yesterday?</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">2. What are you going to do tomorrow?</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">3. Write the past tense of 'Eat':</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">4. Which is faster, a car or a bicycle?</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">5. How often do you study English?</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">6. Do you prefer cats or dogs?</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">7. Why are you learning English? I am learning English because...</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">8. Write a sentence using 'always':</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">9. What is the best movie you have ever seen?</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">10. Respond to this: 'I bought a new car.'</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-emerald-500">
-                    </div>
+                <h3 class="text-2xl font-bold text-emerald-800 mb-6 border-b pb-2">5. Short Answer (60 Tasks)</h3>
+                <div class="task-grid">
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">1. What did you do yesterday? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">2. What are you going to do tomorrow? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">3. Write the past tense of 'Eat': <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">4. Which is faster, a car or a bicycle? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">5. How often do you study English? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">6. Do you prefer cats or dogs? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">7. Why are you learning English? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">8. Write a sentence using 'always': <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">9. What is the best movie you have seen? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">10. Respond: 'I bought a new car.' <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">11. What did you eat for breakfast? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">12. Where will you go next year? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">13. Write the past tense of 'Go': <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">14. Which is bigger, an elephant or a mouse? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">15. How often do you play sports? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">16. Do you prefer summer or winter? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">17. Why are you tired? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">18. Write a sentence using 'never': <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">19. What is the worst food you have eaten? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">20. Respond: 'I am sick.' <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">21. Who did you see yesterday? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">22. What are you going to buy tomorrow? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">23. Write the past tense of 'See': <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">24. Which is more expensive, gold or silver? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">25. How often do you watch TV? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">26. Do you prefer reading or writing? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">27. Why do you like pizza? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">28. Write a sentence using 'usually': <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">29. Who is the tallest person in your family? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">30. Respond: 'I passed my test!' <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">31. Where did you live last year? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">32. Who will you meet tomorrow? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">33. Write the past tense of 'Have': <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">34. Which is hotter, the sun or the moon? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">35. How often do you cook? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">36. Do you prefer morning or night? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">37. Why are you learning? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">38. Write a sentence using 'sometimes': <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">39. What is the most beautiful city? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">40. Respond: 'I am going to Paris.' <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">41. What did you watch on TV? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">42. What are you going to eat tonight? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">43. Write the past tense of 'Play': <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">44. Which is slower, a turtle or a rabbit? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">45. How often do you read books? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">46. Do you prefer coffee or tea? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">47. Why are you happy? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">48. Write a sentence with 'but': <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">49. Who is the smartest person you know? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">50. Respond: 'I failed the test.' <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">51. Where did you go yesterday? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">52. When will you sleep tonight? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">53. Write the past tense of 'Cook': <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">54. Which is colder, ice or water? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">55. How often do you drink water? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">56. Do you prefer cars or bikes? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">57. Why do you sleep? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">58. Write a sentence with 'so': <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">59. What is the most expensive thing you own? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">60. Respond: 'I am tired.' <input type="text" class="ws-input w-full mt-1"></div>
                 </div>
             </div>
 
-            <!-- SPEAKING TASKS -->
-            <div id="tab-speak" class="tab-content hidden">
-                <h3 class="text-2xl font-bold text-emerald-800 mb-6 flex items-center gap-3"><span class="text-3xl">🗣️</span> Speaking Tasks</h3>
-                <p class="text-stone-500 mb-6 italic">Practice these aloud with a partner or teacher.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-emerald-500">01</span>
-                        <p class="text-emerald-900 font-medium pt-1">Tell your partner what you did last weekend.</p>
-                    </div>
-                    <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-emerald-500">02</span>
-                        <p class="text-emerald-900 font-medium pt-1">Ask your partner 3 questions starting with 'Did you...?'</p>
-                    </div>
-                    <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-emerald-500">03</span>
-                        <p class="text-emerald-900 font-medium pt-1">Compare your hometown to another city using comparatives (-er / more).</p>
-                    </div>
-                    <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-emerald-500">04</span>
-                        <p class="text-emerald-900 font-medium pt-1">Tell the class your 5-year life plan using 'Going to' and 'Hope to'.</p>
-                    </div>
-                    <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-emerald-500">05</span>
-                        <p class="text-emerald-900 font-medium pt-1">State a strong opinion about food and give two reasons why.</p>
-                    </div>
-                    <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-emerald-500">06</span>
-                        <p class="text-emerald-900 font-medium pt-1">Ask your partner how often they exercise, cook, and read.</p>
-                    </div>
-                    <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-emerald-500">07</span>
-                        <p class="text-emerald-900 font-medium pt-1">Roleplay: Invite your partner to the cinema tomorrow.</p>
-                    </div>
-                    <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-emerald-500">08</span>
-                        <p class="text-emerald-900 font-medium pt-1">Describe the best restaurant you have ever visited using superlatives.</p>
-                    </div>
-                    <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-emerald-500">09</span>
-                        <p class="text-emerald-900 font-medium pt-1">Explain why you are studying English using 'because' and 'so'.</p>
-                    </div>
-                    <div class="bg-emerald-50 p-5 rounded-xl border border-emerald-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-emerald-500">10</span>
-                        <p class="text-emerald-900 font-medium pt-1">Have a 1-minute conversation and use 'What about you?' at least twice.</p>
-                    </div>
+            <!-- 6. SPEAKING TASKS (60) -->
+            <div id="tab-speaking" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-emerald-800 mb-6 border-b pb-2">6. Speaking Tasks (60 Tasks)</h3>
+                <p class="text-stone-500 mb-4 text-sm">Read the sentence aloud to your teacher.</p>
+                <div class="task-grid">
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">1. Read: "I went to the park."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">2. Read: "She ate an apple."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">3. Read: "We watched TV."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">4. Read: "They saw a bird."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">5. Read: "I played football."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">6. Read: "I did not go."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">7. Read: "She did not eat."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">8. Read: "Did you sleep?"</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">9. Read: "I was happy."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">10. Read: "They were late."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">11. Read: "He was not tired."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">12. Read: "Were you at home?"</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">13. Read: "I will call you."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">14. Read: "I am going to travel."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">15. Read: "She is going to study."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">16. Read: "Will you help me?"</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">17. Read: "Are you going to sleep?"</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">18. Read: "I will not go."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">19. Read: "He is not going to come."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">20. Read: "I always drink water."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">21. Read: "I usually read books."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">22. Read: "I sometimes eat fish."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">23. Read: "I never smoke."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">24. Read: "She is always happy."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">25. Read: "How often do you exercise?"</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">26. Read: "A car is faster than a bike."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">27. Read: "An elephant is bigger."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">28. Read: "My brother is taller."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">29. Read: "Gold is more expensive."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">30. Read: "Pizza is better than vegetables."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">31. Read: "Being sick is worse."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">32. Read: "I like apples and bananas."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">33. Read: "I like coffee but not tea."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">34. Read: "I eat because I am hungry."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">35. Read: "I am tired so I will sleep."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">36. Read: "I think English is easy."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">37. Read: "I agree with you."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">38. Read: "I prefer summer to winter."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">39. Read: "What do you think about this?"</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">40. Read: "He is the tallest student."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">41. Read: "This is the most expensive car."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">42. Read: "I went to Paris last year."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">43. Read: "She does not play tennis."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">44. Read: "We are happy today."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">45. Read: "They were not here yesterday."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">46. Read: "I will read a book tomorrow."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">47. Read: "He is going to visit his friend."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">48. Read: "A turtle is slower than a rabbit."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">49. Read: "The sun is hotter than the moon."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">50. Read: "I don't agree with you."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">51. Read: "What do you think?"</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">52. Read: "The cheetah is the fastest animal."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">53. Read: "Pizza is the best food."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">54. Read: "Being sick is the worst."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">55. Read: "I am always happy."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">56. Read: "He is never late."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">57. Read: "We usually wake up early."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">58. Read: "They sometimes watch TV."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">59. Read: "I will open the door."</div>
+                    <div class="task-item p-3 border rounded-lg bg-emerald-50 text-emerald-900 font-medium text-sm">60. Read: "She is going to sleep."</div>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <footer class="w-full text-center py-8 bg-transparent text-stone-500 relative z-10 mt-auto border-t border-stone-200/50">
-        <p class="text-sm font-medium">&copy; 2026 Tagasa English Course. Cultivating global communicators.</p>
-    </footer>
-
     <script>
         function showTab(tabName) {
-            // Hide all contents
             document.querySelectorAll('.tab-content').forEach(el => {
                 el.classList.remove('block');
                 el.classList.add('hidden');
             });
-            // Reset all buttons
             document.querySelectorAll('button[id^="btn-"]').forEach(btn => {
-                btn.className = 'px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors';
+                btn.className = 'px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors';
             });
-
-            // Show selected content
             document.getElementById('tab-' + tabName).classList.remove('hidden');
             document.getElementById('tab-' + tabName).classList.add('block');
-            
-            // Highlight selected button
-            document.getElementById('btn-' + tabName).className = 'px-6 py-3 font-bold text-emerald-700 border-b-2 border-emerald-600';
+            document.getElementById('btn-' + tabName).className = 'px-4 py-2 font-bold text-emerald-700 border-b-2 border-emerald-600';
         }
     </script>
 </body>
