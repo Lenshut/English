@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tagasa English Course - Level 4 Worksheets</title>
+    <title>Tagasa English Course - Intermediate Worksheet</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@1,500&display=swap');
@@ -30,7 +30,7 @@
             transform: translateY(0);
         }
 
-        .question-input {
+        .ws-input {
             border: none;
             border-bottom: 2px solid #cbd5e1;
             background: transparent;
@@ -38,10 +38,27 @@
             padding: 0 0.5rem;
             color: #4f46e5; /* Indigo 600 */
             font-weight: 600;
-            text-align: center;
             transition: border-color 0.3s;
         }
-        .question-input:focus { border-bottom-color: #4f46e5; }
+        .ws-input:focus { border-bottom-color: #4f46e5; }
+        
+        /* Column layout for top-to-bottom, left-to-right flow */
+        .task-grid { 
+            column-count: 1; 
+            column-gap: 1.5rem; 
+        }
+        @media (min-width: 768px) {
+            .task-grid { column-count: 2; }
+        }
+        @media (min-width: 1024px) {
+            .task-grid { column-count: 3; }
+        }
+        .task-item { 
+            break-inside: avoid; 
+            margin-bottom: 1rem; 
+            display: inline-block; 
+            width: 100%; 
+        }
     </style>
 </head>
 <body class="antialiased bg-elegant-gradient min-h-screen flex flex-col">
@@ -51,19 +68,26 @@
     <nav class="w-full px-6 py-5 md:px-12 flex flex-col xl:flex-row items-center justify-between z-50 sticky top-0 bg-fafaf9/90 backdrop-blur-md border-b border-stone-200/50 shadow-sm">
         <div class="flex items-center gap-2 mb-4 xl:mb-0 cursor-pointer group" onclick="window.location.href='index.html'">
             <div class="relative flex items-center justify-center w-12 h-12">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full transform group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
+                <svg viewBox="0 0 100 80" class="w-auto h-[40px] overflow-visible">
                     <defs>
-                        <linearGradient id="logo-grad" x1="0" y1="0" x2="100" y2="100">
-                            <stop offset="0%" stop-color="#0d9488"/>
-                            <stop offset="100%" stop-color="#4f46e5"/>
+                        <linearGradient id="patent-teal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#0f766e"/>
+                            <stop offset="100%" stop-color="#5eead4"/>
                         </linearGradient>
+                        <filter id="top-left-shadow" x="-30%" y="-30%" width="160%" height="160%">
+                            <feOffset dx="-4" dy="-4" in="SourceAlpha" result="offOut" />
+                            <feGaussianBlur stdDeviation="3" in="offOut" result="blurOut" />
+                            <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="blurOut" result="colorOut" />
+                            <feBlend in="SourceGraphic" in2="colorOut" mode="normal" />
+                        </filter>
                     </defs>
-                    <path d="M15 15C8.37258 15 3 20.3726 3 28.5C3 36.6274 8.37258 42 15 42L5 55L25 42H70C76.6274 42 82 36.6274 82 28.5C82 20.3726 76.6274 15 70 15H15Z" fill="#312e81" fill-opacity="0.1"/>
-                    <path d="M25 25C13.9543 25 5 33.9543 5 45C5 56.0457 13.9543 65 25 65L10 85L35 65H80C91.0457 65 100 56.0457 100 45C100 33.9543 91.0457 25 80 25H25Z" fill="url(#logo-grad)"/>
-                    <rect x="26" y="32" width="48" height="8" rx="4" fill="#fafaf9"/>
-                    <rect x="38" y="44" width="18" height="8" rx="4" fill="#fafaf9"/>
-                    <rect x="38" y="56" width="10" height="8" rx="4" fill="#fafaf9"/>
-                    <rect x="52" y="56" width="4" height="8" rx="4" fill="#fafaf9"/>
+                    <g filter="url(#top-left-shadow)">
+                        <path d="M 10 0 H 90 C 95.523 0 100 4.477 100 10 V 70 C 100 75.523 95.523 80 90 80 H 25 L 0 105 V 10 C 0 4.477 4.477 0 10 0 Z" fill="url(#patent-teal-grad)"/>
+                    </g>
+                    <rect x="20" y="16" width="60" height="10" rx="3" fill="white"/>
+                    <rect x="40" y="32" width="20" height="10" rx="3" fill="white"/>
+                    <rect x="45" y="48" width="10" height="10" rx="3" fill="white"/>
+                    <circle cx="50" cy="68" r="4.5" fill="white"/>
                 </svg>
             </div>
             <span class="text-3xl font-black logo-text">TAGASA</span>
@@ -74,7 +98,7 @@
                 <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
                     Video <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
                         <a href="vdoc.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Documentation</a>
                         <a href="vedu.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Education</a>
@@ -86,7 +110,7 @@
                 <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
                     Galeri <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden">
+                <div class="dropdown-menu absolute left-0 md:right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
                         <a href="gmemo.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Memories</a>
                         <a href="gmaterial.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Material</a>
@@ -101,14 +125,14 @@
                 </button>
                 <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
-                        <a href="speaking1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
-                        <a href="speaking2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
-                        <a href="speaking3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
-                        <a href="speaking4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
-                        <a href="speaking5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
-                        <a href="speaking6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
-                        <a href="speaking7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
-                        <a href="speaking8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        <a href="speaking1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Foundation</a>
+                        <a href="speaking2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Elementary</a>
+                        <a href="speaking3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Pre-Intermediate</a>
+                        <a href="speaking4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Intermediate</a>
+                        <a href="speaking5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Upper-Intermediate</a>
+                        <a href="speaking6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Advanced</a>
+                        <a href="speaking7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Master</a>
+                        <a href="speaking8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Proficiency</a>
                     </div>
                 </div>
             </div>
@@ -119,14 +143,14 @@
                 </button>
                 <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
-                        <a href="reading1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
-                        <a href="reading2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
-                        <a href="reading3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
-                        <a href="reading4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
-                        <a href="reading5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
-                        <a href="reading6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
-                        <a href="reading7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
-                        <a href="reading8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        <a href="reading1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Foundation</a>
+                        <a href="reading2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Elementary</a>
+                        <a href="reading3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Pre-Intermediate</a>
+                        <a href="reading4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Intermediate</a>
+                        <a href="reading5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Upper-Intermediate</a>
+                        <a href="reading6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Advanced</a>
+                        <a href="reading7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Master</a>
+                        <a href="reading8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Proficiency</a>
                     </div>
                 </div>
             </div>
@@ -137,32 +161,32 @@
                 </button>
                 <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
-                        <a href="writing1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
-                        <a href="writing2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
-                        <a href="writing3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
-                        <a href="writing4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Level 4</a>
-                        <a href="writing5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
-                        <a href="writing6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
-                        <a href="writing7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
-                        <a href="writing8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        <a href="writing1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Foundation</a>
+                        <a href="writing2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Elementary</a>
+                        <a href="writing3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Pre-Intermediate</a>
+                        <a href="writing4.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-indigo-50 hover:text-indigo-700">Intermediate</a>
+                        <a href="writing5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Upper-Intermediate</a>
+                        <a href="writing6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Advanced</a>
+                        <a href="writing7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Master</a>
+                        <a href="writing8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Proficiency</a>
                     </div>
                 </div>
             </div>
 
             <div class="group relative">
-                <button class="px-3 py-2 rounded-full font-bold text-stone-600 hover:text-teal-700 hover:bg-teal-50 transition-all flex items-center gap-1.5">
+                <button class="px-3 py-2 rounded-full font-bold text-indigo-700 bg-indigo-50 transition-all flex items-center gap-1.5">
                     Worksheet <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div class="dropdown-menu absolute right-0 mt-2 w-48 bg-white border border-stone-100 shadow-xl rounded-2xl overflow-hidden z-50">
                     <div class="py-2 flex flex-col">
-                        <a href="worksheet1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Level 1</a>
-                        <a href="worksheet2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Level 2</a>
-                        <a href="worksheet3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Level 3</a>
-                        <a href="worksheet4.html" class="px-5 py-2.5 text-sm font-medium text-indigo-600 bg-indigo-50">Level 4</a>
-                        <a href="worksheet5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Level 5</a>
-                        <a href="worksheet6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Level 6</a>
-                        <a href="worksheet7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Level 7</a>
-                        <a href="worksheet8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Level 8</a>
+                        <a href="worksheet1.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-teal-50 hover:text-teal-700">Foundation</a>
+                        <a href="worksheet2.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-emerald-50 hover:text-emerald-700">Elementary</a>
+                        <a href="worksheet3.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-blue-50 hover:text-blue-700">Pre-Intermediate</a>
+                        <a href="worksheet4.html" class="px-5 py-2.5 text-sm font-medium text-indigo-600 bg-indigo-50">Intermediate</a>
+                        <a href="worksheet5.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-violet-50 hover:text-violet-700">Upper-Intermediate</a>
+                        <a href="worksheet6.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-fuchsia-50 hover:text-fuchsia-700">Advanced</a>
+                        <a href="worksheet7.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-rose-50 hover:text-rose-700">Master</a>
+                        <a href="worksheet8.html" class="px-5 py-2.5 text-sm font-medium text-stone-600 hover:bg-amber-50 hover:text-amber-700">Proficiency</a>
                     </div>
                 </div>
             </div>
@@ -177,297 +201,470 @@
                 Intermediate Exercises
             </h1>
             <p class="text-lg text-stone-600 leading-relaxed">
-                Test your knowledge of Intermediate concepts: Relative Clauses, Advanced Connectors, Embedded Questions, Conditionals, and Business Phrasal Verbs.
+                Complete all 360 tasks to master Intermediate concepts: Relative Clauses, Present Perfect Continuous, Advanced Connectors, Embedded Questions, and Conditionals.
             </p>
         </section>
 
         <!-- Category Tabs -->
         <div class="flex flex-wrap justify-center gap-2 mb-10 border-b border-stone-200">
-            <button onclick="showTab('fill')" id="btn-fill" class="px-6 py-3 font-bold text-indigo-700 border-b-2 border-indigo-600">Fill in the Blanks</button>
-            <button onclick="showTab('match')" id="btn-match" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Matching</button>
-            <button onclick="showTab('mcq')" id="btn-mcq" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Multiple Choice</button>
-            <button onclick="showTab('build')" id="btn-build" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Sentence Building</button>
-            <button onclick="showTab('short')" id="btn-short" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Short Answer</button>
-            <button onclick="showTab('speak')" id="btn-speak" class="px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">Speaking Tasks</button>
+            <button onclick="showTab('blanks')" id="btn-blanks" class="px-4 py-2 font-bold text-indigo-700 border-b-2 border-indigo-600">1. Fill in the Blanks</button>
+            <button onclick="showTab('matching')" id="btn-matching" class="px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">2. Matching</button>
+            <button onclick="showTab('mcq')" id="btn-mcq" class="px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">3. Multiple Choice</button>
+            <button onclick="showTab('building')" id="btn-building" class="px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">4. Sentence Building</button>
+            <button onclick="showTab('short')" id="btn-short" class="px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">5. Short Answer</button>
+            <button onclick="showTab('speaking')" id="btn-speaking" class="px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors">6. Speaking Tasks</button>
         </div>
 
-        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 p-8 md:p-12 min-h-[500px]">
+        <div class="bg-white rounded-3xl shadow-sm border border-stone-200 p-8 min-h-[500px]">
             
-            <!-- FILL IN THE BLANKS -->
-            <div id="tab-fill" class="tab-content block">
-                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">✍️</span> Fill in the Blanks</h3>
-                <div class="space-y-6">
-                    <div class="text-lg">1. The man ______ lives next door is a doctor.</div>
-                    <div class="text-lg">2. I have ______ studying English for three years.</div>
-                    <div class="text-lg">3. ______ it was raining, we went to the park.</div>
-                    <div class="text-lg">4. The job pays well. ______, the hours are flexible. (Also/In addition)</div>
-                    <div class="text-lg">5. Do you know where the station ______?</div>
-                    <div class="text-lg">6. In my ______, working from home is more productive.</div>
-                    <div class="text-lg">7. I like sports. To be ______, I like tennis.</div>
-                    <div class="text-lg">8. While it is true that cars are fast, I ______ trains are safer.</div>
-                    <div class="text-lg">9. I am not ______ sure, but I suppose we could try that.</div>
-                    <div class="text-lg">10. It ______ to be very cold in January, so bring a coat.</div>
+            <!-- 1. FILL IN THE BLANKS (60) -->
+            <div id="tab-blanks" class="tab-content block">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 border-b pb-2">1. Fill in the Blanks (60 Tasks)</h3>
+                <p class="text-stone-500 mb-4 text-sm">Fill the blank with the correct relative pronoun, connector, or conditional verb.</p>
+                <div class="task-grid">
+                    <!-- Relative Clauses (1-10) -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">1. The man ______ called you is my brother.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">2. The car ______ I bought is very fast.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">3. She is the teacher ______ helps me.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">4. I lost the pen ______ you gave me.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">5. Is this the computer ______ is broken?</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">6. The woman ______ dog is outside is angry.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">7. We visited the park ______ we first met.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">8. I know a guy ______ can fix this.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">9. That is the house ______ I grew up.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">10. I need a phone ______ has a good camera.</div>
+                    
+                    <!-- Present Perfect Continuous (11-20) -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">11. I have ______ studying for three hours.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">12. She ______ been working here since 2020.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">13. They have been waiting ______ two hours.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">14. We have been living here ______ January.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">15. How long ______ you been reading?</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">16. He has not ______ practicing enough.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">17. I am tired because I have been ______ (run).</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">18. You look dirty. Have you ______ working in the garden?</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">19. It has been ______ (rain) all day.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">20. We have been ______ (try) to fix it since yesterday.</div>
+
+                    <!-- Concessions & Connectors (21-30) -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">21. ______ it was raining, we went for a walk.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">22. She passed the test, ______ though she didn't study.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">23. The job pays well. ______, it is close to home. (In addition)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">24. He is smart. ______, he is very hardworking. (Also)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">25. ______ the bad weather, the flight took off. (Not Although)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">26. In ______ of the danger, he saved the cat.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">27. I was sick. ______, I stayed home. (Result)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">28. The road was closed ______ to an accident.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">29. We lost ______ of the rain. (Because __)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">30. He isn't lazy. On the ______, he works 60 hours a week.</div>
+
+                    <!-- Embedded Questions & Opinions (31-40) -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">31. Do you know where the bank ______?</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">32. Could you tell me what time it ______?</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">33. I wonder who that man ______.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">34. Do you know why she ______ crying?</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">35. Can you tell me how much this ______?</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">36. In my ______, this is the best option. (Experience)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">37. I like music. To be ______, I love jazz.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">38. ______ it is true that it's fast, it is dangerous.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">39. I am not ______ sure, but I think so.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">40. It ______ to be cold in winter here. (Usually is)</div>
+
+                    <!-- Causes & Summaries (41-50) -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">41. I missed the bus. ______, I was late. (Formal 'So')</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">42. She broke her leg. As a ______, she cannot play.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">43. The match was canceled due ______ the storm.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">44. We won despite ______ (have) fewer players.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">45. They didn't listen; ______, they failed. (As a result)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">46. To sum ______, the project is a success.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">47. In ______, we need to save money. (Summary)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">48. ______ all, we must look at the budget. (Number 1)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">49. ______, we must hire more staff. (Number 2)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">50. I am tired. ______, I will keep working. (However)</div>
+
+                    <!-- Conditionals (51-60) -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">51. If you freeze water, it ______ (turn) to ice. (Zero)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">52. If I had money, I ______ buy a car. (2nd)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">53. If she ______ (know), she would have helped. (3rd)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">54. If I were you, I ______ go to the doctor.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">55. We would have won if we ______ (play) better.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">56. If he didn't eat so much, he ______ not be sick now. (Mixed)</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">57. If I ______ (be) a bird, I would fly.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">58. I wouldn't ______ done that if I were you.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">59. If they had called, I would ______ answered.</div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">60. If you heat metal, it ______ (expand). (Zero)</div>
                 </div>
             </div>
 
-            <!-- MATCHING -->
-            <div id="tab-match" class="tab-content hidden">
-                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">🔗</span> Matching Pairs</h3>
-                <p class="text-stone-500 mb-6 italic">Draw a line mentally between the left and right columns.</p>
-                <div class="grid grid-cols-2 gap-4 text-lg">
-                    <div class="space-y-4">
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">1. Therefore</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">2. Due to</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">3. Despite</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">4. On the contrary</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">5. To sum up</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">6. If you heat ice</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">7. If I had a million dollars</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">8. If I had studied</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">9. What's worse</div>
-                        <div class="p-3 bg-stone-50 border border-stone-200 rounded-lg shadow-sm font-medium">10. I am willing to</div>
-                    </div>
-                    <div class="space-y-4">
-                        <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-lg shadow-sm text-indigo-900 font-medium">A. it melts. (Zero Cond.)</div>
-                        <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-lg shadow-sm text-indigo-900 font-medium">B. I would buy an island. (2nd Cond.)</div>
-                        <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-lg shadow-sm text-indigo-900 font-medium">C. I would have passed. (3rd Cond.)</div>
-                        <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-lg shadow-sm text-indigo-900 font-medium">D. As a result</div>
-                        <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-lg shadow-sm text-indigo-900 font-medium">E. Because of</div>
-                        <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-lg shadow-sm text-indigo-900 font-medium">F. In spite of</div>
-                        <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-lg shadow-sm text-indigo-900 font-medium">G. The exact opposite</div>
-                        <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-lg shadow-sm text-indigo-900 font-medium">H. In conclusion</div>
-                        <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-lg shadow-sm text-indigo-900 font-medium">I. Adding a second problem</div>
-                        <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-lg shadow-sm text-indigo-900 font-medium">J. Offer a compromise</div>
-                    </div>
+            <!-- 2. MATCHING (60) -->
+            <div id="tab-matching" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 border-b pb-2">2. Matching (60 Pairs)</h3>
+                <p class="text-stone-500 mb-4 text-sm">Match the word or clause on the left with the correct translation or continuation on the right.</p>
+                <div class="task-grid">
+                    <!-- 1-10: Relative Clauses -->
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>1. The man</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">A. where I live</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>2. The car</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">B. who called me</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>3. The city</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">C. which is fast</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>4. The girl</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">D. whose dog is lost</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>5. I bought a phone</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">E. that takes good photos</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>6. Who</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">F. Used for places</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>7. Which</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">G. Used for people</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>8. Where</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">H. Used for possession</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>9. Whose</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">I. Used for things</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>10. That</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">J. People or things (casual)</span></div>
+                    
+                    <!-- 11-20: PPC & Time -->
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>11. Since</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">K. 3 hours</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>12. For</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">L. 2015</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>13. I have been</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">M. working all day</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>14. She has been</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">N. sleeping since noon</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>15. Have you been</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">O. waiting long?</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>16. Since Monday</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">P. Point in time</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>17. For a week</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">Q. Length of time</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>18. Present Perfect Cont.</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">R. Ongoing action</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>19. Present Simple</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">S. Habit or fact</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>20. I am exhausted</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">T. Because I have been running</span></div>
+
+                    <!-- 21-30: Connectors -->
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>21. Although</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">U. Also / In addition</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>22. Furthermore</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">V. Even though / But</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>23. However</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">W. As a result</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>24. Therefore</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">X. On the other hand / But</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>25. Due to</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">Y. In spite of</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>26. Despite</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">Z. Because of</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>27. To sum up</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">AA. The exact opposite</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>28. On the contrary</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">BB. In conclusion</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>29. First of all</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">CC. Number two point</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>30. Secondly</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">DD. Number one point</span></div>
+
+                    <!-- 31-40: Embedded Qs & Opinions -->
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>31. Do you know</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">EE. what time it is?</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>32. Could you tell me</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">FF. where the bank is?</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>33. I wonder</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">GG. if he is coming.</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>34. Direct Question</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">HH. Verb after subject</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>35. Embedded Question</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">II. Verb before subject</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>36. In my experience</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">JJ. Clarifying</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>37. To be specific</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">KK. Based on my life</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>38. While it is true</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">LL. Usually happens</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>39. I am not entirely sure</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">MM. Conceding a point</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>40. It tends to</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">NN. Expressing doubt</span></div>
+
+                    <!-- 41-50: Causes & Effects -->
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>41. Consequently</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">OO. Because of</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>42. Because of</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">PP. As a result</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>43. In spite of</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">QQ. Despite</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>44. Despite</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">RR. Needs a noun/V-ing</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>45. Although</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">SS. Needs a full clause</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>46. The reason</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">TT. For this issue</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>47. I lost my job</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">UU. therefore I am broke</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>48. It was raining</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">VV. despite the rain</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>49. We went out</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">WW. consequently we stayed in</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>50. Overall</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">XX. To summarize</span></div>
+
+                    <!-- 51-60: Conditionals -->
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>51. Zero Conditional</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">YY. Real possibility</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>52. First Conditional</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">ZZ. Absolute fact</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>53. Second Conditional</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">AAA. Unreal past regret</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>54. Third Conditional</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">BBB. Unreal present dream</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>55. Mixed Conditional</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">CCC. Past cause, present effect</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>56. If you heat ice</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">DDD. I would buy a car</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>57. If it rains</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">EEE. it melts</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>58. If I had a million</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">FFF. I will stay home</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>59. If I had studied</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">GGG. I would not be tired now</span></div>
+                    <div class="task-item flex justify-between border-b py-1 text-sm"><span>60. If I had slept</span> <input type="text" class="ws-input w-8 text-center" placeholder="?"> <span class="w-32 text-right text-stone-600">HHH. I would have passed</span></div>
                 </div>
             </div>
 
-            <!-- MULTIPLE CHOICE -->
+            <!-- 3. MULTIPLE CHOICE (60) -->
             <div id="tab-mcq" class="tab-content hidden">
-                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">☑️</span> Multiple Choice</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">1. There ___ to be a misunderstanding.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" class="accent-indigo-600 w-4 h-4"> a. seems</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q1" class="accent-indigo-600 w-4 h-4"> b. is seem</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">2. How ___ we try updating the software?</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" class="accent-indigo-600 w-4 h-4"> a. about</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q2" class="accent-indigo-600 w-4 h-4"> b. why</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">3. We need to evacuate ___.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" class="accent-indigo-600 w-4 h-4"> a. immediately</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q3" class="accent-indigo-600 w-4 h-4"> b. immediate</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">4. First of all, the cost is high. ___, it is slow.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q4" class="accent-indigo-600 w-4 h-4"> a. Secondly</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q4" class="accent-indigo-600 w-4 h-4"> b. Finally</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">5. You mentioned it is cheap, but you failed to ___ the quality.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q5" class="accent-indigo-600 w-4 h-4"> a. consider</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q5" class="accent-indigo-600 w-4 h-4"> b. thought</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">6. Sorry to ___, but I have a question.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q6" class="accent-indigo-600 w-4 h-4"> a. interrupt</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q6" class="accent-indigo-600 w-4 h-4"> b. interjection</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">7. ___ on these facts, we must change.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q7" class="accent-indigo-600 w-4 h-4"> a. Based</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q7" class="accent-indigo-600 w-4 h-4"> b. Base</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">8. That is a ___ point, I concede.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q8" class="accent-indigo-600 w-4 h-4"> a. fair</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q8" class="accent-indigo-600 w-4 h-4"> b. fairy</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">9. The ___ of my presentation is to discuss the budget.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q9" class="accent-indigo-600 w-4 h-4"> a. purpose</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q9" class="accent-indigo-600 w-4 h-4"> b. propose</label>
-                        </div>
-                    </div>
-                    <div class="bg-stone-50 p-5 rounded-xl border border-stone-200">
-                        <p class="font-bold text-lg mb-3">10. Let's move ___ to the next slide.</p>
-                        <div class="space-y-2">
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q10" class="accent-indigo-600 w-4 h-4"> a. on</label>
-                            <label class="flex items-center gap-2 cursor-pointer"><input type="radio" name="q10" class="accent-indigo-600 w-4 h-4"> b. in</label>
-                        </div>
-                    </div>
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 border-b pb-2">3. Multiple Choice (60 Tasks)</h3>
+                <div class="task-grid">
+                    <!-- 1-10: Rel Clauses -->
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">1. The girl ___ is reading is my sister. <br><label><input type="radio" name="m1"> which</label> <label><input type="radio" name="m1"> who</label> <label><input type="radio" name="m1"> whose</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">2. The book ___ I bought is lost. <br><label><input type="radio" name="m2"> who</label> <label><input type="radio" name="m2"> which</label> <label><input type="radio" name="m2"> where</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">3. The man ___ dog is barking is angry. <br><label><input type="radio" name="m3"> who</label> <label><input type="radio" name="m3"> whose</label> <label><input type="radio" name="m3"> which</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">4. The city ___ I live is beautiful. <br><label><input type="radio" name="m4"> where</label> <label><input type="radio" name="m4"> which</label> <label><input type="radio" name="m4"> who</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">5. Is that the phone ___ is broken? <br><label><input type="radio" name="m5"> who</label> <label><input type="radio" name="m5"> that</label> <label><input type="radio" name="m5"> whose</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">6. I met a doctor ___ works here. <br><label><input type="radio" name="m6"> who</label> <label><input type="radio" name="m6"> which</label> <label><input type="radio" name="m6"> where</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">7. We went to a restaurant ___ serves pizza. <br><label><input type="radio" name="m7"> who</label> <label><input type="radio" name="m7"> which</label> <label><input type="radio" name="m7"> whose</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">8. I know the woman ___ car was stolen. <br><label><input type="radio" name="m8"> who</label> <label><input type="radio" name="m8"> whose</label> <label><input type="radio" name="m8"> that</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">9. The store ___ I work is nearby. <br><label><input type="radio" name="m9"> which</label> <label><input type="radio" name="m9"> where</label> <label><input type="radio" name="m9"> who</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">10. Give me the pen ___ is on the desk. <br><label><input type="radio" name="m10"> that</label> <label><input type="radio" name="m10"> who</label> <label><input type="radio" name="m10"> where</label></div>
+
+                    <!-- 11-20: PPC -->
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">11. I have ___ waiting for an hour. <br><label><input type="radio" name="m11"> be</label> <label><input type="radio" name="m11"> been</label> <label><input type="radio" name="m11"> being</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">12. She ___ been studying since 8 AM. <br><label><input type="radio" name="m12"> have</label> <label><input type="radio" name="m12"> has</label> <label><input type="radio" name="m12"> is</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">13. They have been playing ___ 3 hours. <br><label><input type="radio" name="m13"> since</label> <label><input type="radio" name="m13"> for</label> <label><input type="radio" name="m13"> in</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">14. We have been living here ___ 2010. <br><label><input type="radio" name="m14"> since</label> <label><input type="radio" name="m14"> for</label> <label><input type="radio" name="m14"> at</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">15. How long ___ you been reading? <br><label><input type="radio" name="m15"> has</label> <label><input type="radio" name="m15"> have</label> <label><input type="radio" name="m15"> are</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">16. I am wet because I ___ been running in the rain. <br><label><input type="radio" name="m16"> have</label> <label><input type="radio" name="m16"> has</label> <label><input type="radio" name="m16"> am</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">17. It has been ___ all day. <br><label><input type="radio" name="m17"> snow</label> <label><input type="radio" name="m17"> snowed</label> <label><input type="radio" name="m17"> snowing</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">18. He ___ not been working hard. <br><label><input type="radio" name="m18"> have</label> <label><input type="radio" name="m18"> has</label> <label><input type="radio" name="m18"> did</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">19. ___ you been waiting long? <br><label><input type="radio" name="m19"> Has</label> <label><input type="radio" name="m19"> Have</label> <label><input type="radio" name="m19"> Are</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">20. I have been working here ___ two months. <br><label><input type="radio" name="m20"> since</label> <label><input type="radio" name="m20"> for</label> <label><input type="radio" name="m20"> until</label></div>
+
+                    <!-- 21-30: Connectors -->
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">21. ___ it was cold, we went swimming. <br><label><input type="radio" name="m21"> Although</label> <label><input type="radio" name="m21"> Because</label> <label><input type="radio" name="m21"> Despite</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">22. ___ the cold, we went swimming. <br><label><input type="radio" name="m22"> Although</label> <label><input type="radio" name="m22"> Despite</label> <label><input type="radio" name="m22"> Due to</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">23. The movie is good. ___, the acting is great. <br><label><input type="radio" name="m23"> However</label> <label><input type="radio" name="m23"> Furthermore</label> <label><input type="radio" name="m23"> Despite</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">24. The movie is good. ___, it is too long. <br><label><input type="radio" name="m24"> However</label> <label><input type="radio" name="m24"> Furthermore</label> <label><input type="radio" name="m24"> Therefore</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">25. It rained heavily. ___, the game was cancelled. <br><label><input type="radio" name="m25"> Therefore</label> <label><input type="radio" name="m25"> However</label> <label><input type="radio" name="m25"> Although</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">26. The game was cancelled ___ the rain. <br><label><input type="radio" name="m26"> due to</label> <label><input type="radio" name="m26"> because</label> <label><input type="radio" name="m26"> therefore</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">27. ___ of the rain, we played soccer. <br><label><input type="radio" name="m27"> In spite</label> <label><input type="radio" name="m27"> Despite</label> <label><input type="radio" name="m27"> Due to</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">28. English isn't boring. On the ___, it's fun! <br><label><input type="radio" name="m28"> contrary</label> <label><input type="radio" name="m28"> however</label> <label><input type="radio" name="m28"> contrast</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">29. To sum ___, we need more time. <br><label><input type="radio" name="m29"> up</label> <label><input type="radio" name="m29"> out</label> <label><input type="radio" name="m29"> in</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">30. ___ conclusion, the project failed. <br><label><input type="radio" name="m30"> In</label> <label><input type="radio" name="m30"> At</label> <label><input type="radio" name="m30"> To</label></div>
+
+                    <!-- 31-40: Embedded Qs -->
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">31. Do you know where ___? <br><label><input type="radio" name="m31"> is the bank</label> <label><input type="radio" name="m31"> the bank is</label> <label><input type="radio" name="m31"> does the bank</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">32. Could you tell me what time ___? <br><label><input type="radio" name="m32"> is it</label> <label><input type="radio" name="m32"> it is</label> <label><input type="radio" name="m32"> does it</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">33. I wonder who ___ that man. <br><label><input type="radio" name="m33"> is</label> <label><input type="radio" name="m33"> are</label> <label><input type="radio" name="m33"> am</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">34. Do you know why ___ crying? <br><label><input type="radio" name="m34"> is she</label> <label><input type="radio" name="m34"> she is</label> <label><input type="radio" name="m34"> does she</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">35. Can you tell me how much ___? <br><label><input type="radio" name="m35"> this costs</label> <label><input type="radio" name="m35"> does this cost</label> <label><input type="radio" name="m35"> is this cost</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">36. In my ___, this is hard. <br><label><input type="radio" name="m36"> experience</label> <label><input type="radio" name="m36"> mind</label> <label><input type="radio" name="m36"> think</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">37. To be ___, I only like red apples. <br><label><input type="radio" name="m37"> specific</label> <label><input type="radio" name="m37"> exactly</label> <label><input type="radio" name="m37"> special</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">38. ___ it is true it is fast, it is dangerous. <br><label><input type="radio" name="m38"> While</label> <label><input type="radio" name="m38"> When</label> <label><input type="radio" name="m38"> During</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">39. I am not ___ sure, but maybe. <br><label><input type="radio" name="m39"> entirely</label> <label><input type="radio" name="m39"> fully</label> <label><input type="radio" name="m39"> absolutely</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">40. The weather ___ to be cold in winter. <br><label><input type="radio" name="m40"> tends</label> <label><input type="radio" name="m40"> usually</label> <label><input type="radio" name="m40"> likely</label></div>
+
+                    <!-- 41-60: Conditionals -->
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">41. If you freeze water, it ___. <br><label><input type="radio" name="m41"> becomes ice</label> <label><input type="radio" name="m41"> will become ice</label> <label><input type="radio" name="m41"> would become ice</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">42. If it rains tomorrow, I ___ home. <br><label><input type="radio" name="m42"> stay</label> <label><input type="radio" name="m42"> will stay</label> <label><input type="radio" name="m42"> would stay</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">43. If I had a million dollars, I ___ travel. <br><label><input type="radio" name="m43"> will</label> <label><input type="radio" name="m43"> would</label> <label><input type="radio" name="m43"> would have</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">44. If I ___ you, I would go. <br><label><input type="radio" name="m44"> was</label> <label><input type="radio" name="m44"> were</label> <label><input type="radio" name="m44"> am</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">45. If I had studied, I ___ passed. <br><label><input type="radio" name="m45"> would</label> <label><input type="radio" name="m45"> would have</label> <label><input type="radio" name="m45"> will have</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">46. If she ___ known, she would have helped. <br><label><input type="radio" name="m46"> had</label> <label><input type="radio" name="m46"> has</label> <label><input type="radio" name="m46"> have</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">47. If I hadn't eaten so much, I wouldn't ___ sick now. <br><label><input type="radio" name="m47"> be</label> <label><input type="radio" name="m47"> have been</label> <label><input type="radio" name="m47"> am</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">48. I would ___ bought it if it was cheaper. <br><label><input type="radio" name="m48"> have</label> <label><input type="radio" name="m48"> of</label> <label><input type="radio" name="m48"> had</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">49. If you mix red and blue, you ___ purple. <br><label><input type="radio" name="m49"> get</label> <label><input type="radio" name="m49"> will get</label> <label><input type="radio" name="m49"> would get</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">50. If I ___ a bird, I would fly. <br><label><input type="radio" name="m50"> were</label> <label><input type="radio" name="m50"> was</label> <label><input type="radio" name="m50"> am</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">51. If he ___ fast, he will win. <br><label><input type="radio" name="m51"> runs</label> <label><input type="radio" name="m51"> ran</label> <label><input type="radio" name="m51"> run</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">52. If we had left early, we wouldn't ___ missed the bus. <br><label><input type="radio" name="m52"> have</label> <label><input type="radio" name="m52"> had</label> <label><input type="radio" name="m52"> be</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">53. ___ I you, I would quit. <br><label><input type="radio" name="m53"> Were</label> <label><input type="radio" name="m53"> If</label> <label><input type="radio" name="m53"> Was</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">54. You wouldn't be tired now if you ___ slept. <br><label><input type="radio" name="m54"> had</label> <label><input type="radio" name="m54"> have</label> <label><input type="radio" name="m54"> did</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">55. If she ___, I will tell her. <br><label><input type="radio" name="m55"> calls</label> <label><input type="radio" name="m55"> called</label> <label><input type="radio" name="m55"> call</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">56. If he called, I ___ answer. <br><label><input type="radio" name="m56"> would</label> <label><input type="radio" name="m56"> will</label> <label><input type="radio" name="m56"> do</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">57. I ___ have helped if I had known. <br><label><input type="radio" name="m57"> would</label> <label><input type="radio" name="m57"> will</label> <label><input type="radio" name="m57"> could</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">58. If you ___ metal, it gets hot. <br><label><input type="radio" name="m58"> touch</label> <label><input type="radio" name="m58"> will touch</label> <label><input type="radio" name="m58"> touched</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">59. If they hadn't argued, they would still ___ married. <br><label><input type="radio" name="m59"> be</label> <label><input type="radio" name="m59"> been</label> <label><input type="radio" name="m59"> are</label></div>
+                    <div class="task-item border p-3 rounded-lg bg-stone-50 text-sm">60. I would be rich if I ___ bought Bitcoin. <br><label><input type="radio" name="m60"> had</label> <label><input type="radio" name="m60"> have</label> <label><input type="radio" name="m60"> did</label></div>
                 </div>
             </div>
 
-            <!-- SENTENCE BUILDING -->
-            <div id="tab-build" class="tab-content hidden">
-                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">🧩</span> Sentence Building</h3>
-                <p class="text-stone-500 mb-6 italic">Unscramble the words to make correct sentences.</p>
-                <div class="space-y-6">
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( see / As / graph / on / this / can / you )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( question / a / That / great / is )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( make / sense / that / Does )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( who / doctor / is / The / a / lives / next / door / man )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( raining / Although / was / went / park / it / we / to / the )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( know / station / Do / you / where / the / is )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( experience / my / In / better / working / home / is / from )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( specific / be / To / love / I / pizza / Italian )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( true / While / it / that / fast / is / are / cars )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Type sentence here...">
-                    </div>
-                    <div>
-                        <div class="text-stone-600 font-mono bg-stone-100 p-3 rounded-lg mb-2">( sure / entirely / not / I / am )</div>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Type sentence here...">
-                    </div>
+            <!-- 4. SENTENCE BUILDING (60) -->
+            <div id="tab-building" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 border-b pb-2">4. Sentence Building (60 Tasks)</h3>
+                <p class="text-stone-500 mb-4 text-sm">Rearrange the words to make a correct sentence.</p>
+                <div class="task-grid">
+                    <!-- Relative Clauses -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">1. (is / who / The / man / called / my / brother) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">2. (car / I / The / bought / fast / is / which) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">3. (teacher / is / She / helps / who / the / me) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">4. (pen / lost / the / I / that / gave / you / me) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">5. (computer / Is / the / broken / which / is / this) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">6. (dog / The / whose / is / woman / lost / crying / is) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">7. (park / the / visited / We / where / met / we) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">8. (guy / know / I / a / who / fix / can / it) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">9. (house / That / the / where / is / grew / up / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">10. (phone / need / a / I / which / camera / a / good / has) <input type="text" class="ws-input w-full mt-1"></div>
+                    
+                    <!-- Present Perfect Continuous -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">11. (studying / been / have / three / I / for / hours) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">12. (been / working / She / has / here / 2020 / since) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">13. (waiting / have / They / been / long / for / a / time) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">14. (living / We / been / have / here / January / since) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">15. (long / How / you / been / have / reading) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">16. (not / He / been / practicing / has / enough) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">17. (tired / I / because / am / running / been / have / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">18. (you / Have / working / been / the / garden / in) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">19. (raining / has / been / It / day / all) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">20. (trying / been / to / fix / We / have / it) <input type="text" class="ws-input w-full mt-1"></div>
+
+                    <!-- Connectors -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">21. (raining / Although / was / it / out / went / we) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">22. (passed / She / test / the / even / she / didn't / though / study) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">23. (well / pays / job / The / Furthermore / flexible / it / is) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">24. (smart / is / He / Moreover / hardworking / is / he) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">25. (weather / Despite / bad / the / took / flight / the / off) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">26. (spite / of / In / danger / the / cat / the / saved / he) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">27. (sick / was / I / Therefore / home / stayed / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">28. (road / The / closed / was / due / an / accident / to) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">29. (lost / We / because / rain / the / of) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">30. (lazy / isn't / He / contrary / the / On / hard / works / he) <input type="text" class="ws-input w-full mt-1"></div>
+
+                    <!-- Embedded Qs & Opinions -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">31. (where / know / bank / the / you / Do / is) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">32. (tell / Could / you / me / what / time / is / it) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">33. (wonder / I / who / man / that / is) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">34. (why / know / Do / you / crying / she / is) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">35. (how / tell / Can / you / me / much / costs / this) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">36. (experience / In / my / option / best / the / is / this) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">37. (specific / To / be / jazz / love / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">38. (true / While / is / it / fast / it's / dangerous / that / it / is) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">39. (entirely / am / not / I / sure / think / I / but / so) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">40. (tends / It / to / cold / be / winter / in) <input type="text" class="ws-input w-full mt-1"></div>
+
+                    <!-- Causes & Conditionals -->
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">41. (late / Consequently / was / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">42. (result / a / As / play / she / cannot) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">43. (canceled / The / match / due / was / storm / to / the) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">44. (won / We / despite / fewer / players / having) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">45. (result / a / As / failed / they) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">46. (up / sum / To / success / a / is / project / the) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">47. (conclusion / In / money / save / to / need / we) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">48. (water / freeze / If / you / turns / it / ice / to) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">49. (money / had / I / If / buy / car / a / would / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">50. (known / she / had / If / helped / have / would / she) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">51. (were / If / you / I / go / I / would / doctor / the / to) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">52. (won / have / would / We / played / better / we / if) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">53. (sick / not / be / would / he / now / eaten / hadn't / he / If / so / much) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">54. (were / I / bird / a / If / fly / would / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">55. (done / that / wouldn't / I / have / were / I / you / if) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">56. (answered / have / would / I / called / had / they / if) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">57. (expands / heat / metal / you / If / it) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">58. (rains / it / tomorrow / If / home / stay / will / I) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">59. (pass / will / study / hard / you / If / you) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">60. (what / matter / no / it / do / will / I) <input type="text" class="ws-input w-full mt-1"></div>
                 </div>
             </div>
 
-            <!-- SHORT ANSWER -->
+            <!-- 5. SHORT ANSWER (60) -->
             <div id="tab-short" class="tab-content hidden">
-                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">📝</span> Short Answer</h3>
-                <div class="space-y-6">
-                    <div>
-                        <p class="font-bold text-lg mb-2">1. Connect with "who": I have a friend. He is a doctor.</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">2. Make an embedded question: Where is the bank?</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">3. Rewrite with "Due to": We stayed home because it rained.</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">4. Write a 3rd conditional sentence:</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">5. How do you softly introduce a bad idea (Devil's Advocate)?</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">6. Replace "so" with a formal connector.</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">7. Write a sentence using "Although".</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">8. How do you buy time during a Q&A?</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">9. Suggest an idea politely (How about...).</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500">
-                    </div>
-                    <div>
-                        <p class="font-bold text-lg mb-2">10. Rebut an argument (You mentioned... but...).</p>
-                        <input type="text" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-3 outline-none focus:ring-2 focus:ring-indigo-500">
-                    </div>
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 border-b pb-2">5. Short Answer (60 Tasks)</h3>
+                <div class="task-grid">
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">1. Combine with 'who': I met a man. He is tall. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">2. Combine with 'which': I bought a car. It is red. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">3. Combine with 'where': That is the city. I was born there. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">4. Make PPC: I / study / for 2 hours. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">5. Make PPC: She / work / since 9 AM. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">6. Change to embedded: Where is he? -> Do you know <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">7. Change to embedded: What time is it? -> Could you tell me <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">8. Rewrite with 'Although': It was cold, but we swam. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">9. Add formal 'and': It's cheap. ______, it's fast. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">10. Add formal 'but': I like it. ______, it is expensive. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">11. Rewrite with 'Due to': Because of the rain, we stopped. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">12. Rewrite with 'Despite': Although it was hard, he won. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">13. State a consequence: I woke up late. Therefore, <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">14. Summarize formally: ______, we need to change our plan. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">15. Zero Cond: If you touch fire, you (burn) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">16. 1st Cond: If it rains tomorrow, I (stay) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">17. 2nd Cond: If I (have) a million dollars, I would travel. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">18. 3rd Cond: If I had studied, I (pass). <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">19. Advice: If I (be) you, I would rest. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">20. Mixed Cond: If I hadn't stayed up late, I (be) not tired now. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">21. What does 'On the contrary' mean? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">22. What does 'In spite of' mean? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">23. Frame an opinion: In my ______, <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">24. Narrow an opinion: I like sports. To be ______, tennis. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">25. Acknowledge opponent: ______ it is true that it's fast... <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">26. Express doubt: I am not ______ sure... <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">27. Express tendency: It ______ to be cold here. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">28. What is the difference between 'since' and 'for'? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">29. Fix this: I have been knowing him for 2 years. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">30. Fix this: Despite of the rain, we played. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">31. Combine with 'whose': The girl is crying. Her dog is lost. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">32. Change to embedded: Why is he late? -> I wonder <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">33. Rewrite with 'Because of': Due to the traffic, I was late. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">34. 3rd Cond: If she hadn't missed the bus, she (not/be) late. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">35. Make a suggestion: How ______ we go to the park? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">36. Make a suggestion: Why ______ we order pizza? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">37. Add a second point: First of all, it's cheap. ______, it's fast. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">38. Interrupt politely: ______ to interrupt, but... <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">39. Conclude based on facts: ______ on this data, we must act. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">40. Concede a point: That is a ______ point. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">41. Open a presentation: The ______ of my presentation is... <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">42. Transition topic: Let's move ______ to the next point. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">43. Point to a chart: As you can ______ on this graph... <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">44. Buy time in Q&A: That is a great ______. Let me think. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">45. Check understanding: Does that make ______? <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">46. 2nd Cond: If I (can) fly, I would go everywhere. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">47. 3rd Cond: If we had won, we (celebrate). <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">48. Mixed Cond: If I had brought an umbrella, I (not/be) wet now. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">49. Rewrite with 'Furthermore': It's big. It's also heavy. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">50. Rewrite with 'Consequently': I failed. So I must retake it. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">51. Change to embedded: Who is the manager? -> Could you tell me <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">52. Change to embedded: How much does it cost? -> Do you know <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">53. Frame an opinion: Speaking for ______, I think it's bad. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">54. Narrow an opinion: I like cars. In ______, I like Ferraris. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">55. Acknowledge opponent: I understand your ______, but... <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">56. Express doubt: I ______, we could try it. (Guess) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">57. Express tendency: People ______ speaking, like good food. (Generally) <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">58. Fix this: The dog who is brown is mine. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">59. Fix this: I have been living here since 5 years. <input type="text" class="ws-input w-full mt-1"></div>
+                    <div class="task-item p-2 border rounded bg-stone-50 text-sm">60. Fix this: Due to it was raining, I stayed home. <input type="text" class="ws-input w-full mt-1"></div>
                 </div>
             </div>
 
-            <!-- SPEAKING TASKS -->
-            <div id="tab-speak" class="tab-content hidden">
-                <h3 class="text-2xl font-bold text-indigo-800 mb-6 flex items-center gap-3"><span class="text-3xl">🗣️</span> Speaking Tasks</h3>
-                <p class="text-stone-500 mb-6 italic">Practice these aloud with a partner or teacher.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-indigo-500">01</span>
-                        <p class="text-indigo-900 font-medium pt-1">Describe a coworker using relative clauses (who/which).</p>
-                    </div>
-                    <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-indigo-500">02</span>
-                        <p class="text-indigo-900 font-medium pt-1">Give your opinion on a topic starting with "In my experience...".</p>
-                    </div>
-                    <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-indigo-500">03</span>
-                        <p class="text-indigo-900 font-medium pt-1">Acknowledge an opponent's point ("While it is true that...").</p>
-                    </div>
-                    <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-indigo-500">04</span>
-                        <p class="text-indigo-900 font-medium pt-1">Hedge a statement using "tends to".</p>
-                    </div>
-                    <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-indigo-500">05</span>
-                        <p class="text-indigo-900 font-medium pt-1">Explain a cause and effect using "Therefore".</p>
-                    </div>
-                    <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-indigo-500">06</span>
-                        <p class="text-indigo-900 font-medium pt-1">Explain an unexpected result using "Despite".</p>
-                    </div>
-                    <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-indigo-500">07</span>
-                        <p class="text-indigo-900 font-medium pt-1">Use a 2nd conditional to give advice (If I were you...).</p>
-                    </div>
-                    <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-indigo-500">08</span>
-                        <p class="text-indigo-900 font-medium pt-1">Negotiate a compromise ("I am willing to...").</p>
-                    </div>
-                    <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-indigo-500">09</span>
-                        <p class="text-indigo-900 font-medium pt-1">Interrupt a meeting politely.</p>
-                    </div>
-                    <div class="bg-indigo-50 p-5 rounded-xl border border-indigo-200 shadow-sm flex gap-4 items-start">
-                        <span class="text-2xl font-bold text-indigo-500">10</span>
-                        <p class="text-indigo-900 font-medium pt-1">Open a presentation and introduce a chart.</p>
-                    </div>
+            <!-- 6. SPEAKING TASKS (60) -->
+            <div id="tab-speaking" class="tab-content hidden">
+                <h3 class="text-2xl font-bold text-indigo-800 mb-6 border-b pb-2">6. Speaking Tasks (60 Tasks)</h3>
+                <p class="text-stone-500 mb-4 text-sm">Read the sentence aloud to your teacher with the correct intonation and pauses.</p>
+                <div class="task-grid">
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">1. Read: "The man who called you is my brother."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">2. Read: "The car which I bought is very fast."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">3. Read: "I have been studying English for three hours."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">4. Read: "She has been working here since 2020."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">5. Read: "Although it was raining, we went to the park."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">6. Read: "The job pays well. Furthermore, it is flexible."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">7. Read: "He is smart. Moreover, he is hardworking."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">8. Read: "Do you know where the bank is?"</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">9. Read: "Could you tell me what time it is?"</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">10. Read: "I was sick. Therefore, I stayed home."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">11. Read: "The road was closed due to an accident."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">12. Read: "Despite the danger, he saved the cat."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">13. Read: "He isn't lazy. On the contrary, he works hard."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">14. Read: "To sum up, the project is a success."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">15. Read: "If you heat ice, it melts."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">16. Read: "If I had a million dollars, I would travel."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">17. Read: "If she had known, she would have helped."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">18. Read: "If I were you, I would go to the doctor."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">19. Read: "If he didn't eat so much, he would not be sick now."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">20. Read: "In my experience, working from home is better."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">21. Read: "I like sports. To be specific, I like tennis."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">22. Read: "While it is true that cars are fast, I believe trains are safer."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">23. Read: "I am not entirely sure, but I suppose we could try."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">24. Read: "It tends to be very cold in January."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">25. Read: "First of all, it is too expensive."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">26. Read: "Secondly, we don't have enough time."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">27. Read: "You mentioned it is cheap, but you failed to consider quality."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">28. Read: "Sorry to interrupt, but I have a question."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">29. Read: "Based on these facts, it is clear we must act."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">30. Read: "That is a fair point, and I concede you are right."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">31. Read: "The purpose of my presentation is to discuss our strategy."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">32. Read: "Now that we have covered the budget, let's move on."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">33. Read: "As you can see on this graph, sales increased."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">34. Read: "That is a great question. Let me think about that."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">35. Read: "Does that make sense? Are there any questions so far?"</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">36. Read: "The woman whose bag was stolen called the police."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">37. Read: "That is the hospital where I was born."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">38. Read: "I wonder why he didn't come to the party."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">39. Read: "Even though it was late, we kept working."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">40. Read: "The food was terrible. Furthermore, it was expensive."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">41. Read: "The team played well. Consequently, they won."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">42. Read: "The flight was delayed because of the heavy snow."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">43. Read: "In spite of the cost, we bought the tickets."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">44. Read: "I don't think it's a bad idea. On the contrary, it's brilliant."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">45. Read: "In conclusion, we need to restructure the department."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">46. Read: "If you mix blue and yellow, you get green."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">47. Read: "If I spoke French, I would live in Paris."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">48. Read: "If we had left earlier, we wouldn't have missed the train."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">49. Read: "If I hadn't lost my keys, I wouldn't be locked out now."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">50. Read: "Speaking for myself, I find this topic fascinating."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">51. Read: "I enjoy classical music. In particular, I love Mozart."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">52. Read: "I understand your concern, but we have no choice."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">53. Read: "As far as I know, the meeting is still on."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">54. Read: "Generally speaking, people prefer sunny weather."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">55. Read: "How about we schedule the meeting for Tuesday?"</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">56. Read: "Why don't we try a different approach?"</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">57. Read: "If I could just jump in here, I have an idea."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">58. Read: "Let me double-check the numbers and get back to you."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">59. Read: "The only logical conclusion is to proceed with the launch."</div>
+                    <div class="task-item p-3 border rounded-lg bg-indigo-50 text-indigo-900 font-medium text-sm">60. Read: "I am willing to concede that the timeline was too short."</div>
                 </div>
             </div>
 
         </div>
     </main>
-
-    <footer class="w-full text-center py-8 bg-transparent text-stone-500 relative z-10 mt-auto border-t border-stone-200/50">
-        <p class="text-sm font-medium">&copy; 2026 Tagasa English Course. Cultivating global communicators.</p>
-    </footer>
 
     <script>
         function showTab(tabName) {
@@ -476,11 +673,11 @@
                 el.classList.add('hidden');
             });
             document.querySelectorAll('button[id^="btn-"]').forEach(btn => {
-                btn.className = 'px-6 py-3 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors';
+                btn.className = 'px-4 py-2 font-semibold text-stone-500 hover:text-stone-800 border-b-2 border-transparent transition-colors';
             });
             document.getElementById('tab-' + tabName).classList.remove('hidden');
             document.getElementById('tab-' + tabName).classList.add('block');
-            document.getElementById('btn-' + tabName).className = 'px-6 py-3 font-bold text-indigo-700 border-b-2 border-indigo-600';
+            document.getElementById('btn-' + tabName).className = 'px-4 py-2 font-bold text-indigo-700 border-b-2 border-indigo-600';
         }
     </script>
 </body>
