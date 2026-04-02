@@ -22,7 +22,6 @@
 <body class="antialiased overflow-x-hidden">
 
     <div id="level6-view" class="flex flex-col min-h-screen relative bg-elegant-gradient w-full">
-        <!-- Decorative Fuchsia Glow -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-fuchsia-200/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
         <nav class="w-full z-50 sticky top-0 bg-fafaf9/80 backdrop-blur-md border-b border-stone-200/50">
@@ -157,7 +156,7 @@
                                 <div id="tab-worksheet" class="tab-content hidden">
                                     <h4 class="text-lg font-bold text-stone-800 mb-3 flex items-center gap-2"><span>📄</span> Worksheet Details</h4>
                                     <p class="text-sm text-stone-500 mb-4">Specific questions targeted to this session's grammar and vocabulary.</p>
-                                    <ul id="content-worksheet" class="space-y-2 bg-stone-50 p-5 rounded-lg border border-stone-200 mb-6"></ul>
+                                    <div id="content-worksheet"></div>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +184,7 @@
                         activities: "The Master Orator: Students must stand and deliver a 1-minute persuasive speech regarding a workplace policy, utilizing 'Under no circumstances' and 'Not only' to command attention.",
                         assessment: "Inverts the auxiliary verb flawlessly (Not only *did we* win, NOT Not only *we won*).",
                         mistake: "Student: 'Not only we lost money, but we lost clients.' Fix: 'Treat it like a question! Not only DID we lose money...'",
-                        worksheet: ["(Fill): Not only ______ (do) we offer a competitive salary, but we also provide benefits.", "(Match): Under no circumstances -> Absolutely never", "(MCQ): Never before ___ such a devastating financial crisis. (a. have we faced b. we have faced c. did we faced)", "(Build): (only / late / was / Not / he / rude / also / he / was / but) -> ______", "(Short): Rewrite using 'Rarely': I rarely see such dedication. -> ______", "(Write): Draft a formal warning email using 'Under no circumstances'.", "(Speak): Deliver an emphatic statement about your company's success using inversion."]
+                        worksheet: ["(Fill): Not only ______ (do) we offer a competitive salary, but we also provide benefits.", "(Match): Under no circumstances -> Absolutely never", "(MCQ): Never before ___ such a devastating financial crisis. (a. have we faced b. we have faced c. did we faced)", "(Build): (only / late / was / Not / he / rude / also / he / was / but) -> ______", "(Short): Rewrite using 'Rarely': I rarely see such dedication. -> ______", "(Write): Draft a formal warning email using 'Under no circumstances'.", "(Speak): Deliver an emphatic statement about your company's success using inversion.", "(Reading): Students read an executive summary and identify the use of negative inversion for emphasis."]
                     },
                     {
                         title: "Session 2: Conditional Inversion",
@@ -197,7 +196,7 @@
                         activities: "The Diplomatic Envoy: Students write and read formal declarations responding to international or corporate crises. 'Had the committee reviewed the document, this error would have been prevented.'",
                         assessment: "Maintains the correct tense sequence in the main clause after an inverted conditional.",
                         mistake: "Student: 'Had I known, I will change it.' Fix: 'Tense collapse! Had I known = 3rd conditional past. I WOULD HAVE changed it.'",
-                        worksheet: ["(Fill): ______ you require additional data, please notify us immediately.", "(Match): Had we anticipated -> If we had known", "(MCQ): ___ to resign, the company would collapse. (a. Were he b. If he was c. Had he)", "(Build): (known / I / Had / truth / the / spoken / would / have / I / up) -> ______", "(Short): Rewrite dropping 'If': 'If you have questions, ask.' -> ______", "(Write): Write a highly formal email anticipating a problem.", "(Speak): Act as a diplomat addressing a past mistake."]
+                        worksheet: ["(Fill): ______ you require additional data, please notify us immediately.", "(Match): Had we anticipated -> If we had known", "(MCQ): ___ to resign, the company would collapse. (a. Were he b. If he was c. Had he)", "(Build): (known / I / Had / truth / the / spoken / would / have / I / up) -> ______", "(Short): Rewrite dropping 'If': 'If you have questions, ask.' -> ______", "(Write): Write a highly formal email anticipating a problem.", "(Speak): Act as a diplomat addressing a past mistake.", "(Reading): Students read formal diplomatic correspondence and extract the inverted conditional threats."]
                     },
                     {
                         title: "Session 3: It-Cleft Sentences for Focus",
@@ -209,7 +208,7 @@
                         activities: "The Blame Game: A project failed. The teacher blames a department: 'The IT team ruined this in March.' Students must aggressively correct the teacher using clefts: 'It wasn't IT that ruined it, it was Sales! And it wasn't in March, it was in April that it happened!'",
                         assessment: "Uses the correct relative pronoun (who/that) connecting the emphasized subject to the action.",
                         mistake: "Student: 'It was John did it.' Fix: 'Missing the link! It was John WHO did it.'",
-                        worksheet: ["(Fill): It was the CEO ______ made the final decision.", "(Match): It-cleft -> Shifting focus to a specific detail", "(MCQ): It isn't the cost that worries me, ___ the timeline. (a. but b. however c. it is)", "(Build): (that / error / caused / software / the / the / was / It) -> ______", "(Short): Emphasize the TIME: 'We met in London in 2015.' -> ______", "(Write): Write 3 sentences correcting misconceptions about your country using It-clefts.", "(Speak): Play the Blame Game."]
+                        worksheet: ["(Fill): It was the CEO ______ made the final decision.", "(Match): It-cleft -> Shifting focus to a specific detail", "(MCQ): It isn't the cost that worries me, ___ the timeline. (a. but b. however c. it is)", "(Build): (that / error / caused / software / the / the / was / It) -> ______", "(Short): Emphasize the TIME: 'We met in London in 2015.' -> ______", "(Write): Write 3 sentences correcting misconceptions about your country using It-clefts.", "(Speak): Play the Blame Game.", "(Reading): Students read a critical review and analyze how It-clefts shift focus to specific flaws."]
                     },
                     {
                         title: "Session 4: What-Cleft Sentences for Emotion",
@@ -221,7 +220,7 @@
                         activities: "The passionate Keynote: Students must deliver a 1-minute persuasive speech regarding a global issue, utilizing at least three 'What... is...' structures to emphasize their passion ('What we must do is... What concerns me is...').",
                         assessment: "Maintains singular/plural agreement between the 'What' clause and the verb 'is/are'.",
                         mistake: "Student: 'What I want is go home.' Fix: 'Keep the infinitive to balance the grammar! What I want is TO go home.'",
-                        worksheet: ["(Fill): What concerns me most ______ the rising inflation rate.", "(Match): What I appreciate -> Expressing gratitude", "(MCQ): What we need to do ___ restructure the department. (a. is b. are c. does)", "(Build): (most / transparency / me / What / is / annoys / lack / the / of) -> ______", "(Short): Emphasize your feeling: 'I love the culture here.' -> ______", "(Write): Draft a passionate plea to a boss regarding workplace conditions.", "(Speak): Deliver a passionate Keynote utilizing What-clefts."]
+                        worksheet: ["(Fill): What concerns me most ______ the rising inflation rate.", "(Match): What I appreciate -> Expressing gratitude", "(MCQ): What we need to do ___ restructure the department. (a. is b. are c. does)", "(Build): (most / transparency / me / What / is / annoys / lack / the / of) -> ______", "(Short): Emphasize your feeling: 'I love the culture here.' -> ______", "(Write): Draft a passionate plea to a boss regarding workplace conditions.", "(Speak): Deliver a passionate Keynote utilizing What-clefts.", "(Reading): Students read a passionate editorial and highlight What-clefts used for emotional buildup."]
                     },
                     {
                         title: "Session 5: Fronting for Dramatic Effect",
@@ -233,7 +232,7 @@
                         activities: "The Bestselling Author: Give students a dull, factual recounting of an event (e.g., A bank robbery). They must rewrite and narrate it as a thriller using fronting. 'Into the bank rushed the thieves...'",
                         assessment: "Correctly inverts the verb and subject after fronting a preposition of place/movement.",
                         mistake: "Student: 'Into the room he ran.' Fix: 'If it's a pronoun, don't invert. Into the room HE ran. If it's a noun, invert! Into the room ran THE DOG.'",
-                        worksheet: ["(Fill): Out of the building ______ (run) the terrified employees.", "(Match): Fronting -> Placing descriptive elements first", "(MCQ): High on the hill ___ an old castle. (a. sat b. it sat c. sitting)", "(Build): (the / plummeted / Down / value / currency / of / the) -> ______", "(Short): Make dramatic: 'The car crashed into the wall.' -> ______", "(Write): Write a highly descriptive opening paragraph to a thriller story.", "(Speak): Perform as the Bestselling Author."]
+                        worksheet: ["(Fill): Out of the building ______ (run) the terrified employees.", "(Match): Fronting -> Placing descriptive elements first", "(MCQ): High on the hill ___ an old castle. (a. sat b. it sat c. sitting)", "(Build): (the / plummeted / Down / value / currency / of / the) -> ______", "(Short): Make dramatic: 'The car crashed into the wall.' -> ______", "(Write): Write a highly descriptive opening paragraph to a thriller story.", "(Speak): Perform as the Bestselling Author.", "(Reading): Students read a descriptive literary passage and observe how fronting creates dramatic tension."]
                     },
                     {
                         title: "Session 6: Phase 1 Mastery (The Executive Briefing)",
@@ -245,7 +244,7 @@
                         activities: "The Boardroom Crisis: Students receive a dossier on a failing company. They must stand and deliver a 3-minute briefing analyzing the failure and proposing a solution, ticking off advanced structures as they go.",
                         assessment: "Maintains natural intonation and pacing despite the heavy density of complex grammar.",
                         mistake: "Sounding robotic due to over-concentration on grammar. Fix: Coach them on 'chunking'—pausing naturally at the commas and emphasizing the key focus words in the cleft sentences.",
-                        worksheet: ["(Fill): (Comprehensive Phase 1 Grammar Review)", "(Match): Identify the rhetorical purpose of each structure.", "(MCQ): Select the grammatically perfect executive sentence.", "(Build): Unscramble a 25-word inverted conditional sentence.", "(Short): Draft the opening to your Executive Briefing.", "(Write): Write a full page memo summarizing a corporate crisis.", "(Speak): Deliver the Boardroom Crisis briefing."]
+                        worksheet: ["(Fill): (Comprehensive Phase 1 Grammar Review)", "(Match): Identify the rhetorical purpose of each structure.", "(MCQ): Select the grammatically perfect executive sentence.", "(Build): Unscramble a 25-word inverted conditional sentence.", "(Short): Draft the opening to your Executive Briefing.", "(Write): Write a full page memo summarizing a corporate crisis.", "(Speak): Deliver the Boardroom Crisis briefing.", "(Reading): Students read a transcript of a global keynote speech tracking all advanced sentence structures."]
                     }
                 ]
             },
@@ -262,7 +261,7 @@
                         activities: "The Scientist's Report: Give students bizarre phenomena (e.g., 'Crop circles'). They must present theories using only distanced language: 'Evidence suggests that weather patterns may be responsible...'",
                         assessment: "Avoids using 'I' when making analytical claims.",
                         mistake: "Student: 'I seem that it is good.' Fix: 'IT seems that. You are not seeming, the situation is seeming!'",
-                        worksheet: ["(Fill): It ______ to be the case that the software is outdated.", "(Match): Evidence suggests -> The data points to", "(MCQ): ___ that the market will recover by Q3. (a. It seems b. I seem c. Seemingly)", "(Build): (stifling / appears / policy / the / be / to / innovation / It / that) -> ______", "(Short): Distance this claim: 'I think video games make kids violent.' -> ______", "(Write): Write a short objective report on a recent news event.", "(Speak): Deliver a Scientist's Report on a bizarre topic."]
+                        worksheet: ["(Fill): It ______ to be the case that the software is outdated.", "(Match): Evidence suggests -> The data points to", "(MCQ): ___ that the market will recover by Q3. (a. It seems b. I seem c. Seemingly)", "(Build): (stifling / appears / policy / the / be / to / innovation / It / that) -> ______", "(Short): Distance this claim: 'I think video games make kids violent.' -> ______", "(Write): Write a short objective report on a recent news event.", "(Speak): Deliver a Scientist's Report on a bizarre topic.", "(Reading): Students read an objective scientific report and identify distancing phrases."]
                     },
                     {
                         title: "Session 8: Softening Claims with Modals",
@@ -274,7 +273,7 @@
                         activities: "The Cautious Academic: Present absolute, extreme statements. Students must rephrase them to be as academically safe and bulletproof as possible. 'Fast food causes death' -> 'It might be argued that excessive fast food consumption could potentially reduce lifespan.'",
                         assessment: "Successfully uses double hedging without sounding contradictory.",
                         mistake: "Student: 'It will potentially happen.' Fix: 'Will is 100%. Potentially is 50%. They clash! Use COULD potentially.'",
-                        worksheet: ["(Fill): It ______ be argued that social media harms teenagers.", "(Match): Could potentially -> Might possibly", "(MCQ): This new law could ___ cause economic instability. (a. arguably b. definitely c. surely)", "(Build): (decrease / could / potentially / remote / work / cohesion / team) -> ______", "(Short): Soften this: 'AI will replace teachers.' -> ______", "(Write): Write a cautious academic paragraph predicting the future of transport.", "(Speak): Act as The Cautious Academic."]
+                        worksheet: ["(Fill): It ______ be argued that social media harms teenagers.", "(Match): Could potentially -> Might possibly", "(MCQ): This new law could ___ cause economic instability. (a. arguably b. definitely c. surely)", "(Build): (decrease / could / potentially / remote / work / cohesion / team) -> ______", "(Short): Soften this: 'AI will replace teachers.' -> ______", "(Write): Write a cautious academic paragraph predicting the future of transport.", "(Speak): Act as The Cautious Academic.", "(Reading): Students read an academic abstract and analyze double-hedged claims."]
                     },
                     {
                         title: "Session 9: Probability Adverbs in Argument",
@@ -286,7 +285,7 @@
                         activities: "The Shark Tank Evaluator: Pitch crazy products. Students evaluate: 'Conceivably, someone might buy a waterproof toaster. Presumably, however, the market is very small.'",
                         assessment: "Differentiates correctly between 'conceivably' (possible but unlikely) and 'presumably' (logical assumption).",
                         mistake: "Student: 'Undoubtedly it might happen.' Fix: 'Clash of certainty! Undoubtedly is 100%. Might is 50%. Pick one.'",
-                        worksheet: ["(Fill): ______, the CEO will resign after this scandal.", "(Match): Conceivably -> Within the realm of possibility", "(MCQ): It is ___ the best film of the year; everyone loves it. (a. undoubtedly b. conceivably c. plausibly)", "(Build): (would / costs / astronomical / presumably / be / the) -> ______", "(Short): What is a 'conceivable' solution to traffic? ______", "(Write): Evaluate a difficult political choice using 3 different probability adverbs.", "(Speak): Evaluate a crazy product pitch."]
+                        worksheet: ["(Fill): ______, the CEO will resign after this scandal.", "(Match): Conceivably -> Within the realm of possibility", "(MCQ): It is ___ the best film of the year; everyone loves it. (a. undoubtedly b. conceivably c. plausibly)", "(Build): (would / costs / astronomical / presumably / be / the) -> ______", "(Short): What is a 'conceivable' solution to traffic? ______", "(Write): Evaluate a difficult political choice using 3 different probability adverbs.", "(Speak): Evaluate a crazy product pitch.", "(Reading): Students read a venture capital analysis tracking the certainty of various market predictions."]
                     },
                     {
                         title: "Session 10: Conceding and Qualifying",
@@ -298,7 +297,7 @@
                         activities: "The Devil's Court: S1 argues for something terrible (e.g., 'Pollution is good for the economy'). S2 must elegantly destroy it: 'While one could argue it boosts factories, it remains true that it destroys human health.'",
                         assessment: "Balances the hypothetical 'could argue' with the definitive 'remains true'.",
                         mistake: "Student: 'While you argue, it remains true.' Fix: 'Keep it impersonal to avoid a fight! While ONE could argue...'",
-                        worksheet: ["(Fill): ______ one could argue that it is fast, it is incredibly dangerous.", "(Match): Granted -> Admitting a point is true", "(MCQ): Granted, it is expensive; ___, we must buy it. (a. nevertheless b. therefore c. presumably)", "(Build): (true / remains / it / that / displaced / be / workers / will) -> ______", "(Short): Concede and rebut: 'Fast food is cheap.' -> ______", "(Write): Write a paragraph attacking a popular opinion using advanced concession.", "(Speak): Defend against The Devil's Court."]
+                        worksheet: ["(Fill): ______ one could argue that it is fast, it is incredibly dangerous.", "(Match): Granted -> Admitting a point is true", "(MCQ): Granted, it is expensive; ___, we must buy it. (a. nevertheless b. therefore c. presumably)", "(Build): (true / remains / it / that / displaced / be / workers / will) -> ______", "(Short): Concede and rebut: 'Fast food is cheap.' -> ______", "(Write): Write a paragraph attacking a popular opinion using advanced concession.", "(Speak): Defend against The Devil's Court.", "(Reading): Students read a political debate transcript highlighting strategic concessions."]
                     },
                     {
                         title: "Session 11: Nuanced Disagreement",
@@ -310,7 +309,7 @@
                         activities: "The Diplomatic Veto: The Teacher acts as an incompetent CEO proposing terrible ideas ('Let's make our employees work on Sundays for free'). Students must shoot down the idea without getting fired, using nuanced disagreement.",
                         assessment: "Successfully rejects the idea without using negative adjectives like 'stupid', 'bad', or 'wrong'.",
                         mistake: "Student: 'I have reservations because it is stupid.' Fix: 'Almost! Keep the vocabulary professional: I have reservations because it is OVERLY OPTIMISTIC.'",
-                        worksheet: ["(Fill): I am not entirely ______ that this will work.", "(Match): Have reservations -> Feel doubtful", "(MCQ): Perhaps we should consider ___ metrics. (a. alternative b. alternate c. alternated)", "(Build): (convinced / entirely / not / am / I / optimal / is / approach / this / that / the) -> ______", "(Short): Soften this: 'Your plan is terrible.' -> ______", "(Write): Write a diplomatic email to a colleague rejecting their proposal.", "(Speak): Veto the incompetent CEO's idea."]
+                        worksheet: ["(Fill): I am not entirely ______ that this will work.", "(Match): Have reservations -> Feel doubtful", "(MCQ): Perhaps we should consider ___ metrics. (a. alternative b. alternate c. alternated)", "(Build): (convinced / entirely / not / am / I / optimal / is / approach / this / that / the) -> ______", "(Short): Soften this: 'Your plan is terrible.' -> ______", "(Write): Write a diplomatic email to a colleague rejecting their proposal.", "(Speak): Veto the incompetent CEO's idea.", "(Reading): Students read a corporate email rejecting a proposal using highly diplomatic language."]
                     },
                     {
                         title: "Session 12: Phase 2 Mastery (The Diplomatic Panel)",
@@ -322,7 +321,7 @@
                         activities: "The Global News Panel: 4 students are given a highly controversial topic (e.g., Universal Basic Income). They must debate it, scoring points only when they successfully layer hedging, concessions, and diplomatic disagreement.",
                         assessment: "Avoids absolute statements ('It will happen', 'It is bad') entirely during the 15-minute block.",
                         mistake: "Getting emotionally involved and dropping the academic register. Fix: The moderator (Teacher) cuts in with 'Could you phrase that more objectively, Doctor?'",
-                        worksheet: ["(Fill): (Comprehensive Phase 2 Hedging Review)", "(Match): Match the softening phrase to its rhetorical purpose.", "(MCQ): Select the most diplomatically sound rebuttal.", "(Build): Unscramble a triple-hedged academic sentence.", "(Short): Draft your opening statement for the Panel.", "(Write): Write an opinion piece using heavy academic hedging.", "(Speak): Dominate the Global News Panel."]
+                        worksheet: ["(Fill): (Comprehensive Phase 2 Hedging Review)", "(Match): Match the softening phrase to its rhetorical purpose.", "(MCQ): Select the most diplomatically sound rebuttal.", "(Build): Unscramble a triple-hedged academic sentence.", "(Short): Draft your opening statement for the Panel.", "(Write): Write an opinion piece using heavy academic hedging.", "(Speak): Dominate the Global News Panel.", "(Reading): Students read a complex academic panel transcript evaluating the participants' hedging strategies."]
                     }
                 ]
             },
@@ -339,7 +338,7 @@
                         activities: "The Ticking Clock: A meteor is hitting the earth in 24 hours. Students are advisors to the President. They must use 'It is essential that...' to pitch their survival plans.",
                         assessment: "Drops the 3rd person 's' when using the subjunctive (It is vital that she *go*, NOT goes).",
                         mistake: "Student: 'It is essential that he goes.' Fix: 'Subjunctive! Drop the S. It is essential that he GO.'",
-                        worksheet: ["(Fill): It is vital that the manager ______ (review) the document today.", "(Match): Imperative -> Absolutely necessary", "(MCQ): It is essential that she ___ the meeting. (a. attends b. attend c. attending)", "(Build): (imperative / that / immediately / address / we / issue / this / is / It) -> ______", "(Short): Create an urgent demand for a failing project: ______", "(Write): Write a memo demanding immediate action on a safety hazard.", "(Speak): Act as the advisor in The Ticking Clock."]
+                        worksheet: ["(Fill): It is vital that the manager ______ (review) the document today.", "(Match): Imperative -> Absolutely necessary", "(MCQ): It is essential that she ___ the meeting. (a. attends b. attend c. attending)", "(Build): (imperative / that / immediately / address / we / issue / this / is / It) -> ______", "(Short): Create an urgent demand for a failing project: ______", "(Write): Write a memo demanding immediate action on a safety hazard.", "(Speak): Act as the advisor in The Ticking Clock.", "(Reading): Students read a crisis intervention memo and identify subjunctive urgency markers."]
                     },
                     {
                         title: "Session 14: Appealing to Logic (Deduction)",
@@ -351,7 +350,7 @@
                         activities: "The Auditor: Students are given a list of terrible company stats. They must present the grim reality to the CEO: 'Given the 50% drop in sales, it naturally follows that your leadership is fundamentally flawed.'",
                         assessment: "Uses 'Given' correctly as a preposition to introduce the evidence.",
                         mistake: "Student: 'Given it is raining, we stay.' Fix: 'Given takes a noun! Given the rain...'",
-                        worksheet: ["(Fill): Given the ______ evidence, we must adapt.", "(Match): Empirical -> Based on observation/data", "(MCQ): Looking at the data, the only logical ___ is to close the store. (a. concluding b. conclusion c. conclude)", "(Build): (flawed / strategy / follows / naturally / our / that / is / fundamentally / It) -> ______", "(Short): Draw a logical conclusion from 'Low morale, high turnover': ______", "(Write): Write an analytical paragraph deducing a company's failure.", "(Speak): Deliver an Auditor's report."]
+                        worksheet: ["(Fill): Given the ______ evidence, we must adapt.", "(Match): Empirical -> Based on observation/data", "(MCQ): Looking at the data, the only logical ___ is to close the store. (a. concluding b. conclusion c. conclude)", "(Build): (flawed / strategy / follows / naturally / our / that / is / fundamentally / It) -> ______", "(Short): Draw a logical conclusion from 'Low morale, high turnover': ______", "(Write): Write an analytical paragraph deducing a company's failure.", "(Speak): Deliver an Auditor's report.", "(Reading): Students read an investigative report and trace the deductive logic chains."]
                     },
                     {
                         title: "Session 15: Rhetorical Questions",
@@ -363,11 +362,11 @@
                         activities: "The Campaign Trail: Students act as politicians running for office. They must deliver a 1-minute speech containing at least 3 powerful rhetorical questions attacking their opponent's policies.",
                         assessment: "Pauses effectively after the question to let the rhetorical impact land before continuing.",
                         mistake: "Answering their own rhetorical question too quickly. Fix: 'Ask it. Pause for 3 seconds. Stare at the audience. Then move on.'",
-                        worksheet: ["(Fill): Can we truly ______ to lose this client?", "(Match): Alienate -> Push away / Isolate", "(MCQ): Is it really in our best ___ to continue? (a. interesting b. interest c. interested)", "(Build): (decision / of / this / ignore / impact / we / to / afford / truly / Can) -> ______ ?", "(Short): Turn this into a rhetorical question: 'We should not waste money.' -> ______", "(Write): Write a political speech opening using 2 rhetorical questions.", "(Speak): Deliver your Campaign Trail speech."]
+                        worksheet: ["(Fill): Can we truly ______ to lose this client?", "(Match): Alienate -> Push away / Isolate", "(MCQ): Is it really in our best ___ to continue? (a. interesting b. interest c. interested)", "(Build): (decision / of / this / ignore / impact / we / to / afford / truly / Can) -> ______ ?", "(Short): Turn this into a rhetorical question: 'We should not waste money.' -> ______", "(Write): Write a political speech opening using 2 rhetorical questions.", "(Speak): Deliver your Campaign Trail speech.", "(Reading): Students read a persuasive historical speech and analyze the placement of rhetorical questions."]
                     },
                     {
                         title: "Session 16: Anticipating Objections (Pre-buttal)",
-                        goal: "Students can say: 'Some critics may argue that this initiative is too costly; however, the long-term savings are undeniable.'<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> Advanced debate strategy. Teaches students to steal their opponent's best argument and destroy it before the opponent even has a chance to speak.<br><br><strong class='text-fuchsia-900'>Example:</strong> A student presents a new business plan: 'I anticipate concerns regarding the timeline, but let me assure you, we have contingencies in place.'",
+                        goal: "Students can say: 'Some critics may argue that this initiative is too costly; however, the long-term savings are undeniable.'<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> Advanced debate strategy. Teaches students to steal their opponent's best argument and destroy it before the opponent even has a chance to speak.<br><br><strong class='text-fuchsia-900'>Example:</strong> A student pitches a difficult change: 'Opponents might point to the initial drop in revenue; however, this completely ignores the subsequent market capture.'",
                         material: "Vocab: Critics may argue, Anticipate concerns, Assure, Contingency, Undeniable. Grammar: Pre-buttal structures.",
                         script: "'Don't wait for them to attack you. Attack yourself first! SOME MAY ARGUE THAT it's too expensive... HOWEVER, they are wrong. You control the narrative.'",
                         flow: "Warm-up: Rhetorical questions. Teaching: Introduce the 'Pre-buttal' formula (Acknowledge hypothetical critic -> 'However' -> Destroy critic). Practice: Identify the weakest point of a proposal and write a pre-buttal for it. Speaking: Pitch a highly controversial idea and pre-rebut the obvious objections.",
@@ -375,7 +374,7 @@
                         activities: "The Dragon's Den: Pitch a terrible, dangerous product (e.g., a motorized pogo stick). The student must anticipate the safety concerns and pre-rebut them before the 'Dragons' can attack.",
                         assessment: "Uses 'Critics may argue' or 'I anticipate' seamlessly to introduce the counter-point.",
                         mistake: "Student: 'You will say it is expensive, but it is cheap.' Fix: 'Too aggressive! SOME CRITICS may argue. Keep it impersonal.'",
-                        worksheet: ["(Fill): Some critics may ______ that this takes too long.", "(Match): Contingency -> Backup plan", "(MCQ): I ___ concerns regarding the budget. (a. participate b. anticipate c. anticipation)", "(Build): (undeniable / however / savings / the / are / costly / is / it / that / argue / may / Some) -> ______", "(Short): Pre-rebut the idea that 'electric cars are too quiet': ______", "(Write): Draft a defense of a controversial company policy using a pre-buttal.", "(Speak): Survive the Dragon's Den."]
+                        worksheet: ["(Fill): Some critics may ______ that this takes too long.", "(Match): Contingency -> Backup plan", "(MCQ): I ___ concerns regarding the budget. (a. participate b. anticipate c. anticipation)", "(Build): (undeniable / however / savings / the / are / costly / is / it / that / argue / may / Some) -> ______", "(Short): Pre-rebut the idea that 'electric cars are too quiet': ______", "(Write): Draft a defense of a controversial company policy using a pre-buttal.", "(Speak): Survive the Dragon's Den.", "(Reading): Students read a strategic business plan and highlight the pre-buttals."]
                     },
                     {
                         title: "Session 17: Calls to Action (The Climax)",
@@ -387,7 +386,7 @@
                         activities: "The Final Plea: Students act as lawyers making their final closing arguments to a jury. They must summarize the evidence and deliver a dramatic, grammatically perfect Call to Action.",
                         assessment: "Delivers the Call to Action with maximum vocal authority and falling intonation for finality.",
                         mistake: "Student: 'So please do it.' Fix: 'You are a lawyer, not a beggar! I STRONGLY URGE YOU TO DO IT.'",
-                        worksheet: ["(Fill): I strongly ______ the board to reconsider.", "(Match): For the sake of -> In the interest of", "(MCQ): We must adopt this policy without ___. (a. delaying b. delay c. delayed)", "(Build): (proposal / adopt / to / committee / the / urge / strongly / I / this) -> ______", "(Short): Write a call to action to stop plastic use: ______", "(Write): Write the concluding paragraph of a persuasive essay.", "(Speak): Deliver The Final Plea to the jury."]
+                        worksheet: ["(Fill): I strongly ______ the board to reconsider.", "(Match): For the sake of -> In the interest of", "(MCQ): We must adopt this policy without ___. (a. delaying b. delay c. delayed)", "(Build): (proposal / adopt / to / committee / the / urge / strongly / I / this) -> ______", "(Short): Write a call to action to stop plastic use: ______", "(Write): Write the concluding paragraph of a persuasive essay.", "(Speak): Deliver The Final Plea to the jury.", "(Reading): Students read a manifesto and evaluate the closing calls to action."]
                     },
                     {
                         title: "Session 18: Phase 3 Mastery (The Persuasive Pitch)",
@@ -399,7 +398,7 @@
                         activities: "The Keynote Address: Students stand at a podium and deliver their 5-minute pitch. The audience (classmates) must vote on whether they were 'convinced' or 'unconvinced' based purely on the rhetorical strength of the speech.",
                         assessment: "Successfully integrates all 5 Phase 3 rhetorical devices in the correct sequence.",
                         mistake: "Reading from notes and losing eye contact during rhetorical questions. Fix: Require them to look directly at a specific student when asking a rhetorical question.",
-                        worksheet: ["(Fill): (Comprehensive Persuasion Grammar Review)", "(Match): Match the rhetorical device to its function.", "(MCQ): Select the most powerful phrasing for a climax.", "(Build): Unscramble a complex pre-buttal sentence.", "(Short): Outline the 5 steps of your Keynote.", "(Write): Draft your Call to Action.", "(Speak): Deliver the Keynote Address."]
+                        worksheet: ["(Fill): (Comprehensive Persuasion Grammar Review)", "(Match): Match the rhetorical device to its function.", "(MCQ): Select the most powerful phrasing for a climax.", "(Build): Unscramble a complex pre-buttal sentence.", "(Short): Outline the 5 steps of your Keynote.", "(Write): Draft your Call to Action.", "(Speak): Deliver the Keynote Address.", "(Reading): Students read an Oxford debate transcript mapping the flow of premise, rebuttal, and conclusion."]
                     }
                 ]
             },
@@ -416,7 +415,7 @@
                         activities: "The Tone Police: Teacher provides a highly formal corporate letter that contains 3 hidden slang/casual words. Teams race to find the errors and suggest the correct formal replacement.",
                         assessment: "Demonstrates an understanding of why a word is too informal (e.g., it's a phrasal verb instead of a single Latinate verb).",
                         mistake: "Student thinks 'big words' are always better. Fix: 'No! If you use 'commence' with a friend at a bar, you sound crazy. Match the room.'",
-                        worksheet: ["(Fill): Please ______ (ask/inquire) at the front desk.", "(Match): Start -> Commence", "(MCQ): Which is more formal? (a. Talk about b. Discuss)", "(Build): (convenience / your / earliest / at / respond / Please) -> ______", "(Short): Replace 'end': We need to ______ the contract. ______", "(Write): Rewrite a casual text message into a formal request.", "(Speak): Explain why 'give me a hand' is wrong for a job interview."]
+                        worksheet: ["(Fill): Please ______ (ask/inquire) at the front desk.", "(Match): Start -> Commence", "(MCQ): Which is more formal? (a. Talk about b. Discuss)", "(Build): (convenience / your / earliest / at / respond / Please) -> ______", "(Short): Replace 'end': We need to ______ the contract. ______", "(Write): Rewrite a casual text message into a formal request.", "(Speak): Explain why 'give me a hand' is wrong for a job interview.", "(Reading): Students read paired texts (casual vs. formal) and compare the vocabulary registers."]
                     },
                     {
                         title: "Session 20: Upgrading Vocabulary (The Executive Lexicon)",
@@ -428,7 +427,7 @@
                         activities: "The Translator: S1 speaks in ultra-casual slang ('We gotta fix this mess'). S2 must immediately 'translate' it for the CEO ('We must resolve this complication').",
                         assessment: "Accesses the formal vocabulary without hesitation or awkward pausing.",
                         mistake: "Student: 'We must obtain to the money.' Fix: 'These formal verbs are highly direct. No prepositions needed. Obtain the money.'",
-                        worksheet: ["(Fill): We need to ______ (find out) the cause of the error. (Ascertain)", "(Match): Help -> Facilitate", "(MCQ): We decided to ___ the project. (a. end b. terminate)", "(Build): (funding / must / necessary / obtain / the / We) -> ______", "(Short): Upgrade 'fix the problem': ______ the issue.", "(Write): Translate a 5-line casual conversation into a formal memo.", "(Speak): Act as The Translator."]
+                        worksheet: ["(Fill): We need to ______ (find out) the cause of the error. (Ascertain)", "(Match): Help -> Facilitate", "(MCQ): We decided to ___ the project. (a. end b. terminate)", "(Build): (funding / must / necessary / obtain / the / We) -> ______", "(Short): Upgrade 'fix the problem': ______ the issue.", "(Write): Translate a 5-line casual conversation into a formal memo.", "(Speak): Act as The Translator.", "(Reading): Students read an executive briefing and extract high-level corporate lexicon."]
                     },
                     {
                         title: "Session 21: Softening Directness (The Diplomatic Request)",
@@ -440,7 +439,7 @@
                         activities: "The Velvet Hammer: Give students a list of strict, urgent commands ('Clean the office', 'Work on Saturday'). They must deliver these commands to the class using hyper-polite structures.",
                         assessment: "Maintains the correct tense in the 'if' clause (I would appreciate it if you *could*, not *can*).",
                         mistake: "Student: 'I would appreciate if you do it.' Fix: 'Match the distance! I would appreciate it if you DID it, or COULD do it.'",
-                        worksheet: ["(Fill): I would ______ it if you could reply today.", "(Match): I was wondering if -> Polite request", "(MCQ): ___ be possible to change the date? (a. Will it b. Would it)", "(Build): (if / appreciate / review / could / it / I / would / you / this) -> ______", "(Short): Soften this: 'Give me a refund.' -> ______", "(Write): Write an email asking a busy colleague to do your work for you.", "(Speak): Deliver a strict command politely (The Velvet Hammer)."]
+                        worksheet: ["(Fill): I would ______ it if you could reply today.", "(Match): I was wondering if -> Polite request", "(MCQ): ___ be possible to change the date? (a. Will it b. Would it)", "(Build): (if / appreciate / review / could / it / I / would / you / this) -> ______", "(Short): Soften this: 'Give me a refund.' -> ______", "(Write): Write an email asking a busy colleague to do your work for you.", "(Speak): Deliver a strict command politely (The Velvet Hammer).", "(Reading): Students read a series of diplomatic emails tracking the softening of demands."]
                     },
                     {
                         title: "Session 22: Translating Idioms to Professional Phrasing",
@@ -452,7 +451,7 @@
                         activities: "The Minute Taker: Two students argue using heavy slang and idioms ('Let's put this on the backburner'). S3 acts as the secretary, verbally summarizing their points into hyper-formal language: 'They have elected to postpone the initiative.'",
                         assessment: "Never uses an idiom in the formal summary.",
                         mistake: "Student: 'We decided to put it on the backburner formally.' Fix: 'Idioms are never formal! Translate the meaning: We decided to POSTPONE it.'",
-                        worksheet: ["(Fill): The meeting was ______ (put off) until Tuesday. (Postponed)", "(Match): Hash it out -> Deliberate", "(MCQ): We need to ___ (speed up) the process. (a. accelerate b. fast up)", "(Build): (agreement / dissolved / ultimately / was / The) -> ______", "(Short): Translate 'Wrap up': ______", "(Write): Translate a slang-heavy paragraph into a formal business report.", "(Speak): Act as The Minute Taker."]
+                        worksheet: ["(Fill): The meeting was ______ (put off) until Tuesday. (Postponed)", "(Match): Hash it out -> Deliberate", "(MCQ): We need to ___ (speed up) the process. (a. accelerate b. fast up)", "(Build): (agreement / dissolved / ultimately / was / The) -> ______", "(Short): Translate 'Wrap up': ______", "(Write): Translate a slang-heavy paragraph into a formal business report.", "(Speak): Act as The Minute Taker.", "(Reading): Students read meeting minutes where casual idioms were formally translated."]
                     },
                     {
                         title: "Session 23: Advanced Email & Correspondence Etiquette",
@@ -464,7 +463,7 @@
                         activities: "The Diplomatic Crisis: Students are given a PR disaster (e.g., the company accidentally sent offensive emails). They must draft a flawless, hyper-formal apology email to the shareholders that takes responsibility without using casual language.",
                         assessment: "Correctly pairs 'Dear Sir/Madam' with 'Yours faithfully' and 'Dear Mr. X' with 'Yours sincerely'.",
                         mistake: "Student: 'Dear Mr. John, ... Best regards.' Fix: 'Use the surname! Dear Mr. Smith. And if it's highly formal, use Yours sincerely.'",
-                        worksheet: ["(Fill): Please find ______ the documents you requested.", "(Match): Yours faithfully -> Dear Sir/Madam", "(MCQ): I am writing to inquire ___ your recent invoice. (a. about b. regarding)", "(Build): (matter / elucidate / you / could / this / if / appreciate / would / it / I) -> ______", "(Short): What is the formal version of 'Here is the file'? ______", "(Write): Draft a formal complaint email to a vendor.", "(Speak): Dictate a formal email to your secretary."]
+                        worksheet: ["(Fill): Please find ______ the documents you requested.", "(Match): Yours faithfully -> Dear Sir/Madam", "(MCQ): I am writing to inquire ___ your recent invoice. (a. about b. regarding)", "(Build): (matter / elucidate / you / could / this / if / appreciate / would / it / I) -> ______", "(Short): What is the formal version of 'Here is the file'? ______", "(Write): Draft a formal complaint email to a vendor.", "(Speak): Dictate a formal email to your secretary.", "(Reading): Students read formal legal correspondence and analyze the sign-offs and structure."]
                     },
                     {
                         title: "Session 24: Phase 4 Mega Review (The Code-Switching Gauntlet)",
@@ -476,7 +475,7 @@
                         activities: "Two Phones: S1 sits in the middle. The teacher is on 'Phone A' (the angry CEO). S2 is on 'Phone B' (the best friend). S1 must relay the crisis between the two phones, constantly translating the CEO's formal demands into casual slang for the friend, and the friend's casual advice into formal proposals for the CEO.",
                         assessment: "Zero register bleeding. (e.g., does not tell the CEO to 'chill out').",
                         mistake: "Hesitation when translating concepts. Fix: Remind them not to translate word-for-word, but to translate the *intent* into the correct register.",
-                        worksheet: ["(Fill): (Comprehensive Register Review)", "(Match): Match casual phrases to their executive translations.", "(MCQ): Select the appropriate sign-off for a specific email context.", "(Build): Unscramble a highly diplomatic request.", "(Short): Explain 'code-switching' in your own words.", "(Write): Write an email to your boss and a text to your friend about the same event.", "(Speak): Survive the 'Two Phones' simulation."]
+                        worksheet: ["(Fill): (Comprehensive Register Review)", "(Match): Match casual phrases to their executive translations.", "(MCQ): Select the appropriate sign-off for a specific email context.", "(Build): Unscramble a highly diplomatic request.", "(Short): Explain 'code-switching' in your own words.", "(Write): Write an email to your boss and a text to your friend about the same event.", "(Speak): Survive the 'Two Phones' simulation.", "(Reading): Students read a case study on code-switching in a multinational corporation."]
                     }
                 ]
             },
@@ -493,7 +492,7 @@
                         activities: "The Chairperson: Give students ridiculous agendas ('How to handle the vampire invasion'). They must act as the Chair, welcoming the board, stating the primary objective, and kicking things off with utmost seriousness.",
                         assessment: "Projects vocal authority and uses 'The primary objective is to [base verb]'.",
                         mistake: "Student: 'Today we will talk about vampires.' Fix: 'Too casual! You are the Chair. The primary objective of today's meeting is to address the vampire crisis.'",
-                        worksheet: ["(Fill): Let's get down to ______. The meeting has started.", "(Match): Primary objective -> Main goal", "(MCQ): Let's ___ things off by looking at the data. (a. kick b. start c. boot)", "(Build): (meeting / objective / today's / primary / the / of / finalize / to / is / budget / the) -> ______", "(Short): Write a hook for a meeting about falling sales: ______", "(Write): Draft a full meeting agenda introduction.", "(Speak): Act as The Chairperson."]
+                        worksheet: ["(Fill): Let's get down to ______. The meeting has started.", "(Match): Primary objective -> Main goal", "(MCQ): Let's ___ things off by looking at the data. (a. kick b. start c. boot)", "(Build): (meeting / objective / today's / primary / the / of / finalize / to / is / budget / the) -> ______", "(Short): Write a hook for a meeting about falling sales: ______", "(Write): Draft a full meeting agenda introduction.", "(Speak): Act as The Chairperson.", "(Reading): Students read an agenda overview and identify the authoritative framing phrases."]
                     },
                     {
                         title: "Session 26: Interrupting & Redirecting",
@@ -505,7 +504,7 @@
                         activities: "Herding Cats: The teacher and one student are instructed to constantly go off-topic ('tangents'). The assigned Chairperson must repeatedly use 'interject' and 'circle back' to force them to focus on the agenda.",
                         assessment: "Uses 'circle back to' correctly with a noun phrase.",
                         mistake: "Student: 'Stop talking, go back to budget.' Fix: 'Too aggressive! If I could interject, let's circle back to the budget.'",
-                        worksheet: ["(Fill): If I could just ______ here, I have a point to make.", "(Match): Circle back -> Return to a previous topic", "(MCQ): We are getting off-topic. Let's ___ the conversation back to the agenda. (a. steer b. drive c. push)", "(Build): (to / back / circle / let's / timeline / the / regarding / point / main / the) -> ______", "(Short): How do you politely stop a tangent? ______", "(Write): Write a script redirecting a conversation about vacation back to marketing.", "(Speak): Play 'Herding Cats' as the Chairperson."]
+                        worksheet: ["(Fill): If I could just ______ here, I have a point to make.", "(Match): Circle back -> Return to a previous topic", "(MCQ): We are getting off-topic. Let's ___ the conversation back to the agenda. (a. steer b. drive c. push)", "(Build): (to / back / circle / let's / timeline / the / regarding / point / main / the) -> ______", "(Short): How do you politely stop a tangent? ______", "(Write): Write a script redirecting a conversation about vacation back to marketing.", "(Speak): Play 'Herding Cats' as the Chairperson.", "(Reading): Students read a contentious meeting transcript focusing on successful redirections."]
                     },
                     {
                         title: "Session 27: Salary & Contract Negotiation",
@@ -517,7 +516,7 @@
                         activities: "The Counter-Offer: Students are given a 'Job Profile' (their skills) and an insulting initial offer. They must sit across from the teacher and negotiate a better package using 'While I appreciate...' and 'Provided that...'",
                         assessment: "Never uses emotional language ('I need', 'It's unfair'); relies on objective terms ('reflects my experience', 'industry standard').",
                         mistake: "Student: 'I want more money because I work hard.' Fix: 'Make it objective. I am seeking compensation that reflects my hard work.'",
-                        worksheet: ["(Fill): I am seeking a ______ package that matches my skills.", "(Match): Counter-offer -> A revised proposal", "(MCQ): While I appreciate the offer, I must ask for a higher ___ salary. (a. base b. bottom)", "(Build): (experience / reflects / compensation / seeking / am / I / extensive / my / that) -> ______", "(Short): Reject a low offer politely: ______", "(Write): Draft a formal counter-offer email.", "(Speak): Negotiate your salary with HR."]
+                        worksheet: ["(Fill): I am seeking a ______ package that matches my skills.", "(Match): Counter-offer -> A revised proposal", "(MCQ): While I appreciate the offer, I must ask for a higher ___ salary. (a. base b. bottom)", "(Build): (experience / reflects / compensation / seeking / am / I / extensive / my / that) -> ______", "(Short): Reject a low offer politely: ______", "(Write): Draft a formal counter-offer email.", "(Speak): Negotiate your salary with HR.", "(Reading): Students read a contract negotiation thread tracking counter-offers."]
                     },
                     {
                         title: "Session 28: Delivering Constructive Criticism",
@@ -529,7 +528,7 @@
                         activities: "The Performance Review: S1 is the manager, S2 is a good employee who is always late. S1 must deliver a 3-part feedback sandwich to address the lateness without making S2 defensive.",
                         assessment: "Uses 'room for growth' or 'area for improvement' instead of 'weakness' or 'mistake'.",
                         mistake: "Student: 'Your weakness is being late.' Fix: 'Too harsh! There is room for growth regarding your punctuality.'",
-                        worksheet: ["(Fill): There is room for ______ regarding your time management.", "(Match): Going forward -> In the future", "(MCQ): You ___ at client relations. (a. excel b. excellent)", "(Build): (detail / to / attention / regarding / growth / for / room / is / there) -> ______", "(Short): Soften this: 'Your writing is terrible.' -> ______", "(Write): Write a constructive performance review for a messy but creative worker.", "(Speak): Deliver a performance review."]
+                        worksheet: ["(Fill): There is room for ______ regarding your time management.", "(Match): Going forward -> In the future", "(MCQ): You ___ at client relations. (a. excel b. excellent)", "(Build): (detail / to / attention / regarding / growth / for / room / is / there) -> ______", "(Short): Soften this: 'Your writing is terrible.' -> ______", "(Write): Write a constructive performance review for a messy but creative worker.", "(Speak): Deliver a performance review.", "(Reading): Students read a performance review analyzing the feedback sandwich technique."]
                     },
                     {
                         title: "Session 29: Handling Hostile Questions",
@@ -541,7 +540,7 @@
                         activities: "The Firing Line: Student presents a plan to cut everyone's salary to save the company. The class attacks them aggressively. The student must survive 3 minutes using 'I understand your concern, but the data indicates...'",
                         assessment: "Never apologizes for the data. Uses 'indicates' or 'shows' to project authority.",
                         mistake: "Student: 'I am sorry you are angry, I think it is good.' Fix: 'Don't apologize for a good business move! Validate the concern, then state the facts.'",
-                        worksheet: ["(Fill): I understand your concern, but the data ______ otherwise.", "(Match): Trajectory -> Path / Direction", "(MCQ): While that is a ___ worry, we have a backup plan. (a. valid b. value)", "(Build): (correct / the / is / this / that / indicates / clearly / data / the / trajectory) -> ______", "(Short): Defend a price increase: I understand your concern, but ______.", "(Write): Script a response to an angry shareholder.", "(Speak): Survive The Firing Line."]
+                        worksheet: ["(Fill): I understand your concern, but the data ______ otherwise.", "(Match): Trajectory -> Path / Direction", "(MCQ): While that is a ___ worry, we have a backup plan. (a. valid b. value)", "(Build): (correct / the / is / this / that / indicates / clearly / data / the / trajectory) -> ______", "(Short): Defend a price increase: I understand your concern, but ______.", "(Write): Script a response to an angry shareholder.", "(Speak): Survive The Firing Line.", "(Reading): Students read a press conference transcript evaluating the defensive pivots."]
                     },
                     {
                         title: "Session 30: Phase 5 Mega Review (The Boardroom Simulation)",
@@ -553,7 +552,7 @@
                         activities: "The Boardroom: 1 CEO, 3 chaotic executives. The executives are instructed to argue, go off-topic, and demand more money. The CEO must 'kick things off', 'circle back', negotiate, and finally give 'constructive criticism' to the worst offender.",
                         assessment: "Demonstrates true leadership presence through voice, pacing, and precise vocabulary choice.",
                         mistake: "Letting the chaotic executives dominate the floor. Fix: The Teacher hits a buzzer, forcing the CEO to use an 'interject' phrase immediately.",
-                        worksheet: ["(Fill): (Comprehensive Corporate Phrase Review)", "(Match): Match the managerial phrase to its psychological purpose.", "(MCQ): Select the best way to handle an aggressive employee.", "(Build): Unscramble a complex negotiation sentence.", "(Short): Outline your Boardroom strategy.", "(Write): Write the official minutes (summary) of the chaotic meeting.", "(Speak): Lead the Boardroom Simulation."]
+                        worksheet: ["(Fill): (Comprehensive Corporate Phrase Review)", "(Match): Match the managerial phrase to its psychological purpose.", "(MCQ): Select the best way to handle an aggressive employee.", "(Build): Unscramble a complex negotiation sentence.", "(Short): Outline your Boardroom strategy.", "(Write): Write the official minutes (summary) of the chaotic meeting.", "(Speak): Lead the Boardroom Simulation.", "(Reading): Students read a boardroom simulation summary tracking conflict resolution strategies."]
                     }
                 ]
             },
@@ -570,7 +569,7 @@
                         activities: "The Philosopher's Stone: Draw an abstract word from a hat ('Justice'). Student must stand and deliver a profound 3-sentence definition using 'Not merely... but rather...'",
                         assessment: "Successfully balances the contrasting abstract nouns grammatically.",
                         mistake: "Student: 'Success is not just money, but happy.' Fix: 'Keep the word forms equal! Not merely the accumulation of wealth, but rather the pursuit of happiness.'",
-                        worksheet: ["(Fill): Freedom is not ______ doing what you want, but taking responsibility.", "(Match): Autonomy -> Independence / Self-rule", "(MCQ): Happiness is fundamentally about personal ___. (a. fulfillment b. fulfill c. fulfilling)", "(Build): (fulfillment / pursuit / of / personal / rather / the / but / wealth / of / accumulation / the / merely / not / is / Success) -> ______", "(Short): Define 'Power' in your own words: ______", "(Write): Write a short philosophical essay defining 'True Friendship'.", "(Speak): Deliver your Philosopher's Stone definition."]
+                        worksheet: ["(Fill): Freedom is not ______ doing what you want, but taking responsibility.", "(Match): Autonomy -> Independence / Self-rule", "(MCQ): Happiness is fundamentally about personal ___. (a. fulfillment b. fulfill c. fulfilling)", "(Build): (fulfillment / pursuit / of / personal / rather / the / but / wealth / of / accumulation / the / merely / not / is / Success) -> ______", "(Short): Define 'Power' in your own words: ______", "(Write): Write a short philosophical essay defining 'True Friendship'.", "(Speak): Deliver your Philosopher's Stone definition.", "(Reading): Students read a philosophical essay defining an abstract sociological concept."]
                     },
                     {
                         title: "Session 32: Discussing Societal Shifts",
@@ -582,7 +581,7 @@
                         activities: "The Sociologist: Students are given a trend (e.g., 'People buying electric cars'). They must analyze it macroscopically: 'This represents a profound paradigm shift towards sustainability and a rejection of the status quo.'",
                         assessment: "Uses words like 'profound' and 'paradigm shift' correctly in context, avoiding hyperbolic misuse.",
                         mistake: "Student: 'I had a paradigm shift for breakfast.' Fix: 'Paradigm shifts take years and affect millions! Keep it macro.'",
-                        worksheet: ["(Fill): There has been a profound paradigm ______ towards remote work.", "(Match): Status quo -> The current state of things", "(MCQ): Society continues to ___ away from traditional norms. (a. evolve b. evolving)", "(Build): (years / towards / sustainability / shift / paradigm / profound / a / been / has / there / recent / in) -> ______", "(Short): What is a paradigm shift you have noticed in your lifetime? ______", "(Write): Write an analysis of how smartphones changed the status quo.", "(Speak): Act as The Sociologist."]
+                        worksheet: ["(Fill): There has been a profound paradigm ______ towards remote work.", "(Match): Status quo -> The current state of things", "(MCQ): Society continues to ___ away from traditional norms. (a. evolve b. evolving)", "(Build): (years / towards / sustainability / shift / paradigm / profound / a / been / has / there / recent / in) -> ______", "(Short): What is a paradigm shift you have noticed in your lifetime? ______", "(Write): Write an analysis of how smartphones changed the status quo.", "(Speak): Act as The Sociologist.", "(Reading): Students read an article on global paradigm shifts and track the continuous tenses."]
                     },
                     {
                         title: "Session 33: The Ethics of Technology",
@@ -594,7 +593,7 @@
                         activities: "The Ethics Committee: A tech company wants to implant microchips in employees' brains to unlock doors. The committee must debate the proposal: 'While it fosters efficiency, the ethical implications regarding privacy are unacceptable.'",
                         assessment: "Maintains an academic tone when discussing frightening or controversial topics.",
                         mistake: "Student: 'It is bad for ethics.' Fix: 'The ETHICAL IMPLICATIONS are profound.'",
-                        worksheet: ["(Fill): The ethical ______ of this technology are still unknown.", "(Match): Detrimental -> Harmful", "(MCQ): Social media can ___ global connection. (a. foster b. fester)", "(Build): (privacy / autonomy / about / concerns / raising / profound / are / intelligence / artificial / of / implications / ethical / The) -> ______", "(Short): What is an ethical implication of self-driving cars? ______", "(Write): Write a memo from an Ethics Committee rejecting a new technology.", "(Speak): Debate in The Ethics Committee."]
+                        worksheet: ["(Fill): The ethical ______ of this technology are still unknown.", "(Match): Detrimental -> Harmful", "(MCQ): Social media can ___ global connection. (a. foster b. fester)", "(Build): (privacy / autonomy / about / concerns / raising / profound / are / intelligence / artificial / of / implications / ethical / The) -> ______", "(Short): What is an ethical implication of self-driving cars? ______", "(Write): Write a memo from an Ethics Committee rejecting a new technology.", "(Speak): Debate in The Ethics Committee.", "(Reading): Students read a tech ethics journal evaluating the implications of a new AI."]
                     },
                     {
                         title: "Session 34: Globalization & Cultural Identity",
@@ -606,7 +605,7 @@
                         activities: "The Cultural Ambassador: Students must defend their country's unique heritage against the 'threat' of globalization, arguing: 'While we welcome integration, we must not let it dilute our traditions.'",
                         assessment: "Uses 'simultaneously' or 'double-edged sword' to capture the nuance of global issues.",
                         mistake: "Student: 'Globalization makes culture water.' Fix: 'Use the power verb! It DILUTES cultural heritage.'",
-                        worksheet: ["(Fill): The spread of fast food tends to ______ local culinary traditions.", "(Match): Homogenization -> Making everything the same", "(MCQ): Globalization is a double-edged ___. (a. sword b. knife)", "(Build): (heritage / cultural / indigenous / dilute / to / threatens / simultaneously / it / integration / economic / fosters / globalization / While) -> ______", "(Short): What is a positive effect of globalization? ______", "(Write): Write a paragraph discussing if the world is becoming too homogenized.", "(Speak): Act as The Cultural Ambassador."]
+                        worksheet: ["(Fill): The spread of fast food tends to ______ local culinary traditions.", "(Match): Homogenization -> Making everything the same", "(MCQ): Globalization is a double-edged ___. (a. sword b. knife)", "(Build): (heritage / cultural / indigenous / dilute / to / threatens / simultaneously / it / integration / economic / fosters / globalization / While) -> ______", "(Short): What is a positive effect of globalization? ______", "(Write): Write a paragraph discussing if the world is becoming too homogenized.", "(Speak): Act as The Cultural Ambassador.", "(Reading): Students read a cultural analysis on globalization as a double-edged sword."]
                     },
                     {
                         title: "Session 35: Psychological Motivation",
@@ -618,7 +617,7 @@
                         activities: "The HR Director: The company offers huge bonuses, but employees keep quitting. Students must analyze the failure: 'What truly drives our team is not extrinsic bonuses, but an intrinsic need for respect.'",
                         assessment: "Differentiates correctly between intrinsic (internal) and extrinsic (external) motivations.",
                         mistake: "Student: 'My intrinsic is money.' Fix: 'Money is outside of you! It is an EXTRINSIC incentive.'",
-                        worksheet: ["(Fill): Money is an ______ incentive, while passion is ______.", "(Match): Drives -> Motivates / Pushes", "(MCQ): What truly ___ human behavior? (a. drives b. drives to c. driving)", "(Build): (purpose / for / desire / intrinsic / the / rather / but / reward / of / promise / the / not / is / behavior / human / drives / truly / What) -> ______", "(Short): What is your primary intrinsic motivation? ______", "(Write): Write an HR memo explaining why bonuses aren't working.", "(Speak): Discuss what truly drives human behavior."]
+                        worksheet: ["(Fill): Money is an ______ incentive, while passion is ______.", "(Match): Drives -> Motivates / Pushes", "(MCQ): What truly ___ human behavior? (a. drives b. drives to c. driving)", "(Build): (purpose / for / desire / intrinsic / the / rather / but / reward / of / promise / the / not / is / behavior / human / drives / truly / What) -> ______", "(Short): What is your primary intrinsic motivation? ______", "(Write): Write an HR memo explaining why bonuses aren't working.", "(Speak): Discuss what truly drives human behavior.", "(Reading): Students read an HR analysis of intrinsic vs. extrinsic employee motivation."]
                     },
                     {
                         title: "Session 36: Phase 6 Mastery (The Socratic Seminar)",
@@ -627,10 +626,10 @@
                         script: "'I am stepping out of the circle. You are the philosophers now. Discuss the nature of modern success. Go.'",
                         flow: "Warm-up: Intrinsic vs Extrinsic debate. Teaching: Review the rules of a Socratic Seminar (No hand raising, build on each other's points, ask deep questions). Practice: 10 minutes of silent prep on the seminar topic ('The Future of Human Identity'). Speaking: The Socratic Seminar.",
                         tasks: "Sustain a high-level philosophical dialogue, actively listening and connecting abstract concepts to peers' statements.",
-                        activities: "The Socratic Seminar: Students sit in a circle. The teacher provides a single abstract prompt (e.g., 'Is technology destroying human purpose?'). Students must carry the conversation for 20 minutes, using Phase 6 vocabulary to define, debate, and analyze.",
+                        activities: "The Socratic Seminar: Students sit in a circle. The teacher provides a single abstract prompt (e.g., 'Is technology destroying human purpose?'). Students must carry the conversation for 20 minutes, using Phase 6 vocabulary to define, debate, and analyze. The teacher remains entirely silent, only grading.",
                         assessment: "Contributes meaningfully to the abstract discourse without dragging the conversation back to simplistic, concrete topics.",
                         mistake: "Answering a deep philosophical question with a simple 'Yes, I like phones.' Fix: Stop the seminar and demand a 'Not merely... but rather...' definition.",
-                        worksheet: ["(Fill): (Comprehensive Abstract Vocabulary Review)", "(Match): Match the philosophical concept to its definition.", "(MCQ): Select the most profound analytical statement.", "(Build): Unscramble a complex ethical argument.", "(Short): Draft your opening thesis for the Seminar.", "(Write): Write a reflection essay on the Seminar's conclusion.", "(Speak): Participate in the Socratic Seminar."]
+                        worksheet: ["(Fill): (Comprehensive Abstract Vocabulary Review)", "(Match): Match the philosophical concept to its definition.", "(MCQ): Select the most profound analytical statement.", "(Build): Unscramble a complex ethical argument.", "(Short): Draft your opening thesis for the Seminar.", "(Write): Write a reflection essay on the Seminar's conclusion.", "(Speak): Participate in the Socratic Seminar.", "(Reading): Students read a Socratic seminar transcript mapping the synthesis of abstract ideas."]
                     }
                 ]
             },
@@ -647,7 +646,7 @@
                         activities: "The Corporate Auditor: Give students a messy case study of a failing hospital. They must cut through the noise and declare: 'The fundamental flaw lies in the infrastructure, not the doctors.'",
                         assessment: "Uses 'lies in' correctly instead of 'is in' or 'exists in'.",
                         mistake: "Student: 'The flaw is in the system.' Fix: 'Elevate it! The flaw LIES IN the system.'",
-                        worksheet: ["(Fill): The fundamental flaw ______ in the lack of training.", "(Match): Systemic -> Affecting the whole system", "(MCQ): The infrastructure has been ___ for years. (a. neglect b. neglected c. neglecting)", "(Build): (decades / for / neglected / been / has / which / infrastructure / the / in / lies / flaw / fundamental / The) -> ______", "(Short): What is a systemic issue in your city? ______", "(Write): Write a brief audit report diagnosing a failing system.", "(Speak): Act as The Corporate Auditor."]
+                        worksheet: ["(Fill): The fundamental flaw ______ in the lack of training.", "(Match): Systemic -> Affecting the whole system", "(MCQ): The infrastructure has been ___ for years. (a. neglect b. neglected c. neglecting)", "(Build): (decades / for / neglected / been / has / which / infrastructure / the / in / lies / flaw / fundamental / The) -> ______", "(Short): What is a systemic issue in your city? ______", "(Write): Write a brief audit report diagnosing a failing system.", "(Speak): Act as The Corporate Auditor.", "(Reading): Students read a corporate autopsy report identifying fundamental flaws."]
                     },
                     {
                         title: "Session 38: Proposing Multi-Step Solutions",
@@ -659,7 +658,7 @@
                         activities: "The Turnaround CEO: The company is weeks away from bankruptcy. The student must present a survival roadmap: 'Phase one entails firing the board. Subsequently, phase two entails...'",
                         assessment: "Consistently uses the gerund after 'entails' (entails restructuring, NOT entails to restructure).",
                         mistake: "Student: 'Phase one entails to fix it.' Fix: 'Entails takes the ING! Entails FIXING it.'",
-                        worksheet: ["(Fill): This job ______ (require/entail) working on weekends.", "(Match): Overhaul -> Complete rebuild/redesign", "(MCQ): Phase one entails ___ the budget. (a. to cut b. cutting)", "(Build): (expansion / market / on / focus / will / two / phase / subsequently) -> ______", "(Short): What does learning a language entail? It entails ______.", "(Write): Outline a 3-phase plan to improve your English.", "(Speak): Pitch a Turnaround roadmap."]
+                        worksheet: ["(Fill): This job ______ (require/entail) working on weekends.", "(Match): Overhaul -> Complete rebuild/redesign", "(MCQ): Phase one entails ___ the budget. (a. to cut b. cutting)", "(Build): (expansion / market / on / focus / will / two / phase / subsequently) -> ______", "(Short): What does learning a language entail? It entails ______.", "(Write): Outline a 3-phase plan to improve your English.", "(Speak): Pitch a Turnaround roadmap.", "(Reading): Students read a project roadmap tracking the phases of a turnaround strategy."]
                     },
                     {
                         title: "Session 39: Evaluating Risk (Cost-Benefit Analysis)",
@@ -671,7 +670,7 @@
                         activities: "The Venture Capitalist: S1 pitches a highly profitable but slightly illegal idea. S2 must analyze it: 'The ROI is huge, but the potential legal fallout is definitely not negligible.'",
                         assessment: "Uses 'negligible' correctly to mean 'so small it can be ignored'.",
                         mistake: "Student: 'The danger is very negligible.' Fix: 'Negligible already means extremely small. Don't use very. Just say: It is negligible.'",
-                        worksheet: ["(Fill): The cost is ______ compared to the benefits.", "(Match): Fallout -> Negative consequences", "(MCQ): We must consider the long-term ___. (a. ROI b. RIO)", "(Build): (investment / on / return / massive / the / to / compared / negligible / is / fallout / potential / The) -> ______", "(Short): Define 'negligible' in your own words: ______", "(Write): Write a cost-benefit analysis for buying a sports car.", "(Speak): Act as a Venture Capitalist analyzing a risk."]
+                        worksheet: ["(Fill): The cost is ______ compared to the benefits.", "(Match): Fallout -> Negative consequences", "(MCQ): We must consider the long-term ___. (a. ROI b. RIO)", "(Build): (investment / on / return / massive / the / to / compared / negligible / is / fallout / potential / The) -> ______", "(Short): Define 'negligible' in your own words: ______", "(Write): Write a cost-benefit analysis for buying a sports car.", "(Speak): Act as a Venture Capitalist analyzing a risk.", "(Reading): Students read a cost-benefit analysis and evaluate the stated ROI vs fallout."]
                     },
                     {
                         title: "Session 40: Crisis Management & Damage Control",
@@ -683,7 +682,7 @@
                         activities: "The PR Nightmare: The company CEO was caught on video insulting kittens. The stock is crashing. The PR team must stand up and declare: 'Damage control protocols must be enacted immediately to contain the fallout!'",
                         assessment: "Successfully uses the passive 'must be enacted' instead of the active 'we must enact' for official sounding mandates.",
                         mistake: "Student: 'We are bleeding money.' Fix: 'Good, but let's make it executive: We are HEMORRHAGING capital.'",
-                        worksheet: ["(Fill): Damage control protocols must be ______ immediately.", "(Match): Hemorrhaging -> Losing rapidly and heavily", "(MCQ): We must act to ___ the situation. (a. contain b. container)", "(Build): (clients / of / hemorrhaging / further / prevent / to / immediately / enacted / be / must / protocols / control / Damage) -> ______", "(Short): What is 'damage control'? ______", "(Write): Draft a crisis management memo for a data breach.", "(Speak): Manage The PR Nightmare."]
+                        worksheet: ["(Fill): Damage control protocols must be ______ immediately.", "(Match): Hemorrhaging -> Losing rapidly and heavily", "(MCQ): We must act to ___ the situation. (a. contain b. container)", "(Build): (clients / of / hemorrhaging / further / prevent / to / immediately / enacted / be / must / protocols / control / Damage) -> ______", "(Short): What is 'damage control'? ______", "(Write): Draft a crisis management memo for a data breach.", "(Speak): Manage The PR Nightmare.", "(Reading): Students read a damage control protocol for a data breach."]
                     },
                     {
                         title: "Session 41: Forecasting Long-term Impact",
@@ -695,96 +694,96 @@
                         activities: "The Futurist: Present a minor news headline ('Company invents flying skateboard'). Students must forecast the 20-year impact: 'Ten years down the line, this will culminate in the end of traditional roads.'",
                         assessment: "Uses 'culminate in' correctly to mean the final, highest point or end result of a process.",
                         mistake: "Student: 'It will culminate to a crash.' Fix: 'Culminate IN. Always IN.'",
-                        worksheet: ["(Fill): This tension will eventually ______ in a war.", "(Match): Down the line -> In the future", "(MCQ): The project culminated ___ a massive success. (a. on b. in)", "(Build): (market / global / the / of / restructuring / complete / a / in / culminate / will / trend / this / line / the / down / years / Ten) -> ______", "(Short): What will the rise of AI culminate in? ______", "(Write): Forecast the 50-year impact of global warming.", "(Speak): Deliver a Futurist prediction."]
+                        worksheet: ["(Fill): This tension will eventually ______ in a war.", "(Match): Down the line -> In the future", "(MCQ): The project culminated ___ a massive success. (a. on b. in)", "(Build): (market / global / the / of / restructuring / complete / a / in / culminate / will / trend / this / line / the / down / years / Ten) -> ______", "(Short): What will the rise of AI culminate in? ______", "(Write): Forecast the 50-year impact of global warming.", "(Speak): Deliver a Futurist prediction.", "(Reading): Students read a futurist prediction tracking the culmination of current trends."]
                     },
                     {
                         title: "Session 42: Phase 7 Mega Review (The Crisis Task Force II)",
-                        goal: "Lead a comprehensive 30-minute simulation requiring systemic diagnosis, phased solutions, risk analysis, and crisis management protocols.<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> The most intense simulation in the Tagasa curriculum. Tests executive leadership, analytical depth, and unbreakable grammatical composure under heavy cognitive load.<br><br><strong class='text-fuchsia-900'>Example:</strong> A student takes charge: 'The fundamental flaw lies in our security. I propose a two-phase solution. The risk is negligible. However, if the press finds out, damage control must be enacted.'",
+                        goal: "Lead a comprehensive 30-minute simulation requiring systemic diagnosis, phased solutions, risk analysis, and crisis management protocols.<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> The most intense simulation in the Tagasa curriculum. Tests executive leadership, analytical depth, and unbreakable grammatical composure under heavy cognitive load.<br><br><strong class='text-fuchsia-900'>Example:</strong> A student leads a task force: 'The root cause is structural. In theory, we could rebuild, but given the budget, it isn't feasible. I propose we mitigate the damage first. If we deadlock on this, people will suffer.'",
                         material: "Review: Fundamental flaw, Phase one entails, Negligible ROI, Damage control, Culminate in.",
                         script: "'You are no longer students. You are the executive board. The company is on the brink of collapse. Save it.'",
-                        flow: "Warm-up: Vocal power poses. Teaching: Distribute a massive 10-page dossier on a fictional failing corporation. Practice: 20 minutes of team analysis to build a turnaround pitch. Speaking: The Executive Boardroom Simulation.",
+                        flow: "Warm-up: Vocal power poses. Teaching: Distribute a massive 10-page 'Crisis Briefing' document (reading comprehension). Practice: 10 minutes individual prep outlining root causes and feasible proposals. Speaking: The Executive Boardroom Simulation.",
                         tasks: "Synthesize diagnosis, strategy, risk, and crisis management into a unified, commanding executive presentation.",
                         activities: "The Executive Boardroom: Teams must present their turnaround strategy to hostile 'Shareholders' (Teacher). They must diagnose the flaw, outline the phases, defend the ROI, and forecast the 10-year culmination.",
                         assessment: "Maintains elite-level vocabulary and syntax even when the 'Shareholders' aggressively attack their plan.",
                         mistake: "Breaking character and using filler words ('um', 'like'). Fix: Enforce a strict 'executive penalty' for filler words during the simulation to force deliberate pausing.",
-                        worksheet: ["(Fill): (Comprehensive Case Study Vocabulary Review)", "(Match): Match the executive phase to its analytical purpose.", "(MCQ): Select the most authoritative strategic statement.", "(Build): Unscramble a massive turnaround proposal.", "(Short): Draft your Executive Summary.", "(Write): Write the final survival plan for the corporation.", "(Speak): Dominate The Executive Boardroom."]
+                        worksheet: ["(Fill): (Comprehensive Case Study Vocabulary Review)", "(Match): Match the executive phase to its analytical purpose.", "(MCQ): Select the most authoritative strategic statement.", "(Build): Unscramble a massive turnaround proposal.", "(Short): Outline your Crisis plan.", "(Write): Write the final report of the Task Force.", "(Speak): Survive The Crisis Task Force Simulation.", "(Reading): Students read an executive crisis summary mapping the strategic interventions."]
                     }
                 ]
             },
             {
-                id: 8, title: "PHASE 8: FINAL MASTERY & FLUENCY EVALUATION",
+                id: 8, title: "PHASE 8: REVIEW & ASSESSMENT",
                 sessions: [
                     {
-                        title: "Session 43: The Master Debate (Synthesis)",
-                        goal: "Engage in a 20-minute, highly formalized, multi-party debate utilizing every rhetorical, grammatical, and diplomatic tool from Levels 4-6.<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> The ultimate test of adversarial communication. Can they attack, defend, concede, and trap opponents with native-level agility?<br><br><strong class='text-fuchsia-900'>Example:</strong> A student flawlessly executes a pre-buttal, deflects an interruption, and corners an opponent with a tag question, all while maintaining perfect formal register.",
-                        material: "Review: Inversion, Clefts, Hedging, Pre-buttals, Tag questions, Deflection.",
-                        script: "'This is the culmination of your debate training. No mercy, but absolute politeness. Use your arsenal.'",
-                        flow: "Warm-up: Tag question traps. Teaching: Review the Debate Domination flowchart. Practice: 15 minutes of intensive team prep on a highly abstract, difficult topic (e.g., 'Is absolute freedom a dangerous illusion?'). Speaking: The Master Debate.",
-                        tasks: "Deploy at least 5 distinct advanced rhetorical strategies in a live, unscripted debate.",
-                        activities: "The Master Debate: A formal, timed 2v2 debate. Teacher acts as strict moderator. Points are awarded not just for logic, but for the elegant deployment of Level 6 grammar (inversions, clefts) under fire.",
-                        assessment: "Successfully uses negative inversion ('Never have I heard such...') in spontaneous rebuttal.",
-                        mistake: "Forgetting grammar in the heat of passion. Fix: Remind them that a slow, grammatically devastating rebuttal is better than a fast, messy one.",
-                        worksheet: ["(Fill): (Grammar Synthesis Review)", "(Match): Identify the rhetorical strategy.", "(MCQ): Select the most devastating, polite rebuttal.", "(Build): Unscramble a complex philosophical argument.", "(Short): Draft your opening statement.", "(Write): Outline your debate strategy.", "(Speak): Compete in the Master Debate."]
+                        title: "Session 43: Mega Review 1",
+                        goal: "Phase 1-4 basics.<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> Ensures foundational knowledge hasn't decayed while learning new concepts. Reinforces instant recall.<br><br><strong class='text-fuchsia-900'>Example:</strong> The student flawlessly introduces themselves and describes their physical traits and feelings without hesitation.",
+                        material: "All previous vocab: Greetings, Alphabet, Pronouns, Adjectives, 'To Be'.",
+                        script: "'Today, we remember everything! Who am I? I am tall. I am happy.'",
+                        flow: "Warm-up: Alphabet spelling race. Teaching: Rapid-fire board review of Pronouns + To Be. Practice: Fill-in-the-blank mega worksheet. Speaking: 60-second speed introductions (Name, Age, Feelings, Adjectives). Closing: Spelling Bee.",
+                        tasks: "Recall early concepts with speed and complete accuracy.",
+                        activities: "The Hot Seat: One student sits in front. Class fires questions at them rapidly: 'How old are you?' 'Are you happy?' 'Spell your name!'",
+                        assessment: "Answers personal questions instantly without translating in their head.",
+                        mistake: "Slipping back to old habits (e.g., 'I have 10 years'). Fix: Immediate correction, make them write the correct form on the board.",
+                        worksheet: ["(Fill): Comprehensive basics review.", "(Match): Early vocab matching.", "(MCQ): Rapid recall test.", "(Build): Basic sentence structure review.", "(Short): Personal detail recall.", "(Speak): 60-second speed intro.", "(Reading): Students read a highly advanced narrative synthesizing past, present, and future states."]
                     },
                     {
-                        title: "Session 44: The Impromptu Keynote",
-                        goal: "Deliver a 5-minute, highly structured, persuasive keynote address on a completely unknown abstract topic with only 2 minutes of preparation.<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> The peak of spontaneous public speaking. Tests their ability to generate profound ideas and structure them impeccably with almost zero prep time.<br><br><strong class='text-fuchsia-900'>Example:</strong> Handed the prompt 'The Illusion of Time', a student instantly formulates a hook, a 3-point argument with sequence adverbs, and a powerful call to action.",
-                        material: "Review: Hooks, Signposting, Funnel technique, Rhetorical questions, Calls to action.",
-                        script: "'In the highest echelons of business, you must be able to speak brilliantly on command. 2 minutes prep. 5 minutes speaking. Go.'",
-                        flow: "Warm-up: 60-second abstract definitions. Teaching: Review the 'Impromptu Master Framework'. Practice: 1-minute flash outlining drills. Speaking: The Impromptu Keynote Gauntlet.",
-                        tasks: "Maintain vocal authority, perfect pacing, and structural integrity while speaking on a highly abstract topic off the cuff.",
-                        activities: "The Keynote Gauntlet: Students draw profound, difficult prompts ('The danger of nostalgia', 'Why comfort breeds weakness'). They have 2 minutes to outline, then must deliver a 5-minute TED-style keynote.",
-                        assessment: "Does not panic, ramble, or repeat points. Uses 'What I mean is' to elegantly save themselves if they stumble.",
-                        mistake: "Panicking at the abstract prompt. Fix: Teach the 'Pivot to the Personal' strategy (If the topic is too abstract, instantly pivot to a personal story that connects to it to buy time and ground the speech).",
-                        worksheet: ["(Fill): (Impromptu Structure Mastery)", "(Match): Match the transition to the speech phase.", "(MCQ): Best strategy for handling a mental blank.", "(Build): Unscramble an elegant hook.", "(Short): Outline 3 points for: 'The value of failure'.", "(Write): Draft a generic, powerful conclusion that fits any topic.", "(Speak): Survive the Keynote Gauntlet."]
+                        title: "Session 44: Mega Review 2",
+                        goal: "Questions/Location.<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> Solidifies the ability to extract information from others using correct interrogative grammar and prepositions.<br><br><strong class='text-fuchsia-900'>Example:</strong> The student comfortably interviews a peer, asking 'Who is your mother? Where is she?'",
+                        material: "Review: Who, Where, What, Family, In/On/Under.",
+                        script: "'Who? Where? What? Let's ask questions!'",
+                        flow: "Warm-up: Preposition TPR. Teaching: Review question inversion (Is he...?). Practice: Give answers on the board, students must formulate the question (Jeopardy style). Speaking: Partner interview about family. Closing: Preposition drawing game.",
+                        tasks: "Create accurate WH-questions from scratch based on provided answers.",
+                        activities: "Jeopardy Questions: Write an answer on the board: 'He is my brother.' A student must hit a buzzer and correctly say: 'Who is he?'",
+                        assessment: "Maintains perfect grammatical inversion when asking questions.",
+                        mistake: "Forgetting the 'to be' verb in questions ('Where the book?'). Fix: Emphasize the 'is'. 'Where IS the book?'",
+                        worksheet: ["(Fill): WH-question review.", "(Match): Match answers to questions.", "(MCQ): Inversion check.", "(Build): Build questions from scratch.", "(Short): Write a question for a given answer.", "(Speak): Play Jeopardy Questions.", "(Reading): Students read a complex comparative analysis evaluating multiple perspectives."]
                     },
                     {
-                        title: "Session 45: Advanced Active Listening & Rebuttal",
-                        goal: "Listen to a 7-minute native-level academic lecture, extract the fundamental flaws, and systematically dismantle them in a structured Q&A.<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> The highest level of comprehension and response. Students must process dense, high-speed information, find the logical gaps, and formulate polite but lethal questions.<br><br><strong class='text-fuchsia-900'>Example:</strong> A student listens to a TED talk and asks: 'You mentioned the ROI, but you failed to consider the systemic infrastructural decay. How do you justify that omission?'",
-                        material: "Review: Failed to consider, Underlying issue, Root cause, Justify, Clarify.",
-                        script: "'You are no longer students taking notes. You are scholars reviewing a peer. Find the holes in my logic and expose them.'",
-                        flow: "Warm-up: Fallacy identification. Teaching: Advanced note-taking (mapping arguments vs evidence). Practice: Listen to a dense, flawed lecture and map the arguments. Speaking: The Academic Inquisition.",
-                        tasks: "Process native-level academic speech, identify logical fallacies, and articulate a targeted, multi-clause rebuttal question.",
-                        activities: "The Academic Inquisition: The Teacher delivers a fast, complex, but logically flawed 7-minute lecture. Students take notes. Then, they have 10 minutes to 'grill' the teacher, acting as a hostile academic review board.",
-                        assessment: "Questions are structurally complex (using 'Given that...', 'While it is true...') and directly target specific claims made in the lecture.",
-                        mistake: "Asking clarifying questions ('What did you mean?') instead of attacking questions. Fix: Push them to challenge the premise, not just ask for repetition.",
-                        worksheet: ["(Fill): (Active Listening & Rebuttal Review)", "(Match): Logical fallacies.", "(MCQ): Best phrasing for a hostile academic question.", "(Build): Unscramble a targeted academic critique.", "(Short): What is the difference between clarifying and rebutting?", "(Write): Write 3 devastating questions based on a provided text.", "(Speak): Lead the Academic Inquisition."]
+                        title: "Session 45: Mega Review 3",
+                        goal: "Routine/Verbs.<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> A final check on the crucial third-person 's' rule and the ability to narrate daily actions temporally.<br><br><strong class='text-fuchsia-900'>Example:</strong> The student writes and reads aloud a perfect 5-sentence paragraph contrasting their routine with their father's routine.",
+                        material: "Review: Daily verbs, I/You vs He/She ('S' rule), O'clock.",
+                        script: "'Tell me about your day. Tell me about your father's day!'",
+                        flow: "Warm-up: Clock arms game. Teaching: Review the 'S' rule heavily on the board. Practice: Sentence correction worksheet (find the error). Speaking: Compare routines. 'I wake up at 7, but he wakes up at 8.' Closing: Verb charades.",
+                        tasks: "Apply the 3rd person 'S' automatically in both speech and writing.",
+                        activities: "Find the Error: Write sentences with mistakes on the board ('She go to school'). Teams race to run up, erase the mistake, and fix it.",
+                        assessment: "Achieves 100% accuracy on the 'S' rule during the writing task.",
+                        mistake: "Dropping the 'S' under pressure. Fix: Keep hissing like a snake to remind them visually/audibly.",
+                        worksheet: ["(Fill): 3rd person 'S' review.", "(Match): Routine matching.", "(MCQ): Verb conjugation check.", "(Build): Compare routines.", "(Short): Fix the error sentences.", "(Speak): Present your routine vs a friend's.", "(Reading): Students read a high-level interview transcript tracking conversational lifelines and follow-ups."]
                     },
                     {
-                        title: "Session 46: Level 6 Exam Preparation & Strategy",
-                        goal: "Master the expectations of the Advanced final exam, focusing on native-level reading comprehension, complex essay synthesis, and near-native speaking fluency.<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> Calibrates the student for the final hurdle. Ensures they understand that Level 6 requires not just correct grammar, but elegance, style, and profound logical depth.<br><br><strong class='text-fuchsia-900'>Example:</strong> A student reviews their practice essay, actively replacing standard grammar with cleft sentences and fronting to elevate the stylistic impact.",
-                        material: "All Level 6 Content.",
-                        script: "'This is the final polish. We are not looking for 'correct' anymore. We are looking for mastery, elegance, and power.'",
-                        flow: "Warm-up: Deep breathing and visualization. Teaching: Breakdown the brutal written exam (Inversions, Clefts, Abstract Reading, Synthesis Essay) and the Speaking prompt. Practice: Complete a master-level grammar stress test. Speaking: Review how to project absolute confidence and authority.",
-                        tasks: "Identify the difference between 'technically correct' English and 'stylistically advanced' English, applying the latter.",
-                        activities: "The Polish: Students swap practice essays and act as ruthless editors, forcing each other to upgrade sentences (e.g., changing 'Because it rained, we left' to 'Given the torrential rain, our departure was inevitable').",
-                        assessment: "Student demonstrates a clear understanding of stylistic elevation and rhetorical power.",
-                        mistake: "Relying on 'safe', basic grammar out of fear of making a mistake. Fix: Demand risk-taking. A slightly flawed inversion is better than a perfect, boring 'I think' sentence at this level.",
-                        worksheet: ["(Fill): Master-level grammar review.", "(Match): Advanced stylistic choices.", "(MCQ): Nuance and tone selection.", "(Build): Multi-clause, multi-structure sentence building.", "(Short): Advanced Reading Comprehension analysis.", "(Write): Mock synthesis essay prompt.", "(Speak): Mock speaking prompt practice."]
+                        title: "Session 46: Mega Review 4",
+                        goal: "Survival English.<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> Final polish of real-world transactional skills, focusing on fluency and confidence in simulated high-pressure situations.<br><br><strong class='text-fuchsia-900'>Example:</strong> Without looking at notes, the student executes a full transaction buying shoes, asking for the price, and saying thank you.",
+                        material: "Review: Likes/Wants, Prices, Clothes, Directions, Politeness.",
+                        script: "'Last practice before the test! Let's go shopping!'",
+                        flow: "Warm-up: In/On/Under TPR. Teaching: Build a giant mind map of survival phrases on the board. Practice: Dialogue unscramble (put the conversation in order). Speaking: Improv roleplays based on situation cards. Closing: Review format of final test.",
+                        tasks: "Execute multi-turn dialogues with confidence and contextual accuracy.",
+                        activities: "Situation Cards: Pull a card. 'You are hungry at a restaurant.' 'You are lost in town.' 'You want to buy shoes.' Act it out with the teacher.",
+                        assessment: "Can handle unexpected prompts in the roleplay smoothly.",
+                        mistake: "Hesitation or silence. Fix: Remind them it is perfectly okay to say 'Excuse me, repeat please?' to buy time.",
+                        worksheet: ["(Fill): Survival phrase review.", "(Match): Scenario matching.", "(MCQ): Politeness check.", "(Build): Unscramble dialogues.", "(Short): Draft a roleplay script.", "(Speak): Act out Situation Cards.", "(Reading): Students read sample C2-level reading passages and evaluate the comprehension questions."]
                     },
                     {
-                        title: "Session 47: Final Speaking Assessment",
-                        goal: "Demonstrate near-native fluency, absolute register control, profound analytical depth, and unbreakable conversational dominance in a 25-minute interview.<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> The ultimate spoken assessment. Proves the student can operate seamlessly at the highest echelons of academic, professional, and social English.<br><br><strong class='text-fuchsia-900'>Example:</strong> A student fluently delivers an impromptu keynote, survives a hostile academic interrogation, and gracefully negotiates a complex ethical dilemma with the examiner.",
-                        material: "1-on-1 Teacher Assessment.",
-                        script: "'You have reached the summit. Speak with the authority you have earned.'",
-                        flow: "Warm-up: Icebreaker. Teaching: None. Practice: Independent mental prep. Speaking: 25-minute interview. 1) Professional/Academic Intro. 2) The Impromptu Keynote. 3) The Academic Inquisition. 4) The Hostile Executive Roleplay.",
-                        tasks: "Communicate with absolute fluidity, utilizing inversions, clefts, hedging, and high-level vocabulary without translation or hesitation.",
-                        activities: "Silent Study/Prep: Non-testing students prepare their mental frameworks or engage in quiet, advanced debates to stay warm.",
-                        assessment: "Graded on Syntactical Elegance, Rhetorical Power, Register Mastery, Analytical Depth, and Near-Native Pacing.",
-                        mistake: "Losing executive presence under the intense pressure of the Inquisition phase. Fix: The examiner evaluates their ability to use 'buying time' phrases gracefully to recover.",
-                        worksheet: ["(1) Professional Introduction", "(2) Impromptu Keynote (5 mins)", "(3) Academic Inquisition", "(4) Hostile Executive Roleplay", "(5) Use target structures (Inversion/Clefts)", "(6) Final Grade"]
+                        title: "Session 47: Speaking Test",
+                        goal: "Communicate fluently.<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> The formal speaking test. Proves the student has internalized the language enough to communicate spontaneously without translation.<br><br><strong class='text-fuchsia-900'>Example:</strong> The student maintains a 5-minute English-only conversation with the teacher, successfully answering unexpected questions.",
+                        material: "All Level 1 Topics.",
+                        script: "'Today is your speaking test. Be loud, be proud! You can do it!'",
+                        flow: "Warm-up: Shake out the nerves. Breathing exercise. Teaching: No new teaching. Explain the test stations. Practice: Students practice with each other while waiting. Speaking: 1-on-1 testing with the teacher (5 minutes per student). Closing: Group cheer.",
+                        tasks: "Speak clearly, use full sentences, and self-correct if a mistake is made.",
+                        activities: "Station Rotation: While one student tests, others play quiet English board games or review their past worksheets in groups.",
+                        assessment: "Formal Grading Rubric based on: 1. Introduction. 2. Describing a picture. 3. Simple Q&A. 4. Brief roleplay.",
+                        mistake: "Nervousness leading to mother-tongue use. Fix: Remind them gently: 'English only, take your time.'",
+                        worksheet: ["(Fill): Test prep checklist.", "(Match): Rubric review.", "(MCQ): Test strategies.", "(Build): Fallback sentences.", "(Short): Self-reflection.", "(Speak): Take the Speaking Test!", "(Reading): Students read a breakdown of the C2 speaking rubric and scoring criteria."]
                     },
                     {
-                        title: "Session 48: Final Written Exam & Graduation",
-                        goal: "Demonstrate comprehensive mastery of advanced grammar, profound reading comprehension, and elegant, persuasive essay synthesis to officially complete the Tagasa English Program.<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> The final quantitative and qualitative hurdle. Validates that the student has achieved the ultimate goal: the ability to think, write, and persuade in English at a near-native, highly professional level.<br><br><strong class='text-fuchsia-900'>Example:</strong> A student writes a flawless, deeply insightful synthesis essay analyzing a complex socio-economic issue, utilizing fronting, inversion, and masterful discourse markers.",
-                        material: "Comprehensive Level 6 Written Test.",
-                        script: "'You are no longer students of English. You are masters of it. Prove it one last time, and then we celebrate.'",
-                        flow: "Warm-up: Hand out tests. Teaching: Read instructions. Practice: 120 minutes silent, intensive testing. Speaking: The Grand Graduation, final reflections, and certificate hand-out.",
-                        tasks: "Complete the master-level exam independently, showcasing the absolute pinnacle of their grammatical and lexical abilities.",
-                        activities: "The Grand Graduation: Hand out 'Level 6 Advanced Fluency' diplomas. Students deliver short, 1-minute 'Thank You' speeches utilizing their polished, professional English. Class photo and celebration.",
-                        assessment: "Pass mark: 85% to achieve 'Advanced Master' certification.",
-                        mistake: "Fatigue leading to simple errors in the final essay paragraphs. Fix: Remind them to pace themselves and leave 10 minutes purely for proofreading and stylistic upgrades.",
-                        worksheet: ["(Fill): 40 Master Grammar Fills", "(Match): 30 Executive/Academic Vocab Matches", "(MCQ): 20 Nuance & Style Questions", "(Build): 10 Masterpiece Sentences", "(Short): Profound Reading Comprehension", "(Write): 6-Paragraph Synthesis Essay", "(Speak): Graduation Speech!"]
+                        title: "Session 48: Final Test",
+                        goal: "Written evaluation.<br><br><strong class='text-fuchsia-900'>Elaboration:</strong> Validates reading and writing comprehension, proving the student possesses the holistic literacy required to advance to Level 2.<br><br><strong class='text-fuchsia-900'>Example:</strong> The student independently reads a paragraph about someone's daily routine and accurately answers multiple-choice questions about it.",
+                        material: "Comprehensive Level 1 Final Exam.",
+                        script: "'This is it! Take your time. Show me what you know. Then, we celebrate!'",
+                        flow: "Warm-up: Distribute tests. Teaching: Read the instructions for each section out loud. Practice: Silent testing (40 mins). Speaking: Group reflection ('What was easy? What was hard?'). Closing: Hand out Level 1 Certificates. Play English music.",
+                        tasks: "Complete the exam silently, relying only on their own knowledge.",
+                        activities: "Graduation Ceremony: Call each student up by name. 'Congratulations, [Name]!' Hand them a certificate. Take a class photo.",
+                        assessment: "Pass mark: 70%.",
+                        mistake: "Rushing the test. Fix: Write time remaining on the board. Remind them to check their work (especially the 'S' rule).",
+                        worksheet: ["(Fill): Final grammar review.", "(Match): Final vocab review.", "(MCQ): Final comprehension check.", "(Build): Final sentence building.", "(Short): Final short answers.", "(Speak): Graduate!", "(Reading): Students take the final reading comprehension exam featuring synthesis of multiple academic texts."]
                     }
                 ]
             }
@@ -809,10 +808,10 @@
                 data: {
                     labels: ['Start (Ph 1)', 'Mid (Ph 4)', 'Goal (Ph 8)'],
                     datasets: [
-                        { label: 'Vocab', data: [75, 90, 100], backgroundColor: '#14b8a6', borderRadius: 4 }, 
-                        { label: 'Grammar', data: [65, 88, 100], backgroundColor: '#3b82f6', borderRadius: 4 }, 
-                        { label: 'Speaking', data: [80, 95, 100], backgroundColor: '#f59e0b', borderRadius: 4 }, 
-                        { label: 'Register', data: [60, 85, 100], backgroundColor: '#8b5cf6', borderRadius: 4 } 
+                        { label: 'Vocab', data: [50, 80, 98], backgroundColor: '#14b8a6', borderRadius: 4 }, 
+                        { label: 'Grammar', data: [40, 75, 96], backgroundColor: '#3b82f6', borderRadius: 4 }, 
+                        { label: 'Speaking', data: [55, 85, 98], backgroundColor: '#f59e0b', borderRadius: 4 }, 
+                        { label: 'Comprehension', data: [45, 80, 97], backgroundColor: '#8b5cf6', borderRadius: 4 } 
                     ]
                 },
                 options: {
@@ -880,7 +879,32 @@
             document.getElementById('content-activities').innerHTML = session.activities || "";
             document.getElementById('content-assessment').innerHTML = session.assessment || "";
             document.getElementById('content-mistake').innerHTML = session.mistake || "";
-            document.getElementById('content-worksheet').innerHTML = (session.worksheet || []).map(w => `<li class="ml-5 list-disc text-stone-700">${w}</li>`).join('');
+            
+            let absoluteSessionNum = 0;
+            for (let i = 0; i < curriculumData.length; i++) {
+                if (curriculumData[i].id === phaseId) {
+                    absoluteSessionNum += sessionIndex + 1;
+                    break;
+                }
+                absoluteSessionNum += curriculumData[i].sessions.length;
+            }
+
+            let wsHtml = '<ul class="space-y-3 bg-stone-50 p-5 rounded-lg border border-stone-200 mb-6">';
+            (session.worksheet || []).forEach(w => {
+                wsHtml += `<li class="ml-5 list-disc text-stone-700">${w}</li>`;
+            });
+            wsHtml += '</ul>';
+            
+            wsHtml += `
+                <div class="mt-4 text-center md:text-left border-t border-stone-100 pt-6">
+                    <a href="level6s${absoluteSessionNum}.html" class="inline-flex items-center gap-2 px-8 py-4 bg-fuchsia-600 hover:bg-fuchsia-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-fuchsia-600/20 transform hover:-translate-y-1">
+                        Go to Worksheet ${absoluteSessionNum}
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            `;
+            
+            document.getElementById('content-worksheet').innerHTML = wsHtml;
 
             switchTab('goal');
         }
