@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tagasa - Placement Measurement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@1,500&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1c1917; 
+            overflow-x: hidden;
+        }
+        
+        .bg-elegant-gradient {
+            background: linear-gradient(135deg, #fafaf9 0%, #f5f5f4 50%, #eef2ff 100%);
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: -0.04em;
+            background: linear-gradient(to right, #0f766e, #4338ca);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased bg-elegant-gradient flex flex-col min-h-screen">
+
+    <!-- Decorative Glow -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-slate-200/40 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+    <!-- Navigation -->
+    <nav class="w-full z-50 sticky top-0 bg-fafaf9/90 backdrop-blur-md border-b border-stone-200/50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                
+                <!-- Logo -->
+                <div class="flex items-center gap-2 md:gap-3 cursor-pointer group" onclick="window.location.href='index.html'">
+                    <svg viewBox="0 0 100 80" class="w-auto h-[32px] md:h-[40px] overflow-visible transform group-hover:scale-105 transition-transform duration-300 drop-shadow-md">
+                        <defs>
+                            <linearGradient id="patent-teal-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0f766e"/>
+                                <stop offset="100%" stop-color="#5eead4"/>
+                            </linearGradient>
+                            
+                            <filter id="top-left-shadow" x="-30%" y="-30%" width="160%" height="160%">
+                                <feOffset dx="-4" dy="-4" in="SourceAlpha" result="offOut" />
+                                <feGaussianBlur stdDeviation="3" in="offOut" result="blurOut" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="blurOut" result="colorOut" />
+                                <feBlend in="SourceGraphic" in2="colorOut" mode="normal" />
+                            </filter>
+
+                            <filter id="inner-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                                <feOffset dx="-1.5" dy="-1.5" in="SourceAlpha" result="offOut" />
+                                <feGaussianBlur stdDeviation="1" in="offOut" result="blurOut" />
+                                <feColorMatrix type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" in="blurOut" result="colorOut" />
+                                <feBlend in="SourceGraphic" in2="colorOut" mode="normal" />
+                            </filter>
+                        </defs>
+
+                        <g filter="url(#top-left-shadow)">
+                            <path d="M 10 0 H 90 C 95.523 0 100 4.477 100 10 V 70 C 100 75.523 95.523 80 90 80 H 25 L 0 105 V 10 C 0 4.477 4.477 0 10 0 Z" 
+                                  fill="url(#patent-teal-grad)" 
+                                  stroke="#ffffff" 
+                                  stroke-width="2"/>
+                        </g>
+                        
+                        <g filter="url(#inner-shadow)">
+                            <rect x="20" y="16" width="60" height="10" rx="3" fill="white"/>
+                            <rect x="40" y="32" width="20" height="10" rx="3" fill="white"/>
+                            <rect x="45" y="48" width="10" height="10" rx="3" fill="white"/>
+                            <circle cx="50" cy="68" r="4.5" fill="white"/>
+                        </g>
+                    </svg>
+                    <span class="font-black logo-text uppercase text-[32px] md:text-[40px] leading-none">TAGASA</span>
+                </div>
+
+                <!-- Homepage Button -->
+                <div class="flex gap-4">
+                    <button onclick="window.location.href='index.html'" class="px-5 py-2.5 rounded-full bg-white border border-stone-200 shadow-sm text-stone-600 hover:bg-stone-50 hover:text-stone-900 transition-all font-bold text-sm tracking-wide flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        Homepage
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center pt-16 md:pt-20 px-4 w-full max-w-7xl mx-auto pb-32 relative z-10">
+        
+        <!-- Header -->
+        <section class="text-center w-full max-w-4xl mb-16 px-4">
+            <h1 style="font-family: 'Montserrat', sans-serif;" class="text-4xl md:text-5xl lg:text-6xl font-black text-stone-900 tracking-tighter mb-6 uppercase drop-shadow-sm">
+                EVALUATOR MEASUREMENT
+            </h1>
+            <p class="text-lg md:text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed">
+                Select a level to administer the progressive stress-test interview. Utilize the rubrics to accurately determine the student's operational baseline and curriculum placement.
+            </p>
+        </section>
+
+        <!-- Cards Grid -->
+        <section class="w-full">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                
+                <!-- Level 1 -->
+                <a href="mess1.html" class="opacity-80 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-8 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-teal-500/20 hover:border-teal-300/50 transform hover:-translate-y-2 duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer min-h-[320px]">
+                    <span class="absolute -top-6 -right-6 text-[140px] leading-none font-black text-stone-50 group-hover:text-teal-50 transition-colors duration-700 pointer-events-none select-none z-0">1</span>
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-teal-50 text-teal-700 text-xs font-bold tracking-widest uppercase mb-4 border border-teal-100 group-hover:bg-teal-500 group-hover:text-white group-hover:border-teal-500 transition-colors duration-500">Level 1</div>
+                        <h2 class="text-2xl font-bold text-stone-800 mb-3 group-hover:text-teal-900 transition-colors duration-300">Foundation</h2>
+                        <p class="text-stone-500 text-sm leading-relaxed">Evaluate basic greetings, singular present tense mechanics, and foundational vocabulary survival limits.</p>
+                    </div>
+                    <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-5 mt-6">
+                        <span class="text-stone-500 text-sm font-bold group-hover:text-teal-700 transition-colors duration-300">Administer Test</span>
+                        <div class="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-teal-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-lg">&rarr;</div>
+                    </div>
+                </a>
+
+                <!-- Level 2 -->
+                <a href="mess2.html" class="opacity-80 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-8 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-emerald-500/20 hover:border-emerald-300/50 transform hover:-translate-y-2 duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer min-h-[320px]">
+                    <span class="absolute -top-6 -right-6 text-[140px] leading-none font-black text-stone-50 group-hover:text-emerald-50 transition-colors duration-700 pointer-events-none select-none z-0">2</span>
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold tracking-widest uppercase mb-4 border border-emerald-100 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500 transition-colors duration-500">Level 2</div>
+                        <h2 class="text-2xl font-bold text-stone-800 mb-3 group-hover:text-emerald-900 transition-colors duration-300">Elementary</h2>
+                        <p class="text-stone-500 text-sm leading-relaxed">Test isolated past/future tenses, frequency adverbs, and the ability to combine simple ideas using conjunctions.</p>
+                    </div>
+                    <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-5 mt-6">
+                        <span class="text-stone-500 text-sm font-bold group-hover:text-emerald-700 transition-colors duration-300">Administer Test</span>
+                        <div class="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-lg">&rarr;</div>
+                    </div>
+                </a>
+
+                <!-- Level 3 -->
+                <a href="mess3.html" class="opacity-80 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-8 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-blue-500/20 hover:border-blue-300/50 transform hover:-translate-y-2 duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer min-h-[320px]">
+                    <span class="absolute -top-6 -right-6 text-[140px] leading-none font-black text-stone-50 group-hover:text-blue-50 transition-colors duration-700 pointer-events-none select-none z-0">3</span>
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-blue-50 text-blue-700 text-xs font-bold tracking-widest uppercase mb-4 border border-blue-100 group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500 transition-colors duration-500">Level 3</div>
+                        <h2 class="text-2xl font-bold text-stone-800 mb-3 group-hover:text-blue-900 transition-colors duration-300">Pre-Intermediate</h2>
+                        <p class="text-stone-500 text-sm leading-relaxed">Measure continuous storytelling capability, basic opinion defense, and ability to sustain conversational ping-pong.</p>
+                    </div>
+                    <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-5 mt-6">
+                        <span class="text-stone-500 text-sm font-bold group-hover:text-blue-700 transition-colors duration-300">Administer Test</span>
+                        <div class="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-lg">&rarr;</div>
+                    </div>
+                </a>
+
+                <!-- Level 4 -->
+                <a href="mess4.html" class="opacity-80 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-8 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/20 hover:border-indigo-300/50 transform hover:-translate-y-2 duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer min-h-[320px]">
+                    <span class="absolute -top-6 -right-6 text-[140px] leading-none font-black text-stone-50 group-hover:text-indigo-50 transition-colors duration-700 pointer-events-none select-none z-0">4</span>
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold tracking-widest uppercase mb-4 border border-indigo-100 group-hover:bg-indigo-500 group-hover:text-white group-hover:border-indigo-500 transition-colors duration-500">Level 4</div>
+                        <h2 class="text-2xl font-bold text-stone-800 mb-3 group-hover:text-indigo-900 transition-colors duration-300">Intermediate</h2>
+                        <p class="text-stone-500 text-sm leading-relaxed">Assess the temporal-hypothetical shift (Conditionals 0-3), formal result connectors, and argument sequencing.</p>
+                    </div>
+                    <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-5 mt-6">
+                        <span class="text-stone-500 text-sm font-bold group-hover:text-indigo-700 transition-colors duration-300">Administer Test</span>
+                        <div class="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-lg">&rarr;</div>
+                    </div>
+                </a>
+
+                <!-- Level 5 -->
+                <a href="mess5.html" class="opacity-80 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-8 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-violet-500/20 hover:border-violet-300/50 transform hover:-translate-y-2 duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer min-h-[320px]">
+                    <span class="absolute -top-6 -right-6 text-[140px] leading-none font-black text-stone-50 group-hover:text-violet-50 transition-colors duration-700 pointer-events-none select-none z-0">5</span>
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-violet-50 text-violet-700 text-xs font-bold tracking-widest uppercase mb-4 border border-violet-100 group-hover:bg-violet-500 group-hover:text-white group-hover:border-violet-500 transition-colors duration-500">Level 5</div>
+                        <h2 class="text-2xl font-bold text-stone-800 mb-3 group-hover:text-violet-900 transition-colors duration-300">Upper-Intermediate</h2>
+                        <p class="text-stone-500 text-sm leading-relaxed">Evaluate present perfect continuous, workplace de-escalation, and complex comparative debate tactics.</p>
+                    </div>
+                    <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-5 mt-6">
+                        <span class="text-stone-500 text-sm font-bold group-hover:text-violet-700 transition-colors duration-300">Administer Test</span>
+                        <div class="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-violet-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-lg">&rarr;</div>
+                    </div>
+                </a>
+
+                <!-- Level 6 -->
+                <a href="mess6.html" class="opacity-80 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-8 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-fuchsia-500/20 hover:border-fuchsia-300/50 transform hover:-translate-y-2 duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer min-h-[320px]">
+                    <span class="absolute -top-6 -right-6 text-[140px] leading-none font-black text-stone-50 group-hover:text-fuchsia-50 transition-colors duration-700 pointer-events-none select-none z-0">6</span>
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-fuchsia-50 text-fuchsia-700 text-xs font-bold tracking-widest uppercase mb-4 border border-fuchsia-100 group-hover:bg-fuchsia-500 group-hover:text-white group-hover:border-fuchsia-500 transition-colors duration-500">Level 6</div>
+                        <h2 class="text-2xl font-bold text-stone-800 mb-3 group-hover:text-fuchsia-900 transition-colors duration-300">Advanced</h2>
+                        <p class="text-stone-500 text-sm leading-relaxed">Test register and diplomacy audit. Judge code-switching ability, cleft sentences, and nuanced professional disagreement.</p>
+                    </div>
+                    <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-5 mt-6">
+                        <span class="text-stone-500 text-sm font-bold group-hover:text-fuchsia-700 transition-colors duration-300">Administer Test</span>
+                        <div class="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-fuchsia-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-lg">&rarr;</div>
+                    </div>
+                </a>
+
+                <!-- Level 7 -->
+                <a href="mess7.html" class="opacity-80 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-8 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-rose-500/20 hover:border-rose-300/50 transform hover:-translate-y-2 duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer min-h-[320px]">
+                    <span class="absolute -top-6 -right-6 text-[140px] leading-none font-black text-stone-50 group-hover:text-rose-50 transition-colors duration-700 pointer-events-none select-none z-0">7</span>
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-rose-50 text-rose-700 text-xs font-bold tracking-widest uppercase mb-4 border border-rose-100 group-hover:bg-rose-500 group-hover:text-white group-hover:border-rose-500 transition-colors duration-500">Level 7</div>
+                        <h2 class="text-2xl font-bold text-stone-800 mb-3 group-hover:text-rose-900 transition-colors duration-300">Mastery</h2>
+                        <p class="text-stone-500 text-sm leading-relaxed">Assess high-level rhetoric, abstract concept articulation, philosophical analysis, and aggressive debate structuring.</p>
+                    </div>
+                    <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-5 mt-6">
+                        <span class="text-stone-500 text-sm font-bold group-hover:text-rose-700 transition-colors duration-300">Administer Test</span>
+                        <div class="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-rose-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-lg">&rarr;</div>
+                    </div>
+                </a>
+
+                <!-- Level 8 -->
+                <a href="mess8.html" class="opacity-80 hover:opacity-100 focus:opacity-100 transition-opacity group relative bg-white rounded-3xl p-8 border border-stone-200/80 shadow-sm hover:shadow-2xl hover:shadow-amber-500/20 hover:border-amber-300/50 transform hover:-translate-y-2 duration-500 overflow-hidden flex flex-col justify-between h-full cursor-pointer min-h-[320px]">
+                    <span class="absolute -top-6 -right-6 text-[140px] leading-none font-black text-stone-50 group-hover:text-amber-50 transition-colors duration-700 pointer-events-none select-none z-0">8</span>
+                    <div class="relative z-10">
+                        <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-full bg-amber-50 text-amber-700 text-xs font-bold tracking-widest uppercase mb-4 border border-amber-100 group-hover:bg-amber-500 group-hover:text-white group-hover:border-amber-500 transition-colors duration-500">Level 8</div>
+                        <h2 class="text-2xl font-bold text-stone-800 mb-3 group-hover:text-amber-900 transition-colors duration-300">Proficiency</h2>
+                        <p class="text-stone-500 text-sm leading-relaxed">The final crucible. Evaluate C2-level unscripted defense, absolute syntactical control, and elite executive facilitation.</p>
+                    </div>
+                    <div class="relative z-10 flex items-center justify-between w-full border-t border-stone-100 pt-5 mt-6">
+                        <span class="text-stone-500 text-sm font-bold group-hover:text-amber-700 transition-colors duration-300">Administer Test</span>
+                        <div class="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center text-stone-400 group-hover:bg-amber-600 group-hover:text-white transition-all duration-500 group-hover:scale-110 shadow-sm text-lg">&rarr;</div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="w-full text-center py-8 bg-transparent text-stone-500 mt-auto border-t border-stone-200/50 relative z-10">
+        <p class="text-sm font-medium">&copy; 2026 Tagasa English Course. Cultivating global communicators.</p>
+    </footer>
+
+</body>
+</html>
